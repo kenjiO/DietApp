@@ -46,45 +46,53 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="LoginForm.cs">
+    <Compile Include="Controller\DietApp.cs" />
+    <Compile Include="DietAppDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DietAppDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Model_Validator.cs" />
+    <Compile Include="View\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LoginForm.Designer.cs">
+    <Compile Include="View\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainForm.cs">
+    <Compile Include="View\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainForm.Designer.cs">
+    <Compile Include="View\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="NewUser.cs">
+    <Compile Include="View\NewUser.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NewUser.Designer.cs">
+    <Compile Include="View\NewUser.Designer.cs">
       <DependentUpon>NewUser.cs</DependentUpon>
     </Compile>
-    <Compile Include="Program.cs" />
+    <Compile Include="Controller\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ProfileInfo.cs">
+    <Compile Include="View\ProfileInfo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ProfileInfo.Designer.cs">
+    <Compile Include="View\ProfileInfo.Designer.cs">
       <DependentUpon>ProfileInfo.cs</DependentUpon>
     </Compile>
-    <Compile Include="WellnessInfo.cs">
+    <Compile Include="View\View_Validator.cs" />
+    <Compile Include="View\WellnessInfo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WellnessInfo.Designer.cs">
+    <Compile Include="View\WellnessInfo.Designer.cs">
       <DependentUpon>WellnessInfo.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="LoginForm.resx">
+    <EmbeddedResource Include="View\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainForm.resx">
+    <EmbeddedResource Include="View\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NewUser.resx">
+    <EmbeddedResource Include="View\NewUser.resx">
       <DependentUpon>NewUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -96,12 +104,23 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="ProfileInfo.resx">
+    <EmbeddedResource Include="View\ProfileInfo.resx">
       <DependentUpon>ProfileInfo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WellnessInfo.resx">
+    <EmbeddedResource Include="View\WellnessInfo.resx">
       <DependentUpon>WellnessInfo.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="DietAppDataSet.xsc">
+      <DependentUpon>DietAppDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="DietAppDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DietAppDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DietAppDataSet.xss">
+      <DependentUpon>DietAppDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
