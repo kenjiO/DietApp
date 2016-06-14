@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using System.Data.SqlClient;
+
 namespace DietApp
 {
     public partial class ProfileInfo : Form
@@ -17,44 +19,68 @@ namespace DietApp
             InitializeComponent();
         }
 
-        private void usernameLabel_Click(object sender, EventArgs e)
+        private void ProfileInfo_Load(object sender, EventArgs e)
         {
-
+            try
+            {
+                LoadData("user1");
+            } catch (SqlException ex)
+            {
+                MessageBox.Show("Database error loading profile.\n" + ex.Message);
+            }
         }
 
-        private void WellnessInfo_Load(object sender, EventArgs e)
+        private SqlConnection GetDBConnection()
         {
-
+            string connectionString =
+                "Data Source=localhost;Initial Catalog=DietApp;" +
+                "Integrated Security=True";
+            SqlConnection connection = new SqlConnection(connectionString);
+            return connection;
         }
 
-        private void cityLabel_Click(object sender, EventArgs e)
+        private void LoadData(string username)
         {
+            string selectStatement =
+                "SELECT firstName, lastName, email " +
+                "FROM users " +
+                "WHERE username = @username";
 
+            using (SqlConnection connection = GetDBConnection())
+            {
+                connection.Open();
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    selectCommand.Parameters.AddWithValue("@username", username);
+                    using (SqlDataReader reader = selectCommand.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            string firstName = "[NOT SET]";
+                            if (!DBNull.Value.Equals(reader["firstName"]))
+                                firstName = reader["firstName"].ToString();
+                            string lastName = "[NOT SET]";
+                            if (!DBNull.Value.Equals(reader["lastName"]))
+                                lastName = reader["lastName"].ToString();
+                            string email = "[NOT SET]";
+                            if (!DBNull.Value.Equals(reader["email"]))
+                               email = reader["email"].ToString();
+
+
+                            firstNameBox.Text = firstName;
+                            lastNameBox.Text = lastName;
+                            emailBox.Text = email;
+
+                        }
+                        else
+                        {
+                            MessageBox.Show("username not found");
+                        }
+                    }
+                }
+            }
         }
 
-        private void cityBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void stateLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void stateBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void zipcodeBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void zipcodeLabel_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
+
