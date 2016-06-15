@@ -19,6 +19,10 @@ namespace DietApp
 
         public ProfileInfo(AppController controller)
         {
+            if (controller == null)
+            {
+                throw new ArgumentNullException("controller must not be null");
+            }
             this._controller = controller;
             InitializeComponent();
         }
@@ -39,7 +43,7 @@ namespace DietApp
             User user = _controller.GetCurrentUser();
             if (user == null)
             {
-                MessageBox.Show("User does not exist");
+                MessageBox.Show("No user is currently logged on");
                 return;
             }
             firstNameBox.Text = user.FirstName;
