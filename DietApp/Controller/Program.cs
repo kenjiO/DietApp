@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DietApp.Controller;
 
 namespace DietApp
 {
@@ -17,6 +18,9 @@ namespace DietApp
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new loginForm());
+
+            //AppController controller = new AppController();
+            //Application.Run(new ProfileInfo(controller));
         }
     }
 }
