@@ -8,7 +8,7 @@ using DietApp.Model;
 
 namespace DietApp.Database
 {
-    class UserDb
+    public static class UserDb
     {
 
         public static User GetUser(string username)
@@ -31,11 +31,11 @@ namespace DietApp.Database
                             User user = new User();
 
                             if (!DBNull.Value.Equals(reader["firstName"]))
-                                user.FirstName = reader["firstName"].ToString();
+                                user.firstName = reader["firstName"].ToString();
                             if (!DBNull.Value.Equals(reader["lastName"]))
-                                user.LastName = reader["lastName"].ToString();
+                                user.lastName = reader["lastName"].ToString();
                             if (!DBNull.Value.Equals(reader["email"]))
-                                user.LastName = reader["email"].ToString();
+                                user.Email = reader["email"].ToString();
                             return user;
                         }
                         else
@@ -45,6 +45,73 @@ namespace DietApp.Database
                     }
                 }
             }
+        }
+
+        /// <summary>
+        ///     Creates a New User
+        /// </summary>
+        /// <param name="User"></param>
+        /// <returns></returns>
+        public static bool CreateNewUser(User user)
+        {
+            bool insertSuccessful = true;
+            String insertStatement =
+                "INSERT INTO Users (" +
+                "Users.username, " +
+                "Users.firstName, " +
+                "Users.lastName, " +
+                "Users.password, " +
+                "Users.initialWeight, " +
+                "Users.heightFeet, " +
+                "Users.heightInches, " +
+                "Users.dailyCalorieGoal, " +
+                "Users.goalWeight" +
+                ")" +
+                " VALUES(" +
+                "@username, " +
+                "@firstName, " +
+                "@lastName, " +
+                "@password, " +
+                "@initialWeight, " +
+                "@heightFeet, " +
+                "@heightInches, " +
+                "@dailyCalorieGoal, " +
+                "@goalWeight" +
+                ")";
+
+            try
+            {
+                using (SqlConnection connection = DbConnection.GetConnection())
+                {
+                    using (SqlCommand insertCommand = new SqlCommand(insertStatement, connection))
+                    {
+                        connection.Open();
+
+                        insertCommand.Parameters.AddWithValue("@username", user.username);
+                        insertCommand.Parameters.AddWithValue("@firstName", user.firstName);
+                        insertCommand.Parameters.AddWithValue("@lastName", user.lastName);
+                        insertCommand.Parameters.AddWithValue("@password", user.password);
+                        insertCommand.Parameters.AddWithValue("@initialWeight", user.initialWeight);
+                        insertCommand.Parameters.AddWithValue("@heightFeet", user.heightFeet);
+                        insertCommand.Parameters.AddWithValue("@heightInches", user.heightInches);
+                        insertCommand.Parameters.AddWithValue("@dailyCalorieGoal", user.dailyCalorieGoal);
+                        insertCommand.Parameters.AddWithValue("@goalWeight", user.goalWeight);
+                    }
+                }
+            }
+            //catch (DuplicateKeyException)
+            //{
+            //    throw;
+            //}
+            catch (SqlException)
+            {
+                throw;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return insertSuccessful;
         }
     }
 }
