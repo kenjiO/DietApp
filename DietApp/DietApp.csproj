@@ -51,6 +51,7 @@
     <Compile Include="DAL\UsersDAL.cs" />
     <Compile Include="DietAppDataSet.cs">
       <DependentUpon>DietAppDataSet.xsd</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="DietAppDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -60,6 +61,12 @@
     <Compile Include="Model\Encryption.cs" />
     <Compile Include="Model\Model_Validator.cs" />
     <Compile Include="Model\Users.cs" />
+    <Compile Include="View\FoodEntryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FoodEntryForm.Designer.cs">
+      <DependentUpon>FoodEntryForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,6 +100,9 @@
     <Compile Include="View\WellnessInfo.Designer.cs">
       <DependentUpon>WellnessInfo.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="View\FoodEntryForm.resx">
+      <DependentUpon>FoodEntryForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
