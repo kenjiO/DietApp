@@ -42,9 +42,9 @@ namespace DietApp
                 MessageBox.Show("User does not exist");
                 return;
             }
-            firstNameBox.Text = user.FirstName;
-            lastNameBox.Text = user.LastName;
-            emailBox.Text = user.Email;
+            firstNameBox.Text = user.firstName;
+            lastNameBox.Text = user.lastName;
+            emailBox.Text = user.email;
         }
 
     }

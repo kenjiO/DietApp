@@ -35,7 +35,7 @@ namespace DietApp.Database
                             if (!DBNull.Value.Equals(reader["lastName"]))
                                 user.lastName = reader["lastName"].ToString();
                             if (!DBNull.Value.Equals(reader["email"]))
-                                user.Email = reader["email"].ToString();
+                                user.email = reader["email"].ToString();
                             return user;
                         }
                         else

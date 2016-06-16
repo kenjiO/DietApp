@@ -11,34 +11,32 @@ namespace DietApp.Model
     /// </summary>
     public class User
     {
-        private string firstName;
-        private string lastName;
-        private string email;
-
         public User()
         {
         }
         
         //*********** Getters and Setters **********//
+        public int userID { get; set; }
         public string username { get; set; }
         public string firstName { get; set; }
         public string lastName { get; set; }
         public string password { get; set; }
         public double initialWeight { get; set; }
-        public double heightFeet { get; set; }
-        public double heightInches { get; set; }
+        public int heightFeet { get; set; }
+        public int heightInches { get; set; }
         public double dailyCalorieGoal { get; set; }
         public double goalWeight { get; set; }
 
-        public string Email
+        public string email { get; set; }
+
+        /// <summary>
+        /// Returns the concatenated string of first name, last name.
+        /// </summary>
+        public string UserInfo
         {
             get
             {
-                return this.email;
-            }
-            set
-            {
-                this.email = value;
+                return this.firstName + " " + this.lastName;
             }
         }
     }
