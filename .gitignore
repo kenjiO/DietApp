@@ -1,0 +1,8 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/DietApp_DB_v2.png
+/DietApp_DB_v2.sql
+/read_me.txt
+/DietAppTests/obj/Debug

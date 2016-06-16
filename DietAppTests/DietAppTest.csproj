@@ -3,11 +3,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{EEA3291A-514B-4864-94C8-540C7808AD47}</ProjectGuid>
+    <ProjectGuid>{3B16A951-CC86-4811-BEA3-D932AE394D0E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DietAppTest</RootNamespace>
-    <AssemblyName>DietAppTest</AssemblyName>
+    <RootNamespace>DietAppTests</RootNamespace>
+    <AssemblyName>DietAppTests</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -16,6 +16,7 @@
     <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
     <IsCodedUITest>False</IsCodedUITest>
     <TestProjectType>UnitTest</TestProjectType>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -50,19 +51,17 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="ControllerTest\DietAppTest.cs" />
+    <Compile Include="Controller\DietAppControllerTests.cs" />
+    <Compile Include="Model\EncryptionTests.cs" />
+    <Compile Include="Model\Model_ValidatorTests.cs" />
+    <Compile Include="Model\UsersTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DietApp\DietApp.csproj">
-      <Project>{1fb5eed9-eb72-4191-9b63-b4a3dd7d1b48}</Project>
+      <Project>{1FB5EED9-EB72-4191-9B63-B4A3DD7D1B48}</Project>
       <Name>DietApp</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ModelTest\" />
-    <Folder Include="Report\" />
-    <Folder Include="ViewTest\" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
