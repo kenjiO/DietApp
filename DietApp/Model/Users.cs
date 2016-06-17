@@ -7,7 +7,6 @@
         public string firstName { get; set; }
         public string lastName { get; set; }
         public int initialWeight { get; set; }
-        public int heightFeet { get; set; }
         public int heightInches { get; set; }
         public int dailyCalorieGoal { get; set; }
         public int goalWeight { get; set; }

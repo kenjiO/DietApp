@@ -42,8 +42,6 @@ namespace DietApp.DAL
                                 newUser.lastName = row["lastName"].ToString();
                                 Int32.TryParse(row["initialWeight"].ToString(), out value);
                                 newUser.initialWeight = value;
-                                Int32.TryParse(row["heightFeet"].ToString(), out value);
-                                newUser.heightFeet = value;
                                 Int32.TryParse(row["heightInches"].ToString(), out value);
                                 newUser.heightInches = value;
                                 Int32.TryParse(row["dailyCalorieGoal"].ToString(), out value);
