@@ -46,17 +46,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controller\AppController.cs" />
-    <Compile Include="Controller\DietApp.cs" />
-    <Compile Include="Database\DbConnection.cs" />
-    <Compile Include="Database\UserDb.cs" />
+    <Compile Include="Controller\DietAppController.cs" />
+    <Compile Include="DAL\UsersDAL.cs" />
+    <Compile Include="DietAppDataSet.cs">
+      <DependentUpon>DietAppDataSet.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="DietAppDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DietAppDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Model\Encryption.cs" />
     <Compile Include="Model\Model_Validator.cs" />
-    <Compile Include="Model\User.cs" />
+    <Compile Include="Model\Users.cs" />
     <Compile Include="View\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -125,6 +128,7 @@
     <None Include="DietAppDataSet.xss">
       <DependentUpon>DietAppDataSet.xsd</DependentUpon>
     </None>
+    <None Include="Properties\DataSources\DietApp.Model.Users.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -137,6 +141,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="View\Report\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
