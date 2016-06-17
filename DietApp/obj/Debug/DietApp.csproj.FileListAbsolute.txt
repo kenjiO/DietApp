@@ -24,7 +24,9 @@ C:\Users\Brian\Documents\Visual Studio 2015\Projects\DietApp\DietApp\obj\Debug\D
 C:\Users\Brian\Documents\Visual Studio 2015\Projects\DietApp\DietApp\obj\Debug\DietApp.ProfileInfo.resources
 C:\Users\Brian\Documents\Visual Studio 2015\Projects\DietApp\DietApp\obj\Debug\DietApp.WellnessInfo.resources
 C:\Users\Brian\Documents\Visual Studio 2015\Projects\DietApp\DietApp\obj\Debug\DietApp.csproj.GenerateResource.Cache
-C:\Users\rcarswel\Source\Repos\dietapp\DietApp\obj\Debug\DietApp.csprojResolveAssemblyReference.cache
+C:\Users\rcarswel\Source\Repos\dietapp\DietApp\bin\Debug\DietApp.exe.config
+C:\Users\rcarswel\Source\Repos\dietapp\DietApp\bin\Debug\DietApp.exe
+C:\Users\rcarswel\Source\Repos\dietapp\DietApp\bin\Debug\DietApp.pdb
 C:\Users\rcarswel\Source\Repos\dietapp\DietApp\obj\Debug\DietApp.loginForm.resources
 C:\Users\rcarswel\Source\Repos\dietapp\DietApp\obj\Debug\DietApp.MainForm.resources
 C:\Users\rcarswel\Source\Repos\dietapp\DietApp\obj\Debug\DietApp.NewUser.resources
@@ -32,4 +34,5 @@ C:\Users\rcarswel\Source\Repos\dietapp\DietApp\obj\Debug\DietApp.Properties.Reso
 C:\Users\rcarswel\Source\Repos\dietapp\DietApp\obj\Debug\DietApp.ProfileInfo.resources
 C:\Users\rcarswel\Source\Repos\dietapp\DietApp\obj\Debug\DietApp.WellnessInfo.resources
 C:\Users\rcarswel\Source\Repos\dietapp\DietApp\obj\Debug\DietApp.csproj.GenerateResource.Cache
-C:\Users\rcarswel\Source\Repos\dietapp\DietApp\bin\Debug\DietApp.exe.config
+C:\Users\rcarswel\Source\Repos\dietapp\DietApp\obj\Debug\DietApp.exe
+C:\Users\rcarswel\Source\Repos\dietapp\DietApp\obj\Debug\DietApp.pdb

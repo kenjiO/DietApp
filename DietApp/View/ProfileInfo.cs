@@ -10,6 +10,10 @@ namespace DietApp
             InitializeComponent();
         }
 
+        private void ProfileInfo_Load(object sender, EventArgs e)
+        {
+        }
+
         private void usernameLabel_Click(object sender, EventArgs e)
         {
         }

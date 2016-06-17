@@ -37,13 +37,11 @@ namespace DietApp.DAL
                             foreach (DataRow row in userDataSet.GetData(number).Rows)
                             {
                                 newUser.userId = number;
-                                newUser.userName = row["userName"].ToString();
+                                newUser.username = row["username"].ToString();
                                 newUser.firstName = row["firstName"].ToString();
                                 newUser.lastName = row["lastName"].ToString();
                                 Int32.TryParse(row["initialWeight"].ToString(), out value);
                                 newUser.initialWeight = value;
-                                Int32.TryParse(row["heightFeet"].ToString(), out value);
-                                newUser.heightFeet = value;
                                 Int32.TryParse(row["heightInches"].ToString(), out value);
                                 newUser.heightInches = value;
                                 Int32.TryParse(row["dailyCalorieGoal"].ToString(), out value);
