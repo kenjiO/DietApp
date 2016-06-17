@@ -10,6 +10,10 @@ namespace DietApp.Controller
 {
     public class AppController
     {
+        /// <summary>
+        /// Gets the current loggod on user
+        /// </summary>
+        /// <returns>User object representing the current loggod on user</returns>
         public User GetCurrentUser()
         {
             //TODO: get the actual current user
