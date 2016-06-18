@@ -1,36 +1,42 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using DietApp.Model;
+using System;
 using System.Windows.Forms;
-using DietApp.Controller;
 
 namespace DietApp
 {
     public partial class MainForm : Form
     {
-        private AppController _controller;
+        private Users theUser;
 
         public MainForm()
         {
             InitializeComponent();
-            //TODO get a real controller
-            this._controller = new AppController();
+        }
+
+        private void updateTitle(object sender, EventArgs e)
+        {
+            this.Text = "Welcome to Health Trends, " + theUser.getFullName();
         }
 
         private void myHealthTrendsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
         }
 
-        private void myProfileToolStripMenuItem1_Click(object sender, EventArgs e)
+        public void loadUser(Users newUser)
         {
-            ProfileInfo profileForm = new ProfileInfo(this._controller);
-            profileForm.ShowDialog();
+            this.theUser = newUser;
+
+            Console.WriteLine(theUser.getFullName());
+        }
+
+        private void exitToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Restart();
         }
     }
 }

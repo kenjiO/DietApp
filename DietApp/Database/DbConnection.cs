@@ -7,15 +7,28 @@ using System.Data.SqlClient;
 
 namespace DietApp.Database
 {
-    class DbConnection
+    /// <summary>
+    /// Connect to DietApp Database
+    /// </summary>
+    public static class DbConnection
     {
+        /// <summary>
+        /// Tries connecting to the Database
+        /// </summary>
         public static SqlConnection GetConnection()
         {
-            string connectionString =
-                "Data Source=localhost;Initial Catalog=DietApp;" +
-                "Integrated Security=True";
-            SqlConnection connection = new SqlConnection(connectionString);
-            return connection;
+            try
+            {
+                string connectionString =
+                    "Data Source=localhost;Initial Catalog=DietApp;" +
+                    "Integrated Security=True";
+                SqlConnection connection = new SqlConnection(connectionString);
+                return connection;
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
         }
     }
 }

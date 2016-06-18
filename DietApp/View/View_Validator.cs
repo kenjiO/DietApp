@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DietApp.View
+﻿namespace DietApp.View
 {
-    class View_Validator
+    internal class View_Validator
     {
     }
 }
