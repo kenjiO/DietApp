@@ -608,8 +608,6 @@ namespace DietApp {
             
             private global::System.Data.DataColumn columninitialWeight;
             
-            private global::System.Data.DataColumn columnheightFeet;
-            
             private global::System.Data.DataColumn columnheightInches;
             
             private global::System.Data.DataColumn columndailyCalorieGoal;
@@ -691,14 +689,6 @@ namespace DietApp {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn heightFeetColumn {
-                get {
-                    return this.columnheightFeet;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn heightInchesColumn {
                 get {
                     return this.columnheightInches;
@@ -758,7 +748,7 @@ namespace DietApp {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public usersRow AddusersRow(int userId, string userName, string firstName, string lastName, int initialWeight, int heightFeet, int heightInches, int dailyCalorieGoal, int goalWeight) {
+            public usersRow AddusersRow(int userId, string userName, string firstName, string lastName, int initialWeight, int heightInches, int dailyCalorieGoal, int goalWeight) {
                 usersRow rowusersRow = ((usersRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         userId,
@@ -766,7 +756,6 @@ namespace DietApp {
                         firstName,
                         lastName,
                         initialWeight,
-                        heightFeet,
                         heightInches,
                         dailyCalorieGoal,
                         goalWeight};
@@ -804,7 +793,6 @@ namespace DietApp {
                 this.columnfirstName = base.Columns["firstName"];
                 this.columnlastName = base.Columns["lastName"];
                 this.columninitialWeight = base.Columns["initialWeight"];
-                this.columnheightFeet = base.Columns["heightFeet"];
                 this.columnheightInches = base.Columns["heightInches"];
                 this.columndailyCalorieGoal = base.Columns["dailyCalorieGoal"];
                 this.columngoalWeight = base.Columns["goalWeight"];
@@ -823,8 +811,6 @@ namespace DietApp {
                 base.Columns.Add(this.columnlastName);
                 this.columninitialWeight = new global::System.Data.DataColumn("initialWeight", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columninitialWeight);
-                this.columnheightFeet = new global::System.Data.DataColumn("heightFeet", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnheightFeet);
                 this.columnheightInches = new global::System.Data.DataColumn("heightInches", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnheightInches);
                 this.columndailyCalorieGoal = new global::System.Data.DataColumn("dailyCalorieGoal", typeof(int), null, global::System.Data.MappingType.Element);
@@ -1335,22 +1321,6 @@ namespace DietApp {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int heightFeet {
-                get {
-                    try {
-                        return ((int)(this[this.tableusers.heightFeetColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'heightFeet\' in table \'users\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableusers.heightFeetColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public int heightInches {
                 get {
                     try {
@@ -1431,18 +1401,6 @@ namespace DietApp {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetinitialWeightNull() {
                 this[this.tableusers.initialWeightColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsheightFeetNull() {
-                return this.IsNull(this.tableusers.heightFeetColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetheightFeetNull() {
-                this[this.tableusers.heightFeetColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1920,14 +1878,13 @@ namespace DietApp.DietAppDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("firstName", "firstName");
             tableMapping.ColumnMappings.Add("lastName", "lastName");
             tableMapping.ColumnMappings.Add("initialWeight", "initialWeight");
-            tableMapping.ColumnMappings.Add("heightFeet", "heightFeet");
             tableMapping.ColumnMappings.Add("heightInches", "heightInches");
             tableMapping.ColumnMappings.Add("dailyCalorieGoal", "dailyCalorieGoal");
             tableMapping.ColumnMappings.Add("goalWeight", "goalWeight");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [users] WHERE (([userId] = @Original_userId) AND ([username] = @Original_username) AND ((@IsNull_firstName = 1 AND [firstName] IS NULL) OR ([firstName] = @Original_firstName)) AND ((@IsNull_lastName = 1 AND [lastName] IS NULL) OR ([lastName] = @Original_lastName)) AND ((@IsNull_initialWeight = 1 AND [initialWeight] IS NULL) OR ([initialWeight] = @Original_initialWeight)) AND ((@IsNull_heightFeet = 1 AND [heightFeet] IS NULL) OR ([heightFeet] = @Original_heightFeet)) AND ((@IsNull_heightInches = 1 AND [heightInches] IS NULL) OR ([heightInches] = @Original_heightInches)) AND ((@IsNull_dailyCalorieGoal = 1 AND [dailyCalorieGoal] IS NULL) OR ([dailyCalorieGoal] = @Original_dailyCalorieGoal)) AND ((@IsNull_goalWeight = 1 AND [goalWeight] IS NULL) OR ([goalWeight] = @Original_goalWeight)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [users] WHERE (([userId] = @Original_userId) AND ([username] = @Original_username) AND ((@IsNull_firstName = 1 AND [firstName] IS NULL) OR ([firstName] = @Original_firstName)) AND ((@IsNull_lastName = 1 AND [lastName] IS NULL) OR ([lastName] = @Original_lastName)) AND ((@IsNull_initialWeight = 1 AND [initialWeight] IS NULL) OR ([initialWeight] = @Original_initialWeight)) AND ((@IsNull_heightInches = 1 AND [heightInches] IS NULL) OR ([heightInches] = @Original_heightInches)) AND ((@IsNull_dailyCalorieGoal = 1 AND [dailyCalorieGoal] IS NULL) OR ([dailyCalorieGoal] = @Original_dailyCalorieGoal)) AND ((@IsNull_goalWeight = 1 AND [goalWeight] IS NULL) OR ([goalWeight] = @Original_goalWeight)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_userId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "userId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_username", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "username", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -1937,8 +1894,6 @@ namespace DietApp.DietAppDataSetTableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_lastName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "lastName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_initialWeight", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "initialWeight", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_initialWeight", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "initialWeight", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_heightFeet", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "heightFeet", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_heightFeet", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "heightFeet", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_heightInches", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "heightInches", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_heightInches", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "heightInches", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_dailyCalorieGoal", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dailyCalorieGoal", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
@@ -1947,15 +1902,14 @@ namespace DietApp.DietAppDataSetTableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_goalWeight", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "goalWeight", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [users] SET [userId] = @userId, [username] = @username, [firstName] = @firstName, [lastName] = @lastName, [initialWeight] = @initialWeight, [heightFeet] = @heightFeet, [heightInches] = @heightInches, [dailyCalorieGoal] = @dailyCalorieGoal, [goalWeight] = @goalWeight WHERE (([userId] = @Original_userId) AND ([username] = @Original_username) AND ((@IsNull_firstName = 1 AND [firstName] IS NULL) OR ([firstName] = @Original_firstName)) AND ((@IsNull_lastName = 1 AND [lastName] IS NULL) OR ([lastName] = @Original_lastName)) AND ((@IsNull_initialWeight = 1 AND [initialWeight] IS NULL) OR ([initialWeight] = @Original_initialWeight)) AND ((@IsNull_heightFeet = 1 AND [heightFeet] IS NULL) OR ([heightFeet] = @Original_heightFeet)) AND ((@IsNull_heightInches = 1 AND [heightInches] IS NULL) OR ([heightInches] = @Original_heightInches)) AND ((@IsNull_dailyCalorieGoal = 1 AND [dailyCalorieGoal] IS NULL) OR ([dailyCalorieGoal] = @Original_dailyCalorieGoal)) AND ((@IsNull_goalWeight = 1 AND [goalWeight] IS NULL) OR ([goalWeight] = @Original_goalWeight)));
-SELECT userId, username, firstName, lastName, initialWeight, heightFeet, heightInches, dailyCalorieGoal, goalWeight FROM users WHERE (userId = @userId)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [users] SET [userId] = @userId, [username] = @username, [firstName] = @firstName, [lastName] = @lastName, [initialWeight] = @initialWeight, [heightInches] = @heightInches, [dailyCalorieGoal] = @dailyCalorieGoal, [goalWeight] = @goalWeight WHERE (([userId] = @Original_userId) AND ([username] = @Original_username) AND ((@IsNull_firstName = 1 AND [firstName] IS NULL) OR ([firstName] = @Original_firstName)) AND ((@IsNull_lastName = 1 AND [lastName] IS NULL) OR ([lastName] = @Original_lastName)) AND ((@IsNull_initialWeight = 1 AND [initialWeight] IS NULL) OR ([initialWeight] = @Original_initialWeight)) AND ((@IsNull_heightInches = 1 AND [heightInches] IS NULL) OR ([heightInches] = @Original_heightInches)) AND ((@IsNull_dailyCalorieGoal = 1 AND [dailyCalorieGoal] IS NULL) OR ([dailyCalorieGoal] = @Original_dailyCalorieGoal)) AND ((@IsNull_goalWeight = 1 AND [goalWeight] IS NULL) OR ([goalWeight] = @Original_goalWeight)));
+SELECT userId, username, firstName, lastName, initialWeight, heightInches, dailyCalorieGoal, goalWeight FROM users WHERE (userId = @userId)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@userId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "userId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@username", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "username", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@firstName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "firstName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@lastName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "lastName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@initialWeight", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "initialWeight", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@heightFeet", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "heightFeet", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@heightInches", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "heightInches", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dailyCalorieGoal", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dailyCalorieGoal", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@goalWeight", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "goalWeight", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -1967,8 +1921,6 @@ SELECT userId, username, firstName, lastName, initialWeight, heightFeet, heightI
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_lastName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "lastName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_initialWeight", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "initialWeight", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_initialWeight", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "initialWeight", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_heightFeet", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "heightFeet", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_heightFeet", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "heightFeet", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_heightInches", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "heightInches", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_heightInches", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "heightInches", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_dailyCalorieGoal", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dailyCalorieGoal", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
@@ -1990,9 +1942,9 @@ SELECT userId, username, firstName, lastName, initialWeight, heightFeet, heightI
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT        userId, username, firstName, lastName, initialWeight, heightFeet, h" +
-                "eightInches, dailyCalorieGoal, goalWeight\r\nFROM            users\r\nWHERE        (" +
-                "userId = @userId)";
+            this._commandCollection[0].CommandText = "SELECT        userId, username, firstName, lastName, initialWeight, heightInches," +
+                " dailyCalorieGoal, goalWeight\r\nFROM            users\r\nWHERE        (userId = @us" +
+                "erId)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@userId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "userId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
@@ -2056,7 +2008,7 @@ SELECT userId, username, firstName, lastName, initialWeight, heightFeet, heightI
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_userId, string Original_username, string Original_firstName, string Original_lastName, global::System.Nullable<int> Original_initialWeight, global::System.Nullable<int> Original_heightFeet, global::System.Nullable<int> Original_heightInches, global::System.Nullable<int> Original_dailyCalorieGoal, global::System.Nullable<int> Original_goalWeight) {
+        public virtual int Delete(int Original_userId, string Original_username, string Original_firstName, string Original_lastName, global::System.Nullable<int> Original_initialWeight, global::System.Nullable<int> Original_heightInches, global::System.Nullable<int> Original_dailyCalorieGoal, global::System.Nullable<int> Original_goalWeight) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_userId));
             if ((Original_username == null)) {
                 throw new global::System.ArgumentNullException("Original_username");
@@ -2088,37 +2040,29 @@ SELECT userId, username, firstName, lastName, initialWeight, heightFeet, heightI
                 this.Adapter.DeleteCommand.Parameters[6].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
-            if ((Original_heightFeet.HasValue == true)) {
+            if ((Original_heightInches.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[8].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[9].Value = ((int)(Original_heightFeet.Value));
+                this.Adapter.DeleteCommand.Parameters[9].Value = ((int)(Original_heightInches.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[8].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[9].Value = global::System.DBNull.Value;
             }
-            if ((Original_heightInches.HasValue == true)) {
+            if ((Original_dailyCalorieGoal.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[10].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[11].Value = ((int)(Original_heightInches.Value));
+                this.Adapter.DeleteCommand.Parameters[11].Value = ((int)(Original_dailyCalorieGoal.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[10].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[11].Value = global::System.DBNull.Value;
             }
-            if ((Original_dailyCalorieGoal.HasValue == true)) {
+            if ((Original_goalWeight.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[12].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[13].Value = ((int)(Original_dailyCalorieGoal.Value));
+                this.Adapter.DeleteCommand.Parameters[13].Value = ((int)(Original_goalWeight.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[12].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[13].Value = global::System.DBNull.Value;
-            }
-            if ((Original_goalWeight.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[14].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[15].Value = ((int)(Original_goalWeight.Value));
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[14].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[15].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -2146,7 +2090,6 @@ SELECT userId, username, firstName, lastName, initialWeight, heightFeet, heightI
                     string firstName, 
                     string lastName, 
                     global::System.Nullable<int> initialWeight, 
-                    global::System.Nullable<int> heightFeet, 
                     global::System.Nullable<int> heightInches, 
                     global::System.Nullable<int> dailyCalorieGoal, 
                     global::System.Nullable<int> goalWeight, 
@@ -2155,7 +2098,6 @@ SELECT userId, username, firstName, lastName, initialWeight, heightFeet, heightI
                     string Original_firstName, 
                     string Original_lastName, 
                     global::System.Nullable<int> Original_initialWeight, 
-                    global::System.Nullable<int> Original_heightFeet, 
                     global::System.Nullable<int> Original_heightInches, 
                     global::System.Nullable<int> Original_dailyCalorieGoal, 
                     global::System.Nullable<int> Original_goalWeight) {
@@ -2184,92 +2126,78 @@ SELECT userId, username, firstName, lastName, initialWeight, heightFeet, heightI
             else {
                 this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            if ((heightFeet.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(heightFeet.Value));
+            if ((heightInches.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(heightInches.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
-            if ((heightInches.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(heightInches.Value));
+            if ((dailyCalorieGoal.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(dailyCalorieGoal.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
-            if ((dailyCalorieGoal.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(dailyCalorieGoal.Value));
+            if ((goalWeight.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(goalWeight.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
-            if ((goalWeight.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(goalWeight.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
-            }
-            this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(Original_userId));
+            this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(Original_userId));
             if ((Original_username == null)) {
                 throw new global::System.ArgumentNullException("Original_username");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Original_username));
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(Original_username));
             }
             if ((Original_firstName == null)) {
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(Original_firstName));
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((string)(Original_firstName));
             }
             if ((Original_lastName == null)) {
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[14].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((string)(Original_lastName));
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((string)(Original_lastName));
             }
             if ((Original_initialWeight.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[16].Value = ((int)(Original_initialWeight.Value));
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((int)(Original_initialWeight.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[16].Value = global::System.DBNull.Value;
-            }
-            if ((Original_heightFeet.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[18].Value = ((int)(Original_heightFeet.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[18].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[15].Value = global::System.DBNull.Value;
             }
             if ((Original_heightInches.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[20].Value = ((int)(Original_heightInches.Value));
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((int)(Original_heightInches.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[20].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[17].Value = global::System.DBNull.Value;
             }
             if ((Original_dailyCalorieGoal.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[21].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[22].Value = ((int)(Original_dailyCalorieGoal.Value));
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[19].Value = ((int)(Original_dailyCalorieGoal.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[21].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[22].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[19].Value = global::System.DBNull.Value;
             }
             if ((Original_goalWeight.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[23].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[24].Value = ((int)(Original_goalWeight.Value));
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[21].Value = ((int)(Original_goalWeight.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[23].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[24].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[21].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -2291,25 +2219,8 @@ SELECT userId, username, firstName, lastName, initialWeight, heightFeet, heightI
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(
-                    string username, 
-                    string firstName, 
-                    string lastName, 
-                    global::System.Nullable<int> initialWeight, 
-                    global::System.Nullable<int> heightFeet, 
-                    global::System.Nullable<int> heightInches, 
-                    global::System.Nullable<int> dailyCalorieGoal, 
-                    global::System.Nullable<int> goalWeight, 
-                    int Original_userId, 
-                    string Original_username, 
-                    string Original_firstName, 
-                    string Original_lastName, 
-                    global::System.Nullable<int> Original_initialWeight, 
-                    global::System.Nullable<int> Original_heightFeet, 
-                    global::System.Nullable<int> Original_heightInches, 
-                    global::System.Nullable<int> Original_dailyCalorieGoal, 
-                    global::System.Nullable<int> Original_goalWeight) {
-            return this.Update(Original_userId, username, firstName, lastName, initialWeight, heightFeet, heightInches, dailyCalorieGoal, goalWeight, Original_userId, Original_username, Original_firstName, Original_lastName, Original_initialWeight, Original_heightFeet, Original_heightInches, Original_dailyCalorieGoal, Original_goalWeight);
+        public virtual int Update(string username, string firstName, string lastName, global::System.Nullable<int> initialWeight, global::System.Nullable<int> heightInches, global::System.Nullable<int> dailyCalorieGoal, global::System.Nullable<int> goalWeight, int Original_userId, string Original_username, string Original_firstName, string Original_lastName, global::System.Nullable<int> Original_initialWeight, global::System.Nullable<int> Original_heightInches, global::System.Nullable<int> Original_dailyCalorieGoal, global::System.Nullable<int> Original_goalWeight) {
+            return this.Update(Original_userId, username, firstName, lastName, initialWeight, heightInches, dailyCalorieGoal, goalWeight, Original_userId, Original_username, Original_firstName, Original_lastName, Original_initialWeight, Original_heightInches, Original_dailyCalorieGoal, Original_goalWeight);
         }
     }
     
