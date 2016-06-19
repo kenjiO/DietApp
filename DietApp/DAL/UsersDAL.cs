@@ -250,5 +250,48 @@ namespace DietApp.DAL
                 throw;
             }
         }
+
+        /// <summary>
+        /// Deletes Users profile, currently only for testing
+        /// </summary>
+        /// <param name="User"></param>
+        /// <returns>A bool result. True if deleted, else false.</returns>
+        public static bool deleteUsers(String username)
+        {
+            String deleteStatement =
+                "DELETE Users " +
+                "WHERE Users.username = @username";
+
+            try
+            {
+                using (SqlConnection connection = DBConnection.GetConnection())
+                {
+                    using (SqlCommand deleteCommand = new SqlCommand(deleteStatement, connection))
+                    {
+                        connection.Open();
+
+                        deleteCommand.Parameters.AddWithValue("@username", username);
+                        
+                        int count = deleteCommand.ExecuteNonQuery();
+                        if (count > 0)
+                        {
+                            return true;
+                        }
+                        else
+                        {
+                            return false;
+                        }
+                    }
+                }
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
     }
 }

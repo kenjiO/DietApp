@@ -48,4 +48,3 @@ C:\Users\Robert Carswell Jr\Documents\dietapp\DietApp\obj\Debug\DietApp.Wellness
 C:\Users\Robert Carswell Jr\Documents\dietapp\DietApp\obj\Debug\DietApp.csproj.GenerateResource.Cache
 C:\Users\Robert Carswell Jr\Documents\dietapp\DietApp\obj\Debug\DietApp.exe
 C:\Users\Robert Carswell Jr\Documents\dietapp\DietApp\obj\Debug\DietApp.pdb
-C:\Users\Robert Carswell Jr\Documents\dietapp\DietApp\obj\Debug\DietApp.csprojResolveAssemblyReference.cache
