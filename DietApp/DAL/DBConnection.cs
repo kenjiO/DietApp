@@ -12,13 +12,16 @@ namespace DietApp.DAL
     /// </summary>
     public static class DBConnection
     {
+        /// <summary>
+        /// Tries connecting to the Database
+        /// </summary>
         public static SqlConnection GetConnection()
         {
-            try 
+            try
             {
                 String connectionString =
-                    "Data Source=localhost;Initial Catelog=DietApp;" +
-                    "Intergrated Security=True";
+                    "Data Source=localhost;Initial Catalog=DietApp;" +
+                    "Integrated Security=True";
                 SqlConnection connection = new SqlConnection(connectionString);
                 return connection;
             }
