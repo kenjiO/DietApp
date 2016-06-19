@@ -61,6 +61,7 @@
     <Compile Include="Model\Encryption.cs" />
     <Compile Include="Model\Model_Validator.cs" />
     <Compile Include="Model\Users.cs" />
+    <Compile Include="Model\Validation.cs" />
     <Compile Include="View\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>

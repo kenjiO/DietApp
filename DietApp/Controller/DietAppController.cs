@@ -35,7 +35,7 @@ namespace DietApp.Controller
         /// <returns>The user object containing the specified data.</returns>
         public static Users addNewUser(String userName, String password)
         {
-            return UserDAL.addNewUser(userName, password);
+            return UsersDAL.addNewUser(userName, password);
         }
     }
 }
