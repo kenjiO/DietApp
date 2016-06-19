@@ -57,6 +57,7 @@
     <Compile Include="DAL\UserDALTest.cs" />
     <Compile Include="Model\EncryptionTests.cs" />
     <Compile Include="Model\Model_ValidatorTests.cs" />
+    <Compile Include="Model\ValidationTest.cs" />
     <Compile Include="Model\UsersTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
