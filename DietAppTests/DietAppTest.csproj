@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="Controller\DietAppControllerTests.cs" />
     <Compile Include="DAL\DBConnectionTest.cs" />
+    <Compile Include="DAL\UserDALTest.cs" />
     <Compile Include="Model\EncryptionTests.cs" />
     <Compile Include="Model\Model_ValidatorTests.cs" />
     <Compile Include="Model\UsersTests.cs" />
