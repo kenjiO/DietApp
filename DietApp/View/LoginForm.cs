@@ -65,5 +65,18 @@ namespace DietApp
         {
             this.Close();
         }
+
+        /// <summary>
+        /// Allows for new user.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void newButton_Click(object sender, EventArgs e)
+        {
+            var newUser = new NewUser();
+            newUser.Show();
+            //Hides the login form from view.
+            this.Hide();
+        }
     }
 }

@@ -42,9 +42,10 @@
             // 
             this.passwordLabel.AutoSize = true;
             this.passwordLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.passwordLabel.Location = new System.Drawing.Point(10, 74);
+            this.passwordLabel.Location = new System.Drawing.Point(7, 48);
+            this.passwordLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.passwordLabel.Name = "passwordLabel";
-            this.passwordLabel.Size = new System.Drawing.Size(120, 29);
+            this.passwordLabel.Size = new System.Drawing.Size(78, 20);
             this.passwordLabel.TabIndex = 11;
             this.passwordLabel.Text = "Password";
             // 
@@ -52,71 +53,80 @@
             // 
             this.usernameLabel.AutoSize = true;
             this.usernameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.usernameLabel.Location = new System.Drawing.Point(10, 24);
+            this.usernameLabel.Location = new System.Drawing.Point(7, 16);
+            this.usernameLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.usernameLabel.Name = "usernameLabel";
-            this.usernameLabel.Size = new System.Drawing.Size(135, 29);
+            this.usernameLabel.Size = new System.Drawing.Size(89, 20);
             this.usernameLabel.TabIndex = 10;
             this.usernameLabel.Text = "User Name";
             // 
             // passwordBox
             // 
             this.passwordBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.passwordBox.Location = new System.Drawing.Point(233, 74);
+            this.passwordBox.Location = new System.Drawing.Point(155, 48);
+            this.passwordBox.Margin = new System.Windows.Forms.Padding(2);
             this.passwordBox.Name = "passwordBox";
-            this.passwordBox.Size = new System.Drawing.Size(320, 35);
+            this.passwordBox.Size = new System.Drawing.Size(215, 26);
             this.passwordBox.TabIndex = 9;
             // 
             // usernameBox
             // 
             this.usernameBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.usernameBox.Location = new System.Drawing.Point(233, 24);
+            this.usernameBox.Location = new System.Drawing.Point(155, 16);
+            this.usernameBox.Margin = new System.Windows.Forms.Padding(2);
             this.usernameBox.Name = "usernameBox";
-            this.usernameBox.Size = new System.Drawing.Size(320, 35);
+            this.usernameBox.Size = new System.Drawing.Size(215, 26);
             this.usernameBox.TabIndex = 8;
             // 
             // cancelButton
             // 
             this.cancelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cancelButton.Location = new System.Drawing.Point(451, 202);
+            this.cancelButton.Location = new System.Drawing.Point(301, 131);
+            this.cancelButton.Margin = new System.Windows.Forms.Padding(2);
             this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(102, 46);
+            this.cancelButton.Size = new System.Drawing.Size(68, 30);
             this.cancelButton.TabIndex = 7;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
             // saveButton
             // 
             this.saveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.saveButton.Location = new System.Drawing.Point(332, 202);
+            this.saveButton.Location = new System.Drawing.Point(221, 131);
+            this.saveButton.Margin = new System.Windows.Forms.Padding(2);
             this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(102, 46);
+            this.saveButton.Size = new System.Drawing.Size(68, 30);
             this.saveButton.TabIndex = 6;
             this.saveButton.Text = "Save";
             this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Click += new System.EventHandler(this.saveUser_Click);
             // 
             // confirmLabel
             // 
             this.confirmLabel.AutoSize = true;
             this.confirmLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.confirmLabel.Location = new System.Drawing.Point(10, 131);
+            this.confirmLabel.Location = new System.Drawing.Point(7, 85);
+            this.confirmLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.confirmLabel.Name = "confirmLabel";
-            this.confirmLabel.Size = new System.Drawing.Size(210, 29);
+            this.confirmLabel.Size = new System.Drawing.Size(137, 20);
             this.confirmLabel.TabIndex = 17;
             this.confirmLabel.Text = "Confirm Password";
             // 
             // confirmBox
             // 
             this.confirmBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.confirmBox.Location = new System.Drawing.Point(233, 131);
+            this.confirmBox.Location = new System.Drawing.Point(155, 85);
+            this.confirmBox.Margin = new System.Windows.Forms.Padding(2);
             this.confirmBox.Name = "confirmBox";
-            this.confirmBox.Size = new System.Drawing.Size(320, 35);
+            this.confirmBox.Size = new System.Drawing.Size(215, 26);
             this.confirmBox.TabIndex = 15;
             // 
             // NewUser
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(571, 260);
+            this.ClientSize = new System.Drawing.Size(381, 169);
             this.Controls.Add(this.confirmLabel);
             this.Controls.Add(this.confirmBox);
             this.Controls.Add(this.passwordLabel);
@@ -125,6 +135,7 @@
             this.Controls.Add(this.usernameBox);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.saveButton);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "NewUser";
             this.Text = "Health Trends : New User";
             this.ResumeLayout(false);
