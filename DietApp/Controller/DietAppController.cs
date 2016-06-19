@@ -27,5 +27,15 @@ namespace DietApp.Controller
         {
             return UsersDAL.getUserData(userName);
         }
+
+        /// <summary>
+        /// Addes a new user.
+        /// </summary>
+        /// <param name="userName">The user name.</param>
+        /// <returns>The user object containing the specified data.</returns>
+        public static Users addNewUser(String userName, String password)
+        {
+            return UserDAL.addNewUser(userName, password);
+        }
     }
 }

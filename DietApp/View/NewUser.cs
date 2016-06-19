@@ -44,10 +44,10 @@ namespace DietApp
                 }
                 else
                 {
-                    //this.theUser = DietAppController.addNewUser(userName, password);
-                    //var mainForm = new MainForm();
-                    //mainForm.loadUser(this.theUser);
-                    //mainForm.Show();
+                    this.theUser = DietAppController.addNewUser(userName, password);
+                    var mainForm = new MainForm();
+                    mainForm.loadUser(this.theUser);
+                    mainForm.Show();
                     //Close the new user form.
                     this.Close();
                 }
