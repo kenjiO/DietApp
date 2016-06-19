@@ -63,9 +63,8 @@ namespace DietApp.DAL
         /// </summary>
         /// <param name="User"></param>
         /// <returns>A bool result. True if added, else false.</returns>
-        public static bool addNewUser(String username, String password)
+        public static Users addNewUser(String username, String password)
         {
-            bool insertSuccessful = true;
             String insertStatement =
                 "INSERT INTO Users (" +
                 "Users.username, " +
@@ -107,6 +106,9 @@ namespace DietApp.DAL
                         insertCommand.Parameters.AddWithValue("@heightInches", 69);
                         insertCommand.Parameters.AddWithValue("@dailyCalorieGoal", 1800);
                         insertCommand.Parameters.AddWithValue("@goalWeight", 140);
+
+
+                        insertCommand.ExecuteNonQuery();
                     }
                 }
             }
@@ -118,7 +120,7 @@ namespace DietApp.DAL
             {
                 throw;
             }
-            return insertSuccessful;
+            return getUserData(username);
         }
     
         /// <summary>

@@ -8,8 +8,6 @@ namespace DietApp
 {
     public partial class NewUser : Form
     {
-        private Users theUser;
-        
         public NewUser()
         {
             InitializeComponent();
@@ -44,9 +42,9 @@ namespace DietApp
                 }
                 else
                 {
-                    this.theUser = DietAppController.addNewUser(userName, password);
+                    Users newUser = DietAppController.addNewUser(userName, password);
                     var mainForm = new MainForm();
-                    mainForm.loadUser(this.theUser);
+                    mainForm.loadUser(newUser);
                     mainForm.Show();
                     //Close the new user form.
                     this.Close();
