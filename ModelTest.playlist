@@ -1,0 +1,1 @@
+<Playlist Version="1.0"><Add Test="DietApp.ModelTest.EncryptionTest.TestEncryption" /><Add Test="DietApp.Model.Tests.Model_ValidatorTests.comparePasswordTest" /><Add Test="DietAppTest.ModelTest.UserTest.TestActiveUser" /><Add Test="DietAppTest.ModelTest.UserTest.TestNullUser" /></Playlist>

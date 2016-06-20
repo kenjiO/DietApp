@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DietApp", "DietApp\DietApp.csproj", "{1FB5EED9-EB72-4191-9B63-B4A3DD7D1B48}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DietAppTest", "DietAppTests\DietAppTest.csproj", "{3B16A951-CC86-4811-BEA3-D932AE394D0E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DietAppTests", "DietAppTests\DietAppTests.csproj", "{3B16A951-CC86-4811-BEA3-D932AE394D0E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

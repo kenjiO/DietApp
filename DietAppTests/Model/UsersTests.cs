@@ -1,6 +1,6 @@
-﻿using DietApp.Model;
+﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
+using DietApp.Model;
 
 namespace DietAppTest.ModelTest
 {
@@ -31,7 +31,7 @@ namespace DietAppTest.ModelTest
 
             //Return User Data
             Assert.AreEqual(0, this.users.userId, 0, "User's UserID not 0.");
-            Assert.IsNull(this.users.username, "User's username not null.");
+            Assert.IsNull(this.users.userName, "User's username not null.");
             Assert.IsNull(this.users.firstName, "User's firstName not null.");
             Assert.IsNull(this.users.lastName, "User's lastName not null.");
             Assert.IsNull(this.users.email, "User's email not null.");
@@ -51,7 +51,7 @@ namespace DietAppTest.ModelTest
         {
             //Create User (Active)
             this.users.userId = this.userId;
-            this.users.username = this.username;
+            this.users.userName = this.username;
             this.users.firstName = this.firstName;
             this.users.lastName = this.lastName;
             this.users.email = this.email;
@@ -64,7 +64,7 @@ namespace DietAppTest.ModelTest
 
             //Return User Data
             Assert.AreEqual(this.userId, this.users.userId, 0, "User's UserId not " + this.userId + ".");
-            Assert.AreEqual(this.username, this.users.username, "User's username not " + this.username + ".");
+            Assert.AreEqual(this.username, this.users.userName, "User's username not " + this.username + ".");
             Assert.AreEqual(this.firstName, this.users.firstName, "User's firstName not " + this.firstName + ".");
             Assert.AreEqual(this.lastName, this.users.lastName, "User's lastName not " + this.lastName + ".");
             Assert.AreEqual(this.email, this.users.email, "User's email not " + this.email + ".");
