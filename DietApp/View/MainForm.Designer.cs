@@ -77,14 +77,14 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(211, 30);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(158, 30);
             this.exitToolStripMenuItem.Text = "Log Off";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem1
             // 
             this.exitToolStripMenuItem1.Name = "exitToolStripMenuItem1";
-            this.exitToolStripMenuItem1.Size = new System.Drawing.Size(211, 30);
+            this.exitToolStripMenuItem1.Size = new System.Drawing.Size(158, 30);
             this.exitToolStripMenuItem1.Text = "Exit";
             this.exitToolStripMenuItem1.Click += new System.EventHandler(this.exitToolStripMenuItem1_Click);
             // 
@@ -103,6 +103,7 @@
             this.myProfileToolStripMenuItem1.Name = "myProfileToolStripMenuItem1";
             this.myProfileToolStripMenuItem1.Size = new System.Drawing.Size(294, 30);
             this.myProfileToolStripMenuItem1.Text = "My Profile";
+            this.myProfileToolStripMenuItem1.Click += new System.EventHandler(this.myProfileToolStripMenuItem1_Click);
             // 
             // myWellnessInformationToolStripMenuItem
             // 
@@ -145,7 +146,6 @@
             this.myHealthTrendsToolStripMenuItem.Name = "myHealthTrendsToolStripMenuItem";
             this.myHealthTrendsToolStripMenuItem.Size = new System.Drawing.Size(203, 29);
             this.myHealthTrendsToolStripMenuItem.Text = "My Health Trends Data";
-            this.myHealthTrendsToolStripMenuItem.Click += new System.EventHandler(this.myHealthTrendsToolStripMenuItem_Click);
             // 
             // reportsToolStripMenuItem
             // 
@@ -209,6 +209,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1310, 748);
             this.Controls.Add(this.menuStrip1);
+            this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
             this.Text = "Welcome to Health Trends, USER NAME.";

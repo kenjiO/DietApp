@@ -11,7 +11,7 @@ namespace DietApp.Model
         /// </summary>
         /// <param name="input"></param>
         /// <returns>A string representation of the hash.</returns>
-        public String GetSAW1Hash(String input)
+        public String GetSHA1Hash(String input)
         {
             var x = new SHA1CryptoServiceProvider();
             var bs = Encoding.UTF8.GetBytes(input);

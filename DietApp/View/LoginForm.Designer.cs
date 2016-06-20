@@ -1,6 +1,6 @@
 ﻿namespace DietApp
 {
-    partial class loginForm
+    partial class LoginForm
     {
         /// <summary>
         /// Required designer variable.
@@ -108,6 +108,7 @@
             this.newUserLink.TabIndex = 6;
             this.newUserLink.TabStop = true;
             this.newUserLink.Text = "Click Here";
+            this.newUserLink.Click += new System.EventHandler(this.newUserLink_Click);
             // 
             // newUserLabel
             // 

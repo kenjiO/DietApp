@@ -14,13 +14,13 @@ GO
 USE DietApp
 
 CREATE TABLE users
-   (userId int PRIMARY KEY NOT NULL,  
-    username varchar(50) NOT NULL,
+   (userId int IDENTITY PRIMARY KEY NOT NULL,  
+    username varchar(50) UNIQUE NOT NULL,
 	firstName varchar(50),
 	lastName varchar(50),
+	email varchar(250),
 	password varchar(50) NOT NULL, 
-    initialWeight int,
-	heightFeet int, 
+    initialWeight int, 
 	heightInches int, 
     dailyCalorieGoal int,
 	goalWeight int,

@@ -1,5 +1,7 @@
-﻿using System;
+﻿using DietApp.Controller;
+using System;
 using System.Data;
+using System.Data.SqlClient;
 
 namespace DietApp.Model
 {
@@ -11,10 +13,9 @@ namespace DietApp.Model
         /// <param name="userName">The user name.</param>
         /// <param name="password">The password.</param>
         /// <returns>A boolean value indicating if the data matches.</returns>
-        public bool comparePassword(String userName, String password)
+        public static bool comparePassword(String userName, String password)
         {
             var pass = "";
-            Console.WriteLine("info: " + userName + "/" + password);
 
             using (var userPasswordDataTable = new DietAppDataSet())
             {
@@ -26,9 +27,47 @@ namespace DietApp.Model
                     {
                         pass = row[0].ToString();
                     }
-                    return this.VerifySHA1Hash(password, pass);
+                    return VerifySHA1Hash(password, pass);
                 }
             }
+        }
+
+        /// <summary>
+        /// Verifies the user name.
+        /// </summary>
+        /// <param name="userName"></param>
+        /// <returns></returns>
+        public static bool verifyUserName(String userName)
+        {
+            Users testUser;
+            var value = false;
+            try
+            {
+                testUser = DietAppController.getUserData(userName);
+                if (testUser.userName == null)
+                {
+                    value = false;
+                }
+                else if (testUser.userName.Equals(userName, StringComparison.InvariantCultureIgnoreCase))
+                {
+                    value = true;
+                }
+                else
+                {
+                    value = false;
+                }
+            }
+            catch (SqlException ex)
+            {
+                value = false;
+                Console.WriteLine(ex);
+            }
+            catch (Exception ex)
+            {
+                value = false;
+                Console.WriteLine(ex);
+            }
+            return value;
         }
 
         /// <summary>
@@ -37,12 +76,12 @@ namespace DietApp.Model
         /// <param name="input">The input password.</param>
         /// <param name="hash">The hash algorithm.</param>
         /// <returns>A boolean value.  True if match, else false.</returns>
-        private bool VerifySHA1Hash(String input, String hash)
+        private static bool VerifySHA1Hash(String input, String hash)
         {
             var PasswordHash = new Encryption();
             var comparer = StringComparer.OrdinalIgnoreCase;
 
-            if (0 == comparer.Compare(PasswordHash.GetSAW1Hash(input), hash))
+            if (0 == comparer.Compare(PasswordHash.GetSHA1Hash(input), hash))
             {
                 return true;
             }

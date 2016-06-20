@@ -6,11 +6,11 @@ using System.Windows.Forms;
 
 namespace DietApp
 {
-    public partial class loginForm : Form
+    public partial class LoginForm : Form
     {
         private Users theUser;
 
-        public loginForm()
+        public LoginForm()
         {
             InitializeComponent();
         }
@@ -63,7 +63,28 @@ namespace DietApp
         /// <param name="e"></param>
         private void cancelButton_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Application.Exit();
+        }
+
+        /// <summary>
+        /// Exits the application when the user clicks "x".
+        /// </summary>
+        /// <param name="e"></param>
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        /// <summary>
+        /// Shows the form for the New User when the user clicks the link.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void newUserLink_Click(object sender, EventArgs e)
+        {
+            var newUserForm = new NewUser();
+            newUserForm.Show();
+            this.Hide();
         }
     }
 }
