@@ -78,7 +78,7 @@ namespace DietAppTests.DAL
             String firstName = "";
             String lastName = "";
             String email = "";
-            String password = encryption.GetSHA1Hash("password");
+            String password = "password";
             int initialWeight = 0;
             int heightInches = 0;
             int dailyCalorieGoal = 0;

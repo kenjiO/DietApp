@@ -1,0 +1,1 @@
+<Playlist Version="1.0"><Add Test="DietApp.Controller.Tests.DietAppControllerTests.addUserData" /><Add Test="DietApp.Controller.Tests.DietAppControllerTests.comparePasswordTest" /><Add Test="DietApp.Controller.Tests.DietAppControllerTests.getUserDataTest" /></Playlist>
