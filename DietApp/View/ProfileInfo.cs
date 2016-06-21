@@ -25,6 +25,10 @@ namespace DietApp
                 firstNameBox.Text = this.theUser.firstName;
                 lastNameBox.Text = this.theUser.lastName;
                 emailBox.Text = this.theUser.email;
+                weightBox.Text = this.theUser.initialWeight.ToString();
+                usernameBox.Text = this.theUser.userName;
+                footBox.Text = (this.theUser.heightInches / 12).ToString();
+                inchesBox.Text = (this.theUser.heightInches % 12).ToString();
             }
             else
             {
@@ -42,5 +46,16 @@ namespace DietApp
         {
             this.theUser = newUser;
         }
+
+        /// <summary>
+        /// Closes the form if the user decides to "cancel" what (s)he is doing.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void cancelButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
     }
 }
