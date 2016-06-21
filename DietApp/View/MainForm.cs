@@ -7,36 +7,105 @@ namespace DietApp
     public partial class MainForm : Form
     {
         private Users theUser;
+        private ProfileInfo profileForm;
 
         public MainForm()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Updates the title bar with an appropriate greeting.  
+        /// If user is defined, userName is displayed as a part of that greeting.
+        /// Else, the user is directed to the profile form and a generic greeting is displayed.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void updateTitle(object sender, EventArgs e)
         {
-            this.Text = "Welcome to Health Trends, " + theUser.getFullName();
+            if (this.theUser.getFullName() == " ")
+            {
+                this.profileForm = new ProfileInfo();
+                this.profileForm.loadUser(this.theUser);
+                this.profileForm.MdiParent = this;
+                this.profileForm.FormClosed += new FormClosedEventHandler(ProfileInfoFormClosed);
+                this.profileForm.Show();
+                this.Text = "Welcome to Health Trends.";
+            }
+            else
+            {
+                this.Text = "Welcome to Health Trends, " + theUser.getFullName() + ".";
+                this.profileForm = null;
+            }
         }
 
-        private void myHealthTrendsToolStripMenuItem_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Shows the profile window.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void myProfileToolStripMenuItem1_Click(object sender, EventArgs e)
         {
+            if (this.profileForm == null)
+            {
+                this.profileForm = new ProfileInfo();
+                this.profileForm.loadUser(this.theUser); // Unknown Null ERROR //
+                this.profileForm.MdiParent = this;
+                this.profileForm.FormClosed += new FormClosedEventHandler(ProfileInfoFormClosed);
+                this.profileForm.Show();
+            }
+            else
+            {
+                this.profileForm.Activate();
+            }
         }
 
+        /// <summary>
+        /// Closes the profile window.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ProfileInfoFormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.profileForm = null;
+        }
+
+        /// <summary>
+        /// Loads the user.
+        /// </summary>
+        /// <param name="newUser"></param>
         public void loadUser(Users newUser)
         {
             this.theUser = newUser;
-
-            Console.WriteLine(theUser.getFullName());
         }
 
+        /// <summary>
+        /// Restarts the application.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Restart();
+        }
+
+        /// <summary>
+        /// Exits the application.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void exitToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Exits the application.
+        /// </summary>
+        /// <param name="e"></param>
+        protected override void OnFormClosing(FormClosingEventArgs e)
         {
-            Application.Restart();
+            Application.Exit();
         }
     }
 }

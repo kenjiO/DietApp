@@ -7,6 +7,28 @@ namespace DietApp.Controller
     public class DietAppController
     {
         /// <summary>
+        /// Compares the password against the stored value of the password for the specified userName in the database.
+        /// </summary>
+        /// <param name="userName">The user name.</param>
+        /// <param name="password">The password.</param>
+        /// <returns>A boolean value indicating if the data matches.</returns>
+        public static Boolean comparePassword(String userName, String password)
+        {
+            return Model_Validator.comparePassword(userName, password);
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="userName"></param>
+        /// <param name="password"></param>
+        /// <returns>new Users user</returns>
+        public static int addNewUser(String userName, String password)
+        {
+            return UsersDAL.addNewUser(userName, password);
+        }
+
+        /// <summary>
         /// Retrieves the user data from the system for the specified user.
         /// </summary>
         /// <param name="userName">The user name.</param>
@@ -17,25 +39,23 @@ namespace DietApp.Controller
         }
 
         /// <summary>
-        /// Addes a new user.
+        /// Retrieves the user data from the system for the specified user.
         /// </summary>
-        /// <param name="userName">The user name.</param>
+        /// <param name="userId">The user name.</param>
         /// <returns>The user object containing the specified data.</returns>
-        public static Users addNewUser(String userName, String password)
+        public static Users getUserData(int userId)
         {
-            return UsersDAL.addNewUser(userName, password);
+            return UsersDAL.getUserData(userId);
         }
 
         /// <summary>
-        /// Compares the password against the stored value of the password for the specified userName in the database.
+        /// Updates the user information.
         /// </summary>
-        /// <param name="userName">The user name.</param>
-        /// <param name="password">The password.</param>
-        /// <returns>A boolean value indicating if the data matches.</returns>
-        public static Boolean comparePassword(String userName, String password)
+        /// <param name="oldUsers"></param>
+        /// <param name="newUsers"></param>
+        public static void updateUsers(Users oldUsers, Users newUsers)
         {
-            var validate = new Model_Validator();
-            return validate.comparePassword(userName, password);
+            UsersDAL.updateUsers(oldUsers, newUsers);
         }
     }
 }

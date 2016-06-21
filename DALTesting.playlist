@@ -1,0 +1,1 @@
+<Playlist Version="1.0"><Add Test="DietAppTests.DAL.UserDALTest.TestAddNewDeleteUser" /><Add Test="DietAppTests.DAL.UserDALTest.TestGetUserAA" /></Playlist>

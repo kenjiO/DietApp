@@ -31,8 +31,8 @@ namespace DietApp.ModelTest
 
             //Send Testword through encryption
             Encryption encrypt = new Encryption();
-            String goodResult = encrypt.GetSAW1Hash(this.goodWord);
-            String badResult = encrypt.GetSAW1Hash(this.badWord);
+            String goodResult = encrypt.GetSHA1Hash(this.goodWord);
+            String badResult = encrypt.GetSHA1Hash(this.badWord);
 
             //Test Good and Bad
             Assert.AreEqual(password, goodResult, "Encryption Error, good result.");

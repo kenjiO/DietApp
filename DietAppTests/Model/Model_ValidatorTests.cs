@@ -7,19 +7,18 @@ namespace DietApp.Model.Tests
     [TestClass()]
     public class Model_ValidatorTests
     {
-        Model_Validator validator = new Model_Validator();
 
         [TestMethod()]
         public void comparePasswordTest()
         {
             //Set User BB
             String username = "bb";
-            String goodPassword = "123";
-            String badPassword = "abc";
+            String goodPassword = "abc";
+            String badPassword = "123";
 
             //Checks Passwords
-            bool goodResults = validator.comparePassword(username, goodPassword);
-            bool badResults = validator.comparePassword(username, badPassword);
+            bool goodResults = Model_Validator.comparePassword(username, goodPassword);
+            bool badResults = Model_Validator.comparePassword(username, badPassword);
 
             //Returns Results
             Assert.IsTrue(goodResults, "Correct Password fails.");
