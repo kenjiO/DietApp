@@ -2,6 +2,7 @@
 using DietApp.Model;
 using System;
 using System.Windows.Forms;
+using System.Collections.Generic;
 
 namespace DietApp.View
 {
@@ -95,10 +96,36 @@ namespace DietApp.View
 
         private void cancelButton_Click(object sender, EventArgs e)
         {
+            Close();
         }
 
         private void searchButton_Click(object sender, EventArgs e)
         {
+            string searchTerm = searchBox.Text.Trim();
+            if (searchTerm.Equals(""))
+            {
+                MessageBox.Show("You must enter a search term");
+                return;
+            }
+            List<FoodNutritionInfo> results = DietAppController.searchFoodInfo(searchTerm);
+            if (results.Count == 0)
+            {
+                MessageBox.Show("No results found");
+                return;
+            }
+            searchResultsListBox.DataSource = results;
+            searchResultsListBox.DisplayMember = "name";
+        }
+
+        private void searchResult_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            var list = (ListBox)sender;
+            FoodNutritionInfo info = (FoodNutritionInfo)list.SelectedItem;
+            foodBox.Text = info.name;
+            caloriesBox.Text = info.calories.ToString();
+            fatBox.Text = info.fat.ToString();
+            proteinBox.Text = info.protein.ToString();
+            carbohydratesBox.Text = info.carbohydrates.ToString();
         }
 
         private DateTime getEnteredDateTime()
@@ -112,5 +139,7 @@ namespace DietApp.View
             int minutes = time.Minutes;
             return new DateTime(year, month, day, hours, minutes, 0);
         }
+
+
     }
 }

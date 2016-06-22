@@ -42,12 +42,13 @@
             this.cancelButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.searchButton = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.searchBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.datePicker = new System.Windows.Forms.DateTimePicker();
             this.timePicker = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.searchResultsListBox = new System.Windows.Forms.ListBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -55,21 +56,21 @@
             // 
             this.foodBox.Location = new System.Drawing.Point(181, 119);
             this.foodBox.Name = "foodBox";
-            this.foodBox.Size = new System.Drawing.Size(158, 20);
+            this.foodBox.Size = new System.Drawing.Size(205, 20);
             this.foodBox.TabIndex = 51;
             // 
             // caloriesBox
             // 
             this.caloriesBox.Location = new System.Drawing.Point(181, 167);
             this.caloriesBox.Name = "caloriesBox";
-            this.caloriesBox.Size = new System.Drawing.Size(158, 20);
+            this.caloriesBox.Size = new System.Drawing.Size(205, 20);
             this.caloriesBox.TabIndex = 52;
             // 
             // fatBox
             // 
             this.fatBox.Location = new System.Drawing.Point(181, 211);
             this.fatBox.Name = "fatBox";
-            this.fatBox.Size = new System.Drawing.Size(158, 20);
+            this.fatBox.Size = new System.Drawing.Size(205, 20);
             this.fatBox.TabIndex = 53;
             // 
             // usernameLabel
@@ -131,19 +132,19 @@
             // 
             this.proteinBox.Location = new System.Drawing.Point(181, 259);
             this.proteinBox.Name = "proteinBox";
-            this.proteinBox.Size = new System.Drawing.Size(158, 20);
+            this.proteinBox.Size = new System.Drawing.Size(205, 20);
             this.proteinBox.TabIndex = 59;
             // 
             // carbohydratesBox
             // 
             this.carbohydratesBox.Location = new System.Drawing.Point(181, 305);
             this.carbohydratesBox.Name = "carbohydratesBox";
-            this.carbohydratesBox.Size = new System.Drawing.Size(158, 20);
+            this.carbohydratesBox.Size = new System.Drawing.Size(205, 20);
             this.carbohydratesBox.TabIndex = 60;
             // 
             // submitButton
             // 
-            this.submitButton.Location = new System.Drawing.Point(168, 351);
+            this.submitButton.Location = new System.Drawing.Point(214, 351);
             this.submitButton.Name = "submitButton";
             this.submitButton.Size = new System.Drawing.Size(75, 23);
             this.submitButton.TabIndex = 61;
@@ -153,7 +154,7 @@
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(264, 351);
+            this.cancelButton.Location = new System.Drawing.Point(311, 351);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
             this.cancelButton.TabIndex = 62;
@@ -164,17 +165,18 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.searchResultsListBox);
             this.panel1.Controls.Add(this.searchButton);
-            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.searchBox);
             this.panel1.Controls.Add(this.label5);
-            this.panel1.Location = new System.Drawing.Point(420, 38);
+            this.panel1.Location = new System.Drawing.Point(454, 38);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(201, 208);
+            this.panel1.Size = new System.Drawing.Size(302, 336);
             this.panel1.TabIndex = 63;
             // 
             // searchButton
             // 
-            this.searchButton.Location = new System.Drawing.Point(61, 88);
+            this.searchButton.Location = new System.Drawing.Point(175, 78);
             this.searchButton.Name = "searchButton";
             this.searchButton.Size = new System.Drawing.Size(75, 23);
             this.searchButton.TabIndex = 64;
@@ -182,12 +184,12 @@
             this.searchButton.UseVisualStyleBackColor = true;
             this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
             // 
-            // textBox1
+            // searchBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(21, 49);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(158, 20);
-            this.textBox1.TabIndex = 64;
+            this.searchBox.Location = new System.Drawing.Point(41, 41);
+            this.searchBox.Name = "searchBox";
+            this.searchBox.Size = new System.Drawing.Size(209, 20);
+            this.searchBox.TabIndex = 64;
             // 
             // label5
             // 
@@ -195,7 +197,7 @@
             this.label5.Location = new System.Drawing.Point(-1, 13);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(201, 20);
+            this.label5.Size = new System.Drawing.Size(302, 20);
             this.label5.TabIndex = 55;
             this.label5.Text = "Food Lookup";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -204,14 +206,14 @@
             // 
             this.datePicker.Location = new System.Drawing.Point(181, 38);
             this.datePicker.Name = "datePicker";
-            this.datePicker.Size = new System.Drawing.Size(158, 20);
+            this.datePicker.Size = new System.Drawing.Size(205, 20);
             this.datePicker.TabIndex = 64;
             // 
             // timePicker
             // 
             this.timePicker.Location = new System.Drawing.Point(181, 77);
             this.timePicker.Name = "timePicker";
-            this.timePicker.Size = new System.Drawing.Size(158, 20);
+            this.timePicker.Size = new System.Drawing.Size(205, 20);
             this.timePicker.TabIndex = 65;
             // 
             // label6
@@ -236,11 +238,20 @@
             this.label7.TabIndex = 67;
             this.label7.Text = "Time";
             // 
+            // searchResultsListBox
+            // 
+            this.searchResultsListBox.FormattingEnabled = true;
+            this.searchResultsListBox.Location = new System.Drawing.Point(21, 134);
+            this.searchResultsListBox.Name = "searchResultsListBox";
+            this.searchResultsListBox.Size = new System.Drawing.Size(255, 186);
+            this.searchResultsListBox.TabIndex = 65;
+            this.searchResultsListBox.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.searchResult_MouseDoubleClick);
+            // 
             // FoodEntryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(717, 436);
+            this.ClientSize = new System.Drawing.Size(828, 436);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.timePicker);
@@ -284,11 +295,12 @@
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button searchButton;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox searchBox;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DateTimePicker datePicker;
         private System.Windows.Forms.DateTimePicker timePicker;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ListBox searchResultsListBox;
     }
 }

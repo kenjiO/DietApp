@@ -1,6 +1,7 @@
 ﻿using DietApp.DAL;
 using DietApp.Model;
 using System;
+using System.Collections.Generic;
 
 namespace DietApp.Controller
 {
@@ -80,6 +81,20 @@ namespace DietApp.Controller
             }
             FoodEntry entry = new FoodEntry(userId, name, calories, fat, protein, carbohydrates, consumedAt);
             FoodEntryDAL.addEntry(entry);
+        }
+
+        /// <summary>
+        /// Search for nutrition info on a food
+        /// </summary>
+        /// <param name="searchTerm">Search term for the food name</param>
+        /// <returns>A list of nutrition info for foods in the database that match the search term</returns>
+        public static List<FoodNutritionInfo> searchFoodInfo(string searchTerm)
+        {
+            if (searchTerm == null)
+            {
+                throw new ArgumentNullException("serch term must not be null");
+            }
+            return FoodEntryDAL.searchFoodInfo(searchTerm);
         }
     }
 }
