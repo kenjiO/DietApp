@@ -61,7 +61,7 @@ namespace DietApp.DAL
                         foreach (DataRow row in userDataSet.GetData(userId).Rows)
                         {
                             newUser.userId = userId;
-                            newUser.userName = row["userName"].ToString();
+                            newUser.username = row["userName"].ToString();
                             newUser.firstName = row["firstName"].ToString();
                             newUser.lastName = row["lastName"].ToString();
                             newUser.email = row["email"].ToString();
@@ -132,11 +132,27 @@ namespace DietApp.DAL
             {
                 using (var usersDataSet = new DietAppDataSetTableAdapters.usersTableAdapter())
                 {
-                        usersDataSet.Update(newUsers.userName, newUsers.firstName, newUsers.lastName, newUsers.email,
+                        usersDataSet.Update(newUsers.username, newUsers.firstName, newUsers.lastName, newUsers.email,
                         newUsers.initialWeight, newUsers.heightInches, newUsers.dailyCalorieGoal,
-                        newUsers.goalWeight, oldUsers.userId, oldUsers.userName, oldUsers.firstName, oldUsers.lastName, oldUsers.email,
+                        newUsers.goalWeight, oldUsers.userId, oldUsers.username, oldUsers.firstName, oldUsers.lastName, oldUsers.email,
                         oldUsers.initialWeight, oldUsers.heightInches, oldUsers.dailyCalorieGoal,
                         oldUsers.goalWeight,newUsers.userId);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Delete User's information in the DB, used for testing.
+        /// </summary>
+        /// <param name="userId">Id(row) of user.</param>
+        public static void deleteUsers(Users users)
+        {
+            using (var userDataTable = new DietAppDataSet())
+            {
+                using (var usersDataSet = new DietAppDataSetTableAdapters.usersTableAdapter())
+                {
+                    usersDataSet.Delete(users.userId, users.username, users.firstName, users.lastName, users.email,
+                        users.initialWeight, users.heightInches, users.dailyCalorieGoal, users.goalWeight);
                 }
             }
         }

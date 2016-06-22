@@ -44,11 +44,11 @@ namespace DietApp.Model
             try
             {
                 testUser = DietAppController.getUserData(userName);
-                if (testUser.userName == null)
+                if (testUser.username == null)
                 {
                     value = false;
                 }
-                else if (testUser.userName.Equals(userName, StringComparison.InvariantCultureIgnoreCase))
+                else if (testUser.username.Equals(userName, StringComparison.InvariantCultureIgnoreCase))
                 {
                     value = true;
                 }
