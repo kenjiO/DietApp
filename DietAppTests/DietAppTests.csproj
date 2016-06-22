@@ -53,6 +53,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Controller\DietAppControllerTests.cs" />
+    <Compile Include="DAL\FoodEntryDALTest.cs" />
     <Compile Include="DAL\UserDALTest.cs" />
     <Compile Include="Model\EncryptionTests.cs" />
     <Compile Include="Model\FoodEntryTests.cs" />
