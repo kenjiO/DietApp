@@ -1,4 +1,5 @@
 ﻿using DietApp.Model;
+using DietApp.View;
 using System;
 using System.Windows.Forms;
 
@@ -106,6 +107,12 @@ namespace DietApp
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void enterFoodItemToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FoodEntryForm form = new FoodEntryForm(this.theUser);
+            form.Show();
         }
     }
 }
