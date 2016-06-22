@@ -57,5 +57,29 @@ namespace DietApp.Controller
         {
             UsersDAL.updateUsers(oldUsers, newUsers);
         }
+
+        /// <summary>
+        /// Add a food entry to the DB
+        /// </summary>
+        /// <param name="userId">userId that consumed the food</param>
+        /// <param name="name">The name of the food</param>
+        /// <param name="calories">Amount of calories</param>
+        /// <param name="protein">Amount of protein</param>
+        /// <param name="fat">Amount of fat</param>
+        /// <param name="carbohydrates">Amount of carbohydrates</param>
+        /// <param name="consumedAt">Date and Time consumed</param>
+        public static void addFoodEntry(int userId, string name, int? calories, int? protein, int? fat, int? carbohydrates, DateTime consumedAt)
+        {
+            if (name == null)
+            {
+                throw new ArgumentNullException("name cannot be null");
+            }
+            if (consumedAt == null)
+            {
+                throw new ArgumentNullException("consumedAt cannot be null");
+            }
+            FoodEntry entry = new FoodEntry(userId, name, calories, fat, protein, carbohydrates, consumedAt);
+            FoodEntryDAL.addEntry(entry);
+        }
     }
 }
