@@ -9,6 +9,7 @@ namespace DietApp.Model
     public class FoodEntry
     {
         private string name;
+        private int userId;
         private int? calories;
         private int? fat;
         private int? protein;
@@ -22,6 +23,14 @@ namespace DietApp.Model
                 return name;
             }
         }
+        public int UserId
+        {
+            get
+            {
+                return userId;
+            }
+        }
+
         public int? Calories
         {
             get
@@ -61,26 +70,28 @@ namespace DietApp.Model
         /// <summary>
         /// Creates a new entry for a food consumed with the time consumed set to now
         /// </summary>
+        /// <param name="userId">UserId that consumed the item</param>
         /// <param name="name">The name of the food</param>
         /// <param name="calories">Amount of calories</param>
         /// <param name="fat">Amount of fat</param>
         /// <param name="protein">Amount of protein</param>
         /// <param name="carbohyrdates">Amount of carbohydrates</param>
-        public FoodEntry(string name, int? calories, int? fat, int? protein, int? carbohyrdates)
-            : this(name, calories, fat, protein, carbohyrdates, DateTime.Now)
+        public FoodEntry(int userId, string name, int? calories, int? fat, int? protein, int? carbohyrdates)
+            : this(userId, name, calories, fat, protein, carbohyrdates, DateTime.Now)
         {
         }
 
         /// <summary>
         /// Creates a new entry for a food consumed
         /// </summary>
+        /// <param name="userId">UserId that consumed the item</param>
         /// <param name="name">The name of the food</param>
         /// <param name="calories">Amount of calories</param>
         /// <param name="fat">Amount of fat</param>
         /// <param name="protein">Amount of protein</param>
         /// <param name="carbohyrdates">Amount of carbohydrates</param>
         /// <param name="consumedAt">DateTime the food was consumed</param>
-        public FoodEntry(string name, int? calories, int? fat, int? protein, int? carbohyrdates, DateTime consumedAt)
+        public FoodEntry(int userId, string name, int? calories, int? fat, int? protein, int? carbohyrdates, DateTime consumedAt)
         {
             if (consumedAt == null)
             {
@@ -91,6 +102,7 @@ namespace DietApp.Model
             {
                 throw new ArgumentException(validationErrors);
             }
+            this.userId = userId;
             this.name = name;
             this.calories = calories;
             this.fat = fat;
