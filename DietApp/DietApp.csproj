@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Controller\DietAppController.cs" />
     <Compile Include="DAL\DBConnection.cs" />
+    <Compile Include="DAL\FoodEntryDAL.cs" />
     <Compile Include="DAL\UsersDAL.cs" />
     <Compile Include="DietAppDataSet.cs">
       <DependentUpon>DietAppDataSet.xsd</DependentUpon>
