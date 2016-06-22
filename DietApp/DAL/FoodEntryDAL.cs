@@ -19,7 +19,22 @@ namespace DietApp.DAL
             }
             using (var itemConsumedTableAdapter = new DietAppDataSetTableAdapters.itemConsumedTableAdapter())
             {
-                itemConsumedTableAdapter.Insert(entry.ConsumedAt, entry.UserId, entry.Name, entry.Calories, entry.Protein, entry.Fat, entry.Carbohydrates);
+                try
+                {
+                    itemConsumedTableAdapter.Insert(entry.ConsumedAt, entry.UserId, entry.Name, entry.Calories, entry.Protein, entry.Fat, entry.Carbohydrates);
+                }
+                catch (System.Data.SqlClient.SqlException e)
+                {
+                    // Check if it is a primary key exception from a duplicate entry
+                    if (e.Number == 2627)
+                    {
+                        throw new DuplcateFoodEntryException("An entry for that food and dateTime already exists");
+                    }
+                    else
+                    {
+                        throw e;
+                    }
+                }
             }
         }
 
@@ -87,5 +102,15 @@ namespace DietApp.DAL
             }
         }
 
+    }
+
+    /// <summary>
+    /// Exception used for when entering a duplicate food entry
+    /// </summary>
+    [Serializable]
+    public class DuplcateFoodEntryException : Exception
+    {
+        public DuplcateFoodEntryException() { }
+        public DuplcateFoodEntryException(string message) : base(message) { }
     }
 }
