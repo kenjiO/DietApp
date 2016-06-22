@@ -1,7 +1,7 @@
 ﻿using DietApp.Model;
 using System;
+using System.Collections.Generic;
 using System.Data;
-
 
 namespace DietApp.DAL
 {
@@ -69,7 +69,7 @@ namespace DietApp.DAL
                 throw new ArgumentNullException("foodName cannot be null");
             using (var itemConsumedTableAdapter = new DietAppDataSetTableAdapters.itemConsumedTableAdapter())
             {
-                DietAppDataSet.itemConsumedDataTable dataTable =  itemConsumedTableAdapter.GetDataByIdDateName(userId, consumedAt, foodName);
+                DietAppDataSet.itemConsumedDataTable dataTable = itemConsumedTableAdapter.GetDataByIdDateName(userId, consumedAt, foodName);
                 System.Data.DataRowCollection rows = dataTable.Rows;
                 if (rows.Count == 0)
                 {
@@ -98,10 +98,40 @@ namespace DietApp.DAL
                 DateTime dateTimeConsumedAt = Convert.ToDateTime(row["dateTimeConsumed"]);
 
                 FoodEntry result = new FoodEntry(id, name, calories, fat, protein, carbohydrates, dateTimeConsumedAt);
-                    return result;
+                return result;
             }
         }
 
+        /// <summary>
+        /// Search for nutrition info on a food
+        /// </summary>
+        /// <param name="searchTerm">Search term for the food name</param>
+        /// <returns>A list of nutrition info for foods in the database that match the search term</returns>
+        public static List<FoodNutritionInfo> searchFoodInfo(string searchTerm)
+        {
+            if (searchTerm == null)
+            {
+                throw new ArgumentNullException("serch term must not be null");
+            }
+            List<FoodNutritionInfo> results = new List<FoodNutritionInfo>();
+
+            using (var tableAdapter = new DietAppDataSetTableAdapters.defaultNutritionalValuesTableAdapter())
+            {
+                DietAppDataSet.defaultNutritionalValuesDataTable dataTable = tableAdapter.GetData("%" + searchTerm + "%");
+                System.Data.DataRowCollection rows = dataTable.Rows;
+                foreach (DataRow row in rows)
+                {
+                    FoodNutritionInfo food = new FoodNutritionInfo();
+                    food.name = row["food"].ToString();
+                    food.calories = Convert.ToInt32(row["calories"]);
+                    food.fat = Convert.ToInt32(row["fat"]);
+                    food.protein = Convert.ToInt32(row["protein"]);
+                    food.carbohydrates = Convert.ToInt32(row["carbohydrates"]);
+                    results.Add(food);
+                }
+            }
+            return results;
+        }
     }
 
     /// <summary>
@@ -110,7 +140,13 @@ namespace DietApp.DAL
     [Serializable]
     public class DuplcateFoodEntryException : Exception
     {
-        public DuplcateFoodEntryException() { }
-        public DuplcateFoodEntryException(string message) : base(message) { }
+        public DuplcateFoodEntryException()
+        {
+        }
+
+        public DuplcateFoodEntryException(string message)
+            : base(message)
+        {
+        }
     }
 }
