@@ -132,11 +132,10 @@ namespace DietApp.DAL
             {
                 using (var usersDataSet = new DietAppDataSetTableAdapters.usersTableAdapter())
                 {
-                        usersDataSet.Update(newUsers.userName, newUsers.firstName, newUsers.lastName, newUsers.email,
-                        newUsers.initialWeight, newUsers.heightInches, newUsers.dailyCalorieGoal,
-                        newUsers.goalWeight, oldUsers.userId, oldUsers.userName, oldUsers.firstName, oldUsers.lastName, oldUsers.email,
-                        oldUsers.initialWeight, oldUsers.heightInches, oldUsers.dailyCalorieGoal,
-                        oldUsers.goalWeight,newUsers.userId);
+                    usersDataSet.updateUser(newUsers.firstName, newUsers.lastName, newUsers.email,
+                    newUsers.initialWeight, newUsers.heightInches, newUsers.dailyCalorieGoal, newUsers.goalWeight, 
+                    oldUsers.userId, oldUsers.firstName, oldUsers.lastName, oldUsers.email,
+                    oldUsers.initialWeight, oldUsers.heightInches, oldUsers.dailyCalorieGoal, oldUsers.goalWeight);
                 }
             }
         }

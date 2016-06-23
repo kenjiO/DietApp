@@ -102,5 +102,66 @@ namespace DietAppTests.DAL
             dd = UsersDAL.getUserData(ddID);
             Assert.AreEqual(0, dd.userId, "New Test User not Deleted.");
         }
+
+        /// <summary>
+        /// Test for update of user data
+        /// </summary>
+        [TestMethod]
+        public void TestUpdateUserBB()
+        {
+            //Set User BB
+            int userId = 2;
+            String firstName = "Emitt";
+            String lastName = "Ethan";
+            String email = "eethan@example.com";
+            int initialWeight = 175;
+            int heightInches = 72;
+            int dailyCalorieGoal = 2200;
+            int goalWeight = 145;
+            String fullName = firstName + " " + lastName;
+            Users originalUser = UsersDAL.getUserData(userId);
+
+            //Get User AA (by userName)
+            Users oldUser = UsersDAL.getUserData(userId);
+            Users newUser = UsersDAL.getUserData(userId);
+            newUser.userId = userId;
+            newUser.firstName = firstName;
+            newUser.lastName = lastName;
+            newUser.email = email;
+            newUser.initialWeight = initialWeight;
+            newUser.heightInches = heightInches;
+            newUser.dailyCalorieGoal = dailyCalorieGoal;
+            newUser.goalWeight = goalWeight;
+
+            //Update BB
+            UsersDAL.updateUsers(oldUser, newUser);
+            Users testUser = UsersDAL.getUserData(userId);
+
+            //Check Results, expected Update
+            Assert.AreEqual(newUser.userId, testUser.userId, "testUser's userId not " + newUser.userId + ".");
+            Assert.AreEqual(newUser.firstName, testUser.firstName, "testUser's firstName not " + newUser.firstName + ".");
+            Assert.AreEqual(newUser.lastName, testUser.lastName, "testUser's lastName not " + newUser.lastName + ".");
+            Assert.AreEqual(newUser.email, testUser.email, "testUser's email not " + newUser.email + ".");
+            Assert.AreEqual(newUser.initialWeight, testUser.initialWeight, "testUser's initialWeight not " + newUser.initialWeight + ".");
+            Assert.AreEqual(newUser.heightInches, testUser.heightInches, 0, "testUser's heightInches not " + newUser.heightInches + ".");
+            Assert.AreEqual(newUser.dailyCalorieGoal, testUser.dailyCalorieGoal, 0, "testUser's dailyCalorieGoal not " + newUser.dailyCalorieGoal + ".");
+            Assert.AreEqual(newUser.goalWeight, testUser.goalWeight, 0, "testUser's goalWeight not " + newUser.goalWeight + ".");
+            Assert.AreEqual(newUser.getFullName(), testUser.getFullName(), "testUser's fullName not " + newUser.getFullName() + ".");
+
+            //Rest to Original
+            UsersDAL.updateUsers(testUser, originalUser);
+            testUser = UsersDAL.getUserData(userId);
+
+            //Check Results, expected Origianl
+            Assert.AreEqual(originalUser.userId, testUser.userId, "testUser's userId not " + originalUser.userId + ".");
+            Assert.AreEqual(originalUser.firstName, testUser.firstName, "testUser's firstName not " + originalUser.firstName + ".");
+            Assert.AreEqual(originalUser.lastName, testUser.lastName, "testUser's lastName not " + originalUser.lastName + ".");
+            Assert.AreEqual(originalUser.email, testUser.email, "testUser's email not " + originalUser.email + ".");
+            Assert.AreEqual(originalUser.initialWeight, testUser.initialWeight, "testUser's initialWeight not " + originalUser.initialWeight + ".");
+            Assert.AreEqual(originalUser.heightInches, testUser.heightInches, 0, "testUser's heightInches not " + originalUser.heightInches + ".");
+            Assert.AreEqual(originalUser.dailyCalorieGoal, testUser.dailyCalorieGoal, 0, "testUser's dailyCalorieGoal not " + originalUser.dailyCalorieGoal + ".");
+            Assert.AreEqual(originalUser.goalWeight, testUser.goalWeight, 0, "testUser's goalWeight not " + originalUser.goalWeight + ".");
+            Assert.AreEqual(originalUser.getFullName(), testUser.getFullName(), "testUser's fullName not " + originalUser.getFullName() + ".");
+        }
     }
 }
