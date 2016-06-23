@@ -1,6 +1,7 @@
 ﻿using DietApp.DAL;
 using DietApp.Model;
 using System;
+using System.Collections.Generic;
 
 namespace DietApp.Controller
 {
@@ -56,6 +57,44 @@ namespace DietApp.Controller
         public static void updateUsers(Users oldUsers, Users newUsers)
         {
             UsersDAL.updateUsers(oldUsers, newUsers);
+        }
+
+        /// <summary>
+        /// Add a food entry to the DB
+        /// </summary>
+        /// <param name="userId">userId that consumed the food</param>
+        /// <param name="name">The name of the food</param>
+        /// <param name="calories">Amount of calories</param>
+        /// <param name="protein">Amount of protein</param>
+        /// <param name="fat">Amount of fat</param>
+        /// <param name="carbohydrates">Amount of carbohydrates</param>
+        /// <param name="consumedAt">Date and Time consumed</param>
+        public static void addFoodEntry(int userId, string name, int? calories, int? protein, int? fat, int? carbohydrates, DateTime consumedAt)
+        {
+            if (name == null)
+            {
+                throw new ArgumentNullException("name cannot be null");
+            }
+            if (consumedAt == null)
+            {
+                throw new ArgumentNullException("consumedAt cannot be null");
+            }
+            FoodEntry entry = new FoodEntry(userId, name, calories, fat, protein, carbohydrates, consumedAt);
+            FoodEntryDAL.addEntry(entry);
+        }
+
+        /// <summary>
+        /// Search for nutrition info on a food
+        /// </summary>
+        /// <param name="searchTerm">Search term for the food name</param>
+        /// <returns>A list of nutrition info for foods in the database that match the search term</returns>
+        public static List<FoodNutritionInfo> searchFoodInfo(string searchTerm)
+        {
+            if (searchTerm == null)
+            {
+                throw new ArgumentNullException("serch term must not be null");
+            }
+            return FoodEntryDAL.searchFoodInfo(searchTerm);
         }
     }
 }
