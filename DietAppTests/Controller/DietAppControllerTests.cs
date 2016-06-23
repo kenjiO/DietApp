@@ -7,53 +7,64 @@ using DietApp.Model;
 
 namespace DietApp.Controller.Tests
 {
+    /// <summary>
+    /// Test the DietAppController Class in DietApp.Controller
+    /// </summary>
     [TestClass()]
     public class DietAppControllerTests
     {
+        /// <summary>
+        /// Test comparison of Passwords
+        /// </summary>
         [TestMethod()]
-        public void comparePasswordTest()
+        public void TestcomparePassword()
         {
             //Set User BB
-            String username = "bb";
+            String userName = "bb";
             String goodPassword = "abc";
             String badPassword = "123";
 
             //Checks Passwords
-            bool goodResults = DietAppController.comparePassword(username, goodPassword);
-            bool badResults = DietAppController.comparePassword(username, badPassword);
+            bool goodResults = DietAppController.comparePassword(userName, goodPassword);
+            bool badResults = DietAppController.comparePassword(userName, badPassword);
 
             //Returns Results
             Assert.IsTrue(goodResults, "Correct Password fails.");
             Assert.IsFalse(badResults, "Incorrect Password passes.");
         }
 
+        /// <summary>
+        /// Test for return of user data
+        /// </summary>
         [TestMethod()]
-        public void getUserDataTest()
+        public void TestgetUserData()
         {
             //Set User AA
             int userId = 1;
-            String username = "aa";
+            String userName = "aa";
             String firstName = "Al";
 
             //Get User AA (by userId)
             Assert.AreEqual(firstName, DietAppController.getUserData(userId).firstName, "AA's firstName not " + firstName + ".");
 
             //Get User AA (by userName)
-            Assert.AreEqual(firstName, DietAppController.getUserData(username).firstName, "AA's firstName not " + firstName + ".");
+            Assert.AreEqual(firstName, DietAppController.getUserData(userName).firstName, "AA's firstName not " + firstName + ".");
         }
 
+        /// <summary>
+        /// Test for add newuser, return of user data
+        /// intial profile setup
+        /// will delete then completed
+        /// </summary>
         [TestMethod()]
-        public void addUserData()
+        public void TestaddUserData()
         {
             //Set New User
-            String username = "ee";
+            String userName = "ee";
             String password = "password";
-            int ddId = 0;
-
-
 
             //Create New User
-            ddId = DietAppController.addNewUser(username, password);
+            int ddId = DietAppController.addNewUser(userName, password);
             Assert.AreNotEqual(0, ddId, "New User not added.");
 
             //Deletes Test New User (Uses UsersDAL to Prevent Delete Testing Method from being accessed by controller.
@@ -62,8 +73,12 @@ namespace DietApp.Controller.Tests
             Assert.AreEqual(0, ee.userId, "New Test User not Deleted.");
         }
 
+        /// <summary>
+        /// Test for update of user data
+        /// will reverse when complete
+        /// </summary>
         [TestMethod()]
-        public void TestUpdateUser()
+        public void TestupdateUsers()
         {
             //Set User BB
             int userId = 2;
@@ -81,16 +96,16 @@ namespace DietApp.Controller.Tests
             Users testUser = DietAppController.getUserData(userId);
 
             //Check Results, expected Update
-            Assert.AreEqual(newUser.userId, testUser.userId, "testUser's userId not " + newUser.userId + ".");
-            Assert.AreEqual(newUser.firstName, testUser.firstName, "testUser's firstName not " + newUser.firstName + ".");
+            Assert.AreEqual(newUser.userId, testUser.userId, "TestUser's userId not " + newUser.userId + ".");
+            Assert.AreEqual(newUser.firstName, testUser.firstName, "TestUser's firstName not " + newUser.firstName + ".");
 
             //Rest to Original
             UsersDAL.updateUsers(testUser, originalUser);
             testUser = DietAppController.getUserData(userId);
 
             //Check Results, expected Origianl
-            Assert.AreEqual(originalUser.userId, testUser.userId, "testUser's userId not " + originalUser.userId + ".");
-            Assert.AreEqual(originalUser.firstName, testUser.firstName, "testUser's firstName not " + originalUser.firstName + ".");
+            Assert.AreEqual(originalUser.userId, testUser.userId, "OriginalUser's userId not " + originalUser.userId + ".");
+            Assert.AreEqual(originalUser.firstName, testUser.firstName, "OriginalUser's firstName not " + originalUser.firstName + ".");
         }
     }
 }

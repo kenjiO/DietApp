@@ -1,1 +1,1 @@
-<Playlist Version="1.0"><Add Test="DietAppTests.DAL.UserDALTest.TestAddNewDeleteUser" /><Add Test="DietAppTests.DAL.UserDALTest.TestGetUserAA" /></Playlist>
+<Playlist Version="1.0"><Add Test="DietAppTests.DAL.UserDALTest.TestAddNewDeleteUser" /><Add Test="DietAppTests.DAL.UserDALTest.TestGetUserAA" /><Add Test="DietAppTests.DAL.UserDALTest.TestUpdateUserBB" /><Add Test="DietAppTests.DAL.UserDALTest.TestgetUserData" /><Add Test="DietAppTests.DAL.UserDALTest.TestupdateUsers" /><Add Test="DietAppTests.DAL.UserDALTest.TestaddNewUser" /></Playlist>
