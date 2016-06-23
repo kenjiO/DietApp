@@ -52,30 +52,29 @@
             // emailBox
             // 
             this.emailBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.emailBox.Location = new System.Drawing.Point(28, 134);
-            this.emailBox.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.emailBox.Location = new System.Drawing.Point(19, 87);
+            this.emailBox.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.emailBox.Name = "emailBox";
-            this.emailBox.ReadOnly = true;
-            this.emailBox.Size = new System.Drawing.Size(601, 35);
+            this.emailBox.Size = new System.Drawing.Size(402, 26);
             this.emailBox.TabIndex = 46;
             // 
             // lastNameBox
             // 
             this.lastNameBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lastNameBox.Location = new System.Drawing.Point(340, 51);
-            this.lastNameBox.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.lastNameBox.Location = new System.Drawing.Point(227, 33);
+            this.lastNameBox.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.lastNameBox.Name = "lastNameBox";
-            this.lastNameBox.ReadOnly = true;
-            this.lastNameBox.Size = new System.Drawing.Size(289, 35);
+            this.lastNameBox.Size = new System.Drawing.Size(194, 26);
             this.lastNameBox.TabIndex = 44;
             // 
             // lastNameLabel
             // 
             this.lastNameLabel.AutoSize = true;
             this.lastNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lastNameLabel.Location = new System.Drawing.Point(334, 15);
+            this.lastNameLabel.Location = new System.Drawing.Point(223, 10);
+            this.lastNameLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lastNameLabel.Name = "lastNameLabel";
-            this.lastNameLabel.Size = new System.Drawing.Size(128, 29);
+            this.lastNameLabel.Size = new System.Drawing.Size(86, 20);
             this.lastNameLabel.TabIndex = 43;
             this.lastNameLabel.Text = "Last Name";
             // 
@@ -83,29 +82,30 @@
             // 
             this.emailLabel.AutoSize = true;
             this.emailLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.emailLabel.Location = new System.Drawing.Point(24, 100);
+            this.emailLabel.Location = new System.Drawing.Point(16, 65);
+            this.emailLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.emailLabel.Name = "emailLabel";
-            this.emailLabel.Size = new System.Drawing.Size(169, 29);
+            this.emailLabel.Size = new System.Drawing.Size(111, 20);
             this.emailLabel.TabIndex = 42;
             this.emailLabel.Text = "Email Address";
             // 
             // firstNameBox
             // 
             this.firstNameBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.firstNameBox.Location = new System.Drawing.Point(28, 51);
-            this.firstNameBox.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.firstNameBox.Location = new System.Drawing.Point(19, 33);
+            this.firstNameBox.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.firstNameBox.Name = "firstNameBox";
-            this.firstNameBox.ReadOnly = true;
-            this.firstNameBox.Size = new System.Drawing.Size(289, 35);
+            this.firstNameBox.Size = new System.Drawing.Size(194, 26);
             this.firstNameBox.TabIndex = 40;
             // 
             // firstNameLabel
             // 
             this.firstNameLabel.AutoSize = true;
             this.firstNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.firstNameLabel.Location = new System.Drawing.Point(22, 15);
+            this.firstNameLabel.Location = new System.Drawing.Point(15, 10);
+            this.firstNameLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.firstNameLabel.Name = "firstNameLabel";
-            this.firstNameLabel.Size = new System.Drawing.Size(131, 29);
+            this.firstNameLabel.Size = new System.Drawing.Size(86, 20);
             this.firstNameLabel.TabIndex = 39;
             this.firstNameLabel.Text = "First Name";
             // 
@@ -113,9 +113,10 @@
             // 
             this.inchesLabel.AutoSize = true;
             this.inchesLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.inchesLabel.Location = new System.Drawing.Point(283, 344);
+            this.inchesLabel.Location = new System.Drawing.Point(189, 224);
+            this.inchesLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.inchesLabel.Name = "inchesLabel";
-            this.inchesLabel.Size = new System.Drawing.Size(38, 29);
+            this.inchesLabel.Size = new System.Drawing.Size(25, 20);
             this.inchesLabel.TabIndex = 54;
             this.inchesLabel.Text = "in.";
             // 
@@ -123,28 +124,30 @@
             // 
             this.feetLabel.AutoSize = true;
             this.feetLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.feetLabel.Location = new System.Drawing.Point(138, 344);
+            this.feetLabel.Location = new System.Drawing.Point(92, 224);
+            this.feetLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.feetLabel.Name = "feetLabel";
-            this.feetLabel.Size = new System.Drawing.Size(31, 29);
+            this.feetLabel.Size = new System.Drawing.Size(23, 20);
             this.feetLabel.TabIndex = 52;
             this.feetLabel.Text = "ft.";
             // 
             // inchesBox
             // 
             this.inchesBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.inchesBox.Location = new System.Drawing.Point(175, 338);
+            this.inchesBox.Location = new System.Drawing.Point(117, 220);
+            this.inchesBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.inchesBox.Name = "inchesBox";
-            this.inchesBox.ReadOnly = true;
-            this.inchesBox.Size = new System.Drawing.Size(102, 35);
+            this.inchesBox.Size = new System.Drawing.Size(69, 26);
             this.inchesBox.TabIndex = 53;
             // 
             // lbLabel
             // 
             this.lbLabel.AutoSize = true;
             this.lbLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbLabel.Location = new System.Drawing.Point(259, 246);
+            this.lbLabel.Location = new System.Drawing.Point(173, 160);
+            this.lbLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbLabel.Name = "lbLabel";
-            this.lbLabel.Size = new System.Drawing.Size(39, 29);
+            this.lbLabel.Size = new System.Drawing.Size(25, 20);
             this.lbLabel.TabIndex = 49;
             this.lbLabel.Text = "lb.";
             // 
@@ -152,56 +155,60 @@
             // 
             this.heightLable.AutoSize = true;
             this.heightLable.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.heightLable.Location = new System.Drawing.Point(-154, 450);
+            this.heightLable.Location = new System.Drawing.Point(-103, 292);
+            this.heightLable.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.heightLable.Name = "heightLable";
-            this.heightLable.Size = new System.Drawing.Size(83, 29);
+            this.heightLable.Size = new System.Drawing.Size(56, 20);
             this.heightLable.TabIndex = 50;
             this.heightLable.Text = "Height";
             // 
             // footBox
             // 
             this.footBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.footBox.Location = new System.Drawing.Point(29, 338);
+            this.footBox.Location = new System.Drawing.Point(19, 220);
+            this.footBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.footBox.Name = "footBox";
-            this.footBox.ReadOnly = true;
-            this.footBox.Size = new System.Drawing.Size(103, 35);
+            this.footBox.Size = new System.Drawing.Size(70, 26);
             this.footBox.TabIndex = 51;
             // 
             // weightBox
             // 
             this.weightBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.weightBox.Location = new System.Drawing.Point(29, 240);
+            this.weightBox.Location = new System.Drawing.Point(19, 156);
+            this.weightBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.weightBox.Name = "weightBox";
-            this.weightBox.ReadOnly = true;
-            this.weightBox.Size = new System.Drawing.Size(194, 35);
+            this.weightBox.Size = new System.Drawing.Size(131, 26);
             this.weightBox.TabIndex = 48;
             // 
             // usernameLabel
             // 
             this.usernameLabel.AutoSize = true;
             this.usernameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.usernameLabel.Location = new System.Drawing.Point(335, 197);
+            this.usernameLabel.Location = new System.Drawing.Point(223, 128);
+            this.usernameLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.usernameLabel.Name = "usernameLabel";
-            this.usernameLabel.Size = new System.Drawing.Size(135, 29);
+            this.usernameLabel.Size = new System.Drawing.Size(89, 20);
             this.usernameLabel.TabIndex = 55;
             this.usernameLabel.Text = "User Name";
             // 
             // usernameBox
             // 
             this.usernameBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.usernameBox.Location = new System.Drawing.Point(340, 240);
+            this.usernameBox.Location = new System.Drawing.Point(227, 156);
+            this.usernameBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.usernameBox.Name = "usernameBox";
             this.usernameBox.ReadOnly = true;
-            this.usernameBox.Size = new System.Drawing.Size(289, 35);
+            this.usernameBox.Size = new System.Drawing.Size(194, 26);
             this.usernameBox.TabIndex = 56;
             // 
             // cancelButton
             // 
             this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.cancelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cancelButton.Location = new System.Drawing.Point(517, 327);
+            this.cancelButton.Location = new System.Drawing.Point(345, 213);
+            this.cancelButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(102, 46);
+            this.cancelButton.Size = new System.Drawing.Size(68, 30);
             this.cancelButton.TabIndex = 58;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
@@ -209,22 +216,24 @@
             // 
             // saveButton
             // 
-            this.saveButton.Enabled = false;
             this.saveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.saveButton.Location = new System.Drawing.Point(368, 327);
+            this.saveButton.Location = new System.Drawing.Point(245, 213);
+            this.saveButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(102, 46);
+            this.saveButton.Size = new System.Drawing.Size(68, 30);
             this.saveButton.TabIndex = 57;
             this.saveButton.Text = "Save";
             this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
             // weightLabel
             // 
             this.weightLabel.AutoSize = true;
             this.weightLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.weightLabel.Location = new System.Drawing.Point(34, 197);
+            this.weightLabel.Location = new System.Drawing.Point(23, 128);
+            this.weightLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.weightLabel.Name = "weightLabel";
-            this.weightLabel.Size = new System.Drawing.Size(88, 29);
+            this.weightLabel.Size = new System.Drawing.Size(59, 20);
             this.weightLabel.TabIndex = 60;
             this.weightLabel.Text = "Weight";
             // 
@@ -232,19 +241,20 @@
             // 
             this.heightLabel.AutoSize = true;
             this.heightLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.heightLabel.Location = new System.Drawing.Point(34, 294);
+            this.heightLabel.Location = new System.Drawing.Point(23, 191);
+            this.heightLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.heightLabel.Name = "heightLabel";
-            this.heightLabel.Size = new System.Drawing.Size(83, 29);
+            this.heightLabel.Size = new System.Drawing.Size(56, 20);
             this.heightLabel.TabIndex = 61;
             this.heightLabel.Text = "Height";
             // 
             // ProfileInfo
             // 
             this.AcceptButton = this.saveButton;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancelButton;
-            this.ClientSize = new System.Drawing.Size(661, 430);
+            this.ClientSize = new System.Drawing.Size(441, 279);
             this.Controls.Add(this.heightLabel);
             this.Controls.Add(this.weightLabel);
             this.Controls.Add(this.inchesLabel);
@@ -264,6 +274,7 @@
             this.Controls.Add(this.emailLabel);
             this.Controls.Add(this.firstNameBox);
             this.Controls.Add(this.firstNameLabel);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "ProfileInfo";
             this.Text = "My Profile";
             this.Load += new System.EventHandler(this.ProfileInfo_Load);
