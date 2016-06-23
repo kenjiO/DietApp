@@ -8,6 +8,7 @@ namespace DietApp
     {
         private Users theUser;
         private ProfileInfo profileForm;
+        private WellnessTrackingForm wellnessForm;
 
         public MainForm()
         {
@@ -106,6 +107,37 @@ namespace DietApp
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
             Application.Exit();
+        }
+
+        /// <summary>
+        /// Shows the WellnessTrackingForm.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void wellnessTrackingToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (this.wellnessForm == null)
+            {
+                this.wellnessForm = new WellnessTrackingForm();
+                this.wellnessForm.loadUser(this.theUser); // Unknown Null ERROR //
+                this.wellnessForm.MdiParent = this;
+                this.wellnessForm.FormClosed += new FormClosedEventHandler(WellnessFormClosed);
+                this.wellnessForm.Show();
+            }
+            else
+            {
+                this.wellnessForm.Activate();
+            }
+        }
+
+        /// <summary>
+        /// Closes the WellnessTrackingForm.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void WellnessFormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.wellnessForm = null;
         }
     }
 }
