@@ -26,7 +26,7 @@ namespace DietApp
                 lastNameBox.Text = this.theUser.lastName;
                 emailBox.Text = this.theUser.email;
                 weightBox.Text = this.theUser.initialWeight.ToString();
-                usernameBox.Text = this.theUser.username;
+                usernameBox.Text = this.theUser.userName;
                 footBox.Text = (this.theUser.heightInches / 12).ToString();
                 inchesBox.Text = (this.theUser.heightInches % 12).ToString();
             }

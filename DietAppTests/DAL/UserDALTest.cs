@@ -36,7 +36,7 @@ namespace DietAppTests.DAL
 
             //Check Results, expect AA
             Assert.AreEqual(userId, aa.userId, "AA's userId not " + userId + ".");
-            Assert.AreEqual(username, aa.username, "AA's username not " + username + ".");
+            Assert.AreEqual(username, aa.userName, "AA's username not " + username + ".");
             Assert.AreEqual(firstName, aa.firstName, "AA's firstName not " + firstName + ".");
             Assert.AreEqual(lastName, aa.lastName, "AA's lastName not " + lastName + ".");
             Assert.AreEqual(email, aa.email, "AA's email not " + email + ".");
@@ -51,7 +51,7 @@ namespace DietAppTests.DAL
 
             //Check Results, expect AA
             Assert.AreEqual(userId, aa.userId, "AA's userId not " + userId + ".");
-            Assert.AreEqual(username, aa.username, "AA's username not " + username + ".");
+            Assert.AreEqual(username, aa.userName, "AA's username not " + username + ".");
             Assert.AreEqual(firstName, aa.firstName, "AA's firstName not " + firstName + ".");
             Assert.AreEqual(lastName, aa.lastName, "AA's lastName not " + lastName + ".");
             Assert.AreEqual(email, aa.email, "AA's email not " + email + ".");
@@ -87,7 +87,7 @@ namespace DietAppTests.DAL
             Users dd = UsersDAL.getUserData(ddID);
 
             //Check Results, expect New User
-            Assert.AreEqual(username, dd.username, "DD's username not " + username + ".");
+            Assert.AreEqual(username, dd.userName, "DD's username not " + username + ".");
             Assert.AreEqual(firstName, dd.firstName, "DD's firstName not " + firstName + ".");
             Assert.AreEqual(lastName, dd.lastName, "DD's lastName not " + lastName + ".");
             Assert.AreEqual(email, dd.email, "DD's email not " + email + ".");
@@ -98,9 +98,9 @@ namespace DietAppTests.DAL
             Assert.AreEqual(fullName, dd.getFullName(), "DD's fullName not " + fullName + ".");
 
             //Deletes Test New User
-            UsersDAL.deleteUsers(dd);
+            UsersDAL.deleteUsers(ddID);
             dd = UsersDAL.getUserData(ddID);
-            Assert.AreEqual("Car",dd.userId, "New Test User not Deleted.");
+            Assert.AreEqual(0, dd.userId, "New Test User not Deleted.");
         }
     }
 }
