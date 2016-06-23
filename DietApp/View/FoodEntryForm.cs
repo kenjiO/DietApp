@@ -118,6 +118,19 @@ namespace DietApp.View
 
         private void searchButton_Click(object sender, EventArgs e)
         {
+            searchForFood();
+        }
+
+        private void searchBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Return)
+            {
+                searchForFood();
+            }
+        }
+
+        private void searchForFood()
+        {
             string searchTerm = searchBox.Text.Trim();
             if (searchTerm.Equals(""))
             {
