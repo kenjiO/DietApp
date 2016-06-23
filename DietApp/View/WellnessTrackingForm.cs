@@ -1,4 +1,5 @@
-﻿using DietApp.Model;
+﻿using DietApp.Controller;
+using DietApp.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,6 +15,7 @@ namespace DietApp.View
     public partial class WellnessTrackingForm : Form
     {
         private Users theUser;
+        private Wellness userWellness;
 
         public WellnessTrackingForm()
         {
@@ -29,6 +31,9 @@ namespace DietApp.View
         {
             if (this.theUser != null)
             {
+                var date = dateTimePicker.Text;
+                DietAppController.dateWellnessData(this.theUser.userId, date);
+
 
             }
             else

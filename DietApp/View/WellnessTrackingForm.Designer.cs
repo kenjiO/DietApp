@@ -37,7 +37,7 @@
             this.systolicUpDown = new System.Windows.Forms.NumericUpDown();
             this.diastolicUpDown = new System.Windows.Forms.NumericUpDown();
             this.slantLabel = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.heartRateUpDown = new System.Windows.Forms.NumericUpDown();
             this.weightUpDown = new System.Windows.Forms.NumericUpDown();
             this.cancelButton = new System.Windows.Forms.Button();
@@ -131,13 +131,13 @@
             this.slantLabel.TabIndex = 80;
             this.slantLabel.Text = "/";
             // 
-            // dateTimePicker1
+            // dateTimePicker
             // 
-            this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker1.Location = new System.Drawing.Point(12, 12);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(464, 35);
-            this.dateTimePicker1.TabIndex = 81;
+            this.dateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker.Location = new System.Drawing.Point(12, 12);
+            this.dateTimePicker.Name = "dateTimePicker";
+            this.dateTimePicker.Size = new System.Drawing.Size(464, 35);
+            this.dateTimePicker.TabIndex = 81;
             // 
             // heartRateUpDown
             // 
@@ -157,6 +157,7 @@
             // 
             // cancelButton
             // 
+            this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.cancelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancelButton.Location = new System.Drawing.Point(356, 185);
             this.cancelButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -191,7 +192,7 @@
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.weightUpDown);
             this.Controls.Add(this.heartRateUpDown);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.dateTimePicker);
             this.Controls.Add(this.slantLabel);
             this.Controls.Add(this.diastolicUpDown);
             this.Controls.Add(this.systolicUpDown);
@@ -224,7 +225,7 @@
         private System.Windows.Forms.NumericUpDown systolicUpDown;
         private System.Windows.Forms.NumericUpDown diastolicUpDown;
         private System.Windows.Forms.Label slantLabel;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dateTimePicker;
         private System.Windows.Forms.NumericUpDown heartRateUpDown;
         private System.Windows.Forms.NumericUpDown weightUpDown;
         private System.Windows.Forms.Button cancelButton;

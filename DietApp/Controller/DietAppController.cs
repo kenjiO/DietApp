@@ -57,5 +57,11 @@ namespace DietApp.Controller
         {
             UsersDAL.updateUsers(oldUsers, newUsers);
         }
+
+
+        public static Wellness dateWellnessData(int userId, string date)
+        {
+            return WellnessDAL.dateWellnessData(userId, date);
+        }
     }
 }
