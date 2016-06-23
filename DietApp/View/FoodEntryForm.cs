@@ -1,8 +1,9 @@
 ﻿using DietApp.Controller;
 using DietApp.Model;
 using System;
-using System.Windows.Forms;
 using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace DietApp.View
 {
@@ -58,8 +59,24 @@ namespace DietApp.View
             catch (DietApp.DAL.DuplcateFoodEntryException ex)
             {
                 MessageBox.Show("An entry for that food and date/time already exists");
+                return;
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("There was an error adding this entry to the database\n\n" + ex.Message);
+                return;
             }
             MessageBox.Show("Entry added");
+            clearFields();
+        }
+
+        private void clearFields()
+        {
+            foodBox.Text = "";
+            caloriesBox.Text = "";
+            proteinBox.Text = "";
+            carbohydratesBox.Text = "";
+            fatBox.Text = "";
         }
 
         private string validateEntry()
@@ -107,14 +124,22 @@ namespace DietApp.View
                 MessageBox.Show("You must enter a search term");
                 return;
             }
-            List<FoodNutritionInfo> results = DietAppController.searchFoodInfo(searchTerm);
-            if (results.Count == 0)
+            try
             {
-                MessageBox.Show("No results found");
+                List<FoodNutritionInfo> results = DietAppController.searchFoodInfo(searchTerm);
+                if (results.Count == 0)
+                {
+                    MessageBox.Show("No results found");
+                    return;
+                }
+                searchResultsListBox.DataSource = results;
+                searchResultsListBox.DisplayMember = "name";
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("There was an error getting data from the database\n\n" + ex.Message);
                 return;
             }
-            searchResultsListBox.DataSource = results;
-            searchResultsListBox.DisplayMember = "name";
         }
 
         private void searchResult_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -139,7 +164,5 @@ namespace DietApp.View
             int minutes = time.Minutes;
             return new DateTime(year, month, day, hours, minutes, 0);
         }
-
-
     }
 }

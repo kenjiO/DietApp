@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 
 namespace DietApp.DAL
 {
@@ -23,7 +24,7 @@ namespace DietApp.DAL
                 {
                     itemConsumedTableAdapter.Insert(entry.ConsumedAt, entry.UserId, entry.Name, entry.Calories, entry.Protein, entry.Fat, entry.Carbohydrates);
                 }
-                catch (System.Data.SqlClient.SqlException e)
+                catch (SqlException e)
                 {
                     // Check if it is a primary key exception from a duplicate entry
                     if (e.Number == 2627)
