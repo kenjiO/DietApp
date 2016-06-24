@@ -1,5 +1,6 @@
 ﻿using DietApp.Controller;
 using DietApp.Model;
+using DietApp.View;
 using System;
 using System.Data.SqlClient;
 using System.Windows.Forms;
@@ -39,15 +40,15 @@ namespace DietApp
 
             try
             {
-                if (password.Equals("") || confirm.Equals(""))
+                if (View_Validator.Blank(usernameBox) || View_Validator.Blank(passwordBox) || View_Validator.Blank(confirmBox) ||
+                    View_Validator.Blank(firstNameBox) || View_Validator.Blank(lastNameBox) || View_Validator.Blank(emailBox) ||
+                    View_Validator.Blank(weightBox) || View_Validator.Blank(footBox) || View_Validator.Blank(inchesBox))
                 {
-                    MessageBox.Show("One of provided passwords is blank.  Please try again.",
-                        "Invalid Login Credentials");
+                    //Checks for Blank Boxes
                 }
-                else if (!(password.Equals(confirm)))
+                else if (View_Validator.NotMatch(passwordBox, confirmBox))
                 {
-                    MessageBox.Show("The passwords provided are invalid or do not match.  Please try again.",
-                        "Invalid Login Credentials");
+                    //Checks if boxes match
                     passwordBox.Text = "";
                     confirmBox.Text = "";
                 }
@@ -91,11 +92,11 @@ namespace DietApp
             }
             catch (SqlException ex)
             {
-                MessageBox.Show(ex.Message, ex.GetType().ToString());
+                MessageBox.Show(ex.Message, ex.GetType().ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, ex.GetType().ToString());
+                MessageBox.Show(ex.Message, ex.GetType().ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

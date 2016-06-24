@@ -57,6 +57,7 @@
             this.emailBox.Name = "emailBox";
             this.emailBox.Size = new System.Drawing.Size(402, 26);
             this.emailBox.TabIndex = 46;
+            this.emailBox.Tag = "Email Address";
             // 
             // lastNameBox
             // 
@@ -66,6 +67,7 @@
             this.lastNameBox.Name = "lastNameBox";
             this.lastNameBox.Size = new System.Drawing.Size(194, 26);
             this.lastNameBox.TabIndex = 44;
+            this.lastNameBox.Tag = "Last Name";
             // 
             // lastNameLabel
             // 
@@ -97,6 +99,7 @@
             this.firstNameBox.Name = "firstNameBox";
             this.firstNameBox.Size = new System.Drawing.Size(194, 26);
             this.firstNameBox.TabIndex = 40;
+            this.firstNameBox.Tag = "First Name";
             // 
             // firstNameLabel
             // 
@@ -135,10 +138,11 @@
             // 
             this.inchesBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.inchesBox.Location = new System.Drawing.Point(117, 220);
-            this.inchesBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.inchesBox.Margin = new System.Windows.Forms.Padding(2);
             this.inchesBox.Name = "inchesBox";
             this.inchesBox.Size = new System.Drawing.Size(69, 26);
             this.inchesBox.TabIndex = 53;
+            this.inchesBox.Tag = "Height (in.)";
             // 
             // lbLabel
             // 
@@ -166,19 +170,21 @@
             // 
             this.footBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.footBox.Location = new System.Drawing.Point(19, 220);
-            this.footBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.footBox.Margin = new System.Windows.Forms.Padding(2);
             this.footBox.Name = "footBox";
             this.footBox.Size = new System.Drawing.Size(70, 26);
             this.footBox.TabIndex = 51;
+            this.footBox.Tag = "Height (ft.)";
             // 
             // weightBox
             // 
             this.weightBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.weightBox.Location = new System.Drawing.Point(19, 156);
-            this.weightBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.weightBox.Margin = new System.Windows.Forms.Padding(2);
             this.weightBox.Name = "weightBox";
             this.weightBox.Size = new System.Drawing.Size(131, 26);
             this.weightBox.TabIndex = 48;
+            this.weightBox.Tag = "Weight";
             // 
             // usernameLabel
             // 
@@ -195,7 +201,7 @@
             // 
             this.usernameBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.usernameBox.Location = new System.Drawing.Point(227, 156);
-            this.usernameBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.usernameBox.Margin = new System.Windows.Forms.Padding(2);
             this.usernameBox.Name = "usernameBox";
             this.usernameBox.ReadOnly = true;
             this.usernameBox.Size = new System.Drawing.Size(194, 26);
@@ -206,7 +212,7 @@
             this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.cancelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancelButton.Location = new System.Drawing.Point(345, 213);
-            this.cancelButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cancelButton.Margin = new System.Windows.Forms.Padding(2);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(68, 30);
             this.cancelButton.TabIndex = 58;
@@ -218,7 +224,7 @@
             // 
             this.saveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.saveButton.Location = new System.Drawing.Point(245, 213);
-            this.saveButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.saveButton.Margin = new System.Windows.Forms.Padding(2);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(68, 30);
             this.saveButton.TabIndex = 57;
@@ -274,7 +280,7 @@
             this.Controls.Add(this.emailLabel);
             this.Controls.Add(this.firstNameBox);
             this.Controls.Add(this.firstNameLabel);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ProfileInfo";
             this.Text = "My Profile";
             this.Load += new System.EventHandler(this.ProfileInfo_Load);

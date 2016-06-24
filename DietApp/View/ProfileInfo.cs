@@ -1,5 +1,6 @@
 ﻿using DietApp.Controller;
 using DietApp.Model;
+using DietApp.View;
 using System;
 using System.Data.SqlClient;
 using System.Windows.Forms;
@@ -22,7 +23,11 @@ namespace DietApp
         /// <param name="e"></param>
         private void ProfileInfo_Load(object sender, EventArgs e)
         {
-            if (this.theUser != null)
+            if (View_Validator.Users(this.theUser))
+            {
+                return;
+            }
+            else
             {
                 firstNameBox.Text = this.theUser.firstName;
                 lastNameBox.Text = this.theUser.lastName;
@@ -32,12 +37,6 @@ namespace DietApp
                 footBox.Text = (this.theUser.heightInches / 12).ToString();
                 inchesBox.Text = (this.theUser.heightInches % 12).ToString();
             }
-            else
-            {
-                MessageBox.Show("User does not exist.");
-                MessageBox.Show("No user is currently logged on.");
-                return;
-            }
         }
 
         /// <summary>
@@ -46,6 +45,7 @@ namespace DietApp
         /// <param name="newUser"></param>
         public void loadUser(Users newUser)
         {
+            //Updates Any Changes
             this.theUser = DietAppController.getUserData(newUser.userId);
         }
 
@@ -72,42 +72,50 @@ namespace DietApp
 
             try
             {
-                //Gets the user information for the user just added to the DB based on the newly created userID.
-                var originalUser = DietAppController.getUserData(this.theUser.userId);
-                //Builds a blank user profile.
-                var newUser = new Users
+                if (View_Validator.Blank(firstNameBox) || View_Validator.Blank(lastNameBox) || View_Validator.Blank(emailBox) ||
+                    View_Validator.Blank(weightBox) || View_Validator.Blank(footBox) || View_Validator.Blank(inchesBox))
                 {
-                    //Adds the current userName to the blank user profile.
-                    firstName = firstName,
-                    lastName = lastName,
-                    email = email,
-                    initialWeight = weight,
-                    heightInches = height
-
-                };
-                if (originalUser.firstName.Equals(newUser.firstName) && originalUser.lastName.Equals(newUser.lastName) &&
-                    originalUser.email.Equals(newUser.email) && originalUser.initialWeight.Equals(newUser.initialWeight) &&
-                    originalUser.heightInches.Equals(newUser.heightInches))
-                {
-                    MessageBox.Show("No profile information changed.",  "Update User");
+                    //Checks for Blank Boxes
                 }
                 else
                 {
-                    //Updates the user.
-                    DietAppController.updateUsers(originalUser, newUser);
-                    this.theUser = newUser;
-                    MessageBox.Show("User ID: " + originalUser.userName + " updated.", "Update User");
+                    //Gets the user information for the user just added to the DB based on the newly created userID.
+                    var originalUser = DietAppController.getUserData(this.theUser.userId);
+                    //Builds a blank user profile.
+                    var newUser = new Users
+                    {
+                        //Adds the current userName to the blank user profile.
+                        firstName = firstName,
+                        lastName = lastName,
+                        email = email,
+                        initialWeight = weight,
+                        heightInches = height
+
+                    };
+                    if (originalUser.firstName.Equals(newUser.firstName) && originalUser.lastName.Equals(newUser.lastName) &&
+                        originalUser.email.Equals(newUser.email) && originalUser.initialWeight.Equals(newUser.initialWeight) &&
+                        originalUser.heightInches.Equals(newUser.heightInches))
+                    {
+                        MessageBox.Show("No profile information changed.", "Update User Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        //Updates the user.
+                        DietAppController.updateUsers(originalUser, newUser);
+                        this.theUser = newUser;
+                        MessageBox.Show("User ID: " + originalUser.userName + " updated.", "Update User",MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    //Refreshes this form.
+                    this.Refresh();
                 }
-                //Refreshes this form.
-                this.Refresh();
             }
             catch (SqlException ex)
             {
-                MessageBox.Show(ex.Message, ex.GetType().ToString());
+                MessageBox.Show(ex.Message, ex.GetType().ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, ex.GetType().ToString());
+                MessageBox.Show(ex.Message, ex.GetType().ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
