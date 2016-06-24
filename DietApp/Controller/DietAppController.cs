@@ -18,7 +18,7 @@ namespace DietApp.Controller
         }
 
         /// <summary>
-        ///
+        /// Adds a new user to the DB.
         /// </summary>
         /// <param name="userName"></param>
         /// <param name="password"></param>
@@ -58,10 +58,34 @@ namespace DietApp.Controller
             UsersDAL.updateUsers(oldUsers, newUsers);
         }
 
-
+        /// <summary>
+        /// Gets the wellness data from the DB for a user on a given day.
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <param name="date"></param>
+        /// <returns></returns>
         public static Wellness dateWellnessData(int userId, string date)
         {
             return WellnessDAL.dateWellnessData(userId, date);
+        }
+
+        /// <summary>
+        /// Adds the wellness data to the DB.
+        /// </summary>
+        /// <param name="theWellness"></param>
+        public static void addDailyWellnessData(Wellness theWellness)
+        {
+            WellnessDAL.addDailyWellnessData(theWellness);
+        }
+
+        /// <summary>
+        /// Updates the wellness data in the DB.
+        /// </summary>
+        /// <param name="newWellness"></param>
+        /// <param name="oldWellness"></param>
+        public static void updateDailyWellnessData(Wellness newWellness, Wellness oldWellness)
+        {
+            WellnessDAL.updateDailyWellnessData(newWellness, oldWellness);
         }
     }
 }

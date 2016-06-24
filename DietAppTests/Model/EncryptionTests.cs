@@ -1,6 +1,6 @@
-﻿using System;
+﻿using DietApp.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using DietApp.Model;
+using System;
 using System.Security.Cryptography;
 using System.Text;
 

@@ -22,7 +22,6 @@ namespace DietApp
         {
             String userName, password, confirm, firstName, lastName, email;
             int height, value, weight;
-           
 
             userName = usernameBox.Text;
             password = passwordBox.Text;
@@ -33,7 +32,7 @@ namespace DietApp
             Int32.TryParse(weightBox.Text, out value);
             weight = value;
             Int32.TryParse(footBox.Text, out value);
-            height = value*12;
+            height = value * 12;
             Int32.TryParse(inchesBox.Text, out value);
             height += value;
 
@@ -75,7 +74,6 @@ namespace DietApp
                         email = email,
                         initialWeight = weight,
                         heightInches = height
-
                     };
                     //Updates the user.
                     DietAppController.updateUsers(justAdded, newUser);

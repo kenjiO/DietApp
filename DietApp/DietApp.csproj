@@ -47,7 +47,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\DietAppController.cs" />
-    <Compile Include="DAL\DBConnection.cs" />
     <Compile Include="DAL\UsersDAL.cs" />
     <Compile Include="DAL\WellnessDAL.cs" />
     <Compile Include="DietAppDataSet.cs">

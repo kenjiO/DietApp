@@ -1,4 +1,5 @@
 ﻿using DietApp.Model;
+using DietApp.View;
 using System;
 using System.Windows.Forms;
 
@@ -16,7 +17,7 @@ namespace DietApp
         }
 
         /// <summary>
-        /// Updates the title bar with an appropriate greeting.  
+        /// Updates the title bar with an appropriate greeting.
         /// If user is defined, userName is displayed as a part of that greeting.
         /// Else, the user is directed to the profile form and a generic greeting is displayed.
         /// </summary>
@@ -50,7 +51,7 @@ namespace DietApp
             if (this.profileForm == null)
             {
                 this.profileForm = new ProfileInfo();
-                this.profileForm.loadUser(this.theUser); // Unknown Null ERROR //
+                this.profileForm.loadUser(this.theUser);
                 this.profileForm.MdiParent = this;
                 this.profileForm.FormClosed += new FormClosedEventHandler(ProfileInfoFormClosed);
                 this.profileForm.Show();
@@ -110,7 +111,7 @@ namespace DietApp
         }
 
         /// <summary>
-        /// Shows the WellnessTrackingForm.
+        /// Shows the WellnessTracking Form.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -119,7 +120,7 @@ namespace DietApp
             if (this.wellnessForm == null)
             {
                 this.wellnessForm = new WellnessTrackingForm();
-                this.wellnessForm.loadUser(this.theUser); // Unknown Null ERROR //
+                this.wellnessForm.loadUser(this.theUser);
                 this.wellnessForm.MdiParent = this;
                 this.wellnessForm.FormClosed += new FormClosedEventHandler(WellnessFormClosed);
                 this.wellnessForm.Show();
@@ -131,7 +132,7 @@ namespace DietApp
         }
 
         /// <summary>
-        /// Closes the WellnessTrackingForm.
+        /// Closes the WellnessTracking Form.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>

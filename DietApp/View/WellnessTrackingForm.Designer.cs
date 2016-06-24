@@ -42,6 +42,7 @@
             this.weightUpDown = new System.Windows.Forms.NumericUpDown();
             this.cancelButton = new System.Windows.Forms.Button();
             this.saveButton = new System.Windows.Forms.Button();
+            this.updateButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.systolicUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.diastolicUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.heartRateUpDown)).BeginInit();
@@ -109,6 +110,11 @@
             // 
             this.systolicUpDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.systolicUpDown.Location = new System.Drawing.Point(197, 110);
+            this.systolicUpDown.Maximum = new decimal(new int[] {
+            400,
+            0,
+            0,
+            0});
             this.systolicUpDown.Name = "systolicUpDown";
             this.systolicUpDown.Size = new System.Drawing.Size(120, 35);
             this.systolicUpDown.TabIndex = 78;
@@ -117,6 +123,11 @@
             // 
             this.diastolicUpDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.diastolicUpDown.Location = new System.Drawing.Point(356, 110);
+            this.diastolicUpDown.Maximum = new decimal(new int[] {
+            400,
+            0,
+            0,
+            0});
             this.diastolicUpDown.Name = "diastolicUpDown";
             this.diastolicUpDown.Size = new System.Drawing.Size(120, 35);
             this.diastolicUpDown.TabIndex = 79;
@@ -138,11 +149,17 @@
             this.dateTimePicker.Name = "dateTimePicker";
             this.dateTimePicker.Size = new System.Drawing.Size(464, 35);
             this.dateTimePicker.TabIndex = 81;
+            this.dateTimePicker.ValueChanged += new System.EventHandler(this.WellnessTrackingForm_Load);
             // 
             // heartRateUpDown
             // 
             this.heartRateUpDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.heartRateUpDown.Location = new System.Drawing.Point(17, 198);
+            this.heartRateUpDown.Maximum = new decimal(new int[] {
+            400,
+            0,
+            0,
+            0});
             this.heartRateUpDown.Name = "heartRateUpDown";
             this.heartRateUpDown.Size = new System.Drawing.Size(120, 35);
             this.heartRateUpDown.TabIndex = 82;
@@ -151,6 +168,11 @@
             // 
             this.weightUpDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.weightUpDown.Location = new System.Drawing.Point(17, 110);
+            this.weightUpDown.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
             this.weightUpDown.Name = "weightUpDown";
             this.weightUpDown.Size = new System.Drawing.Size(120, 35);
             this.weightUpDown.TabIndex = 83;
@@ -170,7 +192,6 @@
             // 
             // saveButton
             // 
-            this.saveButton.Enabled = false;
             this.saveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.saveButton.Location = new System.Drawing.Point(222, 185);
             this.saveButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -181,6 +202,20 @@
             this.saveButton.UseVisualStyleBackColor = true;
             this.saveButton.Click += new System.EventHandler(this.saveInfo_Click);
             // 
+            // updateButton
+            // 
+            this.updateButton.Enabled = false;
+            this.updateButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.updateButton.Location = new System.Drawing.Point(222, 185);
+            this.updateButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.updateButton.Name = "updateButton";
+            this.updateButton.Size = new System.Drawing.Size(120, 48);
+            this.updateButton.TabIndex = 86;
+            this.updateButton.Text = "Update";
+            this.updateButton.UseVisualStyleBackColor = true;
+            this.updateButton.Visible = false;
+            this.updateButton.Click += new System.EventHandler(this.updateInfo_Click);
+            // 
             // WellnessTrackingForm
             // 
             this.AcceptButton = this.saveButton;
@@ -188,6 +223,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancelButton;
             this.ClientSize = new System.Drawing.Size(493, 256);
+            this.Controls.Add(this.updateButton);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.weightUpDown);
@@ -230,5 +266,6 @@
         private System.Windows.Forms.NumericUpDown weightUpDown;
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.Button saveButton;
+        private System.Windows.Forms.Button updateButton;
     }
 }

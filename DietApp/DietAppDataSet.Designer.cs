@@ -3670,7 +3670,7 @@ WHERE (userId = @Original_userId) AND (username = @Original_username) AND (first
              initialWeight = @Original_initialWeight) AND (heightInches IS NULL OR
              heightInches = @Original_heightInches) AND (dailyCalorieGoal IS NULL OR
              dailyCalorieGoal = @Original_dailyCalorieGoal) AND (goalWeight IS NULL OR
-             goalWeight = @Original_goalWeight);  
+             goalWeight = @Original_goalWeight);
 SELECT userId, username, firstName, lastName, email, initialWeight, heightInches, dailyCalorieGoal, goalWeight FROM users WHERE (userId = @userId)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@username", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "username", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -5127,29 +5127,28 @@ SELECT measurementTypeId, measurementTypeName FROM measurementTypes WHERE (measu
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_dailyMeasurementId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dailyMeasurementId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dailyMeasurements] ([date], [userId], [measurementTypeId], [measurement], [dailyMeasurementId]) VALUES (@date, @userId, @measurementTypeId, @measurement, @dailyMeasurementId);
-SELECT date, userId, measurementTypeId, measurement, dailyMeasurementId FROM dailyMeasurements WHERE (dailyMeasurementId = @dailyMeasurementId)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dailyMeasurements] ([date], [userId], [measurementTypeId], [measurement]) VALUES (@date, @userId, @measurementTypeId, @measurement);
+SELECT date, userId, measurementTypeId, measurement, dailyMeasurementId FROM dailyMeasurements WHERE (dailyMeasurementId = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@date", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "date", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@userId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "userId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@measurementTypeId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "measurementTypeId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@measurement", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "measurement", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dailyMeasurementId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dailyMeasurementId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dailyMeasurements] SET [date] = @date, [userId] = @userId, [measurementTypeId] = @measurementTypeId, [measurement] = @measurement, [dailyMeasurementId] = @dailyMeasurementId WHERE (([date] = @Original_date) AND ([userId] = @Original_userId) AND ([measurementTypeId] = @Original_measurementTypeId) AND ([measurement] = @Original_measurement) AND ([dailyMeasurementId] = @Original_dailyMeasurementId));
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dailyMeasurements] SET [date] = @date, [userId] = @userId, [measurementTypeId] = @measurementTypeId, [measurement] = @measurement WHERE (([date] = @Original_date) AND ([userId] = @Original_userId) AND ([measurementTypeId] = @Original_measurementTypeId) AND ([measurement] = @Original_measurement) AND ([dailyMeasurementId] = @Original_dailyMeasurementId));
 SELECT date, userId, measurementTypeId, measurement, dailyMeasurementId FROM dailyMeasurements WHERE (dailyMeasurementId = @dailyMeasurementId)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@date", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "date", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@userId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "userId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@measurementTypeId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "measurementTypeId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@measurement", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "measurement", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dailyMeasurementId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dailyMeasurementId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_date", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "date", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_userId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "userId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_measurementTypeId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "measurementTypeId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_measurement", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "measurement", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_dailyMeasurementId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dailyMeasurementId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dailyMeasurementId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "dailyMeasurementId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5253,12 +5252,11 @@ SELECT date, userId, measurementTypeId, measurement, dailyMeasurementId FROM dai
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(System.DateTime date, int userId, int measurementTypeId, int measurement, int dailyMeasurementId) {
+        public virtual int Insert(System.DateTime date, int userId, int measurementTypeId, int measurement) {
             this.Adapter.InsertCommand.Parameters[0].Value = ((System.DateTime)(date));
             this.Adapter.InsertCommand.Parameters[1].Value = ((int)(userId));
             this.Adapter.InsertCommand.Parameters[2].Value = ((int)(measurementTypeId));
             this.Adapter.InsertCommand.Parameters[3].Value = ((int)(measurement));
-            this.Adapter.InsertCommand.Parameters[4].Value = ((int)(dailyMeasurementId));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -5279,17 +5277,17 @@ SELECT date, userId, measurementTypeId, measurement, dailyMeasurementId FROM dai
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(System.DateTime date, int userId, int measurementTypeId, int measurement, int dailyMeasurementId, System.DateTime Original_date, int Original_userId, int Original_measurementTypeId, int Original_measurement, int Original_dailyMeasurementId) {
+        public virtual int Update(System.DateTime date, int userId, int measurementTypeId, int measurement, System.DateTime Original_date, int Original_userId, int Original_measurementTypeId, int Original_measurement, int Original_dailyMeasurementId, int dailyMeasurementId) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((System.DateTime)(date));
             this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(userId));
             this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(measurementTypeId));
             this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(measurement));
-            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(dailyMeasurementId));
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((System.DateTime)(Original_date));
-            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_userId));
-            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Original_measurementTypeId));
-            this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(Original_measurement));
-            this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(Original_dailyMeasurementId));
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((System.DateTime)(Original_date));
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Original_userId));
+            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_measurementTypeId));
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Original_measurement));
+            this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(Original_dailyMeasurementId));
+            this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(dailyMeasurementId));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -5311,7 +5309,7 @@ SELECT date, userId, measurementTypeId, measurement, dailyMeasurementId FROM dai
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(System.DateTime date, int userId, int measurementTypeId, int measurement, System.DateTime Original_date, int Original_userId, int Original_measurementTypeId, int Original_measurement, int Original_dailyMeasurementId) {
-            return this.Update(date, userId, measurementTypeId, measurement, Original_dailyMeasurementId, Original_date, Original_userId, Original_measurementTypeId, Original_measurement, Original_dailyMeasurementId);
+            return this.Update(date, userId, measurementTypeId, measurement, Original_date, Original_userId, Original_measurementTypeId, Original_measurement, Original_dailyMeasurementId, Original_dailyMeasurementId);
         }
     }
     
