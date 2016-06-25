@@ -33,11 +33,12 @@ CREATE TABLE measurementTypes (
 )
      
 CREATE TABLE dailyMeasurements (
+  dailyMeasurementId int PRIMARY KEY NOT NULL IDENTITY(1,1),
   date date NOT NULL,
   userId int NOT NULL FOREIGN KEY REFERENCES users(userId),
-  typeId int NOT NULL FOREIGN KEY REFERENCES measurementTypes(measurementTypeId),
-  value int NOT NULL,
-  primary key (date, userId, typeId)
+  measurementTypeId int NOT NULL FOREIGN KEY REFERENCES measurementTypes(measurementTypeId),
+  measurement int NOT NULL,
+  CONSTRAINT UNQ_dailyMeasurement UNIQUE(date,userId,measurementTypeId)
 )
 
 CREATE TABLE itemConsumed (
@@ -58,3 +59,12 @@ CREATE TABLE defaultNutritionalValues (
   protein int,
   carbohydrates int
 )
+
+SET IDENTITY_INSERT measurementTypes ON 
+
+INSERT INTO measurementTypes (measurementTypeId,measurementTypeName, measurementDefaultUnit) Values(1,'weight','lb.');
+INSERT INTO measurementTypes (measurementTypeId,measurementTypeName, measurementDefaultUnit) Values(2,'heartRate','bpm.');
+INSERT INTO measurementTypes (measurementTypeId,measurementTypeName, measurementDefaultUnit) Values(3,'systolicBP','mom');
+INSERT INTO measurementTypes (measurementTypeId,measurementTypeName, measurementDefaultUnit) Values(4,'diastolicBP','mom');
+
+SET IDENTITY_INSERT measurementTypes OFF 

@@ -16,3 +16,13 @@ INSERT INTO users (userId, username, password)
 VALUES (3, 'cc', '0x66b27417d37e024c46526c2f6d358a754fc552f3') 
 
 SET IDENTITY_INSERT users OFF 
+
+SET IDENTITY_INSERT dailyMeasurements ON 
+
+INSERT INTO dailyMeasurements (dailyMeasurementId,date,userId,measurementTypeId,measurement) VALUES(1,CONVERT(datetime,'06/23/2016'),'1','1','210');
+INSERT INTO dailyMeasurements (dailyMeasurementId,date,userId,measurementTypeId,measurement) VALUES(2,CONVERT(datetime,'06/23/2016'),'1','2','65');
+INSERT INTO dailyMeasurements (dailyMeasurementId,date,userId,measurementTypeId,measurement) VALUES(3,CONVERT(datetime,'06/23/2016'),'1','3','100');
+INSERT INTO dailyMeasurements (dailyMeasurementId,date,userId,measurementTypeId,measurement) VALUES(4,CONVERT(datetime,'06/23/2016'),'1','4','80');
+
+
+SET IDENTITY_INSERT dailyMeasurements OFF 
