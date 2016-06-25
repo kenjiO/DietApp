@@ -50,6 +50,7 @@
     <Compile Include="DAL\DBConnection.cs" />
     <Compile Include="DAL\FoodEntryDAL.cs" />
     <Compile Include="DAL\UsersDAL.cs" />
+    <Compile Include="DAL\WellnessDAL.cs" />
     <Compile Include="DietAppDataSet.cs">
       <DependentUpon>DietAppDataSet.xsd</DependentUpon>
       <SubType>Component</SubType>
@@ -70,6 +71,7 @@
     <Compile Include="View\FoodEntryForm.Designer.cs">
       <DependentUpon>FoodEntryForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\Wellness.cs" />
     <Compile Include="View\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,6 +99,12 @@
       <DependentUpon>ProfileInfo.cs</DependentUpon>
     </Compile>
     <Compile Include="View\View_Validator.cs" />
+    <Compile Include="View\WellnessTrackingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\WellnessTrackingForm.Designer.cs">
+      <DependentUpon>WellnessTrackingForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\WellnessInfo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -129,6 +137,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\WellnessInfo.resx">
       <DependentUpon>WellnessInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\WellnessTrackingForm.resx">
+      <DependentUpon>WellnessTrackingForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="DietAppDataSet.xsc">
       <DependentUpon>DietAppDataSet.xsd</DependentUpon>

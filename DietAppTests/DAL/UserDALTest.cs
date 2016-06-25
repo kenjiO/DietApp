@@ -1,16 +1,14 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using DietApp.DAL;
 using DietApp.Model;
-using DietApp.DAL;
-using System.Collections.Generic;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 
 namespace DietAppTests.DAL
 {
     [TestClass]
     public class UserDALTest
     {
-        Encryption encryption = new Encryption();
-
+        private Encryption encryption = new Encryption();
 
         /// <summary>
         /// Test for return of user data
@@ -30,7 +28,6 @@ namespace DietAppTests.DAL
             int dailyCalorieGoal = 2500;
             int goalWeight = 180;
             String fullName = firstName + " " + lastName;
-
 
             //Get User AA (by userName)
             Users aa = UsersDAL.getUserData(username);

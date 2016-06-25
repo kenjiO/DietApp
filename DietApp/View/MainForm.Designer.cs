@@ -38,7 +38,7 @@
             this.myWellnessIncentivesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.myTrackingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.calorieTrackingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.weightTrackingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.wellnessTrackingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.myHealthTrendsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.caloriesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -126,8 +126,7 @@
             // 
             this.myTrackingToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.calorieTrackingToolStripMenuItem,
-            this.weightTrackingToolStripMenuItem});
-            this.myTrackingToolStripMenuItem.Enabled = false;
+            this.wellnessTrackingToolStripMenuItem});
             this.myTrackingToolStripMenuItem.Name = "myTrackingToolStripMenuItem";
             this.myTrackingToolStripMenuItem.Size = new System.Drawing.Size(84, 22);
             this.myTrackingToolStripMenuItem.Text = "My Tracking";
@@ -139,12 +138,12 @@
             this.calorieTrackingToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.calorieTrackingToolStripMenuItem.Text = "Food Tracking";
             // 
-            // weightTrackingToolStripMenuItem
+            // wellnessTrackingToolStripMenuItem
             // 
-            this.weightTrackingToolStripMenuItem.Enabled = false;
-            this.weightTrackingToolStripMenuItem.Name = "weightTrackingToolStripMenuItem";
-            this.weightTrackingToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
-            this.weightTrackingToolStripMenuItem.Text = "Weight Tracking";
+            this.wellnessTrackingToolStripMenuItem.Name = "wellnessTrackingToolStripMenuItem";
+            this.wellnessTrackingToolStripMenuItem.Size = new System.Drawing.Size(234, 30);
+            this.wellnessTrackingToolStripMenuItem.Text = "Wellness Tracking";
+            this.wellnessTrackingToolStripMenuItem.Click += new System.EventHandler(this.wellnessTrackingToolStripMenuItem_Click);
             // 
             // myHealthTrendsToolStripMenuItem
             // 
@@ -210,14 +209,14 @@
             // 
             this.exportMyDataToolStripMenuItem.Enabled = false;
             this.exportMyDataToolStripMenuItem.Name = "exportMyDataToolStripMenuItem";
-            this.exportMyDataToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
+            this.exportMyDataToolStripMenuItem.Size = new System.Drawing.Size(152, 30);
             this.exportMyDataToolStripMenuItem.Text = "Export";
             // 
             // importMyDataToolStripMenuItem
             // 
             this.importMyDataToolStripMenuItem.Enabled = false;
             this.importMyDataToolStripMenuItem.Name = "importMyDataToolStripMenuItem";
-            this.importMyDataToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
+            this.importMyDataToolStripMenuItem.Size = new System.Drawing.Size(152, 30);
             this.importMyDataToolStripMenuItem.Text = "Import";
             // 
             // enterFoodItemToolStripMenuItem
@@ -263,7 +262,7 @@
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem calorieTrackingToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem weightTrackingToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem wellnessTrackingToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem wellnessMeterToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem myWellnessInformationToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem myWellnessIncentivesToolStripMenuItem;

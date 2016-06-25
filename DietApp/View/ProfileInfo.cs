@@ -56,6 +56,5 @@ namespace DietApp
         {
             this.Close();
         }
-
     }
 }

@@ -1,13 +1,11 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using DietApp.Model;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 
 namespace DietApp.Model.Tests
 {
     [TestClass()]
     public class Model_ValidatorTests
     {
-
         [TestMethod()]
         public void comparePasswordTest()
         {

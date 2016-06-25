@@ -9,6 +9,7 @@ namespace DietApp
     {
         private Users theUser;
         private ProfileInfo profileForm;
+        private WellnessTrackingForm wellnessForm;
 
         public MainForm()
         {
@@ -16,7 +17,7 @@ namespace DietApp
         }
 
         /// <summary>
-        /// Updates the title bar with an appropriate greeting.  
+        /// Updates the title bar with an appropriate greeting.
         /// If user is defined, userName is displayed as a part of that greeting.
         /// Else, the user is directed to the profile form and a generic greeting is displayed.
         /// </summary>
@@ -50,7 +51,7 @@ namespace DietApp
             if (this.profileForm == null)
             {
                 this.profileForm = new ProfileInfo();
-                this.profileForm.loadUser(this.theUser); // Unknown Null ERROR //
+                this.profileForm.loadUser(this.theUser);
                 this.profileForm.MdiParent = this;
                 this.profileForm.FormClosed += new FormClosedEventHandler(ProfileInfoFormClosed);
                 this.profileForm.Show();
@@ -107,6 +108,37 @@ namespace DietApp
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
             Application.Exit();
+        }
+
+        /// <summary>
+        /// Shows the WellnessTracking Form.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void wellnessTrackingToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (this.wellnessForm == null)
+            {
+                this.wellnessForm = new WellnessTrackingForm();
+                this.wellnessForm.loadUser(this.theUser);
+                this.wellnessForm.MdiParent = this;
+                this.wellnessForm.FormClosed += new FormClosedEventHandler(WellnessFormClosed);
+                this.wellnessForm.Show();
+            }
+            else
+            {
+                this.wellnessForm.Activate();
+            }
+        }
+
+        /// <summary>
+        /// Closes the WellnessTracking Form.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void WellnessFormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.wellnessForm = null;
         }
 
         private void enterFoodItemToolStripMenuItem_Click(object sender, EventArgs e)

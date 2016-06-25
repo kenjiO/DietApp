@@ -1,8 +1,6 @@
 ﻿using DietApp.Model;
 using System;
 using System.Data;
-using System.Data.SqlClient;
-using System.Windows.Forms;
 
 namespace DietApp.DAL
 {
@@ -132,11 +130,11 @@ namespace DietApp.DAL
             {
                 using (var usersDataSet = new DietAppDataSetTableAdapters.usersTableAdapter())
                 {
-                        usersDataSet.Update(newUsers.userName, newUsers.firstName, newUsers.lastName, newUsers.email,
-                        newUsers.initialWeight, newUsers.heightInches, newUsers.dailyCalorieGoal,
-                        newUsers.goalWeight, oldUsers.userId, oldUsers.userName, oldUsers.firstName, oldUsers.lastName, oldUsers.email,
-                        oldUsers.initialWeight, oldUsers.heightInches, oldUsers.dailyCalorieGoal,
-                        oldUsers.goalWeight,newUsers.userId);
+                    usersDataSet.Update(newUsers.userName, newUsers.firstName, newUsers.lastName, newUsers.email,
+                    newUsers.initialWeight, newUsers.heightInches, newUsers.dailyCalorieGoal,
+                    newUsers.goalWeight, oldUsers.userId, oldUsers.userName, oldUsers.firstName, oldUsers.lastName, oldUsers.email,
+                    oldUsers.initialWeight, oldUsers.heightInches, oldUsers.dailyCalorieGoal,
+                    oldUsers.goalWeight, newUsers.userId);
                 }
             }
         }
