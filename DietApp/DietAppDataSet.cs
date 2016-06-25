@@ -4,3 +4,9 @@
     {
     }
 }
+namespace DietApp.DietAppDataSetTableAdapters {
+    
+    
+    public partial class usersTableAdapter {
+    }
+}

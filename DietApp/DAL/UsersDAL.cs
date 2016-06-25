@@ -82,15 +82,15 @@ namespace DietApp.DAL
         /// <summary>
         ///Adds a userName and password to the DB for a new user to be created.  Returns the newUser's userID.
         /// </summary>
-        /// <param name="userName"></param>
-        /// <param name="password"></param>
-        /// <returns>newUsers userID</returns>
+        /// <param name="userName">Username</param>
+        /// <param name="password">Password</param>
+        /// <returns>newUsers userId</returns>
         public static int addNewUser(String userName, String password)
         {
             var PasswordHash = new Encryption();
             short number;
             var idNumber = "";
-            int userID;
+            int userId;
             using (var userDataTable = new DietAppDataSet())
             {
                 using (var userPasswordComboSet = new DietAppDataSetTableAdapters.userPasswordComboTableAdapter())
@@ -107,34 +107,48 @@ namespace DietApp.DAL
                     var result = Int16.TryParse(idNumber, out number);
                     if (result)
                     {
-                        userID = number;
+                        userId = number;
                     }
                     else
                     {
-                        userID = 0;
+                        userId = 0;
                     }
                 }
 
-                return userID;
+                return userId;
             }
         }
 
         /// <summary>
-        /// Updates the newUser's information in the DB.
+        /// Updates the newUser's information in the DB. Note: userId, userName, and password will not update.
         /// </summary>
-        /// <param name="oldUsers"></param>
-        /// <param name="newUsers"></param>
+        /// <param name="oldUsers">The old user's information</param>
+        /// <param name="newUsers">The new user's information</param>
         public static void updateUsers(Users oldUsers, Users newUsers)
         {
             using (var userDataTable = new DietAppDataSet())
             {
                 using (var usersDataSet = new DietAppDataSetTableAdapters.usersTableAdapter())
                 {
-                    usersDataSet.Update(newUsers.userName, newUsers.firstName, newUsers.lastName, newUsers.email,
-                    newUsers.initialWeight, newUsers.heightInches, newUsers.dailyCalorieGoal,
-                    newUsers.goalWeight, oldUsers.userId, oldUsers.userName, oldUsers.firstName, oldUsers.lastName, oldUsers.email,
-                    oldUsers.initialWeight, oldUsers.heightInches, oldUsers.dailyCalorieGoal,
-                    oldUsers.goalWeight, newUsers.userId);
+                    usersDataSet.updateUser(newUsers.firstName, newUsers.lastName, newUsers.email,
+                    newUsers.initialWeight, newUsers.heightInches, newUsers.dailyCalorieGoal, newUsers.goalWeight, 
+                    oldUsers.userId, oldUsers.firstName, oldUsers.lastName, oldUsers.email,
+                    oldUsers.initialWeight, oldUsers.heightInches, oldUsers.dailyCalorieGoal, oldUsers.goalWeight);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Delete User's information in the DB, used for testing only.
+        /// </summary>
+        /// <param name="userId">Id(row) of user.</param>
+        public static void deleteUsers(int userId)
+        {
+            using (var userDataTable = new DietAppDataSet())
+            {
+                using (var usersDataSet = new DietAppDataSetTableAdapters.usersTableAdapter())
+                {
+                    usersDataSet.deleteUser(userId);
                 }
             }
         }

@@ -19,11 +19,11 @@ namespace DietApp.Controller
         }
 
         /// <summary>
-        /// Adds a new user to the DB.
+        /// Adds a new user to the database
         /// </summary>
-        /// <param name="userName"></param>
-        /// <param name="password"></param>
-        /// <returns>new Users user</returns>
+        /// <param name="userName">User's userName</param>
+        /// <param name="password">User's password</param>
+        /// <returns>New user's userId</returns>
         public static int addNewUser(String userName, String password)
         {
             return UsersDAL.addNewUser(userName, password);
@@ -50,10 +50,10 @@ namespace DietApp.Controller
         }
 
         /// <summary>
-        /// Updates the user information.
+        /// Updates the user's information.
         /// </summary>
-        /// <param name="oldUsers"></param>
-        /// <param name="newUsers"></param>
+        /// <param name="oldUsers">Old user's information</param>
+        /// <param name="newUsers">New user's information</param>
         public static void updateUsers(Users oldUsers, Users newUsers)
         {
             UsersDAL.updateUsers(oldUsers, newUsers);

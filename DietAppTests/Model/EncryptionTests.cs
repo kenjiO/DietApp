@@ -6,21 +6,25 @@ using System.Text;
 
 namespace DietApp.ModelTest
 {
+    /// <summary>
+    /// Test the Encryption Class in DietApp.Model
+    /// </summary>
     [TestClass]
     public class EncryptionTest
     {
-        private String goodWord = "password";
-        private String badWord = "testing";
-
         /// <summary>
         /// Test the encryption of Passwords
         /// </summary>
         [TestMethod]
-        public void TestEncryption()
+        public void TestGetSHA1Hash()
         {
-            //Encrypt Testword
+            //Set Test Passwords
+            String goodPassword = "password";
+            String badPassword = "testing";
+
+            //Create goodWord Hash (password)
             SHA1CryptoServiceProvider x = new SHA1CryptoServiceProvider();
-            byte[] bs = Encoding.UTF8.GetBytes(this.goodWord);
+            byte[] bs = Encoding.UTF8.GetBytes(goodPassword);
             bs = x.ComputeHash(bs);
             StringBuilder s = new StringBuilder();
             foreach (byte b in bs)
@@ -29,12 +33,12 @@ namespace DietApp.ModelTest
             }
             String password = "0x" + s.ToString();
 
-            //Send Testword through encryption
+            //Encrypt Test Passwords
             Encryption encrypt = new Encryption();
-            String goodResult = encrypt.GetSHA1Hash(this.goodWord);
-            String badResult = encrypt.GetSHA1Hash(this.badWord);
+            String goodResult = encrypt.GetSHA1Hash(goodPassword);
+            String badResult = encrypt.GetSHA1Hash(badPassword);
 
-            //Test Good and Bad
+            //Check Test Passwords
             Assert.AreEqual(password, goodResult, "Encryption Error, good result.");
             Assert.AreNotEqual(password, badResult, "Encryption Error, bad result.");
         }

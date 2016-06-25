@@ -3,24 +3,30 @@ using System;
 
 namespace DietApp.Model.Tests
 {
+    /// <summary>
+    /// Test the Model_Validator Class in DietApp.Model
+    /// </summary>
     [TestClass()]
     public class Model_ValidatorTests
     {
+        /// <summary>
+        /// Test comparison of Passwords
+        /// </summary>
         [TestMethod()]
-        public void comparePasswordTest()
+        public void TestcomparePassword()
         {
             //Set User BB
-            String username = "bb";
+            String userName = "bb";
             String goodPassword = "abc";
             String badPassword = "123";
 
             //Checks Passwords
-            bool goodResults = Model_Validator.comparePassword(username, goodPassword);
-            bool badResults = Model_Validator.comparePassword(username, badPassword);
+            bool goodResult = Model_Validator.comparePassword(userName, goodPassword);
+            bool badResult = Model_Validator.comparePassword(userName, badPassword);
 
             //Returns Results
-            Assert.IsTrue(goodResults, "Correct Password fails.");
-            Assert.IsFalse(badResults, "Incorrect Password passes.");
+            Assert.IsTrue(goodResult, "Correct Password fails.");
+            Assert.IsFalse(badResult, "Incorrect Password passes.");
         }
     }
 }
