@@ -56,14 +56,15 @@ namespace DietApp.View
                     consumedAt
                 );
             }
-            catch (DietApp.DAL.DuplcateFoodEntryException ex)
+            catch (DietApp.DAL.DuplcateFoodEntryException)
             {
                 MessageBox.Show("An entry for that food and date/time already exists");
                 return;
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("There was an error adding this entry to the database\n\n" + ex.Message);
+
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
                 return;
             }
             MessageBox.Show("Entry added");
@@ -105,7 +106,7 @@ namespace DietApp.View
             {
                 return Convert.ToInt32(value.Trim());
             }
-            catch (FormatException e)
+            catch (FormatException)
             {
                 return null;
             }

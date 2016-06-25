@@ -3,7 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using DietApp.Controller;
 using System.Collections.Generic;
 using DietApp.DAL;
-using DietApp.Model;
+using System;
 
 namespace DietApp.Controller.Tests
 {

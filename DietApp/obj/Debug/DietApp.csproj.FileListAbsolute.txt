@@ -36,18 +36,19 @@ C:\Users\rcarswel\Source\Repos\dietapp\DietApp\obj\Debug\DietApp.WellnessInfo.re
 C:\Users\rcarswel\Source\Repos\dietapp\DietApp\obj\Debug\DietApp.csproj.GenerateResource.Cache
 C:\Users\rcarswel\Source\Repos\dietapp\DietApp\obj\Debug\DietApp.exe
 C:\Users\rcarswel\Source\Repos\dietapp\DietApp\obj\Debug\DietApp.pdb
+C:\Users\kalei\OneDrive\Documents\Visual Studio 2015\Projects\DietApp\DietApp\obj\Debug\DietApp.View.WellnessTrackingForm.resources
+C:\Users\kalei\OneDrive\Documents\Visual Studio 2015\Projects\DietApp\DietApp\obj\Debug\DietApp.View.FoodEntryForm.resources
 C:\Users\Robert Carswell Jr\Documents\dietapp\DietApp\bin\Debug\DietApp.exe.config
 C:\Users\Robert Carswell Jr\Documents\dietapp\DietApp\bin\Debug\DietApp.exe
 C:\Users\Robert Carswell Jr\Documents\dietapp\DietApp\bin\Debug\DietApp.pdb
-C:\Users\Robert Carswell Jr\Documents\dietapp\DietApp\obj\Debug\DietApp.csprojResolveAssemblyReference.cache
-C:\Users\Robert Carswell Jr\Documents\dietapp\DietApp\obj\Debug\DietApp.loginForm.resources
+C:\Users\Robert Carswell Jr\Documents\dietapp\DietApp\obj\Debug\DietApp.View.FoodEntryForm.resources
+C:\Users\Robert Carswell Jr\Documents\dietapp\DietApp\obj\Debug\DietApp.LoginForm.resources
 C:\Users\Robert Carswell Jr\Documents\dietapp\DietApp\obj\Debug\DietApp.MainForm.resources
 C:\Users\Robert Carswell Jr\Documents\dietapp\DietApp\obj\Debug\DietApp.NewUser.resources
 C:\Users\Robert Carswell Jr\Documents\dietapp\DietApp\obj\Debug\DietApp.Properties.Resources.resources
 C:\Users\Robert Carswell Jr\Documents\dietapp\DietApp\obj\Debug\DietApp.ProfileInfo.resources
 C:\Users\Robert Carswell Jr\Documents\dietapp\DietApp\obj\Debug\DietApp.WellnessInfo.resources
+C:\Users\Robert Carswell Jr\Documents\dietapp\DietApp\obj\Debug\DietApp.View.WellnessTrackingForm.resources
 C:\Users\Robert Carswell Jr\Documents\dietapp\DietApp\obj\Debug\DietApp.csproj.GenerateResource.Cache
 C:\Users\Robert Carswell Jr\Documents\dietapp\DietApp\obj\Debug\DietApp.exe
 C:\Users\Robert Carswell Jr\Documents\dietapp\DietApp\obj\Debug\DietApp.pdb
-C:\Users\kalei\OneDrive\Documents\Visual Studio 2015\Projects\DietApp\DietApp\obj\Debug\DietApp.View.WellnessTrackingForm.resources
-C:\Users\kalei\OneDrive\Documents\Visual Studio 2015\Projects\DietApp\DietApp\obj\Debug\DietApp.View.FoodEntryForm.resources

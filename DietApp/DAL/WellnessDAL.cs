@@ -117,7 +117,7 @@ namespace DietApp.DAL
         /// <param name="theWellness"></param>
         public static void addDailyWellnessData(Wellness theWellness)
         {
-            int number, newValue, oldValue;
+            int number, newValue;
             var idNumber = "";
             var valueName = "";
             var measuremetType = new Dictionary<int, string>();
