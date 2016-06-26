@@ -199,6 +199,7 @@
             // 
             // usernameBox
             // 
+            this.usernameBox.Enabled = false;
             this.usernameBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.usernameBox.Location = new System.Drawing.Point(227, 156);
             this.usernameBox.Margin = new System.Windows.Forms.Padding(2);
