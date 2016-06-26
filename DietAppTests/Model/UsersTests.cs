@@ -18,7 +18,7 @@ namespace DietAppTest.ModelTest
         {
             //Set Users (New)
             String fullName;
-            
+
             //Create User (New)
             Users users = new Users();
             fullName = " ";
@@ -55,7 +55,7 @@ namespace DietAppTest.ModelTest
             int dailyCalorieGoal = 2222;
             int goalWeight = 145;
             String fullName;
-            
+
             //Create User (Active)
             Users users = new Users();
             users.userId = userId;

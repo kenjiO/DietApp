@@ -1,8 +1,6 @@
-﻿using DietApp.Model;
+﻿using DietApp.DAL;
+using DietApp.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using DietApp.Controller;
-using System.Collections.Generic;
-using DietApp.DAL;
 using System;
 
 namespace DietApp.Controller.Tests
@@ -111,7 +109,6 @@ namespace DietApp.Controller.Tests
         [TestMethod()]
         public static void updateUsers()
         {
-
         }
 
         [TestMethod()]
@@ -169,12 +166,10 @@ namespace DietApp.Controller.Tests
             Assert.AreEqual(date, testWellness.date, "Wellness object's date not " + date + ".");
         }
 
-
         [TestMethod()]
         public static void updateDailyWellnessData()
         {
             //TO DO:  UNDER DEVELOPMENT FOR ITERATION 2.
         }
-
     }
 }

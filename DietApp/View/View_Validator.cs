@@ -1,5 +1,5 @@
-﻿using System.Windows.Forms;
-using DietApp.Model;
+﻿using DietApp.Model;
+using System.Windows.Forms;
 
 namespace DietApp.View
 {
