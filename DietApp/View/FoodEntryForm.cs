@@ -11,6 +11,10 @@ namespace DietApp.View
     {
         private Users currentUser;
 
+        /// <summary>
+        /// Create a new form for enterting foods
+        /// </summary>
+        /// <param name="currentUser">The current user to enter foods for</param>
         public FoodEntryForm(Users currentUser)
         {
             if (currentUser == null)
@@ -21,6 +25,9 @@ namespace DietApp.View
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Called on form load.  Initializes date and time inputs
+        /// </summary>
         private void FoodEntryForm_Load(object sender, EventArgs e)
         {
             datePicker.Value = DateTime.Now;
@@ -30,6 +37,9 @@ namespace DietApp.View
             timePicker.CustomFormat = "hh:mm tt";
         }
 
+        /// <summary>
+        /// Submits the food entry form
+        /// </summary>
         private void submitButton_Click(object sender, EventArgs e)
         {
             String errors = validateEntry();
@@ -70,6 +80,9 @@ namespace DietApp.View
             clearFields();
         }
 
+        /// <summary>
+        /// Clears the food entry form fields
+        /// </summary>
         private void clearFields()
         {
             foodBox.Text = "";
@@ -79,6 +92,10 @@ namespace DietApp.View
             fatBox.Text = "";
         }
 
+        /// <summary>
+        /// Checks the food entry forms for errors
+        /// </summary>
+        /// <returns>Null if no errors or a string indicating what errors are present</returns>
         private string validateEntry()
         {
             string errors = "";
@@ -99,6 +116,11 @@ namespace DietApp.View
                 return errors;
         }
 
+        /// <summary>
+        /// Get an int or null from a string
+        /// </summary>
+        /// <param name="value">The string to convert</param>
+        /// <returns>The string as an int if it is a valid int or null otherwise</returns>
         private int? getIntOrNullValue(string value)
         {
             try
@@ -129,6 +151,9 @@ namespace DietApp.View
             }
         }
 
+        /// <summary>
+        /// Takes the searchBox values and searches the DB for foods that match it
+        /// </summary>
         private void searchForFood()
         {
             string searchTerm = searchBox.Text.Trim();
@@ -155,6 +180,10 @@ namespace DietApp.View
             }
         }
 
+        /// <summary>
+        /// Populate the food entry form with the data for the search result list
+        /// food the user clicked on
+        /// </summary>
         private void searchResult_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             var list = (ListBox)sender;
@@ -166,6 +195,10 @@ namespace DietApp.View
             carbohydratesBox.Text = info.carbohydrates.ToString();
         }
 
+        /// <summary>
+        /// Get a datetime object from combining the date and time fields of the form
+        /// </summary>
+        /// <returns>The datetime indicated on the form</returns>
         private DateTime getEnteredDateTime()
         {
             DateTime consumedDate = datePicker.Value;
