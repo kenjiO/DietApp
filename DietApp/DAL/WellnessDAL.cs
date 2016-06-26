@@ -9,7 +9,6 @@ namespace DietApp.DAL
     {
         /// <summary>
         /// Retrieves the wellness data for the given day.
-        /// Referenced YouTube and http://stackoverflow.com/questions/7718792/can-i-set-a-property-value-with-reflection
         /// </summary>
         /// <param name="userId"></param>
         /// <param name="date"></param>
@@ -19,51 +18,37 @@ namespace DietApp.DAL
             int number;
             var idNumber = "";
             var valueName = "";
-            Wellness wellnessInfo = new Wellness();
-            wellnessInfo.userID = userId;
-            wellnessInfo.date = Convert.ToDateTime(date);
-            //Get data table
+            var wellnessInfo = new Wellness
+            {
+                userID = userId,
+                date = Convert.ToDateTime(date)
+            };
+            //Get data table.
             using (var wellnessDataTable = new DietAppDataSet())
             {
                 //Get dataset for name and number.
                 using (var wellnessIDDataSet = new DietAppDataSetTableAdapters.measurementTypesTableAdapter())
                 {
-                    //Get dataset for values.
-                    using (var wellnessDataSet = new DietAppDataSetTableAdapters.dailyMeasurementsSingleTableAdapter())
+                    //For each row in the name/number dataset, give me the name and id for each value type.
+                    foreach (DataRow row in wellnessIDDataSet.GetData().Rows)
                     {
-                        //For each row in the name/number dataset, give me the name and id for each value type.
-                        foreach (DataRow row in wellnessIDDataSet.GetData().Rows)
+                        idNumber = row["measurementTypeId"].ToString();
+                        valueName = row["measurementTypeName"].ToString();
+                        //Verifies the id is a number.
+                        var result = Int32.TryParse(idNumber, out number);
+                        if (result)
                         {
-                            idNumber = row["measurementTypeId"].ToString();
-                            valueName = row["measurementTypeName"].ToString();
-                            //Verifies the id is a number.
-                            var result = Int32.TryParse(idNumber, out number);
-                            if (result)
-                            {
-                                //For each data element inside the values dataset, give me the measurement value.
-                                foreach (DataRow row0 in wellnessDataSet.GetData(number, date, userId).Rows)
-                                {
-                                    //Verifies the measurement is a number.
-                                    result = Int32.TryParse(row0["measurement"].ToString(), out number);
-
-                                    if (result)
-                                    {
-                                        //Sets the type name of a specific wellness object equal to the measurement value.
-                                        var property = typeof(Wellness).GetProperty(valueName);
-                                        property.SetValue(wellnessInfo, number, null);
-                                    }
-                                }
-                            }
+                            result = setWellnessValues(number, date, userId, result, valueName, wellnessInfo);
                         }
-                        return wellnessInfo;
                     }
+                    return wellnessInfo;
                 }
             }
         }
 
         /// <summary>
         /// Updates the user's wellness data for a given day.
-        /// UPDATE FUNCTIONALITY UNDER DEVELOPMENT FOR ITERATION 2.  
+        /// UPDATE FUNCTIONALITY UNDER DEVELOPMENT FOR ITERATION 2.
         /// </summary>
         /// <param name="newWellness"></param>
         /// <param name="oldWellness"></param>
@@ -79,20 +64,20 @@ namespace DietApp.DAL
                 //Get dataset for name and number.
                 using (var wellnessIDDataSet = new DietAppDataSetTableAdapters.measurementTypesTableAdapter())
                 {
+                    //For each row in the name/number dataset, give me the name and id for each value type.
+                    foreach (DataRow row in wellnessIDDataSet.GetData().Rows)
+                    {
+                        idNumber = row["measurementTypeId"].ToString();
+                        valueName = row["measurementTypeName"].ToString();
+                        //Verifies the id is a number.
+                        var result = Int32.TryParse(idNumber, out number);
+                        if (result)
+                        {
+                            measuremetType.Add(number, valueName);
+                        }
+                    }
                     using (var wellnessDataSet = new DietAppDataSetTableAdapters.dailyMeasurementsFullTableAdapter())
                     {
-                        //For each row in the name/number dataset, give me the name and id for each value type.
-                        foreach (DataRow row in wellnessIDDataSet.GetData().Rows)
-                        {
-                            idNumber = row["measurementTypeId"].ToString();
-                            valueName = row["measurementTypeName"].ToString();
-                            //Verifies the id is a number.
-                            var result = Int32.TryParse(idNumber, out number);
-                            if (result)
-                            {
-                                measuremetType.Add(number, valueName);
-                            }
-                        }
                         //For each data element inside the values dataset, give me the measurement value.
                         foreach (KeyValuePair<int, string> kvp in measuremetType)
                         {
@@ -117,7 +102,7 @@ namespace DietApp.DAL
         /// <param name="theWellness"></param>
         public static void addDailyWellnessData(Wellness theWellness)
         {
-            int number, newValue;
+            int number;
             var idNumber = "";
             var valueName = "";
             var measuremetType = new Dictionary<int, string>();
@@ -127,30 +112,81 @@ namespace DietApp.DAL
                 //Get dataset for name and number.
                 using (var wellnessIDDataSet = new DietAppDataSetTableAdapters.measurementTypesTableAdapter())
                 {
-                    using (var wellnessDataSet = new DietAppDataSetTableAdapters.dailyMeasurementsFullTableAdapter())
+                    //For each row in the name/number dataset, give me the name and id for each value type.
+                    foreach (DataRow row in wellnessIDDataSet.GetData().Rows)
                     {
-                        //For each row in the name/number dataset, give me the name and id for each value type.
-                        foreach (DataRow row in wellnessIDDataSet.GetData().Rows)
+                        idNumber = row["measurementTypeId"].ToString();
+                        valueName = row["measurementTypeName"].ToString();
+                        //Verifies the id is a number.
+                        var result = Int32.TryParse(idNumber, out number);
+                        if (result)
                         {
-                            idNumber = row["measurementTypeId"].ToString();
-                            valueName = row["measurementTypeName"].ToString();
-                            //Verifies the id is a number.
-                            var result = Int32.TryParse(idNumber, out number);
-                            if (result)
-                            {
-                                measuremetType.Add(number, valueName);
-                            }
+                            measuremetType.Add(number, valueName);
                         }
-                        //For each data element inside the values dataset, give me the measurement value.
-                        foreach (KeyValuePair<int, string> kvp in measuremetType)
-                        {
-                            var property = typeof(Wellness).GetProperty(kvp.Value);
-                            var newInt = Int32.TryParse(property.GetValue(theWellness, null).ToString(), out newValue);
+                    }
+                    
+                    insertWellnessData(measuremetType, theWellness);
+                }
+            }
+        }
 
-                            if (newInt)
-                            {
-                                wellnessDataSet.Insert(theWellness.date, theWellness.userID, kvp.Key, newValue);
-                            }
+        //Helper Methods//
+
+        /// <summary>
+        /// Gets the measurement value for each data element inside the values dataset.
+        /// Referenced YouTube and http://stackoverflow.com/questions/7718792/can-i-set-a-property-value-with-reflection
+        /// </summary>
+        /// <param name="number"></param>
+        /// <param name="date"></param>
+        /// <param name="userId"></param>
+        /// <param name="result"></param>
+        /// <param name="valueName"></param>
+        /// <param name="wellnessInfo"></param>
+        /// <returns></returns>
+        private static Boolean setWellnessValues(int number, string date, int userId, Boolean result, string valueName, Wellness wellnessInfo)
+        {
+            using (var wellnessDataTable = new DietAppDataSet())
+            {
+                //Get dataset for values.
+                using (var wellnessDataSet = new DietAppDataSetTableAdapters.dailyMeasurementsSingleTableAdapter())
+                {
+                    foreach (DataRow row0 in wellnessDataSet.GetData(number, date, userId).Rows)
+                    {
+                        //Verifies the measurement is a number.
+                        result = Int32.TryParse(row0["measurement"].ToString(), out number);
+
+                        if (result)
+                        {
+                            //Sets the type name of a specific wellness object equal to the measurement value.
+                            var property = typeof(Wellness).GetProperty(valueName);
+                            property.SetValue(wellnessInfo, number, null);
+                        }
+                    }
+                }
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// Inserts the wellness data into the DB.
+        /// </summary>
+        /// <param name="measuremetType"></param>
+        /// <param name="theWellness"></param>
+        private static void insertWellnessData(Dictionary<int, string> measuremetType, Wellness theWellness)
+        {
+            int newValue;
+            using (var wellnessDataTable = new DietAppDataSet())
+            {
+                using (var wellnessDataSet = new DietAppDataSetTableAdapters.dailyMeasurementsFullTableAdapter())
+                {
+                    foreach (KeyValuePair<int, string> kvp in measuremetType)
+                    {
+                        var property = typeof(Wellness).GetProperty(kvp.Value);
+                        var newInt = Int32.TryParse(property.GetValue(theWellness, null).ToString(), out newValue);
+
+                        if (newInt)
+                        {
+                            wellnessDataSet.Insert(theWellness.date, theWellness.userID, kvp.Key, newValue);
                         }
                     }
                 }

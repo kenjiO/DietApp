@@ -72,6 +72,8 @@ namespace DietApp.View
             try
             {
                 DietAppController.addDailyWellnessData(this.userWellness);
+                this.Refresh();
+                this.setButton();
                 MessageBox.Show("You have successfully recorded data.  You are one step closer to making data-driven decisions about your health.", "Record Updated");
             }
             catch (SqlException ex)
