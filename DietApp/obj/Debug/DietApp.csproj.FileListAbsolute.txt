@@ -41,6 +41,7 @@ C:\Users\kalei\OneDrive\Documents\Visual Studio 2015\Projects\DietApp\DietApp\ob
 C:\Users\Robert Carswell Jr\Documents\dietapp\DietApp\bin\Debug\DietApp.exe.config
 C:\Users\Robert Carswell Jr\Documents\dietapp\DietApp\bin\Debug\DietApp.exe
 C:\Users\Robert Carswell Jr\Documents\dietapp\DietApp\bin\Debug\DietApp.pdb
+C:\Users\Robert Carswell Jr\Documents\dietapp\DietApp\obj\Debug\DietApp.csprojResolveAssemblyReference.cache
 C:\Users\Robert Carswell Jr\Documents\dietapp\DietApp\obj\Debug\DietApp.View.FoodEntryForm.resources
 C:\Users\Robert Carswell Jr\Documents\dietapp\DietApp\obj\Debug\DietApp.LoginForm.resources
 C:\Users\Robert Carswell Jr\Documents\dietapp\DietApp\obj\Debug\DietApp.MainForm.resources
@@ -52,4 +53,3 @@ C:\Users\Robert Carswell Jr\Documents\dietapp\DietApp\obj\Debug\DietApp.View.Wel
 C:\Users\Robert Carswell Jr\Documents\dietapp\DietApp\obj\Debug\DietApp.csproj.GenerateResource.Cache
 C:\Users\Robert Carswell Jr\Documents\dietapp\DietApp\obj\Debug\DietApp.exe
 C:\Users\Robert Carswell Jr\Documents\dietapp\DietApp\obj\Debug\DietApp.pdb
-C:\Users\Robert Carswell Jr\Documents\dietapp\DietApp\obj\Debug\DietApp.csprojResolveAssemblyReference.cache
