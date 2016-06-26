@@ -64,7 +64,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 1, 0, 1);
-            this.menuStrip1.Size = new System.Drawing.Size(873, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(984, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -128,20 +128,20 @@
             this.calorieTrackingToolStripMenuItem,
             this.wellnessTrackingToolStripMenuItem});
             this.myTrackingToolStripMenuItem.Name = "myTrackingToolStripMenuItem";
-            this.myTrackingToolStripMenuItem.Size = new System.Drawing.Size(84, 22);
+            this.myTrackingToolStripMenuItem.Size = new System.Drawing.Size(85, 22);
             this.myTrackingToolStripMenuItem.Text = "My Tracking";
             // 
             // calorieTrackingToolStripMenuItem
             // 
             this.calorieTrackingToolStripMenuItem.Enabled = false;
             this.calorieTrackingToolStripMenuItem.Name = "calorieTrackingToolStripMenuItem";
-            this.calorieTrackingToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.calorieTrackingToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.calorieTrackingToolStripMenuItem.Text = "Food Tracking";
             // 
             // wellnessTrackingToolStripMenuItem
             // 
             this.wellnessTrackingToolStripMenuItem.Name = "wellnessTrackingToolStripMenuItem";
-            this.wellnessTrackingToolStripMenuItem.Size = new System.Drawing.Size(234, 30);
+            this.wellnessTrackingToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.wellnessTrackingToolStripMenuItem.Text = "Wellness Tracking";
             this.wellnessTrackingToolStripMenuItem.Click += new System.EventHandler(this.wellnessTrackingToolStripMenuItem_Click);
             // 
@@ -152,7 +152,7 @@
             this.myDataToolStripMenuItem});
             this.myHealthTrendsToolStripMenuItem.Enabled = false;
             this.myHealthTrendsToolStripMenuItem.Name = "myHealthTrendsToolStripMenuItem";
-            this.myHealthTrendsToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.myHealthTrendsToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.myHealthTrendsToolStripMenuItem.Text = "My Health Trends Data";
             // 
             // reportsToolStripMenuItem
@@ -164,7 +164,7 @@
             this.wellnessMeterToolStripMenuItem});
             this.reportsToolStripMenuItem.Enabled = false;
             this.reportsToolStripMenuItem.Name = "reportsToolStripMenuItem";
-            this.reportsToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.reportsToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.reportsToolStripMenuItem.Text = "My Trends Reports";
             // 
             // caloriesToolStripMenuItem
@@ -202,21 +202,21 @@
             this.importMyDataToolStripMenuItem});
             this.myDataToolStripMenuItem.Enabled = false;
             this.myDataToolStripMenuItem.Name = "myDataToolStripMenuItem";
-            this.myDataToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.myDataToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.myDataToolStripMenuItem.Text = "My Data";
             // 
             // exportMyDataToolStripMenuItem
             // 
             this.exportMyDataToolStripMenuItem.Enabled = false;
             this.exportMyDataToolStripMenuItem.Name = "exportMyDataToolStripMenuItem";
-            this.exportMyDataToolStripMenuItem.Size = new System.Drawing.Size(152, 30);
+            this.exportMyDataToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
             this.exportMyDataToolStripMenuItem.Text = "Export";
             // 
             // importMyDataToolStripMenuItem
             // 
             this.importMyDataToolStripMenuItem.Enabled = false;
             this.importMyDataToolStripMenuItem.Name = "importMyDataToolStripMenuItem";
-            this.importMyDataToolStripMenuItem.Size = new System.Drawing.Size(152, 30);
+            this.importMyDataToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
             this.importMyDataToolStripMenuItem.Text = "Import";
             // 
             // enterFoodItemToolStripMenuItem
@@ -230,11 +230,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(873, 486);
+            this.ClientSize = new System.Drawing.Size(984, 611);
             this.Controls.Add(this.menuStrip1);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MainForm";
             this.Text = "Welcome to Health Trends, USER NAME.";
             this.Load += new System.EventHandler(this.updateTitle);
