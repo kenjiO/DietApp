@@ -1,4 +1,5 @@
-﻿using DietApp.Model;
+﻿using DietApp.Controller;
+using DietApp.Model;
 using DietApp.View;
 using System;
 using System.Windows.Forms;
@@ -27,6 +28,9 @@ namespace DietApp
         /// <param name="e"></param>
         private void updateTitle(object sender, EventArgs e)
         {
+            //Updates Any Changes
+            this.theUser = DietAppController.getUserData(this.theUser.userId);
+
             if (this.theUser.getFullName() == " ")
             {
                 this.profileForm = new ProfileInfo();
