@@ -10,10 +10,12 @@ namespace DietApp
         private Users theUser;
         private ProfileInfo profileForm;
         private WellnessTrackingForm wellnessForm;
+        private FoodEntryForm entryForm;
 
         public MainForm()
         {
             InitializeComponent();
+            StartPosition = FormStartPosition.CenterScreen;
         }
 
         /// <summary>
@@ -143,8 +145,22 @@ namespace DietApp
 
         private void enterFoodItemToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FoodEntryForm form = new FoodEntryForm(this.theUser);
-            form.Show();
+            if (this.entryForm == null)
+            {
+                this.entryForm = new FoodEntryForm(this.theUser);
+                this.entryForm.MdiParent = this;
+                this.entryForm.FormClosed += new FormClosedEventHandler(FoodEntryFormClosed);
+                this.entryForm.Show();
+            }
+            else
+            {
+                this.entryForm.Activate();
+            }
+        }
+
+        private void FoodEntryFormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.entryForm = null;
         }
     }
 }
