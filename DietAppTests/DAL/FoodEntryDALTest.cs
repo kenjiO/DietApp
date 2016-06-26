@@ -1,7 +1,8 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using DietApp.DAL;
 using DietApp.Model;
-using DietApp.DAL;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
+
 namespace DietAppTests.DAL
 {
     [TestClass]
@@ -31,7 +32,6 @@ namespace DietAppTests.DAL
             Assert.AreEqual(carbohydrates, retreivedEntry.Carbohydrates);
             Assert.AreEqual(consumedAt, retreivedEntry.ConsumedAt);
             FoodEntryDAL.deleteEntry(entry);
-
         }
 
         [TestMethod]

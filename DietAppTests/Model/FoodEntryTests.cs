@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using DietApp.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using DietApp.Model;
+using System;
 
 namespace DietAppTests.Model
 {
@@ -212,6 +208,5 @@ namespace DietAppTests.Model
             FoodEntry entry = new FoodEntry(1, "apple", 100, 1, 3, 11, specifiedDateTime);
             Assert.AreEqual(specifiedDateTime, entry.ConsumedAt);
         }
-
     }
 }

@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DietApp.Model
 {
@@ -23,6 +19,7 @@ namespace DietApp.Model
                 return name;
             }
         }
+
         public int UserId
         {
             get
@@ -38,6 +35,7 @@ namespace DietApp.Model
                 return calories;
             }
         }
+
         public int? Fat
         {
             get
@@ -45,6 +43,7 @@ namespace DietApp.Model
                 return fat;
             }
         }
+
         public int? Protein
         {
             get
@@ -52,6 +51,7 @@ namespace DietApp.Model
                 return protein;
             }
         }
+
         public int? Carbohydrates
         {
             get
@@ -59,6 +59,7 @@ namespace DietApp.Model
                 return carbohydrates;
             }
         }
+
         public DateTime ConsumedAt
         {
             get
@@ -144,6 +145,5 @@ namespace DietApp.Model
                 return errors;
             }
         }
-
     }
 }

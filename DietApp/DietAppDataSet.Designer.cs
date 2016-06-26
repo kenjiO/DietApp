@@ -4813,7 +4813,7 @@ WHERE (userId = @Original_userId) AND (username = @Original_username) AND (first
              initialWeight = @Original_initialWeight) AND (heightInches IS NULL OR
              heightInches = @Original_heightInches) AND (dailyCalorieGoal IS NULL OR
              dailyCalorieGoal = @Original_dailyCalorieGoal) AND (goalWeight IS NULL OR
-             goalWeight = @Original_goalWeight);  
+             goalWeight = @Original_goalWeight);
 SELECT userId, username, firstName, lastName, email, initialWeight, heightInches, dailyCalorieGoal, goalWeight FROM users WHERE (userId = @userId)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@username", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "username", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -4861,7 +4861,7 @@ SELECT userId, username, firstName, lastName, email, initialWeight, heightInches
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
             this._commandCollection[2].CommandText = @"UPDATE       users
-SET                firstName = @firstName, lastName = @lastName, email = @email, initialWeight = @initialWeight, heightInches = @heightInches, 
+SET                firstName = @firstName, lastName = @lastName, email = @email, initialWeight = @initialWeight, heightInches = @heightInches,
                          dailyCalorieGoal = @dailyCalorieGoal, goalWeight = @goalWeight
 WHERE        (userId = @Original_userId) AND (firstName IS NULL OR
                          firstName = @Original_firstName) AND (lastName IS NULL OR
@@ -4870,7 +4870,7 @@ WHERE        (userId = @Original_userId) AND (firstName IS NULL OR
                          initialWeight = @Original_initialWeight) AND (heightInches IS NULL OR
                          heightInches = @Original_heightInches) AND (dailyCalorieGoal IS NULL OR
                          dailyCalorieGoal = @Original_dailyCalorieGoal) AND (goalWeight IS NULL OR
-                         goalWeight = @Original_goalWeight);   
+                         goalWeight = @Original_goalWeight);
 SELECT userId, username, firstName, lastName, email, initialWeight, heightInches, dailyCalorieGoal, goalWeight FROM users WHERE (userId = @Original_userId)";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@firstName", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "firstName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -5965,8 +5965,8 @@ SELECT dateTimeConsumed, userId, name, calories, protein, fat, carbohydrate FROM
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "DELETE FROM [itemConsumed] \r\nWHERE (([dateTimeConsumed] = @dateTimeConsumed) AND " +
-                "([userId] = @userId) AND ([name] = @name))";
+            this._commandCollection[1].CommandText = "DELETE FROM [itemConsumed]\r\nWHERE (([dateTimeConsumed] = @dateTimeConsumed) AND (" +
+                "[userId] = @userId) AND ([name] = @name))";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dateTimeConsumed", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "dateTimeConsumed", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@userId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "userId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));

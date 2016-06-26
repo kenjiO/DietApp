@@ -58,7 +58,7 @@ namespace DietApp
         {
             String userName, firstName, lastName, email;
             int height, value, weight;
-            
+
             userName = usernameBox.Text;
             firstName = firstNameBox.Text;
             lastName = lastNameBox.Text;
@@ -90,7 +90,6 @@ namespace DietApp
                         email = email,
                         initialWeight = weight,
                         heightInches = height
-
                     };
                     if (originalUser.firstName.Equals(newUser.firstName) && originalUser.lastName.Equals(newUser.lastName) &&
                         originalUser.email.Equals(newUser.email) && originalUser.initialWeight.Equals(newUser.initialWeight) &&
@@ -103,7 +102,7 @@ namespace DietApp
                         //Updates the user.
                         DietAppController.updateUsers(originalUser, newUser);
                         this.theUser = newUser;
-                        MessageBox.Show("User ID: " + originalUser.userName + " updated.", "Update User",MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("User ID: " + originalUser.userName + " updated.", "Update User", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     //Refreshes this form.
                     this.Refresh();
@@ -117,9 +116,8 @@ namespace DietApp
             {
                 MessageBox.Show(ex.Message, ex.GetType().ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
-        
+
         /// <summary>
         /// Closes the form if the user decides to "cancel" what (s)he is doing.
         /// </summary>

@@ -30,7 +30,7 @@ namespace DietApp
         {
             //Updates Any Changes
             this.theUser = DietAppController.getUserData(this.theUser.userId);
-            
+
             if (this.theUser.getFullName() == " ")
             {
                 this.profileForm = new ProfileInfo();

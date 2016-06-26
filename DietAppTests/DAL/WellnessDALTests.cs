@@ -1,12 +1,7 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using DietApp.DAL;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using DietApp.Controller;
 using DietApp.Model;
-using DietApp.Controller;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 
 namespace DietApp.DAL.Tests
 {

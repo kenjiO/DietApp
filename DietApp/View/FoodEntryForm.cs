@@ -63,7 +63,6 @@ namespace DietApp.View
             }
             catch (SqlException ex)
             {
-
                 MessageBox.Show(ex.Message, ex.GetType().ToString());
                 return;
             }

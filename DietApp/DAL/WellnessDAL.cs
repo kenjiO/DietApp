@@ -124,7 +124,7 @@ namespace DietApp.DAL
                             measuremetType.Add(number, valueName);
                         }
                     }
-                    
+
                     insertWellnessData(measuremetType, theWellness);
                 }
             }
