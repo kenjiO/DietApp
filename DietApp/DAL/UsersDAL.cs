@@ -120,7 +120,8 @@ namespace DietApp.DAL
         }
 
         /// <summary>
-        /// Updates the newUser's information in the DB. Note: userId, userName, and password will not update.
+        /// Updates the newUser's information in the DB.
+        /// Note: userId, userName, and password will not update.
         /// </summary>
         /// <param name="oldUsers">The old user's information</param>
         /// <param name="newUsers">The new user's information</param>
@@ -139,7 +140,8 @@ namespace DietApp.DAL
         }
 
         /// <summary>
-        /// Delete User's information in the DB, used for testing only.
+        /// Deletes User's information in the DB.
+        /// Note:  This is used for testing only.
         /// </summary>
         /// <param name="userId">Id(row) of user.</param>
         public static void deleteUsers(int userId)

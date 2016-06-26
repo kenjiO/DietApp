@@ -9,7 +9,7 @@ namespace DietApp.DAL
     public class FoodEntryDAL
     {
         /// <summary>
-        /// Add a new item consumed to the database
+        /// Adds a new item consumed to the database.
         /// </summary>
         /// <param name="entry">The food entry to add </param>
         public static void addEntry(FoodEntry entry)
@@ -40,7 +40,7 @@ namespace DietApp.DAL
         }
 
         /// <summary>
-        /// Delete a food entry from the DB
+        /// Deletes a food entry from the DB.
         /// </summary>
         /// <param name="entry">The entry to delete.</param>
         public static void deleteEntry(FoodEntry entry)
@@ -56,7 +56,7 @@ namespace DietApp.DAL
         }
 
         /// <summary>
-        /// Get a food entry by userId, dateTime consumed and name
+        /// Gets a food entry by userId, dateTime consumed, and name.
         /// </summary>
         /// <param name="userId">The userId</param>
         /// <param name="consumedAt">DateTime consumed</param>
@@ -104,7 +104,7 @@ namespace DietApp.DAL
         }
 
         /// <summary>
-        /// Search for nutrition info on a food
+        /// Searches for nutrition info on a food.
         /// </summary>
         /// <param name="searchTerm">Search term for the food name</param>
         /// <returns>A list of nutrition info for foods in the database that match the search term</returns>
@@ -136,7 +136,7 @@ namespace DietApp.DAL
     }
 
     /// <summary>
-    /// Exception used for when entering a duplicate food entry
+    /// Exception used for when entering a duplicate food entry.
     /// </summary>
     [Serializable]
     public class DuplcateFoodEntryException : Exception

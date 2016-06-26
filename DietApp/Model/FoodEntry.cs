@@ -69,7 +69,7 @@ namespace DietApp.Model
         }
 
         /// <summary>
-        /// Creates a new entry for a food consumed with the time consumed set to now
+        /// Creates a new entry for a food consumed with the time consumed set to the current time.
         /// </summary>
         /// <param name="userId">UserId that consumed the item</param>
         /// <param name="name">The name of the food</param>
@@ -83,7 +83,7 @@ namespace DietApp.Model
         }
 
         /// <summary>
-        /// Creates a new entry for a food consumed
+        /// Creates a new entry for a food consumed.
         /// </summary>
         /// <param name="userId">UserId that consumed the item</param>
         /// <param name="name">The name of the food</param>
@@ -112,7 +112,7 @@ namespace DietApp.Model
             this.consumedAt = consumedAt;
         }
 
-        // Returns null if validation passes. Otherwises returns a string listing the errors
+        // Returns null if validation passes. Otherwise, returns a string listing the errors.
         private string validate(string name, int? calories, int? fat, int? protein, int? carbohyrdates)
         {
             string errors = "";

@@ -48,7 +48,7 @@ namespace DietApp.DAL
 
         /// <summary>
         /// Updates the user's wellness data for a given day.
-        /// UPDATE FUNCTIONALITY UNDER DEVELOPMENT FOR ITERATION 2.
+        /// UPDATE FUNCTIONALITY UNDER DEVELOPMENT FOR ITERATION 2.  NOT AN ITERATION 1 DELIVERABLE.
         /// </summary>
         /// <param name="newWellness"></param>
         /// <param name="oldWellness"></param>

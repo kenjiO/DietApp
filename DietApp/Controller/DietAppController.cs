@@ -84,7 +84,7 @@ namespace DietApp.Controller
         }
 
         /// <summary>
-        /// Search for nutrition info on a food
+        /// Search for nutrition info on a food.
         /// </summary>
         /// <param name="searchTerm">Search term for the food name</param>
         /// <returns>A list of nutrition info for foods in the database that match the search term</returns>
