@@ -69,20 +69,27 @@ namespace DietApp.View
             this.userWellness.heartRate = Int32.Parse(heartRateUpDown.Value.ToString());
             this.userWellness.date = dateTimePicker.Value;
             this.userWellness.userID = this.theUser.userId;
-            try
+            if (!View_Validator.ValidateWellness(this.userWellness))
             {
-                DietAppController.addDailyWellnessData(this.userWellness);
-                this.Refresh();
-                this.setButton();
-                MessageBox.Show("You have successfully recorded data.  You are one step closer to making data-driven decisions about your health.", "Record Updated");
+                MessageBox.Show("Please enter data for all fields.", "Wellness Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch (SqlException ex)
+            else
             {
-                MessageBox.Show(ex.Message, ex.GetType().ToString());
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, ex.GetType().ToString());
+                try
+                {
+                    DietAppController.addDailyWellnessData(this.userWellness);
+                    this.Refresh();
+                    this.setButton();
+                    MessageBox.Show("You have successfully recorded data.  You are one step closer to making data-driven decisions about your health.", "Record Updated");
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show(ex.Message, ex.GetType().ToString());
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, ex.GetType().ToString());
+                }
             }
         }
 
@@ -134,7 +141,7 @@ namespace DietApp.View
         /// </summary>
         private void setButton()
         {
-            if (this.userWellness.userID != 0 && this.userWellness != null && this.userWellness.weight != 0)
+            if (View_Validator.ValidateWellness(this.userWellness))
             {
                 updateButton.Enabled = false;
                 updateButton.Visible = true;

@@ -45,6 +45,11 @@ namespace DietApp.View
             }
         }
 
+        /// <summary>
+        /// Verifies whether or not a user is null.
+        /// </summary>
+        /// <param name="users"></param>
+        /// <returns></returns>
         internal static bool Users(Users users)
         {
             if (users == null)
@@ -57,6 +62,53 @@ namespace DietApp.View
             {
                 return false;
             }
+        }
+
+        /// <summary>
+        /// Verifies whether or not the data fields on the Wellness Forms are filled out.
+        /// </summary>
+        /// <param name="theWellness"></param>
+        /// <returns></returns>
+        public static bool ValidateWellness(Wellness theWellness)
+        {
+            var result = false;
+            var missingData = "";
+
+            if (theWellness == null)
+            {
+                result = false;
+            }
+            else if (theWellness.weight == 0)
+            {
+                missingData = "\tWeight\n";
+                result = false;
+            }
+            else if (theWellness.heartRate == 0)
+            {
+                missingData = "\tHeart Rate\n";
+                result = false;
+            }
+            else if (theWellness.systolicBP == 0)
+            {
+                missingData = "\tSystolic BP\n";
+                result = false;
+            }
+            else if (theWellness.diastolicBP == 0)
+            {
+                missingData = "\tDiastolic BP\n";
+                result = false;
+            }
+            else
+            {
+                result = true;
+            }
+
+            if (!result)
+            {
+                result = false;
+            }
+
+            return result;
         }
     }
 }
