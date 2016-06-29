@@ -37,6 +37,7 @@ namespace DietApp
             Int32.TryParse(inchesBox.Text, out value);
             height += value;
 
+            Cursor.Current = Cursors.WaitCursor;
             try
             {
                 if (View_Validator.Blank(usernameBox) || View_Validator.Blank(passwordBox) || View_Validator.Blank(confirmBox) ||
@@ -53,6 +54,7 @@ namespace DietApp
                 }
                 else if (Model_Validator.verifyUserName(userName))
                 {
+                    Cursor.Current = Cursors.Default;
                     MessageBox.Show("The user name provided is already in use. Please try a different user name.",
                         "Invalid Login Credentials");
                     usernameBox.Text = "";
@@ -87,13 +89,16 @@ namespace DietApp
                     //Hides the current form.
                     this.Hide();
                 }
+                Cursor.Current = Cursors.Default;
             }
             catch (SqlException ex)
             {
+                Cursor.Current = Cursors.Default;
                 MessageBox.Show(ex.Message, ex.GetType().ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
+                Cursor.Current = Cursors.Default;
                 MessageBox.Show(ex.Message, ex.GetType().ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

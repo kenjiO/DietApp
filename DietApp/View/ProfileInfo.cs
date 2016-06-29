@@ -69,7 +69,7 @@ namespace DietApp
             height = value * 12;
             Int32.TryParse(inchesBox.Text, out value);
             height += value;
-
+            Cursor.Current = Cursors.WaitCursor;
             try
             {
                 if (View_Validator.Blank(firstNameBox) || View_Validator.Blank(lastNameBox) || View_Validator.Blank(emailBox) ||
@@ -95,6 +95,7 @@ namespace DietApp
                         originalUser.email.Equals(newUser.email) && originalUser.initialWeight.Equals(newUser.initialWeight) &&
                         originalUser.heightInches.Equals(newUser.heightInches))
                     {
+                        Cursor.Current = Cursors.Default;
                         MessageBox.Show("No profile information changed.", "Update User Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     else
@@ -102,18 +103,22 @@ namespace DietApp
                         //Updates the user.
                         DietAppController.updateUsers(originalUser, newUser);
                         this.theUser = newUser;
+                        Cursor.Current = Cursors.Default;
                         MessageBox.Show("User ID: " + originalUser.userName + " updated.", "Update User", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
+                    Cursor.Current = Cursors.Default;
                     //Refreshes this form.
                     this.Refresh();
                 }
             }
             catch (SqlException ex)
             {
+                Cursor.Current = Cursors.Default;
                 MessageBox.Show(ex.Message, ex.GetType().ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
+                Cursor.Current = Cursors.Default;
                 MessageBox.Show(ex.Message, ex.GetType().ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

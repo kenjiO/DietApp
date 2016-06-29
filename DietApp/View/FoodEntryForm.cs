@@ -54,6 +54,7 @@ namespace DietApp.View
             int? protein = getIntOrNullValue(proteinBox.Text);
             int? carbohydrates = getIntOrNullValue(carbohydratesBox.Text);
             DateTime consumedAt = getEnteredDateTime();
+            Cursor.Current = Cursors.WaitCursor;
             try
             {
                 DietAppController.addFoodEntry(
@@ -68,14 +69,17 @@ namespace DietApp.View
             }
             catch (DietApp.DAL.DuplcateFoodEntryException)
             {
+                Cursor.Current = Cursors.Default;
                 MessageBox.Show("An entry for that food and date/time already exists");
                 return;
             }
             catch (SqlException ex)
             {
+                Cursor.Current = Cursors.Default;
                 MessageBox.Show(ex.Message, ex.GetType().ToString());
                 return;
             }
+            Cursor.Current = Cursors.Default;
             MessageBox.Show("Entry added");
             clearFields();
         }
@@ -162,6 +166,7 @@ namespace DietApp.View
                 MessageBox.Show("You must enter a search term");
                 return;
             }
+            Cursor.Current = Cursors.WaitCursor;
             try
             {
                 List<FoodNutritionInfo> results = DietAppController.searchFoodInfo(searchTerm);
@@ -175,9 +180,11 @@ namespace DietApp.View
             }
             catch (SqlException ex)
             {
+                Cursor.Current = Cursors.Default;
                 MessageBox.Show("There was an error getting data from the database\n\n" + ex.Message);
                 return;
             }
+            Cursor.Current = Cursors.Default;
         }
 
         /// <summary>

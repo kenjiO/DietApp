@@ -27,11 +27,13 @@ namespace DietApp
             userName = usernameBox.Text;
             password = passwordBox.Text;
 
+            Cursor.Current = Cursors.WaitCursor;
             try
             {
                 if (DietAppController.comparePassword(userName, password))
                 {
                     this.theUser = DietAppController.getUserData(userName);
+                    Cursor.Current = Cursors.Default;
                     var mainForm = new MainForm();
                     mainForm.loadUser(this.theUser);
                     mainForm.Show();
@@ -40,6 +42,7 @@ namespace DietApp
                 }
                 else
                 {
+                    Cursor.Current = Cursors.Default;
                     MessageBox.Show("The username and/or password provided is invalid.  Please try again.",
                         "Invalid Login Credentials");
                     usernameBox.Text = "";
@@ -48,10 +51,12 @@ namespace DietApp
             }
             catch (SqlException ex)
             {
+                Cursor.Current = Cursors.Default;
                 MessageBox.Show(ex.Message, ex.GetType().ToString());
             }
             catch (Exception ex)
             {
+                Cursor.Current = Cursors.Default;
                 MessageBox.Show(ex.Message, ex.GetType().ToString());
             }
         }

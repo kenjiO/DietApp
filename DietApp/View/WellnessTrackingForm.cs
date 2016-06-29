@@ -75,19 +75,23 @@ namespace DietApp.View
             }
             else
             {
+                Cursor.Current = Cursors.WaitCursor;
                 try
                 {
                     DietAppController.addDailyWellnessData(this.userWellness);
+                    Cursor.Current = Cursors.Default;
                     this.Refresh();
                     this.setButton();
                     MessageBox.Show("You have successfully recorded data.  You are one step closer to making data-driven decisions about your health.", "Record Updated");
                 }
                 catch (SqlException ex)
                 {
+                    Cursor.Current = Cursors.Default;
                     MessageBox.Show(ex.Message, ex.GetType().ToString());
                 }
                 catch (Exception ex)
                 {
+                    Cursor.Current = Cursors.Default;
                     MessageBox.Show(ex.Message, ex.GetType().ToString());
                 }
             }
@@ -111,18 +115,22 @@ namespace DietApp.View
                 userID = this.theUser.userId
             };
 
+            Cursor.Current = Cursors.WaitCursor;
             try
             {
                 DietAppController.updateDailyWellnessData(userWellnessUpdate, this.userWellness);
             }
             catch (SqlException ex)
             {
+                Cursor.Current = Cursors.Default;
                 MessageBox.Show(ex.Message, ex.GetType().ToString());
             }
             catch (Exception ex)
             {
+                Cursor.Current = Cursors.Default;
                 MessageBox.Show(ex.Message, ex.GetType().ToString());
             }
+            Cursor.Current = Cursors.Default;
         }
 
         /// <summary>
