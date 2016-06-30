@@ -1,56 +1,64 @@
-﻿using DietApp.Model;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
+﻿//-----------------------------------------------------------------------
+// <copyright file="FoodEntryTests.cs" company="KKR Summer 2016">
+//     Copyright (c) KKR Summer 2016. All rights reserved.
+// </copyright>
+// <summary>This is the testing for the Model.FoodEntry class.</summary>
+// <author>Kenji Okamoto</author>
+// <author>Kaleigh Kendrick</author>
+// <author>Robert Carswell</author>
+//-----------------------------------------------------------------------
 
 namespace DietAppTests.Model
 {
+    using System;
+    using DietApp.Model;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+    /// <summary>
+    /// Test the FoodEntry Class in DietApp.Model.
+    /// </summary>
     [TestClass]
     public class FoodEntryTests
     {
+        /// <summary>
+        /// Test the FoodEntry.
+        /// </summary>
         [TestMethod]
-        public void TestUserIdGetsSet()
+        public void TestFoodEntry()
         {
-            FoodEntry entry = new FoodEntry(17, "apple", 100, 1, 3, 11);
-            Assert.AreEqual(17, entry.UserId, "UserId did not get set right");
+            // Sets Food
+            int userId = 1;
+            string name = "apple";
+            int calories = 100;
+            int fat = 1;
+            int protein = 3;
+            int carbohydrates = 11;
+
+            // Enters Food
+            FoodEntry entry = new FoodEntry(userId, name, calories, fat, protein, carbohydrates);
+
+            // Checks Test Results
+            Assert.AreEqual(userId, entry.UserId, "Food userId is not " + userId + ".");
+            Assert.AreEqual(name, entry.Name, "Food name is not " + name + ".");
+            Assert.AreEqual(calories, entry.Calories, "Food calories is not " + calories + ".");
+            Assert.AreEqual(fat, entry.Fat, "Food fat is not " + fat + ".");
+            Assert.AreEqual(protein, entry.Protein, "Food protein is not " + protein + ".");
+            Assert.AreEqual(carbohydrates, entry.Carbohydrates, "Food carbohydrates is not " + carbohydrates + ".");
+
+            // Allow a 10 second delta between the two DateTimes
+            Assert.IsTrue((DateTime.Now - entry.ConsumedAt) < TimeSpan.FromSeconds(10));
+
+            // Check Time
+            DateTime specifiedDateTime = new DateTime(2012, 3, 18, 16, 55, 22, 0);
+            entry = new FoodEntry(userId, name, calories, fat, protein, carbohydrates, specifiedDateTime);
+            Assert.AreEqual(specifiedDateTime, entry.ConsumedAt);
         }
 
+        /// <summary>
+        /// Test for created FoodEntry, null name.
+        /// </summary>
         [TestMethod]
-        public void TestFoodNameGetsSet()
-        {
-            FoodEntry entry = new FoodEntry(1, "apple", 100, 1, 3, 11);
-            Assert.AreEqual("apple", entry.Name, "Food name did not get set right");
-        }
-
-        [TestMethod]
-        public void TestCaloriesGetsSet()
-        {
-            FoodEntry entry = new FoodEntry(1, "apple", 100, 1, 3, 11);
-            Assert.AreEqual(100, entry.Calories, "Calories did not get set right");
-        }
-
-        [TestMethod]
-        public void TestFatGetsSet()
-        {
-            FoodEntry entry = new FoodEntry(1, "apple", 100, 1, 3, 11);
-            Assert.AreEqual(1, entry.Fat, "Fat did not get set right");
-        }
-
-        [TestMethod]
-        public void TestProteinGetsSet()
-        {
-            FoodEntry entry = new FoodEntry(1, "apple", 100, 1, 3, 11);
-            Assert.AreEqual(3, entry.Protein, "Protein did not get set right");
-        }
-
-        [TestMethod]
-        public void TestCarbohydratesGetsSet()
-        {
-            FoodEntry entry = new FoodEntry(1, "apple", 100, 1, 3, 11);
-            Assert.AreEqual(11, entry.Carbohydrates, "Carbohydrates did not get set right");
-        }
-
-        [TestMethod]
-        public void TestFoodNameCannotBeNull()
+        public void TestFoodEntryNameNull()
         {
             try
             {
@@ -63,12 +71,15 @@ namespace DietAppTests.Model
             }
         }
 
+        /// <summary>
+        /// Test for created FoodEntry, blank name.
+        /// </summary>
         [TestMethod]
-        public void TestFoodNameCannotBeBlank()
+        public void TestFoodEntryNameBlank()
         {
             try
             {
-                new FoodEntry(1, "", 0, 0, 0, 0);
+                new FoodEntry(1, string.Empty, 0, 0, 0, 0);
                 Assert.Fail("Exception not thrown for blank food name");
             }
             catch (ArgumentException ex)
@@ -77,8 +88,11 @@ namespace DietAppTests.Model
             }
         }
 
+        /// <summary>
+        /// Test for created FoodEntry, whitespace name.
+        /// </summary>
         [TestMethod]
-        public void TestFoodNameCannotBeWhitspace()
+        public void TestFoodEntryNameWhitespace()
         {
             try
             {
@@ -91,8 +105,11 @@ namespace DietAppTests.Model
             }
         }
 
+        /// <summary>
+        /// Test for created FoodEntry, negative calories.
+        /// </summary>
         [TestMethod]
-        public void TestCaloriesCannotBeNegative()
+        public void TestFoodEntryCaloriesNegative()
         {
             try
             {
@@ -105,8 +122,11 @@ namespace DietAppTests.Model
             }
         }
 
+        /// <summary>
+        /// Test for created FoodEntry, negative fat.
+        /// </summary>
         [TestMethod]
-        public void TestFatCannotBeNegative()
+        public void TestFoodEntryFatNegative()
         {
             try
             {
@@ -119,8 +139,11 @@ namespace DietAppTests.Model
             }
         }
 
+        /// <summary>
+        /// Test for created FoodEntry, negative protein.
+        /// </summary>
         [TestMethod]
-        public void TestProteinCannotBeNegative()
+        public void TestFoodEntryProteinNegative()
         {
             try
             {
@@ -133,8 +156,11 @@ namespace DietAppTests.Model
             }
         }
 
+        /// <summary>
+        /// Test for created FoodEntry, negative carbohydrates.
+        /// </summary>
         [TestMethod]
-        public void TestCarbohydratesCannotBeNegative()
+        public void TestFoodEntryCarbohydratesNegative()
         {
             try
             {
@@ -147,66 +173,47 @@ namespace DietAppTests.Model
             }
         }
 
+        /// <summary>
+        /// Test for created FoodEntry, negative data.
+        /// </summary>
         [TestMethod]
-        public void TestExceptionMessageShowsAllErrors()
+        public void TestFoodEntryAllNegative()
         {
             try
             {
-                new FoodEntry(1, "", -1, -1, -1, -1);
+                new FoodEntry(1, string.Empty, -1, -1, -1, -1);
                 Assert.Fail("Exception not thrown for multiple validation errors");
             }
             catch (ArgumentException ex)
             {
-                Assert.AreEqual("Food name must be specified\n" +
+                Assert.AreEqual(
+                    "Food name must be specified\n" +
                     "Calories must not be less than 0\n" +
                     "Fat must not be less than 0\n" +
                     "Protein must not be less than 0\n" +
-                    "Carbohydrates must not be less than 0\n", ex.Message);
+                    "Carbohydrates must not be less than 0\n",
+                    ex.Message);
             }
         }
 
+        /// <summary>
+        /// Test for created FoodEntry, null calories.
+        /// </summary>
         [TestMethod]
-        public void TestCaloriesCanBeNull()
+        public void TestFoodEntryNullEntry()
         {
-            FoodEntry entry = new FoodEntry(1, "apple", null, 1, 3, 11);
+            // Sets Food
+            int userId = 1;
+            string name = "apple";
+
+            // Enters Food
+            FoodEntry entry = new FoodEntry(userId, name, null, null, null, null);
+
+            // Checks Test Results
             Assert.IsNull(entry.Calories, "Calories should be null");
-        }
-
-        [TestMethod]
-        public void TestFatCanBeNull()
-        {
-            FoodEntry entry = new FoodEntry(1, "apple", 100, null, 3, 11);
             Assert.IsNull(entry.Fat, "Fat should be null");
-        }
-
-        [TestMethod]
-        public void TestProteinCanBeNull()
-        {
-            FoodEntry entry = new FoodEntry(1, "apple", 100, 1, null, 11);
             Assert.IsNull(entry.Protein, "Protein should be null");
-        }
-
-        [TestMethod]
-        public void TestCarbohydratesCanBeNull()
-        {
-            FoodEntry entry = new FoodEntry(1, "apple", 100, 1, 3, null);
             Assert.IsNull(entry.Carbohydrates, "Carbohydrates should be null");
-        }
-
-        [TestMethod]
-        public void TestWhenConsumedAtIsNotSpecifiedItIsNow()
-        {
-            FoodEntry entry = new FoodEntry(1, "apple", 100, 1, 3, 11);
-            //Allow a 10 second delta between the two DateTimes
-            Assert.IsTrue((DateTime.Now - entry.ConsumedAt) < TimeSpan.FromSeconds(10));
-        }
-
-        [TestMethod]
-        public void TestWhenConsumedAtCanBeSpecified()
-        {
-            DateTime specifiedDateTime = new DateTime(2012, 3, 18, 16, 55, 22, 0);
-            FoodEntry entry = new FoodEntry(1, "apple", 100, 1, 3, 11, specifiedDateTime);
-            Assert.AreEqual(specifiedDateTime, entry.ConsumedAt);
         }
     }
 }

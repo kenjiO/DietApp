@@ -105,7 +105,7 @@ namespace DietApp
                         MessageBox.Show("User ID: " + originalUser.userName + " updated.", "Update User", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     //Refreshes this form.
-                    this.Refresh();
+                    this.Close();
                 }
             }
             catch (SqlException ex)

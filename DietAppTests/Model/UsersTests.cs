@@ -1,29 +1,38 @@
-﻿using DietApp.Model;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
+﻿//-----------------------------------------------------------------------
+// <copyright file="UsersTests.cs" company="KKR Summer 2016">
+//     Copyright (c) KKR Summer 2016. All rights reserved.
+// </copyright>
+// <summary>This is the testing for the Model.User class.</summary>
+// <author>Kaleigh Kendrick</author>
+// <author>Robert Carswell</author>
+//-----------------------------------------------------------------------
 
-namespace DietAppTest.ModelTest
+namespace DietAppTest.Model
 {
+    using System;
+    using DietApp.Model;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
     /// <summary>
-    /// Test the UserS Class in DietApp.Model
+    /// Test the UserS Class in DietApp.Model.
     /// </summary>
     [TestClass]
-    public class UsersTest
+    public class UsersTests
     {
         /// <summary>
-        /// Test for newly created Users, all gets show return null
+        /// Test for newly created Users, all gets show return null.
         /// </summary>
         [TestMethod]
         public void TestNullUsers()
         {
-            //Set Users (New)
-            String fullName;
+            // Set Users (New)
+            string fullName;
 
-            //Create User (New)
+            // Create User (New)
             Users users = new Users();
             fullName = " ";
 
-            //Check User Data
+            // Check User Data
             Assert.AreEqual(0, users.userId, 0, "User's userID not 0.");
             Assert.IsNull(users.userName, "User's userName not null.");
             Assert.IsNull(users.firstName, "User's firstName not null.");
@@ -38,25 +47,25 @@ namespace DietAppTest.ModelTest
         }
 
         /// <summary>
-        /// Test for set and get of a user, Users class
+        /// Test for set and get of a user, Users class.
         /// </summary>
         [TestMethod]
         public void TestActiveUsers()
         {
-            //Set Users
+            // Set Users
             int userId = 1;
-            String userName = "jdoe01";
-            String firstName = "John";
-            String lastName = "Doe";
-            String email = "testing@test.edu";
-            String password = "password";
+            string userName = "jdoe01";
+            string firstName = "John";
+            string lastName = "Doe";
+            string email = "testing@test.edu";
+            string password = "password";
             int initialWeight = 155;
             int heightInches = 69;
             int dailyCalorieGoal = 2222;
             int goalWeight = 145;
-            String fullName;
+            string fullName;
 
-            //Create User (Active)
+            // Create User (Active)
             Users users = new Users();
             users.userId = userId;
             users.userName = userName;
@@ -70,7 +79,7 @@ namespace DietAppTest.ModelTest
             users.goalWeight = goalWeight;
             fullName = firstName + " " + lastName;
 
-            //Check User Data
+            // Check User Data
             Assert.AreEqual(userId, users.userId, 0, "User's userId not " + userId + ".");
             Assert.AreEqual(userName, users.userName, "User's userName not " + userName + ".");
             Assert.AreEqual(firstName, users.firstName, "User's firstName not " + firstName + ".");

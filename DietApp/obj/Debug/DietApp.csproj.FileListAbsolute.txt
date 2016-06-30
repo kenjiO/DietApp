@@ -53,3 +53,18 @@ C:\Users\Robert Carswell Jr\Documents\dietapp\DietApp\obj\Debug\DietApp.View.Wel
 C:\Users\Robert Carswell Jr\Documents\dietapp\DietApp\obj\Debug\DietApp.csproj.GenerateResource.Cache
 C:\Users\Robert Carswell Jr\Documents\dietapp\DietApp\obj\Debug\DietApp.exe
 C:\Users\Robert Carswell Jr\Documents\dietapp\DietApp\obj\Debug\DietApp.pdb
+C:\Users\rcarswel\Source\Repos\DietApp\bin\Debug\DietApp.exe.config
+C:\Users\rcarswel\Source\Repos\DietApp\bin\Debug\DietApp.exe
+C:\Users\rcarswel\Source\Repos\DietApp\bin\Debug\DietApp.pdb
+C:\Users\rcarswel\Source\Repos\DietApp\obj\Debug\DietApp.View.FoodEntryForm.resources
+C:\Users\rcarswel\Source\Repos\DietApp\obj\Debug\DietApp.LoginForm.resources
+C:\Users\rcarswel\Source\Repos\DietApp\obj\Debug\DietApp.MainForm.resources
+C:\Users\rcarswel\Source\Repos\DietApp\obj\Debug\DietApp.NewUser.resources
+C:\Users\rcarswel\Source\Repos\DietApp\obj\Debug\DietApp.Properties.Resources.resources
+C:\Users\rcarswel\Source\Repos\DietApp\obj\Debug\DietApp.ProfileInfo.resources
+C:\Users\rcarswel\Source\Repos\DietApp\obj\Debug\DietApp.WellnessInfo.resources
+C:\Users\rcarswel\Source\Repos\DietApp\obj\Debug\DietApp.View.WellnessTrackingForm.resources
+C:\Users\rcarswel\Source\Repos\DietApp\obj\Debug\DietApp.csproj.GenerateResource.Cache
+C:\Users\rcarswel\Source\Repos\DietApp\obj\Debug\DietApp.exe
+C:\Users\rcarswel\Source\Repos\DietApp\obj\Debug\DietApp.pdb
+C:\Users\rcarswel\Source\Repos\DietApp\obj\Debug\DietApp.csprojResolveAssemblyReference.cache

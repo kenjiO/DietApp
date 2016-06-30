@@ -53,14 +53,16 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Controller\DietAppControllerTests.cs" />
-    <Compile Include="DAL\FoodEntryDALTest.cs" />
-    <Compile Include="DAL\UserDALTest.cs" />
+    <Compile Include="DAL\FoodEntryDALTests.cs" />
+    <Compile Include="DAL\UserDALTests.cs" />
     <Compile Include="DAL\WellnessDALTests.cs" />
     <Compile Include="Model\EncryptionTests.cs" />
     <Compile Include="Model\FoodEntryTests.cs" />
     <Compile Include="Model\Model_ValidatorTests.cs" />
     <Compile Include="Model\UsersTests.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DietApp\DietApp.csproj">
