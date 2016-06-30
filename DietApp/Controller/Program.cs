@@ -14,9 +14,6 @@ namespace DietApp
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new LoginForm());
-
-            //AppController controller = new AppController();
-            //Application.Run(new ProfileInfo(controller));
         }
     }
 }

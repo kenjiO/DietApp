@@ -9,9 +9,6 @@ namespace DietApp
     public partial class MainForm : Form
     {
         private Users theUser;
-        private ProfileInfo profileForm;
-        private WellnessTrackingForm wellnessForm;
-        private FoodEntryForm entryForm;
 
         public MainForm()
         {
@@ -19,63 +16,29 @@ namespace DietApp
             StartPosition = FormStartPosition.CenterScreen;
         }
 
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            //Updates Any Changes
+            this.theUser = DietAppController.getUserData(this.theUser.userId); 
+            updateTitle();
+            loadTabs();
+        }
+
         /// <summary>
         /// Updates the title bar with an appropriate greeting.
         /// If user is defined, userName is displayed as a part of that greeting.
         /// Else, the user is directed to the profile form and a generic greeting is displayed.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void updateTitle(object sender, EventArgs e)
+        private void updateTitle()
         {
-            //Updates Any Changes
-            this.theUser = DietAppController.getUserData(this.theUser.userId);
-
             if (this.theUser.getFullName() == " ")
             {
-                this.profileForm = new ProfileInfo();
-                this.profileForm.loadUser(this.theUser);
-                this.profileForm.MdiParent = this;
-                this.profileForm.FormClosed += new FormClosedEventHandler(ProfileInfoFormClosed);
-                this.profileForm.Show();
                 this.Text = "Welcome to Health Trends.";
             }
             else
             {
                 this.Text = "Welcome to Health Trends, " + theUser.getFullName() + ".";
-                this.profileForm = null;
             }
-        }
-
-        /// <summary>
-        /// Shows the profile window.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void myProfileToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            if (this.profileForm == null)
-            {
-                this.profileForm = new ProfileInfo();
-                this.profileForm.loadUser(this.theUser);
-                this.profileForm.MdiParent = this;
-                this.profileForm.FormClosed += new FormClosedEventHandler(ProfileInfoFormClosed);
-                this.profileForm.Show();
-            }
-            else
-            {
-                this.profileForm.Activate();
-            }
-        }
-
-        /// <summary>
-        /// Closes the profile window.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void ProfileInfoFormClosed(object sender, FormClosedEventArgs e)
-        {
-            this.profileForm = null;
         }
 
         /// <summary>
@@ -117,54 +80,33 @@ namespace DietApp
         }
 
         /// <summary>
-        /// Shows the WellnessTracking Form.
+        /// Loads content into the tab pages
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void wellnessTrackingToolStripMenuItem_Click(object sender, EventArgs e)
+        private void loadTabs()
         {
-            if (this.wellnessForm == null)
-            {
-                this.wellnessForm = new WellnessTrackingForm();
-                this.wellnessForm.loadUser(this.theUser);
-                this.wellnessForm.MdiParent = this;
-                this.wellnessForm.FormClosed += new FormClosedEventHandler(WellnessFormClosed);
-                this.wellnessForm.Show();
-            }
-            else
-            {
-                this.wellnessForm.Activate();
-            }
+            ProfileInfo profileInfoForm = new ProfileInfo();
+            profileInfoForm.loadUser(this.theUser);
+            profileInfoForm.TopLevel = false;
+            profileInfoForm.Visible = true;
+            profileInfoForm.FormBorderStyle = FormBorderStyle.None;
+            profileInfoForm.Dock = DockStyle.Fill;
+            tabPageProfile.Controls.Add(profileInfoForm);
+
+            WellnessTrackingForm wellnessForm = new WellnessTrackingForm();
+            wellnessForm.loadUser(this.theUser);
+            wellnessForm.TopLevel = false;
+            wellnessForm.Visible = true;
+            wellnessForm.FormBorderStyle = FormBorderStyle.None;
+            wellnessForm.Dock = DockStyle.Fill;
+            tabPageWellness.Controls.Add(wellnessForm);
+
+            FoodEntryForm foodForm = new FoodEntryForm(this.theUser);
+            foodForm.TopLevel = false;
+            foodForm.Visible = true;
+            foodForm.FormBorderStyle = FormBorderStyle.None;
+            foodForm.Dock = DockStyle.Fill;
+            tabPageFoodEntries.Controls.Add(foodForm);
         }
 
-        /// <summary>
-        /// Closes the WellnessTracking Form.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void WellnessFormClosed(object sender, FormClosedEventArgs e)
-        {
-            this.wellnessForm = null;
-        }
-
-        private void enterFoodItemToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (this.entryForm == null)
-            {
-                this.entryForm = new FoodEntryForm(this.theUser);
-                this.entryForm.MdiParent = this;
-                this.entryForm.FormClosed += new FormClosedEventHandler(FoodEntryFormClosed);
-                this.entryForm.Show();
-            }
-            else
-            {
-                this.entryForm.Activate();
-            }
-        }
-
-        private void FoodEntryFormClosed(object sender, FormClosedEventArgs e)
-        {
-            this.entryForm = null;
-        }
     }
 }

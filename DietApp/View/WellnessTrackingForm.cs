@@ -126,16 +126,6 @@ namespace DietApp.View
         }
 
         /// <summary>
-        /// Closes the form if the user decides to "cancel" what (s)he is doing.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void cancelButton_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        /// <summary>
         /// If there is information in the DB for the user and the wellness object with a weight >0, displays update button.
         /// If not, displays the save button.
         /// </summary>
