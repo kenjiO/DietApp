@@ -106,7 +106,13 @@ namespace DietApp
             foodForm.FormBorderStyle = FormBorderStyle.None;
             foodForm.Dock = DockStyle.Fill;
             tabPageFoodEntries.Controls.Add(foodForm);
-        }
 
+            ListFoodForm foodListForm = new ListFoodForm(this.theUser);
+            foodListForm.TopLevel = false;
+            foodListForm.Visible = true;
+            foodListForm.FormBorderStyle = FormBorderStyle.None;
+            foodListForm.Dock = DockStyle.Left;
+            tabPageFoodList.Controls.Add(foodListForm);
+        }
     }
 }

@@ -71,6 +71,12 @@
       <DependentUpon>FoodEntryForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\Wellness.cs" />
+    <Compile Include="View\ListFoodForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ListFoodForm.Designer.cs">
+      <DependentUpon>ListFoodForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -112,6 +118,9 @@
     </Compile>
     <EmbeddedResource Include="View\FoodEntryForm.resx">
       <DependentUpon>FoodEntryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ListFoodForm.resx">
+      <DependentUpon>ListFoodForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
