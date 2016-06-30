@@ -5957,7 +5957,7 @@ SELECT dateTimeConsumed, userId, name, calories, protein, fat, carbohydrate FROM
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[3];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[4];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT        dateTimeConsumed, userId, name, calories, protein, fat, carbohydrat" +
@@ -5980,6 +5980,20 @@ SELECT dateTimeConsumed, userId, name, calories, protein, fat, carbohydrate FROM
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@userId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "userId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dateTimeConsumed", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "dateTimeConsumed", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@name", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[3].Connection = this.Connection;
+            this._commandCollection[3].CommandText = @"SELECT          dateTimeConsumed, userId, name, calories, protein, fat, carbohydrate
+FROM            itemConsumed
+
+WHERE          userId = @userId 
+AND              CONVERT(date, dateTimeConsumed) = @date
+
+ORDER BY dateTimeConsumed, name
+
+-- CONVERT(date, dateTimeConsumed) is used to ignore the time portion of the dateTime";
+            this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@userId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "userId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@date", global::System.Data.SqlDbType.VarChar, 1024, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6019,6 +6033,24 @@ SELECT dateTimeConsumed, userId, name, calories, protein, fat, carbohydrate FROM
             }
             else {
                 this.Adapter.SelectCommand.Parameters[2].Value = ((string)(name));
+            }
+            DietAppDataSet.itemConsumedDataTable dataTable = new DietAppDataSet.itemConsumedDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual DietAppDataSet.itemConsumedDataTable GetEntriesByUserIdAndDate(int userId, string date) {
+            this.Adapter.SelectCommand = this.CommandCollection[3];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(userId));
+            if ((date == null)) {
+                throw new global::System.ArgumentNullException("date");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(date));
             }
             DietAppDataSet.itemConsumedDataTable dataTable = new DietAppDataSet.itemConsumedDataTable();
             this.Adapter.Fill(dataTable);
