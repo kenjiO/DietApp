@@ -60,6 +60,21 @@ namespace DietApp.Controller
         }
 
         /// <summary>
+        /// Get the food entries for a user on a given date
+        /// </summary>
+        /// <param name="userId">The user to get the food entries for</param>
+        /// <param name="date">The date to get the entries for</param>
+        /// <returns>A list of food entries for the user</returns>
+        public static List<FoodEntry> getFoodEntriesForUserByDate(int userId, DateTime date)
+        {
+            if (date == null)
+            {
+                throw new ArgumentNullException("date must not be null");
+            }
+            return FoodEntryDAL.getUserEntriesByDate(userId, date);
+        }
+
+        /// <summary>
         /// Add a food entry to the DB
         /// </summary>
         /// <param name="userId">userId that consumed the food</param>
