@@ -114,6 +114,7 @@ namespace DietApp.View
             try
             {
                 DietAppController.updateDailyWellnessData(userWellnessUpdate, this.userWellness);
+                MessageBox.Show("You have successfully recorded data.  You are one step closer to making data-driven decisions about your health.", "Record Updated");
             }
             catch (SqlException ex)
             {
@@ -143,7 +144,7 @@ namespace DietApp.View
         {
             if (View_Validator.ValidateWellness(this.userWellness))
             {
-                updateButton.Enabled = false;
+                updateButton.Enabled = true;
                 updateButton.Visible = true;
                 saveButton.Enabled = false;
                 saveButton.Visible = false;

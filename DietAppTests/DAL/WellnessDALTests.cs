@@ -63,8 +63,6 @@ namespace DietApp.DAL.Tests
             Assert.AreEqual(date, testWellness.date, "Wellness object's date not " + date + ".");
         }
 
-        /**
-         * UNDER DEVELOPMENT FOR ITERATION 2
         [TestMethod()]
         public void updateDailyWellnessDataTest()
         {
@@ -97,6 +95,6 @@ namespace DietApp.DAL.Tests
             Assert.AreEqual(diastolicBP, testWellness.diastolicBP, "Wellness object's diastolic BP not " + diastolicBP + ".");
             Assert.AreEqual(userID, testWellness.userID, "Wellness object's userId not " + userID + ".");
             Assert.AreEqual(date, testWellness.date, "Wellness object's date not " + date + ".");
-        }**/
+        }
     }
 }
