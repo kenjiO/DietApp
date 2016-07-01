@@ -82,7 +82,7 @@ namespace DietApp.View
         /// <summary>
         /// Check wether user has changed any data
         /// </summary>
-        /// <returns>True if any changes have been made. False otherwise</returns>
+        /// <returns>True if no changes have been made. False otherwise</returns>
         private bool noUpdatesMade()
         {
             return foodBox.Text.Equals(this.originalEntry.Name) &&
