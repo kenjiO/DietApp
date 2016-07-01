@@ -85,6 +85,7 @@ namespace DietApp
                     var newUser = new Users
                     {
                         //Adds the current userName to the blank user profile.
+                        userId = originalUser.userId,
                         firstName = firstName,
                         lastName = lastName,
                         email = email,
