@@ -85,6 +85,33 @@ namespace DietApp.DAL
         }
 
         /// <summary>
+        /// Update a food entry in the DB
+        /// Note: This does not change the userID even if updated is different
+        /// </summary>
+        /// <param name="original">The original Entry</param>
+        /// <param name="updated">The updated Entry</param>
+        public static void updateEntry(FoodEntry original, FoodEntry updated)
+        {
+            if (original == null || updated == null)
+            {
+                throw new ArgumentNullException("entries cannot be null");
+            }
+            using (var itemConsumedTableAdapter = new DietAppDataSetTableAdapters.itemConsumedTableAdapter())
+            {
+                itemConsumedTableAdapter.UpdateQuery(
+                    updated.ConsumedAt,
+                    updated.Name,
+                    updated.Calories,
+                    updated.Protein,
+                    updated.Fat,
+                    updated.Carbohydrates,
+                    original.ConsumedAt,
+                    original.UserId,
+                    original.Name);
+            }
+        }
+
+        /// <summary>
         /// Deletes a food entry from the DB.
         /// </summary>
         /// <param name="entry">The entry to delete.</param>
