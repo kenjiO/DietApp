@@ -54,7 +54,7 @@ namespace DietApp.DAL
         /// <param name="oldWellness"></param>
         public static void updateDailyWellnessData(Wellness newWellness, Wellness oldWellness)
         {
-            int number, newValue, oldValue;
+            int number, dailyMeasurementID;
             var idNumber = "";
             var valueName = "";
             var measuremetType = new Dictionary<int, string>();
@@ -78,18 +78,12 @@ namespace DietApp.DAL
                     }
                     using (var wellnessDataSet = new DietAppDataSetTableAdapters.dailyMeasurementsFullTableAdapter())
                     {
-                        //For each data element inside the values dataset, give me the measurement value.
-                        foreach (KeyValuePair<int, string> kvp in measuremetType)
+                        foreach (DataRow row in wellnessDataSet.GetData().Rows)
                         {
-                            var property = typeof(Wellness).GetProperty(kvp.Value);
-                            var newInt = Int32.TryParse(property.GetValue(newWellness, null).ToString(), out newValue);
-                            var oldInt = Int32.TryParse(property.GetValue(oldWellness, null).ToString(), out oldValue);
+                            var dailyMeasurementIDString = row["dailyMeasurementID"].ToString();
+                            var dailyMeasurementIDNumber = Int32.TryParse(dailyMeasurementIDString, out dailyMeasurementID);
 
-                            if (newInt && oldInt)
-                            {
-                                wellnessDataSet.Update(newWellness.date, newWellness.userID, kvp.Key, newValue,
-                                oldWellness.date, oldWellness.userID, kvp.Key, oldValue, oldWellness.dailyMeasurementID);
-                            }
+                            getValuePair(measuremetType, newWellness, oldWellness, dailyMeasurementIDNumber, dailyMeasurementID);
                         }
                     }
                 }
@@ -187,6 +181,39 @@ namespace DietApp.DAL
                         if (newInt)
                         {
                             wellnessDataSet.Insert(theWellness.date, theWellness.userID, kvp.Key, newValue);
+                        }
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Gets the measurement values associated with each measurement type in the DB for a wellness object.
+        /// </summary>
+        /// <param name="measuremetType"></param>
+        /// <param name="newWellness"></param>
+        /// <param name="oldWellness"></param>
+        /// <param name="dailyMeasurementIDNumber"></param>
+        /// <param name="dailyMeasurementID"></param>
+        private static void getValuePair(Dictionary<int, string> measuremetType, Wellness newWellness, Wellness oldWellness, Boolean dailyMeasurementIDNumber, int dailyMeasurementID)
+        {
+            int newValue, oldValue;
+            using (var wellnessDataTable = new DietAppDataSet())
+            {
+                //Get dataset for values.
+                using (var wellnessDataSet = new DietAppDataSetTableAdapters.dailyMeasurementsFullTableAdapter())
+                {
+                    //For each data element inside the values dataset, give me the measurement value.
+                    foreach (KeyValuePair<int, string> kvp in measuremetType)
+                    {
+                        var property = typeof(Wellness).GetProperty(kvp.Value);
+                        var newInt = Int32.TryParse(property.GetValue(newWellness, null).ToString(), out newValue);
+                        var oldInt = Int32.TryParse(property.GetValue(oldWellness, null).ToString(), out oldValue);
+
+                        if (newInt && oldInt && dailyMeasurementIDNumber)
+                        {
+                            wellnessDataSet.Update(newWellness.date, newWellness.userID, kvp.Key, newValue,
+                            oldWellness.date, oldWellness.userID, kvp.Key, oldValue, dailyMeasurementID);
                         }
                     }
                 }
