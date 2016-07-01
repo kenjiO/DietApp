@@ -1,15 +1,30 @@
-﻿using DietApp.DAL;
-using DietApp.Model;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
-using System.Transactions;
+﻿//-----------------------------------------------------------------------
+// <copyright file="FoodEntryDALTests.cs" company="KKR Summer 2016">
+//     Copyright (c) KKR Summer 2016. All rights reserved.
+// </copyright>
+// <summary>This is the testing for the DAL.FoodEntryDAL class.</summary>
+// <author>Kaleigh Kendrick</author>
+// <author>Kenji Okamoto</author>
+//-----------------------------------------------------------------------
 
 namespace DietAppTests.DAL
 {
+    using System;
+    using DietApp.DAL;
+    using DietApp.Model;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using System.Collections.Generic;
+    using System.Transactions;
+
+    /// <summary>
+    /// Test the FoodEntryDAL Class in DietApp.DAL.
+    /// </summary>
     [TestClass]
-    public class FoodEntryDALTest
+    public class FoodEntryDALTests
     {
+        /// <summary>
+        /// Test for add food entry.
+        /// </summary>
         [TestMethod]
         public void TestAnEntryCanBeAddedToTheDB()
         {
@@ -36,6 +51,9 @@ namespace DietAppTests.DAL
             FoodEntryDAL.deleteEntry(entry);
         }
 
+        /// <summary>
+        /// Test for add with null calories.
+        /// </summary>
         [TestMethod]
         public void TestAnEntryCanBeAddedToTheDBWithNullCalories()
         {
@@ -62,6 +80,9 @@ namespace DietAppTests.DAL
             FoodEntryDAL.deleteEntry(entry);
         }
 
+        /// <summary>
+        /// Test for add with null protein.
+        /// </summary>
         [TestMethod]
         public void TestAnEntryCanBeAddedToTheDBWithNullprotein()
         {
@@ -88,6 +109,9 @@ namespace DietAppTests.DAL
             FoodEntryDAL.deleteEntry(entry);
         }
 
+        /// <summary>
+        /// Test for add with null fat.
+        /// </summary>
         [TestMethod]
         public void TestAnEntryCanBeAddedToTheDBWithNullFat()
         {
@@ -114,6 +138,9 @@ namespace DietAppTests.DAL
             FoodEntryDAL.deleteEntry(entry);
         }
 
+        /// <summary>
+        /// Test for add with null carbohydrates.
+        /// </summary>
         [TestMethod]
         public void TestAnEntryCanBeAddedToTheDBWithNullCarbohydrates()
         {

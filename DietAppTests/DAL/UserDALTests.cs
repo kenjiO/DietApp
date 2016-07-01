@@ -1,92 +1,99 @@
-﻿using DietApp.DAL;
-using DietApp.Model;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
+﻿//-----------------------------------------------------------------------
+// <copyright file="UserDALTests.cs" company="KKR Summer 2016">
+//     Copyright (c) KKR Summer 2016. All rights reserved.
+// </copyright>
+// <summary>This is the testing for the Model.UserDAL class.</summary>
+// <author>Kaleigh Kendrick</author>
+// <author>Robert Carswell</author>
+//-----------------------------------------------------------------------
 
 namespace DietAppTests.DAL
 {
+    using System;
+    using DietApp.DAL;
+    using DietApp.Model;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
     /// <summary>
-    /// Test the UserDAL Class in DietApp.DAL
+    /// Test the UserDAL Class in DietApp.DAL.
     /// </summary>
     [TestClass]
-    public class UserDALTest
+    public class UserDALTests
     {
-        private Encryption encryption = new Encryption();
-
         /// <summary>
-        /// Test for return of user data
+        /// Test for return of user data.
         /// </summary>
         [TestMethod]
         public void TestgetUserData()
         {
-            //Set Users AA
+            // Set Users AA
             int userId = 1;
-            String userName = "aa";
-            String firstName = "Al";
-            String lastName = "Adams";
-            String email = "aladams@example.com";
+            string userName = "aa";
+            string firstName = "Al";
+            string lastName = "Adams";
+            string email = "aladams@example.com";
             int initialWeight = 220;
             int heightInches = 70;
             int dailyCalorieGoal = 2500;
             int goalWeight = 180;
-            String fullName = firstName + " " + lastName;
+            string fullName = firstName + " " + lastName;
 
-            //Get User AA (by userName)
-            Users aaName = UsersDAL.getUserData(userName);
+            // Get User AA (by userName)
+            Users userAAName = UsersDAL.getUserData(userName);
 
-            //Check Results, expect AA
-            Assert.AreEqual(userId, aaName.userId, "AA's userId not " + userId + ".");
-            Assert.AreEqual(userName, aaName.userName, "AA's userName not " + userName + ".");
-            Assert.AreEqual(firstName, aaName.firstName, "AA's firstName not " + firstName + ".");
-            Assert.AreEqual(lastName, aaName.lastName, "AA's lastName not " + lastName + ".");
-            Assert.AreEqual(email, aaName.email, "AA's email not " + email + ".");
-            Assert.AreEqual(initialWeight, aaName.initialWeight, "AA's initialWeight not " + initialWeight + ".");
-            Assert.AreEqual(heightInches, aaName.heightInches, 0, "AA's heightInches not " + heightInches + ".");
-            Assert.AreEqual(dailyCalorieGoal, aaName.dailyCalorieGoal, 0, "AA's dailyCalorieGoal not " + dailyCalorieGoal + ".");
-            Assert.AreEqual(goalWeight, aaName.goalWeight, 0, "AA's goalWeight not " + goalWeight + ".");
-            Assert.AreEqual(fullName, aaName.getFullName(), "AA's fullName not " + fullName + ".");
+            // Check Results, expect AA
+            Assert.AreEqual(userId, userAAName.userId, "AA's userId not " + userId + ".");
+            Assert.AreEqual(userName, userAAName.userName, "AA's userName not " + userName + ".");
+            Assert.AreEqual(firstName, userAAName.firstName, "AA's firstName not " + firstName + ".");
+            Assert.AreEqual(lastName, userAAName.lastName, "AA's lastName not " + lastName + ".");
+            Assert.AreEqual(email, userAAName.email, "AA's email not " + email + ".");
+            Assert.AreEqual(initialWeight, userAAName.initialWeight, "AA's initialWeight not " + initialWeight + ".");
+            Assert.AreEqual(heightInches, userAAName.heightInches, 0, "AA's heightInches not " + heightInches + ".");
+            Assert.AreEqual(dailyCalorieGoal, userAAName.dailyCalorieGoal, 0, "AA's dailyCalorieGoal not " + dailyCalorieGoal + ".");
+            Assert.AreEqual(goalWeight, userAAName.goalWeight, 0, "AA's goalWeight not " + goalWeight + ".");
+            Assert.AreEqual(fullName, userAAName.getFullName(), "AA's fullName not " + fullName + ".");
 
-            //Get User AA (by userId)
-            Users aaId = UsersDAL.getUserData(userId);
+            // Get User AA (by userId)
+            Users userAAId = UsersDAL.getUserData(userId);
 
-            //Check Results, expect AA
-            Assert.AreEqual(userId, aaId.userId, "AA's userId not " + userId + ".");
-            Assert.AreEqual(userName, aaId.userName, "AA's userName not " + userName + ".");
-            Assert.AreEqual(firstName, aaId.firstName, "AA's firstName not " + firstName + ".");
-            Assert.AreEqual(lastName, aaId.lastName, "AA's lastName not " + lastName + ".");
-            Assert.AreEqual(email, aaId.email, "AA's email not " + email + ".");
-            Assert.AreEqual(initialWeight, aaId.initialWeight, "AA's initialWeight not " + initialWeight + ".");
-            Assert.AreEqual(heightInches, aaId.heightInches, 0, "AA's heightInches not " + heightInches + ".");
-            Assert.AreEqual(dailyCalorieGoal, aaId.dailyCalorieGoal, 0, "AA's dailyCalorieGoal not " + dailyCalorieGoal + ".");
-            Assert.AreEqual(goalWeight, aaId.goalWeight, 0, "AA's goalWeight not " + goalWeight + ".");
-            Assert.AreEqual(fullName, aaId.getFullName(), "AA's fullName not " + fullName + ".");
+            // Check Results, expect AA
+            Assert.AreEqual(userId, userAAId.userId, "AA's userId not " + userId + ".");
+            Assert.AreEqual(userName, userAAId.userName, "AA's userName not " + userName + ".");
+            Assert.AreEqual(firstName, userAAId.firstName, "AA's firstName not " + firstName + ".");
+            Assert.AreEqual(lastName, userAAId.lastName, "AA's lastName not " + lastName + ".");
+            Assert.AreEqual(email, userAAId.email, "AA's email not " + email + ".");
+            Assert.AreEqual(initialWeight, userAAId.initialWeight, "AA's initialWeight not " + initialWeight + ".");
+            Assert.AreEqual(heightInches, userAAId.heightInches, 0, "AA's heightInches not " + heightInches + ".");
+            Assert.AreEqual(dailyCalorieGoal, userAAId.dailyCalorieGoal, 0, "AA's dailyCalorieGoal not " + dailyCalorieGoal + ".");
+            Assert.AreEqual(goalWeight, userAAId.goalWeight, 0, "AA's goalWeight not " + goalWeight + ".");
+            Assert.AreEqual(fullName, userAAId.getFullName(), "AA's fullName not " + fullName + ".");
         }
 
         /// <summary>
-        /// Test for add newuser, return of user data
-        /// intial profile setup
-        /// will delete then completed
+        /// Test for add new user, return of user data
+        /// initial profile setup
+        /// will delete then completed.
         /// </summary>
         [TestMethod]
         public void TestaddNewUser()
         {
-            //Set New Users
-            String userName = "dd";
-            String firstName = "";
-            String lastName = "";
-            String email = "";
-            String password = "password";
+            // Set New Users
+            string userName = "dd";
+            string firstName = string.Empty;
+            string lastName = string.Empty;
+            string email = string.Empty;
+            string password = "password";
             int initialWeight = 0;
             int heightInches = 0;
             int dailyCalorieGoal = 0;
             int goalWeight = 0;
-            String fullName = firstName + " " + lastName;
+            string fullName = firstName + " " + lastName;
 
-            //Create New User
-            int ddID = UsersDAL.addNewUser(userName, password);
-            Users dd = UsersDAL.getUserData(ddID);
+            // Create New User
+            int userDDId = UsersDAL.addNewUser(userName, password);
+            Users dd = UsersDAL.getUserData(userDDId);
 
-            //Check Results, expect New UserS
+            // Check Results, expect New UserS
             Assert.AreEqual(userName, dd.userName, "DD's username not " + userName + ".");
             Assert.AreEqual(firstName, dd.firstName, "DD's firstName not " + firstName + ".");
             Assert.AreEqual(lastName, dd.lastName, "DD's lastName not " + lastName + ".");
@@ -97,32 +104,32 @@ namespace DietAppTests.DAL
             Assert.AreEqual(goalWeight, dd.goalWeight, 0, "DD's goalWeight not " + goalWeight + ".");
             Assert.AreEqual(fullName, dd.getFullName(), "DD's fullName not " + fullName + ".");
 
-            //Deletes Test New User
-            UsersDAL.deleteUsers(ddID);
-            dd = UsersDAL.getUserData(ddID);
+            // Deletes Test New User
+            UsersDAL.deleteUsers(userDDId);
+            dd = UsersDAL.getUserData(userDDId);
             Assert.AreEqual(0, dd.userId, "New Test Users not Deleted.");
         }
 
         /// <summary>
         /// Test for update of user data
-        /// will reverse when complete
+        /// will reverse when complete.
         /// </summary>
         [TestMethod]
         public void TestupdateUsers()
         {
-            //Set Users BB
+            // Set Users BB
             int userId = 2;
-            String firstName = "Emitt";
-            String lastName = "Ethan";
-            String email = "eethan@example.com";
+            string firstName = "Emitt";
+            string lastName = "Ethan";
+            string email = "eethan@example.com";
             int initialWeight = 175;
             int heightInches = 72;
             int dailyCalorieGoal = 2200;
             int goalWeight = 145;
-            String fullName = firstName + " " + lastName;
+            string fullName = firstName + " " + lastName;
             Users originalUsers = UsersDAL.getUserData(userId);
 
-            //Get Users BB (by userName)
+            // Get Users BB (by userName)
             Users oldUsers = UsersDAL.getUserData(userId);
             Users newUsers = UsersDAL.getUserData(userId);
             newUsers.userId = userId;
@@ -134,11 +141,11 @@ namespace DietAppTests.DAL
             newUsers.dailyCalorieGoal = dailyCalorieGoal;
             newUsers.goalWeight = goalWeight;
 
-            //Update BB
+            // Update BB
             UsersDAL.updateUsers(oldUsers, newUsers);
             Users testUsers = UsersDAL.getUserData(userId);
 
-            //Check Results, expected Update
+            // Check Results, expected Update
             Assert.AreEqual(newUsers.userId, testUsers.userId, "TestUser's userId not " + newUsers.userId + ".");
             Assert.AreEqual(newUsers.firstName, testUsers.firstName, "TestUser's firstName not " + newUsers.firstName + ".");
             Assert.AreEqual(newUsers.lastName, testUsers.lastName, "TestUser's lastName not " + newUsers.lastName + ".");
@@ -149,11 +156,11 @@ namespace DietAppTests.DAL
             Assert.AreEqual(newUsers.goalWeight, testUsers.goalWeight, 0, "TestUser's goalWeight not " + newUsers.goalWeight + ".");
             Assert.AreEqual(newUsers.getFullName(), testUsers.getFullName(), "TestUser's fullName not " + newUsers.getFullName() + ".");
 
-            //Rest to Original
+            // Rest to Original
             UsersDAL.updateUsers(testUsers, originalUsers);
             testUsers = UsersDAL.getUserData(userId);
 
-            //Check Results, expected Origianl
+            // Check Results, expected Origianl
             Assert.AreEqual(originalUsers.userId, testUsers.userId, "OriginalUser's userId not " + originalUsers.userId + ".");
             Assert.AreEqual(originalUsers.firstName, testUsers.firstName, "OriginalUser's firstName not " + originalUsers.firstName + ".");
             Assert.AreEqual(originalUsers.lastName, testUsers.lastName, "OriginalUser's lastName not " + originalUsers.lastName + ".");
