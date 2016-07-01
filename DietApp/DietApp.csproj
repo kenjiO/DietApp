@@ -65,6 +65,12 @@
     <Compile Include="Model\FoodNutritionInfo.cs" />
     <Compile Include="Model\Model_Validator.cs" />
     <Compile Include="Model\Users.cs" />
+    <Compile Include="View\FoodEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FoodEditForm.Designer.cs">
+      <DependentUpon>FoodEditForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\FoodEntryForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -126,6 +132,9 @@
       <DependentUpon>WellnessInfo.cs</DependentUpon>
       <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
     </Compile>
+    <EmbeddedResource Include="View\FoodEditForm.resx">
+      <DependentUpon>FoodEditForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\FoodEntryForm.resx">
       <DependentUpon>FoodEntryForm.cs</DependentUpon>
     </EmbeddedResource>

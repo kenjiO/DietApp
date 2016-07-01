@@ -99,6 +99,20 @@ namespace DietApp.Controller
         }
 
         /// <summary>
+        /// Update a food entry
+        /// </summary>
+        /// <param name="originalEntry">The original entry</param>
+        /// <param name="updatedEntry">The updated entry</param>
+        public static void updateFoodEntry(FoodEntry originalEntry, FoodEntry updatedEntry)
+        {
+            if (originalEntry == null || updatedEntry == null)
+            {
+                throw new ArgumentNullException("entries cannot be null");
+            }
+            FoodEntryDAL.updateEntry(originalEntry, updatedEntry);
+        }
+
+        /// <summary>
         /// Search for nutrition info on a food.
         /// </summary>
         /// <param name="searchTerm">Search term for the food name</param>

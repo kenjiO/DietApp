@@ -3,6 +3,7 @@ using DietApp.Model;
 using System;
 using System.Data.SqlClient;
 using System.Windows.Forms;
+using System.Collections.Generic;
 
 namespace DietApp.View
 {
@@ -10,6 +11,8 @@ namespace DietApp.View
     {
         private Users currentUser;
         private BindingSource bindingSource1;
+        private const int DATAGRID_EDIT_COLUMN_INDEX = 6;
+        private List<FoodEntry> currentDayEntries;
 
         public ListFoodForm(Users currentUser)
         {
@@ -59,13 +62,50 @@ namespace DietApp.View
             Cursor.Current = Cursors.WaitCursor;
             try
             {
-                bindingSource1.DataSource = DietAppController.getFoodEntriesForUserByDate(this.currentUser.userId, dateTimePicker1.Value);
+                this.currentDayEntries = DietAppController.getFoodEntriesForUserByDate(this.currentUser.userId, dateTimePicker1.Value);
                 Cursor.Current = Cursors.Default;
             }
             catch (SqlException ex)
             {
+                this.currentDayEntries = new List<FoodEntry>();
                 Cursor.Current = Cursors.Default;
                 MessageBox.Show(ex.Message, ex.GetType().ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            bindingSource1.DataSource = this.currentDayEntries;
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Check if the column is the edit button column
+            if (e.ColumnIndex == DATAGRID_EDIT_COLUMN_INDEX)
+            {
+                try
+                {
+                    FoodEntry entryToEdit = this.currentDayEntries[e.RowIndex];
+                    if (entryToEdit == null)
+                    {
+                        MessageBox.Show("There was an application error editing this item", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    launchEditForm(entryToEdit);
+                }
+                catch (ArgumentOutOfRangeException ex)
+                {
+                    MessageBox.Show("There was an application error editing this item", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Launches the form to edit an entry
+        /// </summary>
+        /// <param name="entryToEdit">The entry to edit</param>
+        private void launchEditForm(FoodEntry entryToEdit)
+        {
+            FoodEditForm editForm = new FoodEditForm(entryToEdit);
+            editForm.ShowDialog();
+            if (editForm.DialogResult == DialogResult.OK)
+            {
+                refreshData();
             }
         }
     }
