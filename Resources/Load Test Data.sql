@@ -1,3 +1,5 @@
+USE DietApp
+GO
 
 DELETE FROM users
 

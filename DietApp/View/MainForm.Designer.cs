@@ -35,8 +35,9 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageProfile = new System.Windows.Forms.TabPage();
             this.tabPageWellness = new System.Windows.Forms.TabPage();
-            this.tabPageFoodEntries = new System.Windows.Forms.TabPage();
             this.tabPageFoodList = new System.Windows.Forms.TabPage();
+            this.tabPageFoodEntries = new System.Windows.Forms.TabPage();
+            this.tabPageUserReport = new System.Windows.Forms.TabPage();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.SuspendLayout();
@@ -83,8 +84,9 @@
             this.tabControl1.Controls.Add(this.tabPageWellness);
             this.tabControl1.Controls.Add(this.tabPageFoodList);
             this.tabControl1.Controls.Add(this.tabPageFoodEntries);
+            this.tabControl1.Controls.Add(this.tabPageUserReport);
             this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabControl1.Location = new System.Drawing.Point(0, 24);
+            this.tabControl1.Location = new System.Drawing.Point(0, 27);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.Padding = new System.Drawing.Point(20, 3);
             this.tabControl1.SelectedIndex = 0;
@@ -111,15 +113,6 @@
             this.tabPageWellness.Text = "Wellness Info";
             this.tabPageWellness.UseVisualStyleBackColor = true;
             // 
-            // tabPageFoodEntries
-            // 
-            this.tabPageFoodEntries.Location = new System.Drawing.Point(4, 27);
-            this.tabPageFoodEntries.Name = "tabPageFoodEntries";
-            this.tabPageFoodEntries.Size = new System.Drawing.Size(926, 556);
-            this.tabPageFoodEntries.TabIndex = 2;
-            this.tabPageFoodEntries.Text = "New Food Entry";
-            this.tabPageFoodEntries.UseVisualStyleBackColor = true;
-            // 
             // tabPageFoodList
             // 
             this.tabPageFoodList.Location = new System.Drawing.Point(4, 27);
@@ -129,6 +122,25 @@
             this.tabPageFoodList.TabIndex = 3;
             this.tabPageFoodList.Text = "Food Entries";
             this.tabPageFoodList.UseVisualStyleBackColor = true;
+            // 
+            // tabPageFoodEntries
+            // 
+            this.tabPageFoodEntries.Location = new System.Drawing.Point(4, 27);
+            this.tabPageFoodEntries.Name = "tabPageFoodEntries";
+            this.tabPageFoodEntries.Size = new System.Drawing.Size(926, 556);
+            this.tabPageFoodEntries.TabIndex = 2;
+            this.tabPageFoodEntries.Text = "New Food Entry";
+            this.tabPageFoodEntries.UseVisualStyleBackColor = true;
+            // 
+            // tabPageUserReport
+            // 
+            this.tabPageUserReport.Location = new System.Drawing.Point(4, 27);
+            this.tabPageUserReport.Name = "tabPageUserReport";
+            this.tabPageUserReport.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageUserReport.Size = new System.Drawing.Size(926, 556);
+            this.tabPageUserReport.TabIndex = 4;
+            this.tabPageUserReport.Text = "User Report";
+            this.tabPageUserReport.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
@@ -162,5 +174,6 @@
         private System.Windows.Forms.TabPage tabPageWellness;
         private System.Windows.Forms.TabPage tabPageFoodEntries;
         private System.Windows.Forms.TabPage tabPageFoodList;
+        private System.Windows.Forms.TabPage tabPageUserReport;
     }
 }
