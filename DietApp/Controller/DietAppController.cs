@@ -141,5 +141,15 @@ namespace DietApp.Controller
         {
             WellnessDAL.updateDailyWellnessData(newWellness, oldWellness);
         }
+
+        /// <summary>
+        /// Gets the BMI data for the specified user.
+        /// </summary>
+        /// <param name="userID"></param>
+        /// <returns></returns>
+        public static Progress getBMIData(int userID)
+        {
+            return WellnessDAL.getBMIData(userID);
+        }
     }
 }

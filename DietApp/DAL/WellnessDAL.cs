@@ -124,6 +124,44 @@ namespace DietApp.DAL
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="userID"></param>
+        public static Progress getBMIData(int userID)
+        {
+
+            var idNumber = "";
+            var valueName = "";
+            var bmiProgress = new Progress();
+            int newBMI, oldBMI;
+
+            using (var wellnessDataTable = new DietAppDataSet())
+            {
+                //Get dataset for values.
+                using (var wellnessDataSet = new DietAppDataSetTableAdapters.BMITableAdapter())
+                {
+                    foreach (DataRow row in wellnessDataSet.GetData(userID).Rows)
+                    {
+                        idNumber = row["orginalBMI"].ToString();
+                        var result = Int32.TryParse(idNumber, out oldBMI);
+                        if (result)
+                        {
+                            bmiProgress.oldBMI = oldBMI;
+                        }
+                        idNumber = row["currentBMI"].ToString();
+                        var result0 = Int32.TryParse(idNumber, out newBMI);
+                        if (result0)
+                        {
+                            bmiProgress.newBMI = newBMI;
+                        }
+                    }
+                    bmiProgress.userID = userID;
+                }
+            }
+            return bmiProgress;
+        }
+
         //Helper Methods//
 
         /// <summary>

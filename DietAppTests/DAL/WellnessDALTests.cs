@@ -114,5 +114,17 @@ namespace DietApp.DAL.Tests
             Assert.AreEqual(userID, testWellness.userID, "Wellness object's userId not " + userID + ".");
             Assert.AreEqual(date, testWellness.date, "Wellness object's date not " + date + ".");
         }
+
+        [TestMethod]
+        public void getBMI()
+        {
+            int oldBMI = 32;
+            int newBMI = 22;
+
+            var theProgress = DietAppController.getBMIData(1);
+
+            Assert.AreEqual(oldBMI, theProgress.oldBMI, "The Progress object's old BMI not " + oldBMI + ".");
+            Assert.AreEqual(newBMI, theProgress.newBMI, "The Progress object's new BMI not " + newBMI + ".");
+        }
     }
 }
