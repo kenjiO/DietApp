@@ -6388,7 +6388,7 @@ SELECT dateTimeConsumed, userId, name, calories, protein, fat, carbohydrate FROM
             this._commandCollection[3].CommandText = @"SELECT          dateTimeConsumed, userId, name, calories, protein, fat, carbohydrate
 FROM            itemConsumed
 
-WHERE          userId = @userId 
+WHERE          userId = @userId
 AND              CONVERT(date, dateTimeConsumed) = @date
 
 ORDER BY dateTimeConsumed, name

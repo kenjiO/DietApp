@@ -125,12 +125,11 @@ namespace DietApp.DAL
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="userID"></param>
         public static Progress getBMIData(int userID)
         {
-
             var idNumber = "";
             var valueName = "";
             var bmiProgress = new Progress();

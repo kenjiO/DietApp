@@ -9,10 +9,10 @@
 
 namespace DietAppTests.DAL
 {
-    using System;
     using DietApp.DAL;
     using DietApp.Model;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using System;
     using System.Collections.Generic;
     using System.Transactions;
 

@@ -9,11 +9,11 @@
 
 namespace DietAppTests.Controller
 {
-    using System;
     using DietApp.Controller;
     using DietApp.DAL;
     using DietApp.Model;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using System;
 
     /// <summary>
     /// Test the DietAppController Class in DietApp.Controller.

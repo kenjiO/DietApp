@@ -9,7 +9,6 @@
 
 namespace DietAppTests.Model
 {
-    using System;
     using DietApp.Model;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -48,7 +47,6 @@ namespace DietAppTests.Model
             // Set Users
             string userNameGood = "bb";
             string userNameBad = "LeroyBrown";
-
 
             // Checks Users
             bool goodResult = Model_Validator.verifyUserName(userNameGood);

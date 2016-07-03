@@ -65,7 +65,8 @@ namespace DietApp.View
             {
                 //Update Wellness Info
                 this.updateConfirm();
-            } else
+            }
+            else
             {
                 //Save Wellness Info
                 this.saveInfo_Click();

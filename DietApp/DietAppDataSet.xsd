@@ -334,7 +334,7 @@ WHERE (userId = @userId AND dateTimeConsumed = @dateTimeConsumed AND name = @nam
                     <CommandText>SELECT          dateTimeConsumed, userId, name, calories, protein, fat, carbohydrate
 FROM            itemConsumed
 
-WHERE          userId = @userId 
+WHERE          userId = @userId
 AND              CONVERT(date, dateTimeConsumed) = @date
 
 ORDER BY dateTimeConsumed, name

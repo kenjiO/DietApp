@@ -9,11 +9,10 @@
 
 namespace DietAppTests.Model
 {
-    using System;
-    using System.Security.Cryptography;
-    using System.Text;
     using DietApp.Model;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using System.Security.Cryptography;
+    using System.Text;
 
     /// <summary>
     /// Test the Encryption Class in DietApp.Model.

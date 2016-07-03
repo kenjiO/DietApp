@@ -19,7 +19,7 @@ namespace DietApp
         private void MainForm_Load(object sender, EventArgs e)
         {
             //Updates Any Changes
-            this.theUser = DietAppController.getUserData(this.theUser.userId); 
+            this.theUser = DietAppController.getUserData(this.theUser.userId);
             updateTitle();
             loadTabs();
         }
