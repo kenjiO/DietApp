@@ -123,6 +123,5 @@ namespace DietApp
                 MessageBox.Show(ex.Message, ex.GetType().ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
     }
 }

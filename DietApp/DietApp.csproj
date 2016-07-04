@@ -64,6 +64,7 @@
     <Compile Include="Model\FoodEntry.cs" />
     <Compile Include="Model\FoodNutritionInfo.cs" />
     <Compile Include="Model\Model_Validator.cs" />
+    <Compile Include="Model\Progress.cs" />
     <Compile Include="Model\Users.cs" />
     <Compile Include="View\FoodEditForm.cs">
       <SubType>Form</SubType>
@@ -117,6 +118,12 @@
       <DependentUpon>ProfileInfo.cs</DependentUpon>
       <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
     </Compile>
+    <Compile Include="View\ProgressForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ProgressForm.Designer.cs">
+      <DependentUpon>ProgressForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\View_Validator.cs" />
     <Compile Include="View\WellnessTrackingForm.cs">
       <SubType>Form</SubType>
@@ -161,6 +168,9 @@
     </Compile>
     <EmbeddedResource Include="View\ProfileInfo.resx">
       <DependentUpon>ProfileInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ProgressForm.resx">
+      <DependentUpon>ProgressForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\WellnessInfo.resx">
       <DependentUpon>WellnessInfo.cs</DependentUpon>

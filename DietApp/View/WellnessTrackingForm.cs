@@ -36,7 +36,6 @@ namespace DietApp.View
                     heartRateUpDown.Value = this.userWellness.heartRate;
                     dateTimePicker.Value = this.userWellness.date;
                 }
-                this.setButton();
             }
             else
             {
@@ -56,11 +55,39 @@ namespace DietApp.View
         }
 
         /// <summary>
-        /// Saves the data to the DB.
+        /// Determines if the system should save or update information based on date existing in DB or not.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        public void saveInfo_Click(object sender, System.EventArgs e)
+        public void WellnessInfo_Click(object sender, System.EventArgs e)
+        {
+            if (View_Validator.ValidateWellness(this.userWellness))
+            {
+                //Update Wellness Info
+                this.updateConfirm();
+            }
+            else
+            {
+                //Save Wellness Info
+                this.saveInfo_Click();
+            }
+        }
+
+        // Helper Methods //
+
+        private void updateConfirm()
+        {
+            DialogResult dialogResult = MessageBox.Show("You have already saved an entry for this day.  Do you wish to update that entry with the information on the screen?", "Update Entry", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                this.updateInfo_Click();
+            }
+        }
+
+        /// <summary>
+        /// Saves the data to the DB.
+        /// </summary>
+        private void saveInfo_Click()
         {
             this.userWellness = new Wellness();
             this.userWellness.diastolicBP = Int32.Parse(diastolicUpDown.Value.ToString());
@@ -81,7 +108,6 @@ namespace DietApp.View
                     DietAppController.addDailyWellnessData(this.userWellness);
                     Cursor.Current = Cursors.Default;
                     this.Refresh();
-                    this.setButton();
                     MessageBox.Show("You have successfully recorded data.  You are one step closer to making data-driven decisions about your health.", "Record Updated");
                 }
                 catch (SqlException ex)
@@ -98,12 +124,9 @@ namespace DietApp.View
         }
 
         /// <summary>
-        /// Saves the data to the DB.
-        /// UPDATE FUNCTIONALITY UNDER DEVELOPMENT FOR ITERATION 2.  BUTTON DISABLED.
+        /// Saves updated data to the DB.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        public void updateInfo_Click(object sender, System.EventArgs e)
+        private void updateInfo_Click()
         {
             var userWellnessUpdate = new Wellness
             {
@@ -132,28 +155,6 @@ namespace DietApp.View
                 MessageBox.Show(ex.Message, ex.GetType().ToString());
             }
             Cursor.Current = Cursors.Default;
-        }
-
-        /// <summary>
-        /// If there is information in the DB for the user and the wellness object with a weight >0, displays update button.
-        /// If not, displays the save button.
-        /// </summary>
-        private void setButton()
-        {
-            if (View_Validator.ValidateWellness(this.userWellness))
-            {
-                updateButton.Enabled = true;
-                updateButton.Visible = true;
-                saveButton.Enabled = false;
-                saveButton.Visible = false;
-            }
-            else
-            {
-                updateButton.Enabled = false;
-                updateButton.Visible = false;
-                saveButton.Enabled = true;
-                saveButton.Visible = true;
-            }
         }
     }
 }

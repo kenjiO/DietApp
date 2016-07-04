@@ -19,7 +19,7 @@ namespace DietApp
         private void MainForm_Load(object sender, EventArgs e)
         {
             //Updates Any Changes
-            this.theUser = DietAppController.getUserData(this.theUser.userId); 
+            this.theUser = DietAppController.getUserData(this.theUser.userId);
             updateTitle();
             loadTabs();
         }
@@ -84,7 +84,7 @@ namespace DietApp
         /// </summary>
         private void loadTabs()
         {
-            ProfileInfo profileInfoForm = new ProfileInfo();
+            var profileInfoForm = new ProfileInfo();
             profileInfoForm.loadUser(this.theUser);
             profileInfoForm.TopLevel = false;
             profileInfoForm.Visible = true;
@@ -92,7 +92,7 @@ namespace DietApp
             profileInfoForm.Dock = DockStyle.Fill;
             tabPageProfile.Controls.Add(profileInfoForm);
 
-            WellnessTrackingForm wellnessForm = new WellnessTrackingForm();
+            var wellnessForm = new WellnessTrackingForm();
             wellnessForm.loadUser(this.theUser);
             wellnessForm.TopLevel = false;
             wellnessForm.Visible = true;
@@ -100,19 +100,27 @@ namespace DietApp
             wellnessForm.Dock = DockStyle.Fill;
             tabPageWellness.Controls.Add(wellnessForm);
 
-            FoodEntryForm foodForm = new FoodEntryForm(this.theUser);
+            var foodForm = new FoodEntryForm(this.theUser);
             foodForm.TopLevel = false;
             foodForm.Visible = true;
             foodForm.FormBorderStyle = FormBorderStyle.None;
             foodForm.Dock = DockStyle.Fill;
             tabPageFoodEntries.Controls.Add(foodForm);
 
-            ListFoodForm foodListForm = new ListFoodForm(this.theUser);
+            var foodListForm = new ListFoodForm(this.theUser);
             foodListForm.TopLevel = false;
             foodListForm.Visible = true;
             foodListForm.FormBorderStyle = FormBorderStyle.None;
             foodListForm.Dock = DockStyle.Left;
             tabPageFoodList.Controls.Add(foodListForm);
+
+            var progressForm = new ProgressForm();
+            progressForm.loadUser(this.theUser);
+            progressForm.TopLevel = false;
+            progressForm.Visible = true;
+            progressForm.FormBorderStyle = FormBorderStyle.None;
+            progressForm.Dock = DockStyle.Fill;
+            tabPageProgressForm.Controls.Add(progressForm);
         }
     }
 }

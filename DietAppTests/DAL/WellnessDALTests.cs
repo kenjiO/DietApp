@@ -9,10 +9,10 @@
 
 namespace DietApp.DAL.Tests
 {
-    using System;
     using DietApp.Controller;
     using DietApp.Model;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using System;
 
     /// <summary>
     /// Test the WellnessDAL Class in DietApp.DAL.
@@ -113,6 +113,18 @@ namespace DietApp.DAL.Tests
             Assert.AreEqual(diastolicBP, testWellness.diastolicBP, "Wellness object's diastolic BP not " + diastolicBP + ".");
             Assert.AreEqual(userID, testWellness.userID, "Wellness object's userId not " + userID + ".");
             Assert.AreEqual(date, testWellness.date, "Wellness object's date not " + date + ".");
+        }
+
+        [TestMethod]
+        public void getBMI()
+        {
+            int oldBMI = 32;
+            int newBMI = 22;
+
+            var theProgress = DietAppController.getBMIData(1);
+
+            Assert.AreEqual(oldBMI, theProgress.oldBMI, "The Progress object's old BMI not " + oldBMI + ".");
+            Assert.AreEqual(newBMI, theProgress.newBMI, "The Progress object's new BMI not " + newBMI + ".");
         }
     }
 }
