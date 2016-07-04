@@ -156,6 +156,11 @@ namespace DietApp.Controller
             WellnessDAL.updateDailyWellnessData(newWellness, oldWellness);
         }
 
+        public static List<DailyMeasurements> getUserChartData(int userId, int measurementTypeId)
+        {
+            return DailyMeasurementsDAL.GetUserChartData(userId, measurementTypeId);
+        }
+
         /// <summary>
         /// Gets the BMI data for the specified user.
         /// </summary>

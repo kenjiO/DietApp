@@ -1,3 +1,6 @@
+USE DietApp
+GO
+
 DELETE FROM defaultNutritionalValues 
 
 INSERT INTO defaultNutritionalValues (food, calories, protein, carbohydrates, fat) VALUES ('Arctic char, boiled',119,20,0,4)       

@@ -9,12 +9,12 @@
 
 namespace DietAppTests.DAL
 {
-    using DietApp.DAL;
-    using DietApp.Model;
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
     using System;
     using System.Collections.Generic;
     using System.Transactions;
+    using DietApp.DAL;
+    using DietApp.Model;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     /// <summary>
     /// Test the FoodEntryDAL Class in DietApp.DAL.
@@ -167,6 +167,9 @@ namespace DietAppTests.DAL
             FoodEntryDAL.deleteEntry(entry);
         }
 
+        /// <summary>
+        /// Test return of empty list with no entries.
+        /// </summary>
         [TestMethod]
         public void TestGetEntriesReturnsEmptyListWhenUserHasNoEntries()
         {
@@ -178,6 +181,9 @@ namespace DietAppTests.DAL
             }
         }
 
+        /// <summary>
+        /// Test the return of an empty list with no date.
+        /// </summary>
         [TestMethod]
         public void TestGetEntriesReturnsEmptyListWhenUserHasNoEntriesOnGivenDate()
         {
@@ -191,6 +197,9 @@ namespace DietAppTests.DAL
             }
         }
 
+        /// <summary>
+        /// Test the return of the list for a given date.
+        /// </summary>
         [TestMethod]
         public void TestGetEntriesReturnsOnlyEntriesOnGivenDate()
         {
@@ -208,6 +217,9 @@ namespace DietAppTests.DAL
             }
         }
 
+        /// <summary>
+        /// Test the return of the list not returned for other entries.
+        /// </summary>
         [TestMethod]
         public void TestGetEntriesDoesNotReturnOtherUserEntries()
         {
@@ -225,7 +237,9 @@ namespace DietAppTests.DAL
                 Assert.AreEqual(newUserId, entries[0].UserId);
             }
         }
-
+        /// <summary>
+        /// Test the return of the list for a given date.
+        /// </summary>
         [TestMethod]
         public void TestGetEntriesReturnsTheSameEntryWhenOneEntryOnGivenDate()
         {
@@ -329,200 +343,6 @@ namespace DietAppTests.DAL
                 Assert.IsTrue(areFoodEntriesEqual(entry2, entries[1]));
                 Assert.IsTrue(areFoodEntriesEqual(entry3, entries[2]));
                 Assert.IsTrue(areFoodEntriesEqual(entry4, entries[3]));
-            }
-        }
-
-        [TestMethod]
-        public void TestUpdateEntryUpdatesTheName()
-        {
-            using (TransactionScope transaction = new TransactionScope())
-            {
-                int newUserId = UsersDAL.addNewUser("UpdateEntryTestUser", "ABC123xyz!");
-                DateTime consumedAt = new DateTime(2016, 03, 12, 05, 26, 00);
-                FoodEntry original = new FoodEntry(newUserId, "apple", 120, 0, 1, 40, consumedAt);
-                FoodEntryDAL.addEntry(original);
-                FoodEntry updated = new FoodEntry(newUserId, "banana", 120, 0, 1, 40, consumedAt);
-                FoodEntryDAL.updateEntry(original, updated);
-                // "apple" should no longer exist for that userId and dateTime
-                FoodEntry dBAppleEntry = FoodEntryDAL.getEntry(newUserId, consumedAt, "apple");
-                Assert.IsNull(dBAppleEntry);
-                // "banana" should exist for that userId and dateTime
-                FoodEntry dBBananaEntry = FoodEntryDAL.getEntry(newUserId, consumedAt, "banana");
-                Assert.IsTrue(areFoodEntriesEqual(updated, dBBananaEntry));
-            }
-        }
-
-        [TestMethod]
-        public void TestUpdateEntryUpdatesTheDateTime()
-        {
-            using (TransactionScope transaction = new TransactionScope())
-            {
-                int newUserId = UsersDAL.addNewUser("UpdateEntryTestUser", "ABC123xyz!");
-                DateTime originalDateTime = new DateTime(2016, 03, 12, 05, 26, 00);
-                FoodEntry original = new FoodEntry(newUserId, "apple", 120, 0, 1, 40, originalDateTime);
-                FoodEntryDAL.addEntry(original);
-
-                DateTime updatedDateTime = new DateTime(2016, 04, 30, 16, 07, 00);
-                FoodEntry updated = new FoodEntry(newUserId, "apple", 120, 0, 1, 40, updatedDateTime);
-
-                FoodEntryDAL.updateEntry(original, updated);
-
-                // apple for user should no longer exist at the original dateTime
-                FoodEntry dBOriginal = FoodEntryDAL.getEntry(newUserId, originalDateTime, "apple");
-                Assert.IsNull(dBOriginal);
-                // apple for user should exist at the new dateTime
-                FoodEntry dBUpdated = FoodEntryDAL.getEntry(newUserId, updatedDateTime, "apple");
-                Assert.IsTrue(areFoodEntriesEqual(updated, dBUpdated));
-            }
-        }
-
-        [TestMethod]
-        public void TestUpdateEntryUpdatesTheCalories()
-        {
-            using (TransactionScope transaction = new TransactionScope())
-            {
-                int newUserId = UsersDAL.addNewUser("UpdateEntryTestUser", "ABC123xyz!");
-                DateTime consumedAt = new DateTime(2016, 03, 12, 05, 26, 00);
-                FoodEntry original = new FoodEntry(newUserId, "apple", 120, 0, 1, 40, consumedAt);
-                FoodEntryDAL.addEntry(original);
-
-                FoodEntry updated = new FoodEntry(newUserId, "apple", 500, 0, 1, 40, consumedAt);
-                FoodEntryDAL.updateEntry(original, updated);
-
-                FoodEntry dBUpdatedEntry = FoodEntryDAL.getEntry(newUserId, updated.ConsumedAt, updated.Name);
-                Assert.IsTrue(areFoodEntriesEqual(updated, dBUpdatedEntry));
-            }
-        }
-
-        [TestMethod]
-        public void TestUpdateEntryUpdatesTheFat()
-        {
-            using (TransactionScope transaction = new TransactionScope())
-            {
-                int newUserId = UsersDAL.addNewUser("UpdateEntryTestUser", "ABC123xyz!");
-                DateTime consumedAt = new DateTime(2016, 03, 12, 05, 26, 00);
-                FoodEntry original = new FoodEntry(newUserId, "apple", 120, 0, 1, 40, consumedAt);
-                FoodEntryDAL.addEntry(original);
-
-                FoodEntry updated = new FoodEntry(newUserId, "apple", 120, 3, 1, 40, consumedAt);
-                FoodEntryDAL.updateEntry(original, updated);
-
-                FoodEntry dBUpdatedEntry = FoodEntryDAL.getEntry(newUserId, updated.ConsumedAt, updated.Name);
-                Assert.IsTrue(areFoodEntriesEqual(updated, dBUpdatedEntry));
-            }
-        }
-
-        [TestMethod]
-        public void TestUpdateEntryUpdatesTheProtein()
-        {
-            using (TransactionScope transaction = new TransactionScope())
-            {
-                int newUserId = UsersDAL.addNewUser("UpdateEntryTestUser", "ABC123xyz!");
-                DateTime consumedAt = new DateTime(2016, 03, 12, 05, 26, 00);
-                FoodEntry original = new FoodEntry(newUserId, "apple", 120, 0, 1, 40, consumedAt);
-                FoodEntryDAL.addEntry(original);
-
-                FoodEntry updated = new FoodEntry(newUserId, "apple", 120, 0, 6, 40, consumedAt);
-                FoodEntryDAL.updateEntry(original, updated);
-
-                FoodEntry dBUpdatedEntry = FoodEntryDAL.getEntry(newUserId, updated.ConsumedAt, updated.Name);
-                Assert.IsTrue(areFoodEntriesEqual(updated, dBUpdatedEntry));
-            }
-        }
-
-        [TestMethod]
-        public void TestUpdateEntryUpdatesTheCarbohydrates()
-        {
-            using (TransactionScope transaction = new TransactionScope())
-            {
-                int newUserId = UsersDAL.addNewUser("UpdateEntryTestUser", "ABC123xyz!");
-                DateTime consumedAt = new DateTime(2016, 03, 12, 05, 26, 00);
-                FoodEntry original = new FoodEntry(newUserId, "apple", 120, 0, 1, 40, consumedAt);
-                FoodEntryDAL.addEntry(original);
-
-                FoodEntry updated = new FoodEntry(newUserId, "apple", 120, 0, 1, 20, consumedAt);
-                FoodEntryDAL.updateEntry(original, updated);
-
-                FoodEntry dBUpdatedEntry = FoodEntryDAL.getEntry(newUserId, updated.ConsumedAt, updated.Name);
-                Assert.IsTrue(areFoodEntriesEqual(updated, dBUpdatedEntry));
-            }
-        }
-
-        [TestMethod]
-        public void TestUpdateEntryWorksWithChangingSetValuesToNulls()
-        {
-            using (TransactionScope transaction = new TransactionScope())
-            {
-                int newUserId = UsersDAL.addNewUser("UpdateEntryTestUser", "ABC123xyz!");
-                DateTime consumedAt = new DateTime(2016, 03, 12, 05, 26, 00);
-                FoodEntry original = new FoodEntry(newUserId, "apple", 120, 0, 1, 40, consumedAt);
-                FoodEntryDAL.addEntry(original);
-
-                FoodEntry updated = new FoodEntry(newUserId, "apple", null, null, null, null, consumedAt);
-                FoodEntryDAL.updateEntry(original, updated);
-
-                FoodEntry dBUpdatedEntry = FoodEntryDAL.getEntry(newUserId, updated.ConsumedAt, updated.Name);
-                Assert.IsTrue(areFoodEntriesEqual(updated, dBUpdatedEntry));
-            }
-        }
-
-        [TestMethod]
-        public void TestUpdateEntryWorksWithChangingNullValuesToSetValues()
-        {
-            using (TransactionScope transaction = new TransactionScope())
-            {
-                int newUserId = UsersDAL.addNewUser("UpdateEntryTestUser", "ABC123xyz!");
-                DateTime consumedAt = new DateTime(2016, 03, 12, 05, 26, 00);
-                FoodEntry original = new FoodEntry(newUserId, "apple", null, null, null, null, consumedAt);
-                FoodEntryDAL.addEntry(original);
-
-                FoodEntry updated = new FoodEntry(newUserId, "apple", 120, 0, 1, 20, consumedAt);
-                FoodEntryDAL.updateEntry(original, updated);
-
-                FoodEntry dBUpdatedEntry = FoodEntryDAL.getEntry(newUserId, updated.ConsumedAt, updated.Name);
-                Assert.IsTrue(areFoodEntriesEqual(updated, dBUpdatedEntry));
-            }
-        }
-
-        [TestMethod]
-        public void TestUpdateEntryCanChangeAllValuesExceptUserId()
-        {
-            using (TransactionScope transaction = new TransactionScope())
-            {
-                int newUserId = UsersDAL.addNewUser("UpdateEntryTestUser", "ABC123xyz!");
-                DateTime consumedAt = new DateTime(2016, 03, 12, 05, 26, 00);
-                FoodEntry original = new FoodEntry(newUserId, "apple", 1, 2, 3, 4, consumedAt);
-                FoodEntryDAL.addEntry(original);
-
-                DateTime newConsumedAt = new DateTime(2016, 06, 05, 15, 14, 00);
-                FoodEntry updated = new FoodEntry(newUserId, "banana", 11, 12, 13, 14, newConsumedAt);
-                FoodEntryDAL.updateEntry(original, updated);
-
-                FoodEntry dBUpdatedEntry = FoodEntryDAL.getEntry(newUserId, updated.ConsumedAt, updated.Name);
-                Assert.IsTrue(areFoodEntriesEqual(updated, dBUpdatedEntry));
-            }
-        }
-
-        [TestMethod]
-        public void TestUpdateEntryCannotChangeTheUserId()
-        {
-            using (TransactionScope transaction = new TransactionScope())
-            {
-                int newUserId1 = UsersDAL.addNewUser("UpdateEntryTestUser", "ABC123xyz!");
-                DateTime consumedAt = new DateTime(2016, 03, 12, 05, 26, 00);
-                FoodEntry original = new FoodEntry(newUserId1, "apple", 1, 2, 3, 4, consumedAt);
-                FoodEntryDAL.addEntry(original);
-
-                int newUserId2 = UsersDAL.addNewUser("UpdateEntryTestUser2", "ABC123xyz!");
-                FoodEntry updated = new FoodEntry(newUserId2, "apple", 1, 2, 3, 4, consumedAt);
-                FoodEntryDAL.updateEntry(original, updated);
-
-                // Should still be in DB under original user Id
-                FoodEntry dBUpdatedEntryNewUser1 = FoodEntryDAL.getEntry(newUserId1, updated.ConsumedAt, updated.Name);
-                Assert.IsTrue(areFoodEntriesEqual(original, dBUpdatedEntryNewUser1));
-
-                FoodEntry dBUpdatedEntryNewUser2 = FoodEntryDAL.getEntry(newUserId2, updated.ConsumedAt, updated.Name);
-                Assert.IsNull(dBUpdatedEntryNewUser2);
             }
         }
 

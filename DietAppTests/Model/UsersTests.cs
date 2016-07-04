@@ -13,7 +13,7 @@ namespace DietAppTest.Model
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     /// <summary>
-    /// Test the UserS Class in DietApp.Model.
+    /// Test the Users Class in DietApp.Model.
     /// </summary>
     [TestClass]
     public class UsersTests

@@ -1,1 +1,0 @@
-<Playlist Version="1.0"><Add Test="DietAppTests.DAL.DBConnectionTest.TestActiveDBConnetion" /><Add Test="DietAppTests.DAL.UserDALTest.TestGetUserAA" /><Add Test="DietAppTests.DAL.UserDALTest.TestComparePassword" /></Playlist>
