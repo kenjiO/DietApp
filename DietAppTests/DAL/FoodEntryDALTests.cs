@@ -10,11 +10,11 @@
 namespace DietAppTests.DAL
 {
     using System;
+    using System.Collections.Generic;
+    using System.Transactions;
     using DietApp.DAL;
     using DietApp.Model;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
-    using System.Collections.Generic;
-    using System.Transactions;
 
     /// <summary>
     /// Test the FoodEntryDAL Class in DietApp.DAL.
@@ -167,6 +167,9 @@ namespace DietAppTests.DAL
             FoodEntryDAL.deleteEntry(entry);
         }
 
+        /// <summary>
+        /// Test return of empty list with no entries.
+        /// </summary>
         [TestMethod]
         public void TestGetEntriesReturnsEmptyListWhenUserHasNoEntries()
         {
@@ -178,6 +181,9 @@ namespace DietAppTests.DAL
             }
         }
 
+        /// <summary>
+        /// Test the return of an empty list with no date.
+        /// </summary>
         [TestMethod]
         public void TestGetEntriesReturnsEmptyListWhenUserHasNoEntriesOnGivenDate()
         {
@@ -191,6 +197,9 @@ namespace DietAppTests.DAL
             }
         }
 
+        /// <summary>
+        /// Test the return of the list for a given date.
+        /// </summary>
         [TestMethod]
         public void TestGetEntriesReturnsOnlyEntriesOnGivenDate()
         {
@@ -208,6 +217,9 @@ namespace DietAppTests.DAL
             }
         }
 
+        /// <summary>
+        /// Test the return of the list not returned for other entries.
+        /// </summary>
         [TestMethod]
         public void TestGetEntriesDoesNotReturnOtherUserEntries()
         {
@@ -225,7 +237,9 @@ namespace DietAppTests.DAL
                 Assert.AreEqual(newUserId, entries[0].UserId);
             }
         }
-
+        /// <summary>
+        /// Test the return of the list for a given date.
+        /// </summary>
         [TestMethod]
         public void TestGetEntriesReturnsTheSameEntryWhenOneEntryOnGivenDate()
         {

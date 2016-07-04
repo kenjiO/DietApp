@@ -1,8 +1,17 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿//-----------------------------------------------------------------------
+// <copyright file="DailyMeasurementsDALTests.cs" company="KKR Summer 2016">
+//     Copyright (c) KKR Summer 2016. All rights reserved.
+// </copyright>
+// <summary>This is the testing for the Model.DailyMeasurementsDAL class.</summary>
+// <author>Kaleigh Kendrick</author>
+// <author>Robert Carswell</author>
+//-----------------------------------------------------------------------
+
+using System;
+using System.Collections.Generic;
 using DietApp.DAL;
 using DietApp.Model;
-using System.Collections.Generic;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DietAppTests.DAL
 {
@@ -12,9 +21,9 @@ namespace DietAppTests.DAL
         [TestMethod]
         public void TestGetUserChartData()
         {
-            List<Measurements> measurementsList = DailyMeasurementsDAL.getUserChartData(1, 1);
+            List<DailyMeasurements> measurementsList = DailyMeasurementsDAL.GetUserChartData(1, 1);
 
-            Assert.AreEqual(4, measurementsList.Count, "List has length 4");
+            Assert.AreEqual(3, measurementsList.Count, "List has length 3");
         }
     }
 }

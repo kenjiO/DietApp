@@ -65,7 +65,8 @@
     <Compile Include="Model\Encryption.cs" />
     <Compile Include="Model\FoodEntry.cs" />
     <Compile Include="Model\FoodNutritionInfo.cs" />
-    <Compile Include="Model\Measurements.cs" />
+    <Compile Include="Model\DailyMeasurements.cs" />
+    <Compile Include="Model\MeasurementTypes.cs" />
     <Compile Include="Model\Model_Validator.cs" />
     <Compile Include="Model\Users.cs" />
     <Compile Include="View\FoodEntryForm.cs">

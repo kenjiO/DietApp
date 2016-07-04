@@ -61,6 +61,8 @@
     <Compile Include="Model\EncryptionTests.cs" />
     <Compile Include="Model\FoodEntryTests.cs" />
     <Compile Include="Model\Model_ValidatorTests.cs" />
+    <Compile Include="Model\DailyMeasurementsTests.cs" />
+    <Compile Include="Model\MeasurementTypesTests.cs" />
     <Compile Include="Model\UsersTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <ExcludeFromStyleCop>True</ExcludeFromStyleCop>

@@ -142,9 +142,9 @@ namespace DietApp.Controller
             WellnessDAL.updateDailyWellnessData(newWellness, oldWellness);
         }
 
-        public static List<Measurements> getUserChartData(int userId, int measurementTypeId)
+        public static List<DailyMeasurements> getUserChartData(int userId, int measurementTypeId)
         {
-            return DailyMeasurementsDAL.getUserChartData(userId, measurementTypeId);
+            return DailyMeasurementsDAL.GetUserChartData(userId, measurementTypeId);
         }
     }
 }

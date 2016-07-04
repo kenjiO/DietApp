@@ -49,7 +49,6 @@ namespace DietAppTests.Model
             string userNameGood = "bb";
             string userNameBad = "LeroyBrown";
 
-
             // Checks Users
             bool goodResult = Model_Validator.verifyUserName(userNameGood);
             bool badResult = Model_Validator.verifyUserName(userNameBad);

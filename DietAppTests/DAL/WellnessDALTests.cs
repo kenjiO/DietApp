@@ -81,8 +81,11 @@ namespace DietApp.DAL.Tests
             Assert.AreEqual(date, testWellness.date, "Wellness object's date not " + date + ".");
         }
 
+        /// <summary>
+        /// Test for update wellness data.
+        /// </summary>
         [TestMethod]
-        public void updateDailyWellnessDataTest()
+        public void TestupdateDailyWellnessDataTest()
         {
             int weight = 212;
             int heartRate = 90;
@@ -102,11 +105,11 @@ namespace DietApp.DAL.Tests
 
             var oldWellness = DietAppController.dateWellnessData(userID, date.ToString());
 
-            //Builds a Wellness object.
+            // Builds a Wellness object.
             DietAppController.updateDailyWellnessData(compare, oldWellness);
             var testWellness = DietAppController.dateWellnessData(userID, date.ToString());
 
-            //Checks Results
+            // Checks Results
             Assert.AreEqual(weight, testWellness.weight, "Wellness object's weight not " + weight + ".");
             Assert.AreEqual(heartRate, testWellness.heartRate, "Wellness object's weight not " + heartRate + ".");
             Assert.AreEqual(systolicBP, testWellness.systolicBP, "Wellness object's systolic BP not " + systolicBP + ".");
