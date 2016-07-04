@@ -38,7 +38,6 @@
             this.tabPageFoodList = new System.Windows.Forms.TabPage();
             this.tabPageFoodEntries = new System.Windows.Forms.TabPage();
             this.tabPageUserReport = new System.Windows.Forms.TabPage();
-            this.tabPageFoodEntries = new System.Windows.Forms.TabPage();
             this.tabPageProgressForm = new System.Windows.Forms.TabPage();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -141,7 +140,6 @@
             this.tabPageFoodEntries.UseVisualStyleBackColor = true;
             // 
             // tabPageProgressForm
-            // tabPageUserReport
             // 
             this.tabPageProgressForm.Location = new System.Drawing.Point(4, 38);
             this.tabPageProgressForm.Name = "tabPageProgressForm";
@@ -149,6 +147,9 @@
             this.tabPageProgressForm.TabIndex = 4;
             this.tabPageProgressForm.Text = "Progress";
             this.tabPageProgressForm.UseVisualStyleBackColor = true;
+            // 
+            // tabPageUserReport
+            // 
             this.tabPageUserReport.Location = new System.Drawing.Point(4, 27);
             this.tabPageUserReport.Name = "tabPageUserReport";
             this.tabPageUserReport.Padding = new System.Windows.Forms.Padding(3);

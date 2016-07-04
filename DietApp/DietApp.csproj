@@ -54,7 +54,6 @@
     <Compile Include="DAL\WellnessDAL.cs" />
     <Compile Include="DietAppDataSet.cs">
       <DependentUpon>DietAppDataSet.xsd</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="DietAppDataSet.Designer.cs">
       <AutoGen>True</AutoGen>

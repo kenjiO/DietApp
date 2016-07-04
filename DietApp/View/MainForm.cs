@@ -122,12 +122,12 @@ namespace DietApp
             progressForm.Dock = DockStyle.Fill;
             tabPageProgressForm.Controls.Add(progressForm);
 
-            ReportForm reportForm = new ReportForm();
+            var reportForm = new ReportForm();
             reportForm.loadUser(this.theUser);
             reportForm.TopLevel = false;
             reportForm.Visible = true;
             reportForm.FormBorderStyle = FormBorderStyle.None;
-            reportForm.Dock = DockStyle.Left;
+            reportForm.Dock = DockStyle.Fill;
             tabPageUserReport.Controls.Add(reportForm);
         }
     }
