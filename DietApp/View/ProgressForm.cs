@@ -20,7 +20,7 @@ namespace DietApp.View
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void ProgressForm_Load(object sender, EventArgs e)
+        public void ProgressForm_Load(object sender, EventArgs e)
         {
             if (this.theUser != null)
             {
