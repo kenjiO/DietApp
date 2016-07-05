@@ -12,6 +12,7 @@ namespace DietApp.View
         private Users currentUser;
         private BindingSource bindingSource1;
         private const int DATAGRID_EDIT_COLUMN_INDEX = 6;
+        private const int DATAGRID_DELETE_COLUMN_INDEX = 7;
         private List<FoodEntry> currentDayEntries;
 
         public ListFoodForm(Users currentUser)
@@ -91,6 +92,39 @@ namespace DietApp.View
                 catch (ArgumentOutOfRangeException ex)
                 {
                     MessageBox.Show("There was an application error editing this item", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
+            // Check if column is delete button column
+            if (e.ColumnIndex == DATAGRID_DELETE_COLUMN_INDEX)
+            {
+                try
+                {
+                    FoodEntry entryToDelete = this.currentDayEntries[e.RowIndex];
+                    if (entryToDelete == null)
+                    {
+                        MessageBox.Show("There was an application error editing this item", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    DialogResult result = MessageBox.Show("Delete " + entryToDelete.Name + " ?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                    if (result != DialogResult.Yes)
+                    {
+                        return;
+                    }
+                    Cursor.Current = Cursors.WaitCursor;
+                    DietAppController.deleteFoodEntry(entryToDelete);
+                    refreshData();
+                    Cursor.Current = Cursors.Default;
+                }
+                catch (ArgumentOutOfRangeException ex)
+                {
+                    Cursor.Current = Cursors.Default;
+                    MessageBox.Show("There was an application error deleting this item", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                catch (SqlException ex)
+                {
+                    Cursor.Current = Cursors.Default;
+                    MessageBox.Show(ex.Message, ex.GetType().ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

@@ -113,6 +113,19 @@ namespace DietApp.Controller
         }
 
         /// <summary>
+        /// Delete a Food Entry from the DB
+        /// </summary>
+        /// <param name="entry">The entry to delete</param>
+        public static void deleteFoodEntry(FoodEntry entry)
+        {
+            if (entry == null)
+            {
+                return;
+            }
+            FoodEntryDAL.deleteEntry(entry);
+        }
+
+        /// <summary>
         /// Search for nutrition info on a food.
         /// </summary>
         /// <param name="searchTerm">Search term for the food name</param>

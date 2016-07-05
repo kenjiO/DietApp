@@ -35,6 +35,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
@@ -47,6 +48,7 @@
             this.Fat = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Carbohydrates = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EditEntry = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.DeleteEntry = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -73,8 +75,9 @@
             this.Protein,
             this.Fat,
             this.Carbohydrates,
-            this.EditEntry});
-            this.dataGridView1.Location = new System.Drawing.Point(22, 83);
+            this.EditEntry,
+            this.DeleteEntry});
+            this.dataGridView1.Location = new System.Drawing.Point(2, 83);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
@@ -83,7 +86,8 @@
             this.dataGridView1.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
             this.dataGridView1.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.White;
             this.dataGridView1.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
-            this.dataGridView1.Size = new System.Drawing.Size(571, 275);
+            this.dataGridView1.RowTemplate.Height = 24;
+            this.dataGridView1.Size = new System.Drawing.Size(610, 275);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -204,11 +208,24 @@
             this.EditEntry.UseColumnTextForButtonValue = true;
             this.EditEntry.Width = 60;
             // 
+            // DeleteEntry
+            // 
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.Padding = new System.Windows.Forms.Padding(2);
+            this.DeleteEntry.DefaultCellStyle = dataGridViewCellStyle8;
+            this.DeleteEntry.HeaderText = "";
+            this.DeleteEntry.Name = "DeleteEntry";
+            this.DeleteEntry.ReadOnly = true;
+            this.DeleteEntry.Text = "Delete";
+            this.DeleteEntry.UseColumnTextForButtonValue = true;
+            this.DeleteEntry.Width = 60;
+            // 
             // ListFoodForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(946, 414);
+            this.ClientSize = new System.Drawing.Size(682, 416);
             this.Controls.Add(this.nextDayButton);
             this.Controls.Add(this.prevDayButton);
             this.Controls.Add(this.label1);
@@ -236,5 +253,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Fat;
         private System.Windows.Forms.DataGridViewTextBoxColumn Carbohydrates;
         private System.Windows.Forms.DataGridViewButtonColumn EditEntry;
+        private System.Windows.Forms.DataGridViewButtonColumn DeleteEntry;
     }
 }
