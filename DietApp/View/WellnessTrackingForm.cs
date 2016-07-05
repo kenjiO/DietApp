@@ -64,7 +64,7 @@ namespace DietApp.View
             if (View_Validator.ValidateWellness(this.userWellness))
             {
                 //Update Wellness Info
-                this.updateConfirm();
+                this.updateInfo_Click();
             }
             else
             {
@@ -73,11 +73,39 @@ namespace DietApp.View
             }
         }
 
+        /// <summary>
+        /// Checks to see if wellness data matches data in DB.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void CheckDBForWellness(object sender, System.EventArgs e)
+        {
+            var userWellnessUpdate = new Wellness
+            {
+                diastolicBP = Int32.Parse(diastolicUpDown.Value.ToString()),
+                systolicBP = Int32.Parse(systolicUpDown.Value.ToString()),
+                weight = Int32.Parse(weightUpDown.Value.ToString()),
+                heartRate = Int32.Parse(heartRateUpDown.Value.ToString()),
+                date = dateTimePicker.Value,
+                userID = this.theUser.userId
+            };
+            if (!View_Validator.wellnessMatchDB(userWellnessUpdate))
+            {
+                //Update Wellness Info
+                this.updateConfirm();
+            }
+        }
+
         // Helper Methods //
 
+            /// <summary>
+            /// Prompts user if they try to navigate to a different tab with unsaved changes.
+            /// </summary>
         private void updateConfirm()
         {
-            DialogResult dialogResult = MessageBox.Show("You have already saved an entry for this day.  Do you wish to update that entry with the information on the screen?", "Update Entry", MessageBoxButtons.YesNo);
+            var dialogResult = MessageBox.Show("You have not saved changes for this entry. " +
+                "Do you wish to update your data?", "Update Entry",
+                MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
                 this.updateInfo_Click();
@@ -89,16 +117,19 @@ namespace DietApp.View
         /// </summary>
         private void saveInfo_Click()
         {
-            this.userWellness = new Wellness();
-            this.userWellness.diastolicBP = Int32.Parse(diastolicUpDown.Value.ToString());
-            this.userWellness.systolicBP = Int32.Parse(systolicUpDown.Value.ToString());
-            this.userWellness.weight = Int32.Parse(weightUpDown.Value.ToString());
-            this.userWellness.heartRate = Int32.Parse(heartRateUpDown.Value.ToString());
-            this.userWellness.date = dateTimePicker.Value;
-            this.userWellness.userID = this.theUser.userId;
+            this.userWellness = new Wellness
+            {
+                diastolicBP = Int32.Parse(diastolicUpDown.Value.ToString()),
+                systolicBP = Int32.Parse(systolicUpDown.Value.ToString()),
+                weight = Int32.Parse(weightUpDown.Value.ToString()),
+                heartRate = Int32.Parse(heartRateUpDown.Value.ToString()),
+                date = dateTimePicker.Value,
+                userID = this.theUser.userId
+            };
             if (!View_Validator.ValidateWellness(this.userWellness))
             {
-                MessageBox.Show("Please enter data for all fields.", "Wellness Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Please enter data for all fields.", 
+                    "Wellness Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
@@ -108,7 +139,9 @@ namespace DietApp.View
                     DietAppController.addDailyWellnessData(this.userWellness);
                     Cursor.Current = Cursors.Default;
                     this.Refresh();
-                    MessageBox.Show("You have successfully recorded data.  You are one step closer to making data-driven decisions about your health.", "Record Updated");
+                    MessageBox.Show("You have successfully recorded data.  "+
+                        "You are one step closer to making data-driven decisions about your health.", 
+                        "Record Updated");
                 }
                 catch (SqlException ex)
                 {
@@ -142,6 +175,8 @@ namespace DietApp.View
             try
             {
                 DietAppController.updateDailyWellnessData(userWellnessUpdate, this.userWellness);
+                this.userWellness = userWellnessUpdate;
+                this.Refresh();
                 MessageBox.Show("You have successfully recorded data.  You are one step closer to making data-driven decisions about your health.", "Record Updated");
             }
             catch (SqlException ex)

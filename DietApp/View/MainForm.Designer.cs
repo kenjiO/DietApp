@@ -34,10 +34,10 @@
             this.exitToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageProfile = new System.Windows.Forms.TabPage();
+            this.tabPageProgressForm = new System.Windows.Forms.TabPage();
             this.tabPageWellness = new System.Windows.Forms.TabPage();
             this.tabPageFoodList = new System.Windows.Forms.TabPage();
             this.tabPageFoodEntries = new System.Windows.Forms.TabPage();
-            this.tabPageProgressForm = new System.Windows.Forms.TabPage();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.SuspendLayout();
@@ -92,6 +92,7 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(1401, 903);
             this.tabControl1.TabIndex = 2;
+            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.TabControl1_SelectedIndexChanged);
             // 
             // tabPageProfile
             // 
@@ -103,6 +104,15 @@
             this.tabPageProfile.TabIndex = 0;
             this.tabPageProfile.Text = "Profile";
             this.tabPageProfile.UseVisualStyleBackColor = true;
+            // 
+            // tabPageProgressForm
+            // 
+            this.tabPageProgressForm.Location = new System.Drawing.Point(4, 38);
+            this.tabPageProgressForm.Name = "tabPageProgressForm";
+            this.tabPageProgressForm.Size = new System.Drawing.Size(1393, 861);
+            this.tabPageProgressForm.TabIndex = 4;
+            this.tabPageProgressForm.Text = "Progress";
+            this.tabPageProgressForm.UseVisualStyleBackColor = true;
             // 
             // tabPageWellness
             // 
@@ -135,15 +145,6 @@
             this.tabPageFoodEntries.TabIndex = 2;
             this.tabPageFoodEntries.Text = "New Food Entry";
             this.tabPageFoodEntries.UseVisualStyleBackColor = true;
-            // 
-            // tabPageProgressForm
-            // 
-            this.tabPageProgressForm.Location = new System.Drawing.Point(4, 38);
-            this.tabPageProgressForm.Name = "tabPageProgressForm";
-            this.tabPageProgressForm.Size = new System.Drawing.Size(1393, 861);
-            this.tabPageProgressForm.TabIndex = 4;
-            this.tabPageProgressForm.Text = "Progress";
-            this.tabPageProgressForm.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 

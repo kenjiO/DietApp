@@ -9,6 +9,12 @@ namespace DietApp
     public partial class MainForm : Form
     {
         private Users theUser;
+        private ProfileInfo profileInfoForm;
+        private WellnessTrackingForm wellnessForm;
+        private FoodEntryForm foodForm;
+        private ListFoodForm foodListForm;
+        private ProgressForm progressForm;
+
 
         public MainForm()
         {
@@ -84,43 +90,54 @@ namespace DietApp
         /// </summary>
         private void loadTabs()
         {
-            var profileInfoForm = new ProfileInfo();
-            profileInfoForm.loadUser(this.theUser);
-            profileInfoForm.TopLevel = false;
-            profileInfoForm.Visible = true;
-            profileInfoForm.FormBorderStyle = FormBorderStyle.None;
-            profileInfoForm.Dock = DockStyle.Fill;
-            tabPageProfile.Controls.Add(profileInfoForm);
+            this.profileInfoForm = new ProfileInfo();
+            this.profileInfoForm.loadUser(this.theUser);
+            this.profileInfoForm.TopLevel = false;
+            this.profileInfoForm.Visible = true;
+            this.profileInfoForm.FormBorderStyle = FormBorderStyle.None;
+            this.profileInfoForm.Dock = DockStyle.Fill;
+            tabPageProfile.Controls.Add(this.profileInfoForm);
 
-            var wellnessForm = new WellnessTrackingForm();
-            wellnessForm.loadUser(this.theUser);
-            wellnessForm.TopLevel = false;
-            wellnessForm.Visible = true;
-            wellnessForm.FormBorderStyle = FormBorderStyle.None;
-            wellnessForm.Dock = DockStyle.Fill;
-            tabPageWellness.Controls.Add(wellnessForm);
+            this.wellnessForm = new WellnessTrackingForm();
+            this.wellnessForm.loadUser(this.theUser);
+            this.wellnessForm.TopLevel = false;
+            this.wellnessForm.Visible = true;
+            this.wellnessForm.FormBorderStyle = FormBorderStyle.None;
+            this.wellnessForm.Dock = DockStyle.Fill;
+            tabPageWellness.Controls.Add(this.wellnessForm);
 
-            var foodForm = new FoodEntryForm(this.theUser);
-            foodForm.TopLevel = false;
-            foodForm.Visible = true;
-            foodForm.FormBorderStyle = FormBorderStyle.None;
-            foodForm.Dock = DockStyle.Fill;
-            tabPageFoodEntries.Controls.Add(foodForm);
+            this.foodForm = new FoodEntryForm(this.theUser);
+            this.foodForm.TopLevel = false;
+            this.foodForm.Visible = true;
+            this.foodForm.FormBorderStyle = FormBorderStyle.None;
+            this.foodForm.Dock = DockStyle.Fill;
+            tabPageFoodEntries.Controls.Add(this.foodForm);
 
-            var foodListForm = new ListFoodForm(this.theUser);
-            foodListForm.TopLevel = false;
-            foodListForm.Visible = true;
-            foodListForm.FormBorderStyle = FormBorderStyle.None;
-            foodListForm.Dock = DockStyle.Left;
-            tabPageFoodList.Controls.Add(foodListForm);
+            this.foodListForm = new ListFoodForm(this.theUser);
+            this.foodListForm.TopLevel = false;
+            this.foodListForm.Visible = true;
+            this.foodListForm.FormBorderStyle = FormBorderStyle.None;
+            this.foodListForm.Dock = DockStyle.Left;
+            tabPageFoodList.Controls.Add(this.foodListForm);
 
-            var progressForm = new ProgressForm();
-            progressForm.loadUser(this.theUser);
-            progressForm.TopLevel = false;
-            progressForm.Visible = true;
-            progressForm.FormBorderStyle = FormBorderStyle.None;
-            progressForm.Dock = DockStyle.Fill;
-            tabPageProgressForm.Controls.Add(progressForm);
+            this.progressForm = new ProgressForm();
+            this.progressForm.loadUser(this.theUser);
+            this.progressForm.TopLevel = false;
+            this.progressForm.Visible = true;
+            this.progressForm.FormBorderStyle = FormBorderStyle.None;
+            this.progressForm.Dock = DockStyle.Fill;
+            tabPageProgressForm.Controls.Add(this.progressForm);
+        }
+
+       /// <summary>
+       /// Loads various functions (in order listed from top to bottom) when user navigates to a different tab.
+       /// </summary>
+       /// <param name="sender"></param>
+       /// <param name="e"></param>
+        private void TabControl1_SelectedIndexChanged(Object sender, EventArgs e)
+        {
+            this.wellnessForm.CheckDBForWellness(sender, e);
+            this.progressForm.ProgressForm_Load(sender, e);
         }
     }
 }

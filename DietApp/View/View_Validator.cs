@@ -1,4 +1,6 @@
-﻿using DietApp.Model;
+﻿using DietApp.Controller;
+using DietApp.Model;
+using System;
 using System.Windows.Forms;
 
 namespace DietApp.View
@@ -108,6 +110,21 @@ namespace DietApp.View
                 result = false;
             }
 
+            return result;
+        }
+        /// <summary>
+        /// Verifies if data in DB matches wellness entry.
+        /// </summary>
+        /// <param name="theWellness"></param>
+        /// <returns></returns>
+        public static bool wellnessMatchDB(Wellness theWellness)
+        {
+            bool result = false;
+            var wellnessFromDB = DietAppController.dateWellnessData(theWellness.userID, theWellness.date.ToString());
+            if(String.Compare(theWellness.ToString(), wellnessFromDB.ToString()) == 0)
+            {
+                result = true;
+            }
             return result;
         }
     }
