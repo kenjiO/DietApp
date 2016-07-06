@@ -68,3 +68,13 @@ INSERT INTO measurementTypes (measurementTypeId,measurementTypeName, measurement
 INSERT INTO measurementTypes (measurementTypeId,measurementTypeName, measurementDefaultUnit) Values(4,'diastolicBP','mom');
 
 SET IDENTITY_INSERT measurementTypes OFF 
+
+
+DROP VIEW dailyNutrients
+GO
+
+CREATE VIEW dailyNutrients
+AS
+SELECT userId, CONVERT(date, dateTimeConsumed) as day, SUM(calories) as calories, SUM(fat) as fat, SUM(protein) as protein, SUM(carbohydrate) as carbohydrates from itemConsumed
+GROUP BY userId, CONVERT(date, dateTimeConsumed);
+GO

@@ -50,10 +50,12 @@
     <Compile Include="Controller\DietAppController.cs" />
     <Compile Include="DAL\DailyMeasurementsDAL.cs" />
     <Compile Include="DAL\FoodEntryDAL.cs" />
+    <Compile Include="DAL\FoodReportDAL.cs" />
     <Compile Include="DAL\UsersDAL.cs" />
     <Compile Include="DAL\WellnessDAL.cs" />
     <Compile Include="DietAppDataSet.cs">
       <DependentUpon>DietAppDataSet.xsd</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="DietAppDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -61,6 +63,7 @@
       <DependentUpon>DietAppDataSet.xsd</DependentUpon>
       <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
     </Compile>
+    <Compile Include="Model\DailyNutrition.cs" />
     <Compile Include="Model\Encryption.cs" />
     <Compile Include="Model\FoodEntry.cs" />
     <Compile Include="Model\FoodNutritionInfo.cs" />
