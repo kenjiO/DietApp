@@ -143,8 +143,18 @@ namespace DietApp
        /// <param name="e"></param>
         private void TabControl1_SelectedIndexChanged(Object sender, EventArgs e)
         {
-            this.wellnessForm.CheckDBForWellness(sender, e);
-            this.progressForm.ProgressForm_Load(sender, e);
+            if (tabControl1.SelectedTab == tabPageWellness)
+            {
+                this.wellnessForm.CheckDBForWellness(sender, e);
+            }
+            else if (tabControl1.SelectedTab == tabPageProgressForm)
+            {
+                this.progressForm.ProgressForm_Load(sender, e);
+            }
+            else if (tabControl1.SelectedTab == tabPageFoodList)
+            {
+                this.foodListForm.refreshData();
+            }
         }
     }
 }
