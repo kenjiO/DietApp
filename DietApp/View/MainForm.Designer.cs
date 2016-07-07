@@ -39,7 +39,6 @@
             this.tabPageFoodList = new System.Windows.Forms.TabPage();
             this.tabPageFoodEntries = new System.Windows.Forms.TabPage();
             this.tabPageUserReport = new System.Windows.Forms.TabPage();
-            this.tabPageProgressForm = new System.Windows.Forms.TabPage();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.SuspendLayout();

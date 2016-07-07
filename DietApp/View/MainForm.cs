@@ -14,6 +14,7 @@ namespace DietApp
         private FoodEntryForm foodForm;
         private ListFoodForm foodListForm;
         private ProgressForm progressForm;
+        private ReportForm reportForm;
 
 
         public MainForm()
@@ -128,13 +129,13 @@ namespace DietApp
             this.progressForm.Dock = DockStyle.Fill;
             tabPageProgressForm.Controls.Add(this.progressForm);
 
-        var reportForm = new ReportForm();
-        reportForm.loadUser(this.theUser);
-            reportForm.TopLevel = false;
-            reportForm.Visible = true;
-            reportForm.FormBorderStyle = FormBorderStyle.None;
-            reportForm.Dock = DockStyle.Fill;
-            tabPageUserReport.Controls.Add(reportForm);
+            this.reportForm = new ReportForm();
+            this.reportForm.loadUser(this.theUser);
+            this.reportForm.TopLevel = false;
+            this.reportForm.Visible = true;
+            this.reportForm.FormBorderStyle = FormBorderStyle.None;
+            this.reportForm.Dock = DockStyle.Fill;
+            tabPageUserReport.Controls.Add(this.reportForm);
         }
        /// <summary>
        /// Loads various functions (in order listed from top to bottom) when user navigates to a different tab.
@@ -143,8 +144,23 @@ namespace DietApp
        /// <param name="e"></param>
         private void TabControl1_SelectedIndexChanged(Object sender, EventArgs e)
         {
-            this.wellnessForm.CheckDBForWellness(sender, e);
-            this.progressForm.ProgressForm_Load(sender, e);
+            if (tabControl1.SelectedTab == tabPageProfile)
+            {
+                this.profileInfoForm.ProfileInfo_Load(sender, e);
+            }
+            else if (tabControl1.SelectedTab == tabPageProgressForm)
+            {
+                this.progressForm.ProgressForm_Load(sender, e);
+            }
+            else if (tabControl1.SelectedTab == tabPageWellness)
+            {
+                this.wellnessForm.CheckDBForWellness(sender, e);
+            }
+            else if (tabControl1.SelectedTab == tabPageUserReport)
+            {
+                this.reportForm.ReportForm_Load(sender, e);
+            }
         }
+
     }
 }
