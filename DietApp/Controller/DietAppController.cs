@@ -170,5 +170,20 @@ namespace DietApp.Controller
         {
             return WellnessDAL.getBMIData(userID);
         }
+
+        /// <summary>
+        /// Get a list of daily nutrient totals for a ten day period
+        /// </summary>
+        /// <param name="userId">The userId to get the list for</param>
+        /// <param name="startDate">The first day of the 10 day period</param>
+        /// <returns>A list of nutrient totals for each day data is available</returns>
+        public static List<DailyNutrition> get10DayNutrientTotals(int userId, DateTime startDate)
+        {
+            if (startDate == null)
+            {
+                throw new ArgumentNullException("startDate cannot be null");
+            }
+            return FoodReportDAL.get10DayNutritionReport(userId, startDate);
+        }
     }
 }

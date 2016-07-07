@@ -117,6 +117,12 @@
     <Compile Include="Properties\AssemblyInfo.cs">
       <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
     </Compile>
+    <Compile Include="View\NutrientReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\NutrientReportForm.Designer.cs">
+      <DependentUpon>NutrientReportForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\ProfileInfo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -178,6 +184,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="View\NutrientReportForm.resx">
+      <DependentUpon>NutrientReportForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\ProfileInfo.resx">
       <DependentUpon>ProfileInfo.cs</DependentUpon>
     </EmbeddedResource>
