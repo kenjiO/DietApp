@@ -15,7 +15,6 @@ namespace DietApp
         private ListFoodForm foodListForm;
         private ProgressForm progressForm;
 
-
         public MainForm()
         {
             InitializeComponent();
@@ -128,19 +127,20 @@ namespace DietApp
             this.progressForm.Dock = DockStyle.Fill;
             tabPageProgressForm.Controls.Add(this.progressForm);
 
-        var reportForm = new ReportForm();
-        reportForm.loadUser(this.theUser);
+            var reportForm = new ReportForm();
+            reportForm.loadUser(this.theUser);
             reportForm.TopLevel = false;
             reportForm.Visible = true;
             reportForm.FormBorderStyle = FormBorderStyle.None;
             reportForm.Dock = DockStyle.Fill;
             tabPageUserReport.Controls.Add(reportForm);
         }
-       /// <summary>
-       /// Loads various functions (in order listed from top to bottom) when user navigates to a different tab.
-       /// </summary>
-       /// <param name="sender"></param>
-       /// <param name="e"></param>
+
+        /// <summary>
+        /// Loads various functions (in order listed from top to bottom) when user navigates to a different tab.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TabControl1_SelectedIndexChanged(Object sender, EventArgs e)
         {
             this.wellnessForm.CheckDBForWellness(sender, e);

@@ -112,6 +112,7 @@ namespace DietApp.View
 
             return result;
         }
+
         /// <summary>
         /// Verifies if data in DB matches wellness entry.
         /// </summary>
@@ -121,7 +122,7 @@ namespace DietApp.View
         {
             bool result = false;
             var wellnessFromDB = DietAppController.dateWellnessData(theWellness.userID, theWellness.date.ToString());
-            if(String.Compare(theWellness.ToString(), wellnessFromDB.ToString()) == 0)
+            if (String.Compare(theWellness.ToString(), wellnessFromDB.ToString()) == 0)
             {
                 result = true;
             }

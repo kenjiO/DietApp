@@ -8,17 +8,11 @@
 
 namespace DietApp.View
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.Data;
-    using System.Drawing;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using System.Windows.Forms;
     using DietApp.Controller;
     using DietApp.Model;
+    using System;
+    using System.Collections.Generic;
+    using System.Windows.Forms;
 
     /// <summary>
     /// Form for display of User Reports.
@@ -44,7 +38,7 @@ namespace DietApp.View
         {
             rbWeight.Checked = true;
         }
-        
+
         /// <summary>
         /// Loads the user.
         /// </summary>
@@ -92,7 +86,7 @@ namespace DietApp.View
             }
 
             List<DailyMeasurements> chartList = DietAppController.getUserChartData(userId, type);
-            foreach(DailyMeasurements measurements in chartList)
+            foreach (DailyMeasurements measurements in chartList)
             {
                 chartUserData.Series["UserData"].Points.AddXY(measurements.Date.ToShortDateString(), measurements.Measurement);
             }

@@ -42,7 +42,7 @@ namespace DietApp {
         
         private dailyMeasurementsSingleDataTable tabledailyMeasurementsSingle;
         
-        private BMIDataTable tableBMI;
+        private ProgressDataTable tableProgress;
         
         private global::System.Data.DataRelation relationFK__itemConsu__userI__1A14E395;
         
@@ -111,8 +111,8 @@ namespace DietApp {
                 if ((ds.Tables["dailyMeasurementsSingle"] != null)) {
                     base.Tables.Add(new dailyMeasurementsSingleDataTable(ds.Tables["dailyMeasurementsSingle"]));
                 }
-                if ((ds.Tables["BMI"] != null)) {
-                    base.Tables.Add(new BMIDataTable(ds.Tables["BMI"]));
+                if ((ds.Tables["Progress"] != null)) {
+                    base.Tables.Add(new ProgressDataTable(ds.Tables["Progress"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -226,9 +226,9 @@ namespace DietApp {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public BMIDataTable BMI {
+        public ProgressDataTable Progress {
             get {
-                return this.tableBMI;
+                return this.tableProgress;
             }
         }
         
@@ -326,8 +326,8 @@ namespace DietApp {
                 if ((ds.Tables["dailyMeasurementsSingle"] != null)) {
                     base.Tables.Add(new dailyMeasurementsSingleDataTable(ds.Tables["dailyMeasurementsSingle"]));
                 }
-                if ((ds.Tables["BMI"] != null)) {
-                    base.Tables.Add(new BMIDataTable(ds.Tables["BMI"]));
+                if ((ds.Tables["Progress"] != null)) {
+                    base.Tables.Add(new ProgressDataTable(ds.Tables["Progress"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -416,10 +416,10 @@ namespace DietApp {
                     this.tabledailyMeasurementsSingle.InitVars();
                 }
             }
-            this.tableBMI = ((BMIDataTable)(base.Tables["BMI"]));
+            this.tableProgress = ((ProgressDataTable)(base.Tables["Progress"]));
             if ((initTable == true)) {
-                if ((this.tableBMI != null)) {
-                    this.tableBMI.InitVars();
+                if ((this.tableProgress != null)) {
+                    this.tableProgress.InitVars();
                 }
             }
             this.relationFK__itemConsu__userI__1A14E395 = this.Relations["FK__itemConsu__userI__1A14E395"];
@@ -456,8 +456,8 @@ namespace DietApp {
             base.Tables.Add(this.tabledailyMeasurementsFull);
             this.tabledailyMeasurementsSingle = new dailyMeasurementsSingleDataTable();
             base.Tables.Add(this.tabledailyMeasurementsSingle);
-            this.tableBMI = new BMIDataTable();
-            base.Tables.Add(this.tableBMI);
+            this.tableProgress = new ProgressDataTable();
+            base.Tables.Add(this.tableProgress);
             this.relationFK__itemConsu__userI__1A14E395 = new global::System.Data.DataRelation("FK__itemConsu__userI__1A14E395", new global::System.Data.DataColumn[] {
                         this.tableusers.userIdColumn}, new global::System.Data.DataColumn[] {
                         this.tableitemConsumed.userIdColumn}, false);
@@ -540,7 +540,7 @@ namespace DietApp {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializeBMI() {
+        private bool ShouldSerializeProgress() {
             return false;
         }
         
@@ -627,7 +627,7 @@ namespace DietApp {
         public delegate void dailyMeasurementsSingleRowChangeEventHandler(object sender, dailyMeasurementsSingleRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void BMIRowChangeEventHandler(object sender, BMIRowChangeEvent e);
+        public delegate void ProgressRowChangeEventHandler(object sender, ProgressRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -3319,16 +3319,20 @@ namespace DietApp {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class BMIDataTable : global::System.Data.TypedTableBase<BMIRow> {
+        public partial class ProgressDataTable : global::System.Data.TypedTableBase<ProgressRow> {
             
             private global::System.Data.DataColumn columnorginalBMI;
             
             private global::System.Data.DataColumn columncurrentBMI;
             
+            private global::System.Data.DataColumn columninitialWeight;
+            
+            private global::System.Data.DataColumn columncurrentWeight;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public BMIDataTable() {
-                this.TableName = "BMI";
+            public ProgressDataTable() {
+                this.TableName = "Progress";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -3336,7 +3340,7 @@ namespace DietApp {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal BMIDataTable(global::System.Data.DataTable table) {
+            internal ProgressDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -3353,7 +3357,7 @@ namespace DietApp {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected BMIDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected ProgressDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
@@ -3376,6 +3380,22 @@ namespace DietApp {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn initialWeightColumn {
+                get {
+                    return this.columninitialWeight;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn currentWeightColumn {
+                get {
+                    return this.columncurrentWeight;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -3385,46 +3405,48 @@ namespace DietApp {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public BMIRow this[int index] {
+            public ProgressRow this[int index] {
                 get {
-                    return ((BMIRow)(this.Rows[index]));
+                    return ((ProgressRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event BMIRowChangeEventHandler BMIRowChanging;
+            public event ProgressRowChangeEventHandler ProgressRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event BMIRowChangeEventHandler BMIRowChanged;
+            public event ProgressRowChangeEventHandler ProgressRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event BMIRowChangeEventHandler BMIRowDeleting;
+            public event ProgressRowChangeEventHandler ProgressRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event BMIRowChangeEventHandler BMIRowDeleted;
+            public event ProgressRowChangeEventHandler ProgressRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddBMIRow(BMIRow row) {
+            public void AddProgressRow(ProgressRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public BMIRow AddBMIRow(double orginalBMI, double currentBMI) {
-                BMIRow rowBMIRow = ((BMIRow)(this.NewRow()));
+            public ProgressRow AddProgressRow(double orginalBMI, double currentBMI, int initialWeight, int currentWeight) {
+                ProgressRow rowProgressRow = ((ProgressRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         orginalBMI,
-                        currentBMI};
-                rowBMIRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowBMIRow);
-                return rowBMIRow;
+                        currentBMI,
+                        initialWeight,
+                        currentWeight};
+                rowProgressRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowProgressRow);
+                return rowProgressRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                BMIDataTable cln = ((BMIDataTable)(base.Clone()));
+                ProgressDataTable cln = ((ProgressDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -3432,7 +3454,7 @@ namespace DietApp {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new BMIDataTable();
+                return new ProgressDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3440,6 +3462,8 @@ namespace DietApp {
             internal void InitVars() {
                 this.columnorginalBMI = base.Columns["orginalBMI"];
                 this.columncurrentBMI = base.Columns["currentBMI"];
+                this.columninitialWeight = base.Columns["initialWeight"];
+                this.columncurrentWeight = base.Columns["currentWeight"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3449,34 +3473,39 @@ namespace DietApp {
                 base.Columns.Add(this.columnorginalBMI);
                 this.columncurrentBMI = new global::System.Data.DataColumn("currentBMI", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columncurrentBMI);
+                this.columninitialWeight = new global::System.Data.DataColumn("initialWeight", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columninitialWeight);
+                this.columncurrentWeight = new global::System.Data.DataColumn("currentWeight", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncurrentWeight);
                 this.columnorginalBMI.ReadOnly = true;
                 this.columncurrentBMI.ReadOnly = true;
+                this.columncurrentWeight.ReadOnly = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public BMIRow NewBMIRow() {
-                return ((BMIRow)(this.NewRow()));
+            public ProgressRow NewProgressRow() {
+                return ((ProgressRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new BMIRow(builder);
+                return new ProgressRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(BMIRow);
+                return typeof(ProgressRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.BMIRowChanged != null)) {
-                    this.BMIRowChanged(this, new BMIRowChangeEvent(((BMIRow)(e.Row)), e.Action));
+                if ((this.ProgressRowChanged != null)) {
+                    this.ProgressRowChanged(this, new ProgressRowChangeEvent(((ProgressRow)(e.Row)), e.Action));
                 }
             }
             
@@ -3484,8 +3513,8 @@ namespace DietApp {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.BMIRowChanging != null)) {
-                    this.BMIRowChanging(this, new BMIRowChangeEvent(((BMIRow)(e.Row)), e.Action));
+                if ((this.ProgressRowChanging != null)) {
+                    this.ProgressRowChanging(this, new ProgressRowChangeEvent(((ProgressRow)(e.Row)), e.Action));
                 }
             }
             
@@ -3493,8 +3522,8 @@ namespace DietApp {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.BMIRowDeleted != null)) {
-                    this.BMIRowDeleted(this, new BMIRowChangeEvent(((BMIRow)(e.Row)), e.Action));
+                if ((this.ProgressRowDeleted != null)) {
+                    this.ProgressRowDeleted(this, new ProgressRowChangeEvent(((ProgressRow)(e.Row)), e.Action));
                 }
             }
             
@@ -3502,14 +3531,14 @@ namespace DietApp {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.BMIRowDeleting != null)) {
-                    this.BMIRowDeleting(this, new BMIRowChangeEvent(((BMIRow)(e.Row)), e.Action));
+                if ((this.ProgressRowDeleting != null)) {
+                    this.ProgressRowDeleting(this, new ProgressRowChangeEvent(((ProgressRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveBMIRow(BMIRow row) {
+            public void RemoveProgressRow(ProgressRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -3536,7 +3565,7 @@ namespace DietApp {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "BMIDataTable";
+                attribute2.FixedValue = "ProgressDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -4477,15 +4506,15 @@ namespace DietApp {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class BMIRow : global::System.Data.DataRow {
+        public partial class ProgressRow : global::System.Data.DataRow {
             
-            private BMIDataTable tableBMI;
+            private ProgressDataTable tableProgress;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal BMIRow(global::System.Data.DataRowBuilder rb) : 
+            internal ProgressRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableBMI = ((BMIDataTable)(this.Table));
+                this.tableProgress = ((ProgressDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4493,14 +4522,14 @@ namespace DietApp {
             public double orginalBMI {
                 get {
                     try {
-                        return ((double)(this[this.tableBMI.orginalBMIColumn]));
+                        return ((double)(this[this.tableProgress.orginalBMIColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'orginalBMI\' in table \'BMI\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'orginalBMI\' in table \'Progress\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableBMI.orginalBMIColumn] = value;
+                    this[this.tableProgress.orginalBMIColumn] = value;
                 }
             }
             
@@ -4509,39 +4538,95 @@ namespace DietApp {
             public double currentBMI {
                 get {
                     try {
-                        return ((double)(this[this.tableBMI.currentBMIColumn]));
+                        return ((double)(this[this.tableProgress.currentBMIColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'currentBMI\' in table \'BMI\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'currentBMI\' in table \'Progress\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableBMI.currentBMIColumn] = value;
+                    this[this.tableProgress.currentBMIColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int initialWeight {
+                get {
+                    try {
+                        return ((int)(this[this.tableProgress.initialWeightColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'initialWeight\' in table \'Progress\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableProgress.initialWeightColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int currentWeight {
+                get {
+                    try {
+                        return ((int)(this[this.tableProgress.currentWeightColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'currentWeight\' in table \'Progress\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableProgress.currentWeightColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsorginalBMINull() {
-                return this.IsNull(this.tableBMI.orginalBMIColumn);
+                return this.IsNull(this.tableProgress.orginalBMIColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetorginalBMINull() {
-                this[this.tableBMI.orginalBMIColumn] = global::System.Convert.DBNull;
+                this[this.tableProgress.orginalBMIColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IscurrentBMINull() {
-                return this.IsNull(this.tableBMI.currentBMIColumn);
+                return this.IsNull(this.tableProgress.currentBMIColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetcurrentBMINull() {
-                this[this.tableBMI.currentBMIColumn] = global::System.Convert.DBNull;
+                this[this.tableProgress.currentBMIColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsinitialWeightNull() {
+                return this.IsNull(this.tableProgress.initialWeightColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetinitialWeightNull() {
+                this[this.tableProgress.initialWeightColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IscurrentWeightNull() {
+                return this.IsNull(this.tableProgress.currentWeightColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetcurrentWeightNull() {
+                this[this.tableProgress.currentWeightColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -4855,22 +4940,22 @@ namespace DietApp {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class BMIRowChangeEvent : global::System.EventArgs {
+        public class ProgressRowChangeEvent : global::System.EventArgs {
             
-            private BMIRow eventRow;
+            private ProgressRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public BMIRowChangeEvent(BMIRow row, global::System.Data.DataRowAction action) {
+            public ProgressRowChangeEvent(ProgressRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public BMIRow Row {
+            public ProgressRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -6399,16 +6484,16 @@ ORDER BY dateTimeConsumed, name
             this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@date", global::System.Data.SqlDbType.VarChar, 1024, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[4] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[4].Connection = this.Connection;
-            this._commandCollection[4].CommandText = @"UPDATE [itemConsumed] SET 
-     [dateTimeConsumed] = @consumedAt, 
-     [name] = @name, 
-     [calories] = @calories, 
-     [protein] = @protein, 
+            this._commandCollection[4].CommandText = @"UPDATE [itemConsumed] SET
+     [dateTimeConsumed] = @consumedAt,
+     [name] = @name,
+     [calories] = @calories,
+     [protein] = @protein,
      [fat] = @fat,
      [carbohydrate] = @carbohydrate
 WHERE
-    ([dateTimeConsumed] = @Original_consumedAt) AND 
-    ([userId] = @userId) AND 
+    ([dateTimeConsumed] = @Original_consumedAt) AND
+    ([userId] = @userId) AND
     ([name] = @Original_name)";
             this._commandCollection[4].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@consumedAt", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "dateTimeConsumed", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -7902,7 +7987,7 @@ SELECT date, userId, measurementTypeId, measurement, dailyMeasurementId FROM dai
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class BMITableAdapter : global::System.ComponentModel.Component {
+    public partial class ProgressTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
         
@@ -7916,7 +8001,7 @@ SELECT date, userId, measurementTypeId, measurement, dailyMeasurementId FROM dai
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public BMITableAdapter() {
+        public ProgressTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -8013,9 +8098,11 @@ SELECT date, userId, measurementTypeId, measurement, dailyMeasurementId FROM dai
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "BMI";
+            tableMapping.DataSetTable = "Progress";
             tableMapping.ColumnMappings.Add("orginalBMI", "orginalBMI");
             tableMapping.ColumnMappings.Add("currentBMI", "currentBMI");
+            tableMapping.ColumnMappings.Add("initialWeight", "initialWeight");
+            tableMapping.ColumnMappings.Add("currentWeight", "currentWeight");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -8032,11 +8119,16 @@ SELECT date, userId, measurementTypeId, measurement, dailyMeasurementId FROM dai
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT ROUND(initialWeight * 703 / SQUARE(heightInches), 0) AS orginalBMI, ROUND
+            this._commandCollection[0].CommandText = @"SELECT ROUND(initialWeight * 703 / SQUARE(heightInches), 0) AS orginalBMI,
+ROUND
                  ((SELECT TOP (1) measurement
                   FROM    dailyMeasurements
                   WHERE (userId = @userID) AND (measurementTypeId = 1)
-                  ORDER BY date DESC) * 703 / SQUARE(heightInches), 0) AS currentBMI
+                  ORDER BY date DESC) * 703 / SQUARE(heightInches), 0) AS currentBMI,
+initialWeight,
+ (SELECT TOP (1) measurement
+                  FROM    dailyMeasurements
+                  WHERE (userId = @userID) AND (measurementTypeId = 1)  ORDER BY date DESC ) AS currentWeight
 FROM   users
 WHERE (userId = @userID)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
@@ -8047,7 +8139,7 @@ WHERE (userId = @userID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DietAppDataSet.BMIDataTable dataTable, int userID) {
+        public virtual int Fill(DietAppDataSet.ProgressDataTable dataTable, int userID) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             this.Adapter.SelectCommand.Parameters[0].Value = ((int)(userID));
             if ((this.ClearBeforeFill == true)) {
@@ -8061,10 +8153,10 @@ WHERE (userId = @userID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DietAppDataSet.BMIDataTable GetData(int userID) {
+        public virtual DietAppDataSet.ProgressDataTable GetData(int userID) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             this.Adapter.SelectCommand.Parameters[0].Value = ((int)(userID));
-            DietAppDataSet.BMIDataTable dataTable = new DietAppDataSet.BMIDataTable();
+            DietAppDataSet.ProgressDataTable dataTable = new DietAppDataSet.ProgressDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }

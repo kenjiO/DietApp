@@ -8,12 +8,6 @@
 
 namespace DietApp.Model
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-
     /// <summary>
     /// Model class associated with measurementTypes table in DB.
     /// </summary>

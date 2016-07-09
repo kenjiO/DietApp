@@ -1,9 +1,9 @@
 ﻿using DietApp.Controller;
 using DietApp.Model;
 using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Windows.Forms;
-using System.Collections.Generic;
 
 namespace DietApp.View
 {

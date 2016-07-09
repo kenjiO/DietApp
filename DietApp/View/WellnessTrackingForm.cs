@@ -98,9 +98,9 @@ namespace DietApp.View
 
         // Helper Methods //
 
-            /// <summary>
-            /// Prompts user if they try to navigate to a different tab with unsaved changes.
-            /// </summary>
+        /// <summary>
+        /// Prompts user if they try to navigate to a different tab with unsaved changes.
+        /// </summary>
         private void updateConfirm()
         {
             var dialogResult = MessageBox.Show("You have not saved changes for this entry. " +
@@ -128,7 +128,7 @@ namespace DietApp.View
             };
             if (!View_Validator.ValidateWellness(this.userWellness))
             {
-                MessageBox.Show("Please enter data for all fields.", 
+                MessageBox.Show("Please enter data for all fields.",
                     "Wellness Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
@@ -139,8 +139,8 @@ namespace DietApp.View
                     DietAppController.addDailyWellnessData(this.userWellness);
                     Cursor.Current = Cursors.Default;
                     this.Refresh();
-                    MessageBox.Show("You have successfully recorded data.  "+
-                        "You are one step closer to making data-driven decisions about your health.", 
+                    MessageBox.Show("You have successfully recorded data.  " +
+                        "You are one step closer to making data-driven decisions about your health.",
                         "Record Updated");
                 }
                 catch (SqlException ex)

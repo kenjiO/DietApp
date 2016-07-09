@@ -48,7 +48,6 @@ namespace DietApp.DAL
 
         /// <summary>
         /// Updates the user's wellness data for a given day.
-        /// UPDATE FUNCTIONALITY UNDER DEVELOPMENT FOR ITERATION 2.  NOT AN ITERATION 1 DELIVERABLE.
         /// </summary>
         /// <param name="newWellness"></param>
         /// <param name="oldWellness"></param>
@@ -125,20 +124,19 @@ namespace DietApp.DAL
         }
 
         /// <summary>
-        ///
+        /// Retrieves the progress for the given user.
         /// </summary>
         /// <param name="userID"></param>
         public static Progress getBMIData(int userID)
         {
             var idNumber = "";
-            var valueName = "";
             var bmiProgress = new Progress();
-            int newBMI, oldBMI;
+            int newBMI, oldBMI, newWeight, oldWeight;
 
             using (var wellnessDataTable = new DietAppDataSet())
             {
                 //Get dataset for values.
-                using (var wellnessDataSet = new DietAppDataSetTableAdapters.BMITableAdapter())
+                using (var wellnessDataSet = new DietAppDataSetTableAdapters.ProgressTableAdapter())
                 {
                     foreach (DataRow row in wellnessDataSet.GetData(userID).Rows)
                     {
@@ -153,6 +151,18 @@ namespace DietApp.DAL
                         if (result0)
                         {
                             bmiProgress.newBMI = newBMI;
+                        }
+                        idNumber = row["initialWeight"].ToString();
+                        var result1 = Int32.TryParse(idNumber, out oldWeight);
+                        if (result1)
+                        {
+                            bmiProgress.oldWeight = oldWeight;
+                        }
+                        idNumber = row["currentWeight"].ToString();
+                        var result2 = Int32.TryParse(idNumber, out newWeight);
+                        if (result2)
+                        {
+                            bmiProgress.newWeight = newWeight;
                         }
                     }
                     bmiProgress.userID = userID;

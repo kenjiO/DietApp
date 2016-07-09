@@ -8,9 +8,9 @@
 
 namespace DietAppTest.Model
 {
-    using System;
     using DietApp.Model;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using System;
 
     /// <summary>
     /// Test the DailyMeasurements Class in DietApp.Model.
