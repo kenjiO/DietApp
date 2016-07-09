@@ -21,5 +21,17 @@
         {
             return firstName + " " + lastName;
         }
+
+        /// <summary>
+        /// Overrides the toString.
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            return base.ToString() + " " + this.userId + " " + this.userName + " " +
+            this.firstName + " " + this.lastName + " " + this.email + " " +
+            this.password + " " + this.initialWeight + " " + this.heightInches + " " +
+            this.dailyCalorieGoal + " " + this.goalWeight;
+        }
     }
 }

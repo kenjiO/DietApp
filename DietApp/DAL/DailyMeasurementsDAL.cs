@@ -8,13 +8,10 @@
 
 namespace DietApp.DAL
 {
+    using DietApp.Model;
     using System;
     using System.Collections.Generic;
     using System.Data;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using DietApp.Model;
 
     /// <summary>
     /// Database access for dailyMeasurements table.
@@ -38,7 +35,7 @@ namespace DietApp.DAL
                     int dailyMeasurementId = Convert.ToInt32(row["dailyMeasurementId"].ToString());
                     DateTime date = Convert.ToDateTime(row["date"]);
                     int measurement = Convert.ToInt32(row["measurement"].ToString());
-                    
+
                     DailyMeasurements measurements = new DailyMeasurements();
                     measurements.DailyMeasurementId = dailyMeasurementId;
                     measurements.Date = date;

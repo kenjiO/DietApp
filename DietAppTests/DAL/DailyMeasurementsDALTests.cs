@@ -7,11 +7,10 @@
 // <author>Robert Carswell</author>
 //-----------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
 using DietApp.DAL;
 using DietApp.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections.Generic;
 
 namespace DietAppTests.DAL
 {

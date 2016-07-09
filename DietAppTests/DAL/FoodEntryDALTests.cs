@@ -9,12 +9,12 @@
 
 namespace DietAppTests.DAL
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Transactions;
     using DietApp.DAL;
     using DietApp.Model;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using System;
+    using System.Collections.Generic;
+    using System.Transactions;
 
     /// <summary>
     /// Test the FoodEntryDAL Class in DietApp.DAL.
@@ -237,6 +237,7 @@ namespace DietAppTests.DAL
                 Assert.AreEqual(newUserId, entries[0].UserId);
             }
         }
+
         /// <summary>
         /// Test the return of the list for a given date.
         /// </summary>

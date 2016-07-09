@@ -16,7 +16,6 @@ namespace DietApp
         private ProgressForm progressForm;
         private NutrientReportForm nutrientForm;
 
-
         public MainForm()
         {
             InitializeComponent();
@@ -129,8 +128,8 @@ namespace DietApp
             this.progressForm.Dock = DockStyle.Fill;
             tabPageProgressForm.Controls.Add(this.progressForm);
 
-        var reportForm = new ReportForm();
-        reportForm.loadUser(this.theUser);
+            var reportForm = new ReportForm();
+            reportForm.loadUser(this.theUser);
             reportForm.TopLevel = false;
             reportForm.Visible = true;
             reportForm.FormBorderStyle = FormBorderStyle.None;
@@ -144,11 +143,12 @@ namespace DietApp
             this.nutrientForm.Dock = DockStyle.Fill;
             tabPageNutrientReport.Controls.Add(this.nutrientForm);
         }
-       /// <summary>
-       /// Loads various functions (in order listed from top to bottom) when user navigates to a different tab.
-       /// </summary>
-       /// <param name="sender"></param>
-       /// <param name="e"></param>
+
+        /// <summary>
+        /// Loads various functions (in order listed from top to bottom) when user navigates to a different tab.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TabControl1_SelectedIndexChanged(Object sender, EventArgs e)
         {
             if (tabControl1.SelectedTab == tabPageWellness)
