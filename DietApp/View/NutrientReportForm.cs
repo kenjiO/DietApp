@@ -11,6 +11,7 @@ namespace DietApp.View
     {
         private Users theUser;
         private int reportPage = 1;
+        private const int CHART_Y_AXIS_MAX = 250; 
 
         public NutrientReportForm(Users currentUser)
         {
@@ -31,7 +32,7 @@ namespace DietApp.View
             chart1.Series.Add("Fat");
             chart1.Series.Add("Protein");
             chart1.Series.Add("Carbohydrates");
-            chart1.ChartAreas[0].AxisY.Maximum = 500;
+            chart1.ChartAreas[0].AxisY.Maximum = CHART_Y_AXIS_MAX;
             chart1.ChartAreas[0].AxisY.Minimum = 0;
         }
 
