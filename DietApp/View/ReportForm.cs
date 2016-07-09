@@ -27,9 +27,9 @@ namespace DietApp.View
     public partial class ReportForm : Form
     {
         private Users theUser;
-        private int type = 1;
-        private string title = "Weight";
-        private string name = "Weight";
+        private int type;
+        private string title;
+        private string name;
         private int minValue = 0;
         private int maxValue = 200;
 
@@ -49,13 +49,9 @@ namespace DietApp.View
         public void ReportForm_Load(object sender, EventArgs e)
         {
             rbWeight.Checked = true;
-            this.chartUserData.Series.Clear();
-            this.chartUserData.Legends.Clear();
-            this.chartTitle(this.title);
-            this.chartSeries(this.type, this.name, System.Drawing.Color.Green);
-            this.chartAreas(this.minValue, this.maxValue, this.title);
-            this.chartLegends(this.name);
-            this.chartUserData.Invalidate();
+            rbHeartRate.Checked = false;
+            rbBP.Checked = false;
+            this.btnLoad_Click(sender, e);
         }
         
         /// <summary>
