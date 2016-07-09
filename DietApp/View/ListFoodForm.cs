@@ -32,7 +32,6 @@ namespace DietApp.View
             this.bindingSource1 = new BindingSource();
             dataGridView1.AutoGenerateColumns = false;
             dataGridView1.DataSource = bindingSource1;
-            refreshData();
         }
 
         /// <summary>
@@ -58,7 +57,7 @@ namespace DietApp.View
         /// <summary>
         /// Reload the list of food entries to the datepicker date
         /// </summary>
-        private void refreshData()
+        public void refreshData()
         {
             Cursor.Current = Cursors.WaitCursor;
             try
