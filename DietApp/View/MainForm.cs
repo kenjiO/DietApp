@@ -14,6 +14,7 @@ namespace DietApp
         private FoodEntryForm foodForm;
         private ListFoodForm foodListForm;
         private ProgressForm progressForm;
+        private NutrientReportForm nutrientForm;
 
 
         public MainForm()
@@ -117,7 +118,7 @@ namespace DietApp
             this.foodListForm.TopLevel = false;
             this.foodListForm.Visible = true;
             this.foodListForm.FormBorderStyle = FormBorderStyle.None;
-            this.foodListForm.Dock = DockStyle.Left;
+            this.foodListForm.Dock = DockStyle.Fill;
             tabPageFoodList.Controls.Add(this.foodListForm);
 
             this.progressForm = new ProgressForm();
@@ -135,6 +136,13 @@ namespace DietApp
             reportForm.FormBorderStyle = FormBorderStyle.None;
             reportForm.Dock = DockStyle.Fill;
             tabPageUserReport.Controls.Add(reportForm);
+
+            this.nutrientForm = new NutrientReportForm(this.theUser);
+            this.nutrientForm.TopLevel = false;
+            this.nutrientForm.Visible = true;
+            this.nutrientForm.FormBorderStyle = FormBorderStyle.None;
+            this.nutrientForm.Dock = DockStyle.Fill;
+            tabPageNutrientReport.Controls.Add(this.nutrientForm);
         }
        /// <summary>
        /// Loads various functions (in order listed from top to bottom) when user navigates to a different tab.
@@ -154,6 +162,10 @@ namespace DietApp
             else if (tabControl1.SelectedTab == tabPageFoodList)
             {
                 this.foodListForm.refreshData();
+            }
+            else if (tabControl1.SelectedTab == tabPageNutrientReport)
+            {
+                this.nutrientForm.runReport();
             }
         }
     }

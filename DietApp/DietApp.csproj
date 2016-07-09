@@ -50,6 +50,7 @@
     <Compile Include="Controller\DietAppController.cs" />
     <Compile Include="DAL\DailyMeasurementsDAL.cs" />
     <Compile Include="DAL\FoodEntryDAL.cs" />
+    <Compile Include="DAL\FoodReportDAL.cs" />
     <Compile Include="DAL\UsersDAL.cs" />
     <Compile Include="DAL\WellnessDAL.cs" />
     <Compile Include="DietAppDataSet.cs">
@@ -62,6 +63,7 @@
       <DependentUpon>DietAppDataSet.xsd</DependentUpon>
       <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
     </Compile>
+    <Compile Include="Model\DailyNutrition.cs" />
     <Compile Include="Model\Encryption.cs" />
     <Compile Include="Model\FoodEntry.cs" />
     <Compile Include="Model\FoodNutritionInfo.cs" />
@@ -114,6 +116,12 @@
     <Compile Include="Controller\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="View\NutrientReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\NutrientReportForm.Designer.cs">
+      <DependentUpon>NutrientReportForm.cs</DependentUpon>
     </Compile>
     <Compile Include="View\ProfileInfo.cs">
       <SubType>Form</SubType>
@@ -176,6 +184,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="View\NutrientReportForm.resx">
+      <DependentUpon>NutrientReportForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\ProfileInfo.resx">
       <DependentUpon>ProfileInfo.cs</DependentUpon>
     </EmbeddedResource>
