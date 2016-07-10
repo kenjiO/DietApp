@@ -3,7 +3,7 @@
 //     Copyright (c) KKR Summer 2016. All rights reserved.
 // </copyright>
 // <summary>This is the testing for the DAL.FoodEntryDAL class.</summary>
-// <author>Kaleigh Kendrick</author>
+// <author>Robert Carswell</author>
 // <author>Kenji Okamoto</author>
 //-----------------------------------------------------------------------
 
@@ -252,10 +252,13 @@ namespace DietAppTests.DAL
                 List<FoodEntry> entries = FoodEntryDAL.getUserEntriesByDate(newUserId, new DateTime(2016, 03, 12));
                 Assert.AreEqual(1, entries.Count);
                 FoodEntry listItem1 = entries[0];
-                Assert.IsTrue(areFoodEntriesEqual(entry, listItem1));
+                Assert.IsTrue(this.TestareFoodEntriesEqual(entry, listItem1));
             }
         }
 
+        /// <summary>
+        /// Test to return Two Entries When Two Entries On Same Date.
+        /// </summary>
         [TestMethod]
         public void TestGetEntriesReturnsTwoEntriesWhenTwoEntriesOnSameDate()
         {
@@ -271,6 +274,9 @@ namespace DietAppTests.DAL
             }
         }
 
+        /// <summary>
+        /// Test to return The Same Entries When Two Entries On Same Date.
+        /// </summary>
         [TestMethod]
         public void TestGetEntriesReturnsTheSameEntriesWhenTwoEntriesOnSameDate()
         {
@@ -282,11 +288,14 @@ namespace DietAppTests.DAL
                 FoodEntryDAL.addEntry(entry1);
                 FoodEntryDAL.addEntry(entry2);
                 List<FoodEntry> entries = FoodEntryDAL.getUserEntriesByDate(newUserId, new DateTime(2016, 03, 12));
-                Assert.IsTrue(areFoodEntriesEqual(entry1, entries[0]));
-                Assert.IsTrue(areFoodEntriesEqual(entry2, entries[1]));
+                Assert.IsTrue(this.TestareFoodEntriesEqual(entry1, entries[0]));
+                Assert.IsTrue(this.TestareFoodEntriesEqual(entry2, entries[1]));
             }
         }
 
+        /// <summary>
+        /// Test to return 3 Entries When 3 Entries On Same Date.
+        /// </summary>
         [TestMethod]
         public void TestGetEntriesReturns3EntriesWhen3EntriesOnSameDate()
         {
@@ -304,6 +313,9 @@ namespace DietAppTests.DAL
             }
         }
 
+        /// <summary>
+        /// Test to return The Same Entries When Three Entries On Same Date.
+        /// </summary>
         [TestMethod]
         public void TestGetEntriesReturnsTheSameEntriesWhenThreeEntriesOnSameDate()
         {
@@ -318,12 +330,15 @@ namespace DietAppTests.DAL
                 FoodEntryDAL.addEntry(entry3);
 
                 List<FoodEntry> entries = FoodEntryDAL.getUserEntriesByDate(newUserId, new DateTime(2016, 03, 12));
-                Assert.IsTrue(areFoodEntriesEqual(entry1, entries[0]));
-                Assert.IsTrue(areFoodEntriesEqual(entry2, entries[1]));
-                Assert.IsTrue(areFoodEntriesEqual(entry3, entries[2]));
+                Assert.IsTrue(this.TestareFoodEntriesEqual(entry1, entries[0]));
+                Assert.IsTrue(this.TestareFoodEntriesEqual(entry2, entries[1]));
+                Assert.IsTrue(this.TestareFoodEntriesEqual(entry3, entries[2]));
             }
         }
 
+        /// <summary>
+        /// Test to return List Sorted By Time.
+        /// </summary>
         [TestMethod]
         public void TestGetEntriesReturnsListSortedByTime()
         {
@@ -340,14 +355,20 @@ namespace DietAppTests.DAL
                 FoodEntryDAL.addEntry(entry1);
 
                 List<FoodEntry> entries = FoodEntryDAL.getUserEntriesByDate(newUserId, new DateTime(2016, 03, 12));
-                Assert.IsTrue(areFoodEntriesEqual(entry1, entries[0]));
-                Assert.IsTrue(areFoodEntriesEqual(entry2, entries[1]));
-                Assert.IsTrue(areFoodEntriesEqual(entry3, entries[2]));
-                Assert.IsTrue(areFoodEntriesEqual(entry4, entries[3]));
+                Assert.IsTrue(this.TestareFoodEntriesEqual(entry1, entries[0]));
+                Assert.IsTrue(this.TestareFoodEntriesEqual(entry2, entries[1]));
+                Assert.IsTrue(this.TestareFoodEntriesEqual(entry3, entries[2]));
+                Assert.IsTrue(this.TestareFoodEntriesEqual(entry4, entries[3]));
             }
         }
 
-        private bool areFoodEntriesEqual(FoodEntry fe1, FoodEntry fe2)
+        /// <summary>
+        /// Private: test the compared entries.
+        /// </summary>
+        /// <param name="fe1">First Entry.</param>
+        /// <param name="fe2">Second Entry.</param>
+        /// <returns>True if same, else false.</returns>
+        private bool TestareFoodEntriesEqual(FoodEntry fe1, FoodEntry fe2)
         {
             return fe1.UserId == fe2.UserId &&
                 fe1.Calories == fe2.Calories &&

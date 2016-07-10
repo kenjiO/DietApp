@@ -123,9 +123,11 @@
             this.msgLabel.AutoSize = true;
             this.msgLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.msgLabel.Location = new System.Drawing.Point(417, 63);
+            this.msgLabel.MaximumSize = new System.Drawing.Size(300, 0);
             this.msgLabel.Name = "msgLabel";
-            this.msgLabel.Size = new System.Drawing.Size(0, 29);
+            this.msgLabel.Size = new System.Drawing.Size(272, 29);
             this.msgLabel.TabIndex = 9;
+            this.msgLabel.Text = "Mesage Will Show Here";
             this.msgLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // ProgressForm

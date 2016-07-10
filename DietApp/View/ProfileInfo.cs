@@ -21,7 +21,7 @@ namespace DietApp
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void ProfileInfo_Load(object sender, EventArgs e)
+        public void ProfileInfo_Load(object sender, EventArgs e)
         {
             if (View_Validator.Users(this.theUser))
             {

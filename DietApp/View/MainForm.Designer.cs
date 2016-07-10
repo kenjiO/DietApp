@@ -38,8 +38,8 @@
             this.tabPageWellness = new System.Windows.Forms.TabPage();
             this.tabPageFoodList = new System.Windows.Forms.TabPage();
             this.tabPageFoodEntries = new System.Windows.Forms.TabPage();
-            this.tabPageUserReport = new System.Windows.Forms.TabPage();
             this.tabPageNutrientReport = new System.Windows.Forms.TabPage();
+            this.tabPageWellnessReport = new System.Windows.Forms.TabPage();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.SuspendLayout();
@@ -87,7 +87,7 @@
             this.tabControl1.Controls.Add(this.tabPageWellness);
             this.tabControl1.Controls.Add(this.tabPageFoodList);
             this.tabControl1.Controls.Add(this.tabPageFoodEntries);
-            this.tabControl1.Controls.Add(this.tabPageUserReport);
+            this.tabControl1.Controls.Add(this.tabPageWellnessReport);
             this.tabControl1.Controls.Add(this.tabPageNutrientReport);
             this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabControl1.Location = new System.Drawing.Point(0, 18);
@@ -148,15 +148,16 @@
             this.tabPageFoodEntries.UseVisualStyleBackColor = true;
             // 
             // tabPageUserReport
+            // tabPageWellnessReport
             // 
-            this.tabPageUserReport.Location = new System.Drawing.Point(4, 27);
-            this.tabPageUserReport.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tabPageUserReport.Name = "tabPageUserReport";
-            this.tabPageUserReport.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tabPageUserReport.Size = new System.Drawing.Size(926, 556);
-            this.tabPageUserReport.TabIndex = 4;
-            this.tabPageUserReport.Text = "User Report";
-            this.tabPageUserReport.UseVisualStyleBackColor = true;
+            this.tabPageWellnessReport.Location = new System.Drawing.Point(4, 27);
+            this.tabPageWellnessReport.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPageWellnessReport.Name = "tabPageWellnessReport";
+            this.tabPageWellnessReport.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPageWellnessReport.Size = new System.Drawing.Size(926, 556);
+            this.tabPageWellnessReport.TabIndex = 4;
+            this.tabPageWellnessReport.Text = "Wellness Report";
+            this.tabPageWellnessReport.UseVisualStyleBackColor = true;
             // 
             // tabPageNutrientReport
             // 
@@ -199,7 +200,7 @@
         private System.Windows.Forms.TabPage tabPageWellness;
         private System.Windows.Forms.TabPage tabPageFoodEntries;
         private System.Windows.Forms.TabPage tabPageFoodList;
-        private System.Windows.Forms.TabPage tabPageUserReport;
+        private System.Windows.Forms.TabPage tabPageWellnessReport;
         private System.Windows.Forms.TabPage tabPageProgressForm;
         private System.Windows.Forms.TabPage tabPageNutrientReport;
     }

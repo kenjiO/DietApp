@@ -55,7 +55,6 @@
     <Compile Include="DAL\WellnessDAL.cs" />
     <Compile Include="DietAppDataSet.cs">
       <DependentUpon>DietAppDataSet.xsd</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="DietAppDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -77,6 +76,7 @@
     </Compile>
     <Compile Include="View\FoodEditForm.Designer.cs">
       <DependentUpon>FoodEditForm.cs</DependentUpon>
+      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
     </Compile>
     <Compile Include="View\FoodEntryForm.cs">
       <SubType>Form</SubType>
@@ -91,6 +91,7 @@
     </Compile>
     <Compile Include="View\ListFoodForm.Designer.cs">
       <DependentUpon>ListFoodForm.cs</DependentUpon>
+      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
     </Compile>
     <Compile Include="View\LoginForm.cs">
       <SubType>Form</SubType>
@@ -135,12 +136,14 @@
     </Compile>
     <Compile Include="View\ProgressForm.Designer.cs">
       <DependentUpon>ProgressForm.cs</DependentUpon>
+      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
     </Compile>
-    <Compile Include="View\ReportForm.cs">
+    <Compile Include="View\WellnessReportForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\ReportForm.Designer.cs">
-      <DependentUpon>ReportForm.cs</DependentUpon>
+    <Compile Include="View\WellnessReportForm.Designer.cs">
+      <DependentUpon>WellnessReportForm.cs</DependentUpon>
+      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
     </Compile>
     <Compile Include="View\View_Validator.cs" />
     <Compile Include="View\WellnessTrackingForm.cs">
@@ -193,8 +196,8 @@
     <EmbeddedResource Include="View\ProgressForm.resx">
       <DependentUpon>ProgressForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\ReportForm.resx">
-      <DependentUpon>ReportForm.cs</DependentUpon>
+    <EmbeddedResource Include="View\WellnessReportForm.resx">
+      <DependentUpon>WellnessReportForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\WellnessInfo.resx">
       <DependentUpon>WellnessInfo.cs</DependentUpon>

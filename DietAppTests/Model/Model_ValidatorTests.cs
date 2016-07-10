@@ -47,14 +47,17 @@ namespace DietAppTests.Model
             // Set Users
             string userNameGood = "bb";
             string userNameBad = "LeroyBrown";
+            string userNameNull = null;
 
             // Checks Users
             bool goodResult = Model_Validator.verifyUserName(userNameGood);
             bool badResult = Model_Validator.verifyUserName(userNameBad);
+            bool nullResult = Model_Validator.verifyUserName(userNameNull);
 
             // Returns Results
             Assert.IsTrue(goodResult, "Valid username fails.");
             Assert.IsFalse(badResult, "Invalid username passes.");
+            Assert.IsFalse(nullResult, "Null username passes.");
         }
     }
 }

@@ -88,7 +88,7 @@ namespace DietApp.View
                     }
                     launchEditForm(entryToEdit);
                 }
-                catch (ArgumentOutOfRangeException ex)
+                catch (ArgumentOutOfRangeException)
                 {
                     MessageBox.Show("There was an application error editing this item", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }

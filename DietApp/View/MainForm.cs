@@ -15,6 +15,7 @@ namespace DietApp
         private ListFoodForm foodListForm;
         private ProgressForm progressForm;
         private NutrientReportForm nutrientForm;
+        private WellnessReportForm wellnessReportForm;
 
         public MainForm()
         {
@@ -128,14 +129,14 @@ namespace DietApp
             this.progressForm.Dock = DockStyle.Fill;
             tabPageProgressForm.Controls.Add(this.progressForm);
 
-            var reportForm = new ReportForm();
-            reportForm.loadUser(this.theUser);
-            reportForm.TopLevel = false;
-            reportForm.Visible = true;
-            reportForm.FormBorderStyle = FormBorderStyle.None;
-            reportForm.Dock = DockStyle.Fill;
-            tabPageUserReport.Controls.Add(reportForm);
-
+            this.wellnessReportForm = new WellnessReportForm();
+            this.wellnessReportForm.loadUser(this.theUser);
+            this.wellnessReportForm.TopLevel = false;
+            this.wellnessReportForm.Visible = true;
+            this.wellnessReportForm.FormBorderStyle = FormBorderStyle.None;
+            this.wellnessReportForm.Dock = DockStyle.Fill;
+            tabPageWellnessReport.Controls.Add(this.wellnessReportForm);
+            
             this.nutrientForm = new NutrientReportForm(this.theUser);
             this.nutrientForm.TopLevel = false;
             this.nutrientForm.Visible = true;
@@ -151,7 +152,11 @@ namespace DietApp
         /// <param name="e"></param>
         private void TabControl1_SelectedIndexChanged(Object sender, EventArgs e)
         {
-            if (tabControl1.SelectedTab == tabPageWellness)
+            if (tabControl1.SelectedTab == tabPageProfile)
+            {
+                this.profileInfoForm.ProfileInfo_Load(sender, e);
+            }
+            else if (tabControl1.SelectedTab == tabPageWellness)
             {
                 this.wellnessForm.CheckDBForWellness(sender, e);
             }
@@ -166,6 +171,10 @@ namespace DietApp
             else if (tabControl1.SelectedTab == tabPageNutrientReport)
             {
                 this.nutrientForm.runReport();
+            }
+            else if (tabControl1.SelectedTab == tabPageWellnessReport)
+            {
+                this.wellnessReportForm.WellnessReportForm_Load(sender, e);
             }
         }
     }
