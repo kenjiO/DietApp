@@ -1,6 +1,6 @@
 ﻿namespace DietApp.View
 {
-    partial class ReportForm
+    partial class WellnessReportForm
     {
         /// <summary>
         /// Required designer variable.
@@ -109,7 +109,7 @@
             this.Controls.Add(this.chartUserData);
             this.Name = "ReportForm";
             this.Text = "ReportForm";
-            this.Load += new System.EventHandler(this.ReportForm_Load);
+            this.Load += new System.EventHandler(this.WellnessReportForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.chartUserData)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

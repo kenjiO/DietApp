@@ -14,7 +14,7 @@ namespace DietApp
         private FoodEntryForm foodForm;
         private ListFoodForm foodListForm;
         private ProgressForm progressForm;
-        private ReportForm reportForm;
+        private WellnessReportForm wellnessReportForm;
 
 
         public MainForm()
@@ -129,13 +129,13 @@ namespace DietApp
             this.progressForm.Dock = DockStyle.Fill;
             tabPageProgressForm.Controls.Add(this.progressForm);
 
-            this.reportForm = new ReportForm();
-            this.reportForm.loadUser(this.theUser);
-            this.reportForm.TopLevel = false;
-            this.reportForm.Visible = true;
-            this.reportForm.FormBorderStyle = FormBorderStyle.None;
-            this.reportForm.Dock = DockStyle.Fill;
-            tabPageUserReport.Controls.Add(this.reportForm);
+            this.wellnessReportForm = new WellnessReportForm();
+            this.wellnessReportForm.loadUser(this.theUser);
+            this.wellnessReportForm.TopLevel = false;
+            this.wellnessReportForm.Visible = true;
+            this.wellnessReportForm.FormBorderStyle = FormBorderStyle.None;
+            this.wellnessReportForm.Dock = DockStyle.Fill;
+            tabPageWellnessReport.Controls.Add(this.wellnessReportForm);
         }
        /// <summary>
        /// Loads various functions (in order listed from top to bottom) when user navigates to a different tab.
@@ -156,9 +156,9 @@ namespace DietApp
             {
                 this.wellnessForm.CheckDBForWellness(sender, e);
             }
-            else if (tabControl1.SelectedTab == tabPageUserReport)
+            else if (tabControl1.SelectedTab == tabPageWellnessReport)
             {
-                this.reportForm.ReportForm_Load(sender, e);
+                this.wellnessReportForm.WellnessReportForm_Load(sender, e);
             }
         }
 

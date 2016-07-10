@@ -1,8 +1,8 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="ReportForm.cs" company="KKR Summer 2016">
+// <copyright file="WellnessReportForm.cs" company="KKR Summer 2016">
 //     Copyright (c) KKR Summer 2016. All rights reserved.
 // </copyright>
-// <summary>This is the form view for user reports.</summary>
+// <summary>This is the form view for User's Wellness Reports.</summary>
 // <author>Robert Carswell</author>
 //-----------------------------------------------------------------------
 
@@ -22,9 +22,9 @@ namespace DietApp.View
     using DietApp.Model;
 
     /// <summary>
-    /// Form for display of User Reports.
+    /// Form for display of User's Wellness Reports.
     /// </summary>
-    public partial class ReportForm : Form
+    public partial class WellnessReportForm : Form
     {
         private Users theUser;
         private int type;
@@ -34,9 +34,9 @@ namespace DietApp.View
         private int maxValue = 200;
 
         /// <summary>
-        /// Form for display of User Reports.
+        /// Form for display of User's Wellness Reports.
         /// </summary>
-        public ReportForm()
+        public WellnessReportForm()
         {
             InitializeComponent();
         }
@@ -46,7 +46,7 @@ namespace DietApp.View
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        public void ReportForm_Load(object sender, EventArgs e)
+        public void WellnessReportForm_Load(object sender, EventArgs e)
         {
             rbWeight.Checked = true;
             rbHeartRate.Checked = false;
