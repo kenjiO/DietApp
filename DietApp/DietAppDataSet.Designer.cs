@@ -2007,6 +2007,15 @@ namespace DietApp {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public itemConsumedRow FindBydateTimeConsumeduserIdname(System.DateTime dateTimeConsumed, int userId, string name) {
+                return ((itemConsumedRow)(this.Rows.Find(new object[] {
+                            dateTimeConsumed,
+                            userId,
+                            name})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public override global::System.Data.DataTable Clone() {
                 itemConsumedDataTable cln = ((itemConsumedDataTable)(base.Clone()));
                 cln.InitVars();
@@ -2051,7 +2060,7 @@ namespace DietApp {
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columndateTimeConsumed,
                                 this.columnuserId,
-                                this.columnname}, false));
+                                this.columnname}, true));
                 this.columndateTimeConsumed.AllowDBNull = false;
                 this.columnuserId.AllowDBNull = false;
                 this.columnname.AllowDBNull = false;
@@ -7351,6 +7360,14 @@ WHERE
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(global::System.Nullable<int> calories, global::System.Nullable<int> protein, global::System.Nullable<int> fat, global::System.Nullable<int> carbohydrate, System.DateTime Original_dateTimeConsumed, int Original_userId, string Original_name, global::System.Nullable<int> Original_calories, global::System.Nullable<int> Original_protein, global::System.Nullable<int> Original_fat, global::System.Nullable<int> Original_carbohydrate) {
+            return this.Update(Original_dateTimeConsumed, Original_userId, Original_name, calories, protein, fat, carbohydrate, Original_dateTimeConsumed, Original_userId, Original_name, Original_calories, Original_protein, Original_fat, Original_carbohydrate);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, false)]
         public virtual int DeleteByDateTimeIdName(System.DateTime dateTimeConsumed, int userId, string name) {
             global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[1];
@@ -8841,13 +8858,13 @@ WHERE (userId = @userID)";
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT * FROM dailyNutrients";
+            this._commandCollection[0].CommandText = "SELECT        *\r\nFROM            dailyNutrients";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "SELECT  userId, day, calories, fat, protein, carbohydrates FROM dailyNutrients\r\nW" +
-                "HERE userId = @userId\r\n  AND CONVERT(date, day) >= @startDate\r\n  AND CONVERT(dat" +
-                "e, day) <= @endDate\r\nORDER BY day";
+            this._commandCollection[1].CommandText = "SELECT calories, carbohydrates, day, fat, protein, userId \r\nFROM dailyNutrients \r" +
+                "\nWHERE (userId = @userId) \r\n  AND (CONVERT (date, day) >= @startDate) \r\n  AND (C" +
+                "ONVERT (date, day) <= @endDate) \r\nORDER BY day";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@userId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "userId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@startDate", global::System.Data.SqlDbType.VarChar, 1024, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
