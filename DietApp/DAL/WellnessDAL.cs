@@ -77,7 +77,7 @@ namespace DietApp.DAL
                     }
                     using (var wellnessDataSet = new DietAppDataSetTableAdapters.dailyMeasurementsFullTableAdapter())
                     {
-                        foreach (DataRow row in wellnessDataSet.GetData().Rows)
+                        foreach (DataRow row in wellnessDataSet.GetDataByUserIdAndDate(oldWellness.userID, oldWellness.date.ToString("yyyy-MM-dd")).Rows)
                         {
                             var dailyMeasurementIDString = row["dailyMeasurementID"].ToString();
                             var dailyMeasurementIDNumber = Int32.TryParse(dailyMeasurementIDString, out dailyMeasurementID);
