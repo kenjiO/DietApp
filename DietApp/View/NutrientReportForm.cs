@@ -11,7 +11,7 @@ namespace DietApp.View
     {
         private Users theUser;
         private int reportPage = 1;
-        private const int CHART_Y_AXIS_MAX = 250; 
+        private const int CHART_Y_AXIS_MAX = 250;
 
         public NutrientReportForm(Users currentUser)
         {

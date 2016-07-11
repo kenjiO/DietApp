@@ -9,11 +9,11 @@
 
 namespace DietApp.DAL.Tests
 {
-    using System;
-    using System.Transactions;
     using DietApp.DAL;
     using DietApp.Model;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using System;
+    using System.Transactions;
 
     /// <summary>
     /// Test the WellnessDAL Class in DietApp.DAL.

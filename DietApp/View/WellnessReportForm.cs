@@ -8,18 +8,13 @@
 
 namespace DietApp.View
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.Data;
-    using System.Drawing;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using System.Windows.Forms;
-    using System.Windows.Forms.DataVisualization.Charting;
     using DietApp.Controller;
     using DietApp.Model;
+    using System;
+    using System.Collections.Generic;
+    using System.Drawing;
+    using System.Windows.Forms;
+    using System.Windows.Forms.DataVisualization.Charting;
 
     /// <summary>
     /// Form for display of User's Wellness Reports.
@@ -53,7 +48,7 @@ namespace DietApp.View
             rbBP.Checked = false;
             this.btnLoad_Click(sender, e);
         }
-        
+
         /// <summary>
         /// Loads the user.
         /// </summary>
@@ -65,7 +60,7 @@ namespace DietApp.View
         }
 
         private void btnLoad_Click(object sender, EventArgs e)
-        {           
+        {
             if (rbWeight.Checked == true)
             {
                 this.chartUserData.Series.Clear();
@@ -78,7 +73,6 @@ namespace DietApp.View
                 this.chartAreas(this.minValue, this.maxValue, title);
                 this.chartLegends(this.name);
                 this.chartUserData.Invalidate();
-
             }
             else if (rbHeartRate.Checked == true)
             {
@@ -124,7 +118,6 @@ namespace DietApp.View
                 this.chartLegends(this.name);
                 this.chartUserData.Invalidate();
             }
-
         }
 
         /// <summary>
@@ -133,7 +126,7 @@ namespace DietApp.View
         private void chartAreas(double min, double max, string title)
         {
             this.chartUserData.ChartAreas.Clear();
-            
+
             var axisY = new System.Windows.Forms.DataVisualization.Charting.Axis
             {
                 Minimum = min,
@@ -147,9 +140,8 @@ namespace DietApp.View
             };
 
             this.chartUserData.ChartAreas.Add(chartArea1);
-
         }
-        
+
         /// <summary>
         /// Sets up the look and style of the user's chart, Title.
         /// </summary>
@@ -184,7 +176,7 @@ namespace DietApp.View
         {
             this.minValue = 200;
             this.maxValue = 0;
-            
+
             var series1 = new System.Windows.Forms.DataVisualization.Charting.Series
             {
                 Name = name,

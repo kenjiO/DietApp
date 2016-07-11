@@ -8,12 +8,12 @@
 
 namespace DietAppTests.DAL
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Transactions;
     using DietApp.DAL;
     using DietApp.Model;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using System;
+    using System.Collections.Generic;
+    using System.Transactions;
 
     /// <summary>
     /// Test the DailyMeasurementsDAL Class in DietApp.DAL.

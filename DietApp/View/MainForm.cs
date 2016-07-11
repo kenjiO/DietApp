@@ -136,7 +136,7 @@ namespace DietApp
             this.wellnessReportForm.FormBorderStyle = FormBorderStyle.None;
             this.wellnessReportForm.Dock = DockStyle.Fill;
             tabPageWellnessReport.Controls.Add(this.wellnessReportForm);
-            
+
             this.nutrientForm = new NutrientReportForm(this.theUser);
             this.nutrientForm.TopLevel = false;
             this.nutrientForm.Visible = true;
@@ -152,13 +152,10 @@ namespace DietApp
         /// <param name="e"></param>
         private void TabControl1_SelectedIndexChanged(Object sender, EventArgs e)
         {
+            this.wellnessForm.CheckDBForWellness(sender, e);
             if (tabControl1.SelectedTab == tabPageProfile)
             {
                 this.profileInfoForm.ProfileInfo_Load(sender, e);
-            }
-            else if (tabControl1.SelectedTab == tabPageWellness)
-            {
-                this.wellnessForm.CheckDBForWellness(sender, e);
             }
             else if (tabControl1.SelectedTab == tabPageProgressForm)
             {
