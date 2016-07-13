@@ -51,7 +51,8 @@
             this.fileToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1401, 33);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 1, 0, 1);
+            this.menuStrip1.Size = new System.Drawing.Size(934, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -61,20 +62,20 @@
             this.exitToolStripMenuItem,
             this.exitToolStripMenuItem1});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(50, 29);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 22);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(158, 30);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
             this.exitToolStripMenuItem.Text = "Log Off";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem1
             // 
             this.exitToolStripMenuItem1.Name = "exitToolStripMenuItem1";
-            this.exitToolStripMenuItem1.Size = new System.Drawing.Size(158, 30);
+            this.exitToolStripMenuItem1.Size = new System.Drawing.Size(114, 22);
             this.exitToolStripMenuItem1.Text = "Exit";
             this.exitToolStripMenuItem1.Click += new System.EventHandler(this.exitToolStripMenuItem1_Click);
             // 
@@ -91,96 +92,94 @@
             this.tabControl1.Controls.Add(this.tabPageWellnessReport);
             this.tabControl1.Controls.Add(this.tabPageNutrientReport);
             this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabControl1.Location = new System.Drawing.Point(0, 38);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tabControl1.Location = new System.Drawing.Point(0, 25);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.Padding = new System.Drawing.Point(20, 3);
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1401, 893);
+            this.tabControl1.Size = new System.Drawing.Size(934, 580);
             this.tabControl1.TabIndex = 2;
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.TabControl1_SelectedIndexChanged);
             // 
             // tabPageProfile
             // 
-            this.tabPageProfile.Location = new System.Drawing.Point(4, 38);
-            this.tabPageProfile.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tabPageProfile.Location = new System.Drawing.Point(4, 27);
             this.tabPageProfile.Name = "tabPageProfile";
-            this.tabPageProfile.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.tabPageProfile.Size = new System.Drawing.Size(1393, 851);
+            this.tabPageProfile.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPageProfile.Size = new System.Drawing.Size(926, 549);
             this.tabPageProfile.TabIndex = 0;
             this.tabPageProfile.Text = "Profile";
             this.tabPageProfile.UseVisualStyleBackColor = true;
             // 
             // tabPageProgressForm
             // 
-            this.tabPageProgressForm.Location = new System.Drawing.Point(4, 38);
+            this.tabPageProgressForm.Location = new System.Drawing.Point(4, 27);
+            this.tabPageProgressForm.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tabPageProgressForm.Name = "tabPageProgressForm";
-            this.tabPageProgressForm.Size = new System.Drawing.Size(1393, 861);
+            this.tabPageProgressForm.Size = new System.Drawing.Size(926, 549);
             this.tabPageProgressForm.TabIndex = 4;
             this.tabPageProgressForm.Text = "Progress";
             this.tabPageProgressForm.UseVisualStyleBackColor = true;
             // 
             // tabPageWellness
             // 
-            this.tabPageWellness.Location = new System.Drawing.Point(4, 38);
-            this.tabPageWellness.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tabPageWellness.Location = new System.Drawing.Point(4, 27);
             this.tabPageWellness.Name = "tabPageWellness";
-            this.tabPageWellness.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.tabPageWellness.Size = new System.Drawing.Size(1393, 861);
+            this.tabPageWellness.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPageWellness.Size = new System.Drawing.Size(926, 549);
             this.tabPageWellness.TabIndex = 1;
             this.tabPageWellness.Text = "Wellness Info";
             this.tabPageWellness.UseVisualStyleBackColor = true;
             // 
             // tabPageFoodList
             // 
-            this.tabPageFoodList.Location = new System.Drawing.Point(4, 38);
-            this.tabPageFoodList.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tabPageFoodList.Location = new System.Drawing.Point(4, 27);
             this.tabPageFoodList.Name = "tabPageFoodList";
-            this.tabPageFoodList.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.tabPageFoodList.Size = new System.Drawing.Size(1393, 861);
+            this.tabPageFoodList.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPageFoodList.Size = new System.Drawing.Size(926, 549);
             this.tabPageFoodList.TabIndex = 3;
             this.tabPageFoodList.Text = "Food Entries";
             this.tabPageFoodList.UseVisualStyleBackColor = true;
             // 
             // tabPageFoodEntries
             // 
-            this.tabPageFoodEntries.Location = new System.Drawing.Point(4, 38);
-            this.tabPageFoodEntries.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tabPageFoodEntries.Location = new System.Drawing.Point(4, 27);
             this.tabPageFoodEntries.Name = "tabPageFoodEntries";
-            this.tabPageFoodEntries.Size = new System.Drawing.Size(1393, 861);
+            this.tabPageFoodEntries.Size = new System.Drawing.Size(926, 549);
             this.tabPageFoodEntries.TabIndex = 2;
             this.tabPageFoodEntries.Text = "New Food Entry";
             this.tabPageFoodEntries.UseVisualStyleBackColor = true;
             // 
             // tabPageWellnessReport
             // 
-            this.tabPageWellnessReport.Location = new System.Drawing.Point(4, 38);
+            this.tabPageWellnessReport.Location = new System.Drawing.Point(4, 27);
+            this.tabPageWellnessReport.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tabPageWellnessReport.Name = "tabPageWellnessReport";
-            this.tabPageWellnessReport.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tabPageWellnessReport.Size = new System.Drawing.Size(1393, 861);
+            this.tabPageWellnessReport.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPageWellnessReport.Size = new System.Drawing.Size(926, 549);
             this.tabPageWellnessReport.TabIndex = 4;
             this.tabPageWellnessReport.Text = "Wellness Report";
             this.tabPageWellnessReport.UseVisualStyleBackColor = true;
             // 
             // tabPageNutrientReport
             // 
-            this.tabPageNutrientReport.Location = new System.Drawing.Point(4, 38);
-            this.tabPageNutrientReport.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tabPageNutrientReport.Location = new System.Drawing.Point(4, 27);
             this.tabPageNutrientReport.Name = "tabPageNutrientReport";
-            this.tabPageNutrientReport.Size = new System.Drawing.Size(1393, 861);
+            this.tabPageNutrientReport.Size = new System.Drawing.Size(926, 549);
             this.tabPageNutrientReport.TabIndex = 5;
             this.tabPageNutrientReport.Text = "Nutrient Report";
             this.tabPageNutrientReport.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1401, 940);
+            this.ClientSize = new System.Drawing.Size(934, 611);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.menuStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "MainForm";
             this.Text = "Welcome to Health Trends.";
             this.Load += new System.EventHandler(this.MainForm_Load);
