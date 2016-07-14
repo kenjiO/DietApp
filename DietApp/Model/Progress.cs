@@ -14,8 +14,8 @@
         /// <returns></returns>
         public override string ToString()
         {
-            return "Old BMI: " + this.oldBMI + " New BMI: " + this.newBMI +
-            "Old Weight: " + this.oldWeight + "New Weight: " + this.newWeight +
+            return "Old BMI: " + this.oldBMI + " New BMI: " + this.newBMI + "\n" +
+            "Old Weight: " + this.oldWeight + " New Weight: " + this.newWeight + "\n" +
             "UserId: " + this.userID;
         }
     }

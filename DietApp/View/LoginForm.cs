@@ -35,7 +35,7 @@ namespace DietApp
                     this.theUser = DietAppController.getUserData(userName);
                     Cursor.Current = Cursors.Default;
                     var mainForm = new MainForm();
-                    mainForm.loadUser(this.theUser);
+                    mainForm.LoadUser(this.theUser);
                     mainForm.Show();
                     //Hides the login form from view.
                     this.Hide();

@@ -83,7 +83,7 @@ namespace DietApp
                     //Opens the main form.
                     var mainForm = new MainForm();
                     //Loads the user.
-                    mainForm.loadUser(DietAppController.getUserData(justAdded.userId));
+                    mainForm.LoadUser(DietAppController.getUserData(justAdded.userId));
                     //Shows the main form.
                     mainForm.Show();
                     //Hides the current form.

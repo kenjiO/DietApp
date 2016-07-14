@@ -1,34 +1,88 @@
-﻿using DietApp.Controller;
-using DietApp.Model;
-using DietApp.View;
-using System;
-using System.Windows.Forms;
+﻿//-----------------------------------------------------------------------
+// <copyright file="MainForm.cs" company="KKR Summer 2016">
+//     Copyright (c) KKR Summer 2016. All rights reserved.
+// </copyright>
+// <summary>This is the display of the main form for the diet app.</summary>
+// <author>Kaleigh Kendrick</author>
+// <author>Kenji Okamoto</author>
+// <author>Robert Carswell</author>
+//-----------------------------------------------------------------------
 
 namespace DietApp
 {
+    using System;
+    using System.Windows.Forms;
+    using DietApp.Controller;
+    using DietApp.Model;
+    using DietApp.View;
+
+    /// <summary>
+    /// Main form of Diet Application.
+    /// </summary>
     public partial class MainForm : Form
     {
+        /// <summary>The active user.</summary>
         private Users theUser;
+
+        /// <summary>The profile information form.</summary>
         private ProfileInfo profileInfoForm;
+
+        /// <summary>The wellness tracking form.</summary>
         private WellnessTrackingForm wellnessForm;
+
+        /// <summary>The food entry form.</summary>
         private FoodEntryForm foodForm;
+
+        /// <summary>The list food form.</summary>
         private ListFoodForm foodListForm;
+
+        /// <summary>The progress form.</summary>
         private ProgressForm progressForm;
+
+        /// <summary>The nutrient report form.</summary>
         private NutrientReportForm nutrientForm;
+
+        /// <summary>The wellness report form.</summary>
         private WellnessReportForm wellnessReportForm;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MainForm"/> class.
+        /// </summary>
         public MainForm()
         {
-            InitializeComponent();
-            StartPosition = FormStartPosition.CenterScreen;
+            this.InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
 
+        /// <summary>
+        /// Loads the user.
+        /// </summary>
+        /// <param name="newUser">The current User.</param>
+        public void LoadUser(Users newUser)
+        {
+            this.theUser = newUser;
+        }
+
+        /// <summary>
+        /// Exits the application.
+        /// </summary>
+        /// <param name="e">Closing of the form.</param>
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
+        
+        /// <summary>
+        /// Loads current user information and updates.
+        /// </summary>
+        /// <param name="sender">Sending object.</param>
+        /// <param name="e">Click on object.</param>
         private void MainForm_Load(object sender, EventArgs e)
         {
-            //Updates Any Changes
+            // Updates Any Changes
             this.theUser = DietAppController.getUserData(this.theUser.userId);
-            updateTitle();
-            loadTabs();
+            this.UpdateTitle();
+            this.LoadTabs();
         }
 
         /// <summary>
@@ -36,7 +90,7 @@ namespace DietApp
         /// If user is defined, userName is displayed as a part of that greeting.
         /// Else, the user is directed to the profile form and a generic greeting is displayed.
         /// </summary>
-        private void updateTitle()
+        private void UpdateTitle()
         {
             if (this.theUser.getFullName() == " ")
             {
@@ -44,25 +98,16 @@ namespace DietApp
             }
             else
             {
-                this.Text = "Welcome to Health Trends, " + theUser.getFullName() + ".";
+                this.Text = "Welcome to Health Trends, " + this.theUser.getFullName() + ".";
             }
-        }
-
-        /// <summary>
-        /// Loads the user.
-        /// </summary>
-        /// <param name="newUser"></param>
-        public void loadUser(Users newUser)
-        {
-            this.theUser = newUser;
         }
 
         /// <summary>
         /// Restarts the application.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        /// <param name="sender">Sending object.</param>
+        /// <param name="e">Click on object.</param>
+        private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Restart();
         }
@@ -70,18 +115,9 @@ namespace DietApp
         /// <summary>
         /// Exits the application.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void exitToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
-        /// <summary>
-        /// Exits the application.
-        /// </summary>
-        /// <param name="e"></param>
-        protected override void OnFormClosing(FormClosingEventArgs e)
+        /// <param name="sender">Sending object.</param>
+        /// <param name="e">Click on object.</param>
+        private void ExitToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
@@ -89,7 +125,7 @@ namespace DietApp
         /// <summary>
         /// Loads content into the tab pages
         /// </summary>
-        private void loadTabs()
+        private void LoadTabs()
         {
             this.profileInfoForm = new ProfileInfo();
             this.profileInfoForm.loadUser(this.theUser);
@@ -148,31 +184,49 @@ namespace DietApp
         /// <summary>
         /// Loads various functions (in order listed from top to bottom) when user navigates to a different tab.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void TabControl1_SelectedIndexChanged(Object sender, EventArgs e)
+        /// <param name="sender">Sending object.</param>
+        /// <param name="e">Click on object.</param>
+        private void TabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.wellnessForm.CheckDBForWellness(sender, e);
-            if (tabControl1.SelectedTab == tabPageProfile)
+            if (tabControl1.SelectedTab == this.tabPageProfile)
             {
                 this.profileInfoForm.ProfileInfo_Load(sender, e);
             }
-            else if (tabControl1.SelectedTab == tabPageProgressForm)
+            else if (tabControl1.SelectedTab == this.tabPageProgressForm)
             {
                 this.progressForm.ProgressForm_Load(sender, e);
             }
-            else if (tabControl1.SelectedTab == tabPageFoodList)
+            else if (tabControl1.SelectedTab == this.tabPageFoodList)
             {
                 this.foodListForm.refreshData();
             }
-            else if (tabControl1.SelectedTab == tabPageNutrientReport)
+            else if (tabControl1.SelectedTab == this.tabPageNutrientReport)
             {
                 this.nutrientForm.runReport();
             }
-            else if (tabControl1.SelectedTab == tabPageWellnessReport)
+            else if (tabControl1.SelectedTab == this.tabPageWellnessReport)
             {
                 this.wellnessReportForm.WellnessReportForm_Load(sender, e);
             }
+        }
+
+        /// <summary>
+        /// Wellness report.
+        /// </summary>
+        /// <param name="sender">Sending object.</param>
+        /// <param name="e">Click on object.</param>
+        private void WellnessReportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+        }
+
+        /// <summary>
+        /// Nutrition report.
+        /// </summary>
+        /// <param name="sender">Sending object.</param>
+        /// <param name="e">Click on object.</param>
+        private void NutrientReportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
         }
     }
 }
