@@ -2,6 +2,7 @@
 
 namespace DietApp.Model
 {
+    [Serializable]
     public class Wellness
     {
         public int dailyMeasurementID { get; set; }

@@ -2,6 +2,9 @@
 using DietApp.Model;
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace DietApp.Controller
 {
@@ -221,6 +224,107 @@ namespace DietApp.Controller
             }
 
             return FoodReportDAL.get10DayNutritionReport(userId, startDate);
+        }
+
+        /// <summary>
+        /// Export wellness and food entries to a file
+        /// </summary>
+        /// <param name="userId">The userId of the entries to export</param>
+        /// <param name="outFile">The file to write the entries to</param>
+        public static void exportData(int userId, Stream outFile)
+        {
+            if (outFile == null)
+            {
+                throw new ArgumentNullException("outfile cannot be null");
+            }
+            IFormatter formatter = new BinaryFormatter();
+            formatter.Serialize(outFile, WellnessDAL.getUserWellnessEntries(userId));
+            formatter.Serialize(outFile, FoodEntryDAL.getUserEntries(userId));
+        }
+
+        /// <summary>
+        /// Import wellness and food entries from a file created by exportData
+        /// </summary>
+        /// <param name="userId">The userId who the imported entries are for</param>
+        /// <param name="inFile">The file containing the exported entries</param>
+        public static void importData(int userId, Stream inFile)
+        {
+            if (inFile == null)
+            {
+                throw new ArgumentNullException("infile cannot be null");
+            }
+            List<FoodEntry> foodEntries;
+            List<Wellness> wellnessEntries;
+            IFormatter formatter = new BinaryFormatter();
+
+            try
+            {
+                // Retrieve the lists of wellness and foods from the file
+                wellnessEntries = (List<Wellness>)formatter.Deserialize(inFile);
+                foodEntries = (List<FoodEntry>)formatter.Deserialize(inFile);
+            }
+            catch (InvalidCastException e)
+            {
+                throw new DietAppImportExportException("This is not a valid Health Trends export file");
+            }
+            catch (SerializationException e)
+            {
+                throw new DietAppImportExportException("This is not a valid Health Trends export file");
+            }
+
+            if (foodEntries == null || wellnessEntries == null)
+            {
+                throw new DietAppImportExportException("Could not read entries from the file");
+            }
+
+            foreach (FoodEntry entry in foodEntries)
+            {
+                try
+                {
+                    // Need to create a new entry in order to set the proper userId
+                    FoodEntry entryToAdd = new FoodEntry(userId, entry.Name, entry.Calories, entry.Fat, entry.Protein, entry.Carbohydrates, entry.ConsumedAt);
+                    FoodEntryDAL.addEntry(entryToAdd);
+                }
+                catch (DuplcateFoodEntryException e)
+                {
+                    //Ignore since this does not overwrite existing entries
+                }
+            }
+
+            foreach (Wellness entry in wellnessEntries)
+            {
+                entry.userID = userId;
+                try
+                {
+                    WellnessDAL.addDailyWellnessData(entry);
+                }
+                catch (System.Data.SqlClient.SqlException e)
+                {
+                    // error 2627 means that primary key already exists in the DB.
+                    // It is not a problem since this does not overwrite existing entries anyway
+                    // For other SqlExceptions they should be thrown
+                    if (e.Number != 2627)
+                    {
+                        throw e;
+                    }
+                }
+            }
+        }
+    }
+
+    /// <summary>
+    /// Exception used for export/import errors
+    /// </summary>
+    [Serializable]
+    public class DietAppImportExportException : Exception
+    {
+        public DietAppImportExportException()
+        {
+        }
+
+        public DietAppImportExportException(string message)
+            : base(message)
+        {
         }
     }
 }

@@ -2,6 +2,7 @@
 
 namespace DietApp.Model
 {
+    [Serializable]
     public class FoodEntry
     {
         private string name;

@@ -15,6 +15,7 @@ namespace DietAppTests.Controller
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using System;
     using System.Collections.Generic;
+    using System.IO;
     using System.Transactions;
 
     /// <summary>
@@ -245,6 +246,198 @@ namespace DietAppTests.Controller
                 Assert.AreEqual(fat, retreivedEntry.Fat);
                 Assert.AreEqual(carbohydrates, retreivedEntry.Carbohydrates);
                 Assert.AreEqual(consumedAt, retreivedEntry.ConsumedAt);
+            }
+        }
+
+        /// <summary>
+        ///  Test exporting and then importing into a user with no entries
+        /// </summary>
+        [TestMethod]
+        public void TestExportingAndImportingToNewUserWillProduceSameEntries()
+        {
+            using (TransactionScope transaction = new TransactionScope())
+            {
+                int user1Id = UsersDAL.addNewUser("importExportTestUser1", "ABC123xyz!");
+
+                var wellness1 = new Wellness
+                {
+                    diastolicBP = 80,
+                    systolicBP = 120,
+                    weight = 180,
+                    heartRate = 66,
+                    date = Convert.ToDateTime("06/23/2016"),
+                    userID = user1Id
+                };
+                WellnessDAL.addDailyWellnessData(wellness1);
+                var wellness2 = new Wellness
+                {
+                    diastolicBP = 81,
+                    systolicBP = 121,
+                    weight = 181,
+                    heartRate = 67,
+                    date = Convert.ToDateTime("06/24/2016"),
+                    userID = user1Id
+                };
+                WellnessDAL.addDailyWellnessData(wellness2);
+
+                FoodEntry food1 = new FoodEntry(user1Id, "apple", 120, 20, 21, 40, new DateTime(2016, 01, 05));
+                FoodEntry food2 = new FoodEntry(user1Id, "banana", 121, 1, 2, 41, new DateTime(2016, 01, 06));
+                FoodEntryDAL.addEntry(food1);
+                FoodEntryDAL.addEntry(food2);
+
+                FileStream outFile = new FileStream("TestExportFile.health",
+                         FileMode.Create,
+                         FileAccess.Write, FileShare.None);
+                DietAppController.exportData(user1Id, outFile);
+                outFile.Close();
+
+                //Create new user and import data
+                int user2Id = UsersDAL.addNewUser("importExportTestUser2", "ABC123xyz!");
+                Stream inFile = new FileStream("TestExportFile.health",
+                                          FileMode.Open,
+                                          FileAccess.Read,
+                                          FileShare.Read);
+                DietAppController.importData(user2Id, inFile);
+
+                List<Wellness> user2Wellnes = WellnessDAL.getUserWellnessEntries(user2Id);
+                Assert.AreEqual(2, user2Wellnes.Count);
+                Assert.AreEqual(80, user2Wellnes[0].diastolicBP);
+                Assert.AreEqual(120, user2Wellnes[0].systolicBP);
+                Assert.AreEqual(180, user2Wellnes[0].weight);
+                Assert.AreEqual(66, user2Wellnes[0].heartRate);
+                Assert.AreEqual(81, user2Wellnes[1].diastolicBP);
+                Assert.AreEqual(121, user2Wellnes[1].systolicBP);
+                Assert.AreEqual(181, user2Wellnes[1].weight);
+
+                List<FoodEntry> user2Foods = FoodEntryDAL.getUserEntries(user2Id);
+                Assert.AreEqual(2, user2Foods.Count);
+                Assert.AreEqual("apple", user2Foods[0].Name);
+                Assert.AreEqual(120, user2Foods[0].Calories);
+                Assert.AreEqual(20, user2Foods[0].Fat);
+                Assert.AreEqual(21, user2Foods[0].Protein);
+                Assert.AreEqual(40, user2Foods[0].Carbohydrates);
+                Assert.AreEqual("banana", user2Foods[1].Name);
+                Assert.AreEqual(121, user2Foods[1].Calories);
+                Assert.AreEqual(1, user2Foods[1].Fat);
+                Assert.AreEqual(2, user2Foods[1].Protein);
+                Assert.AreEqual(41, user2Foods[1].Carbohydrates);
+            }
+        }
+
+        /// <summary>
+        ///  Test importing will not overwrite existing entries
+        /// </summary>
+        [TestMethod]
+        public void TestImportingDataWillNotOverwriteExistingEntries()
+        {
+            using (TransactionScope transaction = new TransactionScope())
+            {
+                int user1Id = UsersDAL.addNewUser("importExportTestUser1", "ABC123xyz!");
+
+                var wellness1 = new Wellness
+                {
+                    diastolicBP = 79,
+                    systolicBP = 119,
+                    weight = 179,
+                    heartRate = 69,
+                    date = Convert.ToDateTime("06/23/2016"),
+                    userID = user1Id
+                };
+                WellnessDAL.addDailyWellnessData(wellness1);
+                var wellness2 = new Wellness
+                {
+                    diastolicBP = 81,
+                    systolicBP = 121,
+                    weight = 181,
+                    heartRate = 67,
+                    date = Convert.ToDateTime("06/24/2016"),
+                    userID = user1Id
+                };
+                WellnessDAL.addDailyWellnessData(wellness2);
+
+                FoodEntry food1 = new FoodEntry(user1Id, "apple", 129, 29, 29, 49, new DateTime(2016, 01, 05));
+                FoodEntry food2 = new FoodEntry(user1Id, "banana", 121, 1, 2, 41, new DateTime(2016, 01, 06));
+                FoodEntryDAL.addEntry(food1);
+                FoodEntryDAL.addEntry(food2);
+
+                FileStream outFile = new FileStream("TestExportFile2.health",
+                         FileMode.Create,
+                         FileAccess.Write, FileShare.None);
+                DietAppController.exportData(user1Id, outFile);
+                outFile.Close();
+
+                int user2Id = UsersDAL.addNewUser("importExportTestUser2", "ABC123xyz!");
+                var existingWellness = new Wellness
+                {
+                    diastolicBP = 80,
+                    systolicBP = 120,
+                    weight = 180,
+                    heartRate = 66,
+                    date = Convert.ToDateTime("06/23/2016"),
+                    userID = user2Id
+                };
+                WellnessDAL.addDailyWellnessData(existingWellness);
+                FoodEntry existingFood = new FoodEntry(user2Id, "apple", 120, 20, 21, 40, new DateTime(2016, 01, 05));
+                FoodEntryDAL.addEntry(existingFood);
+
+                Stream inFile = new FileStream("TestExportFile2.health",
+                                          FileMode.Open,
+                                          FileAccess.Read,
+                                          FileShare.Read);
+                DietAppController.importData(user2Id, inFile);
+
+                List<Wellness> user2Wellnes = WellnessDAL.getUserWellnessEntries(user2Id);
+                Assert.AreEqual(2, user2Wellnes.Count);
+                Assert.AreEqual(80, user2Wellnes[0].diastolicBP);
+                Assert.AreEqual(120, user2Wellnes[0].systolicBP);
+                Assert.AreEqual(180, user2Wellnes[0].weight);
+                Assert.AreEqual(66, user2Wellnes[0].heartRate);
+                Assert.AreEqual(81, user2Wellnes[1].diastolicBP);
+                Assert.AreEqual(121, user2Wellnes[1].systolicBP);
+                Assert.AreEqual(181, user2Wellnes[1].weight);
+
+                List<FoodEntry> user2Foods = FoodEntryDAL.getUserEntries(user2Id);
+                Assert.AreEqual(2, user2Foods.Count);
+                Assert.AreEqual("apple", user2Foods[0].Name);
+                Assert.AreEqual(120, user2Foods[0].Calories);
+                Assert.AreEqual(20, user2Foods[0].Fat);
+                Assert.AreEqual(21, user2Foods[0].Protein);
+                Assert.AreEqual(40, user2Foods[0].Carbohydrates);
+                Assert.AreEqual("banana", user2Foods[1].Name);
+                Assert.AreEqual(121, user2Foods[1].Calories);
+                Assert.AreEqual(1, user2Foods[1].Fat);
+                Assert.AreEqual(2, user2Foods[1].Protein);
+                Assert.AreEqual(41, user2Foods[1].Carbohydrates);
+            }
+        }
+
+        /// <summary>
+        ///  Test exporting with no entries creates an import file with no entries
+        /// </summary>
+        [TestMethod]
+        public void TestExportingWithNoEntriesCreatesAnImportFileWithNoEntries()
+        {
+            using (TransactionScope transaction = new TransactionScope())
+            {
+                int user1Id = UsersDAL.addNewUser("importExportTestUser1", "ABC123xyz!");
+                FileStream outFile = new FileStream("TestExportFile3.health",
+                         FileMode.Create,
+                         FileAccess.Write, FileShare.None);
+                DietAppController.exportData(user1Id, outFile);
+                outFile.Close();
+
+                //Create new user and import data
+                int user2Id = UsersDAL.addNewUser("importExportTestUser2", "ABC123xyz!");
+                Stream inFile = new FileStream("TestExportFile3.health",
+                                          FileMode.Open,
+                                          FileAccess.Read,
+                                          FileShare.Read);
+                DietAppController.importData(user2Id, inFile);
+
+                List<Wellness> user2Wellnes = WellnessDAL.getUserWellnessEntries(user2Id);
+                Assert.AreEqual(0, user2Wellnes.Count);
+                List<FoodEntry> user2Foods = FoodEntryDAL.getUserEntries(user2Id);
+                Assert.AreEqual(0, user2Foods.Count);
             }
         }
     }
