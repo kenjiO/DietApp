@@ -39,12 +39,6 @@ namespace DietApp
         /// <summary>The progress form.</summary>
         private ProgressForm progressForm;
 
-        /// <summary>The nutrient report form.</summary>
-        private NutrientReportForm nutrientForm;
-
-        /// <summary>The wellness report form.</summary>
-        private WellnessReportForm wellnessReportForm;
-
         /// <summary>
         /// Initializes a new instance of the <see cref="MainForm"/> class.
         /// </summary>
@@ -164,21 +158,6 @@ namespace DietApp
             this.progressForm.FormBorderStyle = FormBorderStyle.None;
             this.progressForm.Dock = DockStyle.Fill;
             tabPageProgressForm.Controls.Add(this.progressForm);
-
-            this.wellnessReportForm = new WellnessReportForm();
-            this.wellnessReportForm.loadUser(this.theUser);
-            this.wellnessReportForm.TopLevel = false;
-            this.wellnessReportForm.Visible = true;
-            this.wellnessReportForm.FormBorderStyle = FormBorderStyle.None;
-            this.wellnessReportForm.Dock = DockStyle.Fill;
-            tabPageWellnessReport.Controls.Add(this.wellnessReportForm);
-
-            this.nutrientForm = new NutrientReportForm(this.theUser);
-            this.nutrientForm.TopLevel = false;
-            this.nutrientForm.Visible = true;
-            this.nutrientForm.FormBorderStyle = FormBorderStyle.None;
-            this.nutrientForm.Dock = DockStyle.Fill;
-            tabPageNutrientReport.Controls.Add(this.nutrientForm);
         }
 
         /// <summary>
@@ -201,32 +180,31 @@ namespace DietApp
             {
                 this.foodListForm.refreshData();
             }
-            else if (tabControl1.SelectedTab == this.tabPageNutrientReport)
-            {
-                this.nutrientForm.runReport();
-            }
-            else if (tabControl1.SelectedTab == this.tabPageWellnessReport)
-            {
-                this.wellnessReportForm.WellnessReportForm_Load(sender, e);
-            }
         }
 
         /// <summary>
-        /// Wellness report.
+        /// Wellness report dialog.
         /// </summary>
         /// <param name="sender">Sending object.</param>
         /// <param name="e">Click on object.</param>
         private void WellnessReportToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            WellnessReportForm wellnessReportForm = new WellnessReportForm();
+            wellnessReportForm.loadUser(this.theUser);
+            wellnessReportForm.StartPosition = FormStartPosition.CenterScreen;
+            wellnessReportForm.ShowDialog();
         }
 
         /// <summary>
-        /// Nutrition report.
+        /// Nutrition report dialog.
         /// </summary>
         /// <param name="sender">Sending object.</param>
         /// <param name="e">Click on object.</param>
         private void NutrientReportToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            NutrientReportForm nutrientReportForm = new NutrientReportForm(this.theUser);
+            nutrientReportForm.StartPosition = FormStartPosition.CenterScreen;
+            nutrientReportForm.ShowDialog();
         }
     }
 }
