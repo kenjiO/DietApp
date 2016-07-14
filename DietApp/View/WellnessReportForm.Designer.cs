@@ -35,6 +35,8 @@
             this.rbWeight = new System.Windows.Forms.RadioButton();
             this.rbHeartRate = new System.Windows.Forms.RadioButton();
             this.rbBP = new System.Windows.Forms.RadioButton();
+            this.prevButton = new System.Windows.Forms.Button();
+            this.nextButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.chartUserData)).BeginInit();
             this.SuspendLayout();
             // 
@@ -56,13 +58,13 @@
             // 
             // btnLoad
             // 
-            this.btnLoad.Location = new System.Drawing.Point(515, 338);
+            this.btnLoad.Location = new System.Drawing.Point(258, 367);
             this.btnLoad.Name = "btnLoad";
-            this.btnLoad.Size = new System.Drawing.Size(75, 23);
+            this.btnLoad.Size = new System.Drawing.Size(117, 23);
             this.btnLoad.TabIndex = 1;
             this.btnLoad.Text = "Load Data";
             this.btnLoad.UseVisualStyleBackColor = true;
-            this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
+            this.btnLoad.Click += new System.EventHandler(this.BTNLoad_Click);
             // 
             // rbWeight
             // 
@@ -97,17 +99,40 @@
             this.rbBP.Text = "BP";
             this.rbBP.UseVisualStyleBackColor = true;
             // 
-            // ReportForm
+            // prevButton
+            // 
+            this.prevButton.Location = new System.Drawing.Point(12, 367);
+            this.prevButton.Name = "prevButton";
+            this.prevButton.Size = new System.Drawing.Size(117, 23);
+            this.prevButton.TabIndex = 1;
+            this.prevButton.Text = "Prev 10 Days";
+            this.prevButton.UseVisualStyleBackColor = true;
+            this.prevButton.Click += new System.EventHandler(this.PrevButton_Click);
+            // 
+            // nextButton
+            // 
+            this.nextButton.Enabled = false;
+            this.nextButton.Location = new System.Drawing.Point(135, 367);
+            this.nextButton.Name = "nextButton";
+            this.nextButton.Size = new System.Drawing.Size(117, 23);
+            this.nextButton.TabIndex = 2;
+            this.nextButton.Text = "Next 10 Days";
+            this.nextButton.UseVisualStyleBackColor = true;
+            this.nextButton.Click += new System.EventHandler(this.NextButton_Click);
+            // 
+            // WellnessReportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(602, 373);
+            this.ClientSize = new System.Drawing.Size(602, 440);
+            this.Controls.Add(this.nextButton);
+            this.Controls.Add(this.prevButton);
             this.Controls.Add(this.rbBP);
             this.Controls.Add(this.rbHeartRate);
             this.Controls.Add(this.rbWeight);
             this.Controls.Add(this.btnLoad);
             this.Controls.Add(this.chartUserData);
-            this.Name = "ReportForm";
+            this.Name = "WellnessReportForm";
             this.Text = "ReportForm";
             this.Load += new System.EventHandler(this.WellnessReportForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.chartUserData)).EndInit();
@@ -123,5 +148,7 @@
         private System.Windows.Forms.RadioButton rbWeight;
         private System.Windows.Forms.RadioButton rbHeartRate;
         private System.Windows.Forms.RadioButton rbBP;
+        private System.Windows.Forms.Button prevButton;
+        private System.Windows.Forms.Button nextButton;
     }
 }
