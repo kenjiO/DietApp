@@ -71,6 +71,7 @@ namespace DietApp.Controller
             {
                 throw new ArgumentNullException("date must not be null");
             }
+
             return FoodEntryDAL.getUserEntriesByDate(userId, date);
         }
 
@@ -90,10 +91,12 @@ namespace DietApp.Controller
             {
                 throw new ArgumentNullException("name cannot be null");
             }
+
             if (consumedAt == null)
             {
                 throw new ArgumentNullException("consumedAt cannot be null");
             }
+
             FoodEntry entry = new FoodEntry(userId, name, calories, fat, protein, carbohydrates, consumedAt);
             FoodEntryDAL.addEntry(entry);
         }
@@ -109,6 +112,7 @@ namespace DietApp.Controller
             {
                 throw new ArgumentNullException("entries cannot be null");
             }
+
             FoodEntryDAL.updateEntry(originalEntry, updatedEntry);
         }
 
@@ -122,6 +126,7 @@ namespace DietApp.Controller
             {
                 return;
             }
+
             FoodEntryDAL.deleteEntry(entry);
         }
 
@@ -136,6 +141,7 @@ namespace DietApp.Controller
             {
                 throw new ArgumentNullException("serch term must not be null");
             }
+
             return FoodEntryDAL.searchFoodInfo(searchTerm);
         }
 
@@ -169,9 +175,26 @@ namespace DietApp.Controller
             WellnessDAL.updateDailyWellnessData(newWellness, oldWellness);
         }
 
+        /// <summary>
+        /// Gets the data for the wellness chart.
+        /// </summary>
+        /// <param name="userId">The current user.</param>
+        /// <param name="measurementTypeId">The measurement type ID.</param>
+        /// <returns></returns>
         public static List<DailyMeasurements> getUserChartData(int userId, int measurementTypeId)
         {
             return DailyMeasurementsDAL.GetUserChartData(userId, measurementTypeId);
+        }
+
+        /// <summary>
+        /// Gets the data for the wellness chart, for 10 days.
+        /// </summary>
+        /// <param name="userId">The current user.</param>
+        /// <param name="measurementTypeId">The measurement type ID.</param>
+        /// <returns></returns>
+        public static List<DailyMeasurements> getUserChartData10Days(int userId, int measurementTypeId, DateTime startDate)
+        {
+            return DailyMeasurementsDAL.GetUserChartData10Days(userId, measurementTypeId, startDate);
         }
 
         /// <summary>
@@ -196,6 +219,7 @@ namespace DietApp.Controller
             {
                 throw new ArgumentNullException("startDate cannot be null");
             }
+
             return FoodReportDAL.get10DayNutritionReport(userId, startDate);
         }
     }

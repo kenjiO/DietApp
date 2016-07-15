@@ -42,6 +42,9 @@ namespace DietApp.View
         /// <summary>The report page.</summary>
         private int reportPage = 1;
 
+        /// <summary>The report start date page.</summary>
+        private DateTime date;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="WellnessReportForm"/> class.
         /// </summary>
@@ -56,6 +59,7 @@ namespace DietApp.View
                 this.Load += (s, e) => this.Close();
             }
 
+            this.reportPage = 1;
             this.theUser = DietAppController.getUserData(currentUser.userId);
             this.InitializeComponent();
         }
@@ -223,20 +227,36 @@ namespace DietApp.View
             };
 
             this.chartUserData.Series.Add(series1);
+            this.date = DateTime.Now.AddDays((this.reportPage * (-10)) + 1);
+            List<DailyMeasurements> chartList = DietAppController.getUserChartData10Days(this.theUser.userId, type, this.date);
 
-            List<DailyMeasurements> chartList = DietAppController.getUserChartData(this.theUser.userId, type);
-            foreach (DailyMeasurements measurements in chartList)
+            if (chartList.Count > 0)
             {
-                series1.Points.AddXY(measurements.Date.ToShortDateString(), measurements.Measurement);
-                if ((measurements.Measurement * 1.1) > this.maxValue)
+                foreach (DailyMeasurements measurements in chartList)
                 {
-                    this.maxValue = Convert.ToInt32(measurements.Measurement * 1.1);
+                    series1.Points.AddXY(measurements.Date.ToShortDateString(), measurements.Measurement);
+                    if ((measurements.Measurement * 1.1) > this.maxValue)
+                    {
+                        this.maxValue = Convert.ToInt32(measurements.Measurement * 1.1);
+                    }
+
+                    if ((measurements.Measurement * 0.9) < this.minValue)
+                    {
+                        this.minValue = Convert.ToInt32(measurements.Measurement * 0.9);
+                    }
+
+                }
+            }
+            else
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    string day = date.AddDays(i).ToShortDateString() + "*No Data";
+                    series1.Points.AddXY(day, 0);
                 }
 
-                if ((measurements.Measurement * 0.9) < this.minValue)
-                {
-                    this.minValue = Convert.ToInt32(measurements.Measurement * 0.9);
-                }
+                this.maxValue = 200;
+                this.minValue = 0;
             }
         }
 
@@ -250,7 +270,7 @@ namespace DietApp.View
             this.reportPage++;
             nextButton.Enabled = true;
 
-            // runReport();
+            this.BTNLoad_Click(sender, e);
         }
 
         /// <summary>
@@ -266,7 +286,7 @@ namespace DietApp.View
                 nextButton.Enabled = false;
             }
 
-            // runReport();
+            this.BTNLoad_Click(sender, e);
         }
 
         /// <summary>
