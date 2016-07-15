@@ -29,6 +29,7 @@ namespace DietApp
             this.theUser = DietAppController.getUserData(this.theUser.userId);
             updateTitle();
             loadTabs();
+            this.tabPageWellness.Leave += new System.EventHandler(this.wellnessForm.CheckDBForWellness);
         }
 
         /// <summary>
@@ -152,7 +153,6 @@ namespace DietApp
         /// <param name="e"></param>
         private void TabControl1_SelectedIndexChanged(Object sender, EventArgs e)
         {
-            this.wellnessForm.CheckDBForWellness(sender, e);
             if (tabControl1.SelectedTab == tabPageProfile)
             {
                 this.profileInfoForm.ProfileInfo_Load(sender, e);
