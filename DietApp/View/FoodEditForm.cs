@@ -163,7 +163,6 @@ namespace DietApp.View
                 return;
             }
             Cursor.Current = Cursors.Default;
-            MessageBox.Show("Entry updated");
             this.DialogResult = DialogResult.OK;
             Close();
         }

@@ -80,7 +80,6 @@ namespace DietApp.View
                 return;
             }
             Cursor.Current = Cursors.Default;
-            MessageBox.Show("Entry added");
             clearFields();
         }
 

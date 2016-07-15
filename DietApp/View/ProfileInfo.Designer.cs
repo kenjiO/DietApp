@@ -226,9 +226,9 @@
             this.weightLabel.Location = new System.Drawing.Point(92, 159);
             this.weightLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.weightLabel.Name = "weightLabel";
-            this.weightLabel.Size = new System.Drawing.Size(59, 20);
+            this.weightLabel.Size = new System.Drawing.Size(100, 20);
             this.weightLabel.TabIndex = 60;
-            this.weightLabel.Text = "Weight";
+            this.weightLabel.Text = "Initial Weight";
             // 
             // heightLabel
             // 
