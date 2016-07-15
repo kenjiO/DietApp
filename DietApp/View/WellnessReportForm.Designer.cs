@@ -28,8 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WellnessReportForm));
             this.chartUserData = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.btnLoad = new System.Windows.Forms.Button();
             this.rbWeight = new System.Windows.Forms.RadioButton();
@@ -37,6 +39,8 @@
             this.rbBP = new System.Windows.Forms.RadioButton();
             this.prevButton = new System.Windows.Forms.Button();
             this.nextButton = new System.Windows.Forms.Button();
+            this.PrintWellnessReport = new Microsoft.VisualBasic.PowerPacks.Printing.PrintForm(this.components);
+            this.BTNPrint = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.chartUserData)).BeginInit();
             this.SuspendLayout();
             // 
@@ -120,11 +124,30 @@
             this.nextButton.UseVisualStyleBackColor = true;
             this.nextButton.Click += new System.EventHandler(this.NextButton_Click);
             // 
+            // PrintWellnessReport
+            // 
+            this.PrintWellnessReport.DocumentName = "document";
+            this.PrintWellnessReport.Form = this;
+            this.PrintWellnessReport.PrintAction = System.Drawing.Printing.PrintAction.PrintToPrinter;
+            this.PrintWellnessReport.PrinterSettings = ((System.Drawing.Printing.PrinterSettings)(resources.GetObject("PrintWellnessReport.PrinterSettings")));
+            this.PrintWellnessReport.PrintFileName = null;
+            // 
+            // BTNPrint
+            // 
+            this.BTNPrint.Location = new System.Drawing.Point(381, 367);
+            this.BTNPrint.Name = "BTNPrint";
+            this.BTNPrint.Size = new System.Drawing.Size(117, 23);
+            this.BTNPrint.TabIndex = 5;
+            this.BTNPrint.Text = "Print";
+            this.BTNPrint.UseVisualStyleBackColor = true;
+            this.BTNPrint.Click += new System.EventHandler(this.BTNPrint_Click);
+            // 
             // WellnessReportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(602, 440);
+            this.Controls.Add(this.BTNPrint);
             this.Controls.Add(this.nextButton);
             this.Controls.Add(this.prevButton);
             this.Controls.Add(this.rbBP);
@@ -150,5 +173,7 @@
         private System.Windows.Forms.RadioButton rbBP;
         private System.Windows.Forms.Button prevButton;
         private System.Windows.Forms.Button nextButton;
+        private Microsoft.VisualBasic.PowerPacks.Printing.PrintForm PrintWellnessReport;
+        private System.Windows.Forms.Button BTNPrint;
     }
 }

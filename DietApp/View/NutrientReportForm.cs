@@ -95,5 +95,16 @@ namespace DietApp.View
             }
             runReport();
         }
+
+        /// <summary>
+        /// Button that prints current chart data.
+        /// </summary>
+        /// <param name="sender">Sending object.</param>
+        /// <param name="e">Click on object.</param>
+        private void BTNPrint_Click(object sender, EventArgs e)
+        {
+            this.PrintNutrientReport.PrintAction = System.Drawing.Printing.PrintAction.PrintToPreview;
+            this.PrintNutrientReport.Print();
+        }
     }
 }
