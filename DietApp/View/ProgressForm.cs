@@ -26,9 +26,17 @@ namespace DietApp.View
             {
                 theProgress = DietAppController.getBMIData(theUser.userId);
                 oldBMIBox.Text = theProgress.oldBMI.ToString();
-                newBMIBox.Text = theProgress.newBMI.ToString();
                 oldWeightBox.Text = theProgress.oldWeight.ToString();
-                newWeightBox.Text = theProgress.newWeight.ToString();
+                if(theProgress.newBMI > 0)
+                {
+                    newBMIBox.Text = theProgress.newBMI.ToString();
+                    newWeightBox.Text = theProgress.newWeight.ToString();
+                } else
+                {
+                    newBMIBox.Text = "n/a";
+                    newWeightBox.Text = "n/a";
+                }
+                
                 msgLabel.Text = this.currentBMIStatus();
             }
         }
@@ -53,7 +61,11 @@ namespace DietApp.View
             var BMI = this.theProgress.newBMI;
             var msg = "";
 
-            if (BMI <= 15)
+            if(BMI == 0)
+            {
+                msg = "Please enter wellness data to calculate your current BMI.";
+            }
+            else if (BMI >0 && BMI <= 15)
             {
                 msg = "Very severely underweight\n" + this.weightDifference();
             }

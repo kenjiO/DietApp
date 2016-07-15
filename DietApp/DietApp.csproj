@@ -153,13 +153,6 @@
       <DependentUpon>WellnessTrackingForm.cs</DependentUpon>
       <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
     </Compile>
-    <Compile Include="View\WellnessInfo.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\WellnessInfo.Designer.cs">
-      <DependentUpon>WellnessInfo.cs</DependentUpon>
-      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
-    </Compile>
     <EmbeddedResource Include="View\FoodEditForm.resx">
       <DependentUpon>FoodEditForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -198,9 +191,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\WellnessReportForm.resx">
       <DependentUpon>WellnessReportForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\WellnessInfo.resx">
-      <DependentUpon>WellnessInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\WellnessTrackingForm.resx">
       <DependentUpon>WellnessTrackingForm.cs</DependentUpon>
