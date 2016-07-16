@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DietApp.View;
+using System;
 using System.Windows.Forms;
 
 namespace DietApp
@@ -13,7 +14,10 @@ namespace DietApp
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LoginForm());
+            using (var splashForm = new SplashForm())
+            {
+                Application.Run(splashForm);
+            }
         }
     }
 }
