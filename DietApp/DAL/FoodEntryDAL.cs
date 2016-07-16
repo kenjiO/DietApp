@@ -8,6 +8,47 @@ namespace DietApp.DAL
 {
     public class FoodEntryDAL
     {
+
+        /// <summary>
+        /// Get a list of foods consumed for a user
+        /// </summary>
+        /// <param name="userId">The users's userId</param>
+        /// <returns>A list with all the food entries for that user</returns>
+        public static List<FoodEntry> getUserEntries(int userId)
+        {
+            List<FoodEntry> results = new List<FoodEntry>();
+            using (var itemConsumedTableAdapter = new DietAppDataSetTableAdapters.itemConsumedTableAdapter())
+            {
+                DataTable queryResultsTable = itemConsumedTableAdapter.GetEntriesByUser(userId);
+                foreach (DataRow row in queryResultsTable.Rows)
+                {
+                    int id = Convert.ToInt32(row["userId"].ToString());
+                    string name = row["name"].ToString();
+                    int? calories = null;
+                    if (row["calories"] != DBNull.Value)
+                        calories = Convert.ToInt32(row["calories"]);
+
+                    int? protein = null;
+                    if (row["protein"] != DBNull.Value)
+                        protein = Convert.ToInt32(row["protein"]);
+
+                    int? fat = null;
+                    if (row["fat"] != DBNull.Value)
+                        fat = Convert.ToInt32(row["fat"]);
+
+                    int? carbohydrates = null;
+                    if (row["carbohydrate"] != DBNull.Value)
+                        carbohydrates = Convert.ToInt32(row["carbohydrate"]);
+
+                    DateTime dateTimeConsumedAt = Convert.ToDateTime(row["dateTimeConsumed"]);
+
+                    FoodEntry entry = new FoodEntry(id, name, calories, fat, protein, carbohydrates, dateTimeConsumedAt);
+                    results.Add(entry);
+                }
+            }
+            return results;
+        }
+
         /// <summary>
         /// Get a list of foods consumed for a user on a given date
         /// </summary>

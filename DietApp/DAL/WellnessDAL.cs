@@ -209,6 +209,35 @@ namespace DietApp.DAL
         }
 
         /// <summary>
+        /// Get a list of all the wellness entries for a user
+        /// </summary>
+        /// <param name="userId">The userId of the user</param>
+        /// <returns>A list of all the wellness entries for the user</returns>
+        public static List<Wellness> getUserWellnessEntries(int userId)
+        {
+            Dictionary<DateTime, Wellness> wellnessEntries = new Dictionary<DateTime, Wellness>();
+            using (var wellnessDataSet = new DietAppDataSetTableAdapters.measurementListTableAdapter())
+            {
+                foreach (DataRow row in wellnessDataSet.GetDataByUserId(userId).Rows)
+                {
+                    DateTime date = Convert.ToDateTime(row["date"]);
+                    string type = row["measurementTypeName"].ToString();
+                    int measurement = Convert.ToInt32(row["measurement"]);
+
+                    if (!wellnessEntries.ContainsKey(date))
+                    {
+                        wellnessEntries[date] = new Wellness();
+                        wellnessEntries[date].date = date;
+                    }
+                    var property = typeof(Wellness).GetProperty(type);
+                    if (property != null)
+                        property.SetValue(wellnessEntries[date], measurement, null);
+                }
+            }
+            return new List<Wellness>(wellnessEntries.Values);
+        }
+
+        /// <summary>
         /// Inserts the wellness data into the DB.
         /// </summary>
         /// <param name="measuremetType"></param>

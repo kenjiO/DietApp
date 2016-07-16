@@ -14,6 +14,7 @@ namespace DietApp.DAL.Tests
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using System;
     using System.Transactions;
+    using System.Collections.Generic;
 
     /// <summary>
     /// Test the WellnessDAL Class in DietApp.DAL.
@@ -143,6 +144,182 @@ namespace DietApp.DAL.Tests
 
                 Assert.AreEqual(oldBMI, theProgress.oldBMI, "The Progress object's old BMI not " + oldBMI + ".");
                 Assert.AreEqual(newBMI, theProgress.newBMI, "The Progress object's new BMI not " + newBMI + ".");
+            }
+        }
+
+        /// <summary>
+        /// Test getting wellness entries when no entries
+        /// </summary>
+        [TestMethod]
+        public void TestGetUserWellnessEntriesGetsEmptyListWhenNoEntries()
+        {
+            using (TransactionScope transaction = new TransactionScope())
+            {
+                int newUserId = UsersDAL.addNewUser("getUserWellnessEntriesTestUser", "ABC123xyz!");
+                List<Wellness> result = WellnessDAL.getUserWellnessEntries(newUserId);
+                Assert.AreEqual(0, result.Count);
+
+            }
+        }
+
+        /// <summary>
+        /// Test getting wellness entries when 1 entry
+        /// </summary>
+        [TestMethod]
+        public void TestGetUserWellnessEntriesGets1Entry()
+        {
+            using (TransactionScope transaction = new TransactionScope())
+            {
+                int newUserId = UsersDAL.addNewUser("getUserWellnessEntriesTestUser", "ABC123xyz!");
+
+                var entry = new Wellness
+                {
+                    diastolicBP = 80,
+                    systolicBP = 120,
+                    weight = 180,
+                    heartRate = 66,
+                    date = Convert.ToDateTime("06/23/2016"),
+                    userID = newUserId
+                };
+
+                WellnessDAL.addDailyWellnessData(entry);
+
+                List<Wellness> result = WellnessDAL.getUserWellnessEntries(newUserId);
+                Assert.AreEqual(1, result.Count);
+                Assert.AreEqual(80, result[0].diastolicBP);
+                Assert.AreEqual(120, result[0].systolicBP);
+                Assert.AreEqual(180, result[0].weight);
+                Assert.AreEqual(66, result[0].heartRate);
+            }
+        }
+
+        /// <summary>
+        /// Test getUserWellnessEntries does not return other user's entries
+        /// </summary>
+        [TestMethod]
+        public void TestGetUserWellnessEntriesDoesNotGetOtherUserEntries()
+        {
+            using (TransactionScope transaction = new TransactionScope())
+            {
+                int newUserId = UsersDAL.addNewUser("getUserWellnessEntriesTestUser", "ABC123xyz!");
+                int newUserId2 = UsersDAL.addNewUser("getUserWellnessEntriesTestUser2", "ABC123xyz!");
+
+                var entry = new Wellness
+                {
+                    diastolicBP = 80,
+                    systolicBP = 120,
+                    weight = 180,
+                    heartRate = 66,
+                    date = Convert.ToDateTime("06/23/2016"),
+                    userID = newUserId2
+                };
+
+                WellnessDAL.addDailyWellnessData(entry);
+
+                List<Wellness> result = WellnessDAL.getUserWellnessEntries(newUserId);
+                Assert.AreEqual(0, result.Count);
+            }
+        }
+
+        /// <summary>
+        /// Test getUserWellnessEntries returns the same 2 entries when there are 2 entries
+        /// </summary>
+        [TestMethod]
+        public void TestGetUserWellnessEntriesGets2Entries()
+        {
+            using (TransactionScope transaction = new TransactionScope())
+            {
+                int newUserId = UsersDAL.addNewUser("getUserWellnessEntriesTestUser", "ABC123xyz!");
+
+                var entry = new Wellness
+                {
+                    diastolicBP = 80,
+                    systolicBP = 120,
+                    weight = 180,
+                    heartRate = 66,
+                    date = Convert.ToDateTime("06/23/2016"),
+                    userID = newUserId
+                };
+                WellnessDAL.addDailyWellnessData(entry);
+                var entry2 = new Wellness
+                {
+                    diastolicBP = 81,
+                    systolicBP = 121,
+                    weight = 181,
+                    heartRate = 67,
+                    date = Convert.ToDateTime("06/24/2016"),
+                    userID = newUserId
+                };
+                WellnessDAL.addDailyWellnessData(entry2);
+
+                List<Wellness> result = WellnessDAL.getUserWellnessEntries(newUserId);
+                Assert.AreEqual(2, result.Count);
+                Assert.AreEqual(80, result[0].diastolicBP);
+                Assert.AreEqual(120, result[0].systolicBP);
+                Assert.AreEqual(180, result[0].weight);
+                Assert.AreEqual(66, result[0].heartRate);
+                Assert.AreEqual(81, result[1].diastolicBP);
+                Assert.AreEqual(121, result[1].systolicBP);
+                Assert.AreEqual(181, result[1].weight);
+                Assert.AreEqual(67, result[1].heartRate);
+            }
+        }
+
+        /// <summary>
+        /// Test getUserWellnessEntries returns the same 3 entries when there are 3 entries
+        /// </summary>
+        [TestMethod]
+        public void TestGetUserWellnessEntriesGets3Entries()
+        {
+            using (TransactionScope transaction = new TransactionScope())
+            {
+                int newUserId = UsersDAL.addNewUser("getUserWellnessEntriesTestUser", "ABC123xyz!");
+
+                var entry = new Wellness
+                {
+                    diastolicBP = 80,
+                    systolicBP = 120,
+                    weight = 180,
+                    heartRate = 66,
+                    date = Convert.ToDateTime("06/23/2016"),
+                    userID = newUserId
+                };
+                WellnessDAL.addDailyWellnessData(entry);
+                var entry2 = new Wellness
+                {
+                    diastolicBP = 81,
+                    systolicBP = 121,
+                    weight = 181,
+                    heartRate = 67,
+                    date = Convert.ToDateTime("06/24/2016"),
+                    userID = newUserId
+                };
+                WellnessDAL.addDailyWellnessData(entry2);
+                var entry3 = new Wellness
+                {
+                    diastolicBP = 82,
+                    systolicBP = 122,
+                    weight = 182,
+                    heartRate = 68,
+                    date = Convert.ToDateTime("06/25/2016"),
+                    userID = newUserId
+                };
+
+                WellnessDAL.addDailyWellnessData(entry3);
+                List<Wellness> result = WellnessDAL.getUserWellnessEntries(newUserId);
+                Assert.AreEqual(3, result.Count);
+                Assert.AreEqual(80, result[0].diastolicBP);
+                Assert.AreEqual(120, result[0].systolicBP);
+                Assert.AreEqual(180, result[0].weight);
+                Assert.AreEqual(66, result[0].heartRate);
+                Assert.AreEqual(81, result[1].diastolicBP);
+                Assert.AreEqual(121, result[1].systolicBP);
+                Assert.AreEqual(181, result[1].weight);
+                Assert.AreEqual(67, result[1].heartRate);
+                Assert.AreEqual(82, result[2].diastolicBP);
+                Assert.AreEqual(122, result[2].systolicBP);
+                Assert.AreEqual(182, result[2].weight);
+                Assert.AreEqual(68, result[2].heartRate);
             }
         }
     }

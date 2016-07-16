@@ -363,6 +363,123 @@ namespace DietAppTests.DAL
         }
 
         /// <summary>
+        /// Test an empty list is returned when no entries
+        /// </summary>
+        [TestMethod]
+        public void TestGetUserEntriesReturnsEmptyListWhenNoEntries()
+        {
+            using (TransactionScope transaction = new TransactionScope())
+            {
+                int newUserId = UsersDAL.addNewUser("getEntriesTestUser", "ABC123xyz!");
+                List<FoodEntry> entries = FoodEntryDAL.getUserEntries(newUserId);
+                Assert.AreEqual(0, entries.Count);
+            }
+        }
+
+        /// <summary>
+        /// Test getUserEntries returns 1 entries when there is 1 entry        
+        /// </summary>
+        [TestMethod]
+        public void TestGetUserEntriesReturns1EntriesWhen1Entry()
+        {
+            using (TransactionScope transaction = new TransactionScope())
+            {
+                int newUserId = UsersDAL.addNewUser("getEntriesTestUser", "ABC123xyz!");
+                FoodEntry entry1 = new FoodEntry(newUserId, "apple", 120, 0, 1, 40, new DateTime(2016, 01, 05));
+                FoodEntryDAL.addEntry(entry1);
+                List<FoodEntry> entries = FoodEntryDAL.getUserEntries(newUserId);
+                Assert.AreEqual(1, entries.Count);
+                Assert.IsTrue(TestareFoodEntriesEqual(entry1, entries[0]));
+            }
+        }
+
+
+        /// <summary>
+        /// Test getUserEntries returns 2 entries when there are 2 entries        
+        /// </summary>
+        [TestMethod]
+        public void TestGetUserEntriesReturns2EntriesWhen2Entries()
+        {
+            using (TransactionScope transaction = new TransactionScope())
+            {
+                int newUserId = UsersDAL.addNewUser("getEntriesTestUser", "ABC123xyz!");
+                FoodEntry entry1 = new FoodEntry(newUserId, "apple", 120, 0, 1, 40, new DateTime(2016, 01, 05));
+                FoodEntry entry2 = new FoodEntry(newUserId, "banana", 121, 1, 2, 41, new DateTime(2016, 03, 12));
+                FoodEntryDAL.addEntry(entry1);
+                FoodEntryDAL.addEntry(entry2);
+                List<FoodEntry> entries = FoodEntryDAL.getUserEntries(newUserId);
+                Assert.AreEqual(2, entries.Count);
+                Assert.IsTrue(TestareFoodEntriesEqual(entry1, entries[0]));
+                Assert.IsTrue(TestareFoodEntriesEqual(entry2, entries[1]));
+            }
+        }
+
+        /// <summary>
+        /// Test getUserEntries returns 2 entries when there are 2 entries on the same day        
+        /// </summary>
+        [TestMethod]
+        public void TestGetUserEntriesReturns2EntriesWhen2EntriesOnSameDay()
+        {
+            using (TransactionScope transaction = new TransactionScope())
+            {
+                int newUserId = UsersDAL.addNewUser("getEntriesTestUser", "ABC123xyz!");
+                FoodEntry entry1 = new FoodEntry(newUserId, "apple", 120, 0, 1, 40, new DateTime(2016, 01, 05));
+                FoodEntry entry2 = new FoodEntry(newUserId, "banana", 121, 1, 2, 41, new DateTime(2016, 01, 05));
+                FoodEntryDAL.addEntry(entry1);
+                FoodEntryDAL.addEntry(entry2);
+                List<FoodEntry> entries = FoodEntryDAL.getUserEntries(newUserId);
+                Assert.AreEqual(2, entries.Count);
+                Assert.IsTrue(TestareFoodEntriesEqual(entry1, entries[0]));
+                Assert.IsTrue(TestareFoodEntriesEqual(entry2, entries[1]));
+            }
+        }
+
+        /// <summary>
+        /// Test getUserEntries returns 3 entries when there are 3 entries        
+        /// </summary>
+        [TestMethod]
+        public void TestGetUserEntriesReturns3EntriesWhen3Entries()
+        {
+            using (TransactionScope transaction = new TransactionScope())
+            {
+                int newUserId = UsersDAL.addNewUser("getEntriesTestUser", "ABC123xyz!");
+                FoodEntry entry1 = new FoodEntry(newUserId, "apple", 120, 0, 1, 40, new DateTime(2016, 01, 05));
+                FoodEntry entry2 = new FoodEntry(newUserId, "banana", 121, 1, 2, 41, new DateTime(2016, 03, 12));
+                FoodEntry entry3 = new FoodEntry(newUserId, "cherry", 12, 0, 0, 4, new DateTime(2016, 06, 23));
+                FoodEntryDAL.addEntry(entry1);
+                FoodEntryDAL.addEntry(entry2);
+                FoodEntryDAL.addEntry(entry3);
+                List<FoodEntry> entries = FoodEntryDAL.getUserEntries(newUserId);
+                Assert.AreEqual(3, entries.Count);
+                Assert.IsTrue(TestareFoodEntriesEqual(entry1, entries[0]));
+                Assert.IsTrue(TestareFoodEntriesEqual(entry2, entries[1]));
+                Assert.IsTrue(TestareFoodEntriesEqual(entry3, entries[2]));
+            }
+        }
+
+        /// <summary>
+        /// Test the return of the list not returned for other entries.
+        /// </summary>
+        [TestMethod]
+        public void TestGetUserEntriesDoesNotReturnOtherUserEntries()
+        {
+            using (TransactionScope transaction = new TransactionScope())
+            {
+                int newUserId = UsersDAL.addNewUser("getEntriesTestUser", "ABC123xyz!");
+                int otherUserId = UsersDAL.addNewUser("getEntriesOtherTestUser", "ABC123xyz!");
+
+                FoodEntry entry = new FoodEntry(newUserId, "apple", 120, 0, 1, 40, new DateTime(2016, 01, 01));
+                FoodEntry otherUserEntry = new FoodEntry(otherUserId, "apple", 120, 0, 1, 40, new DateTime(2016, 01, 01));
+                FoodEntryDAL.addEntry(entry);
+                FoodEntryDAL.addEntry(otherUserEntry);
+                List<FoodEntry> entries = FoodEntryDAL.getUserEntries(newUserId);
+                Assert.AreEqual(1, entries.Count);
+                Assert.AreEqual(newUserId, entries[0].UserId);
+            }
+        }
+
+
+        /// <summary>
         /// Private: test the compared entries.
         /// </summary>
         /// <param name="fe1">First Entry.</param>
