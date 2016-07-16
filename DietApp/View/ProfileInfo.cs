@@ -105,7 +105,6 @@ namespace DietApp
                         DietAppController.updateUsers(originalUser, newUser);
                         this.theUser = newUser;
                         Cursor.Current = Cursors.Default;
-                        MessageBox.Show("User ID: " + originalUser.userName + " updated.", "Update User", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     Cursor.Current = Cursors.Default;
                     //Refreshes this form.

@@ -139,9 +139,6 @@ namespace DietApp.View
                     DietAppController.addDailyWellnessData(this.userWellness);
                     Cursor.Current = Cursors.Default;
                     this.Refresh();
-                    MessageBox.Show("You have successfully recorded data.  " +
-                        "You are one step closer to making data-driven decisions about your health.",
-                        "Record Updated");
                 }
                 catch (SqlException ex)
                 {
@@ -177,7 +174,6 @@ namespace DietApp.View
                 DietAppController.updateDailyWellnessData(userWellnessUpdate, this.userWellness);
                 this.userWellness = userWellnessUpdate;
                 this.Refresh();
-                MessageBox.Show("You have successfully recorded data.  You are one step closer to making data-driven decisions about your health.", "Record Updated");
             }
             catch (SqlException ex)
             {
