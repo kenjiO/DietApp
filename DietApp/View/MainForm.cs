@@ -14,6 +14,8 @@ namespace DietApp
     using System.Windows.Forms;
     using DietApp.Controller;
     using DietApp.Model;
+    using System.Data.SqlClient;
+    using System.IO;
     using DietApp.View;
 
     /// <summary>
@@ -179,6 +181,84 @@ namespace DietApp
             else if (tabControl1.SelectedTab == this.tabPageFoodList)
             {
                 this.foodListForm.refreshData();
+            }
+        }
+
+
+        /// <summary>
+        /// Export menu button click handler.  Prompts user for a file to export to.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void exportEntriesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Select a file to export wellness and food entries to.\n" +
+                            "This file can then be used on another system to import the entries " +
+                            "or can be used to import the entries to another user on this system",
+                            "Export Data", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            if (result != DialogResult.OK)
+                return;
+            Stream outStream;
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+
+            saveFileDialog1.Filter = "Health Trend files (*.health)|*.health|All files (*.*)|*.*";
+            saveFileDialog1.FilterIndex = 1;
+            saveFileDialog1.RestoreDirectory = true;
+
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                if ((outStream = saveFileDialog1.OpenFile()) != null)
+                {
+                    try
+                    {
+                        Cursor.Current = Cursors.WaitCursor;
+                        DietAppController.exportData(this.theUser.userId, outStream);
+                        Cursor.Current = Cursors.Default;
+                    }
+                    catch (SqlException ex)
+                    {
+                        Cursor.Current = Cursors.Default;
+                        MessageBox.Show(ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    outStream.Close();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Import menu item click handler.  Prompts user for file and imports entries.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void importEntriesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Stream inStream;
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            openFileDialog1.Filter = "Health Trend files (*.health)|*.health|All files (*.*)|*.*";
+            openFileDialog1.FilterIndex = 1;
+            openFileDialog1.RestoreDirectory = true;
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                if ((inStream = openFileDialog1.OpenFile()) != null)
+                {
+                    try
+                    {
+                        Cursor.Current = Cursors.WaitCursor;
+                        DietAppController.importData(this.theUser.userId, inStream);
+                        Cursor.Current = Cursors.Default;
+                    }
+                    catch (DietAppImportExportException ex)
+                    {
+                        Cursor.Current = Cursors.Default;
+                        MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    catch (SqlException ex)
+                    {
+                        Cursor.Current = Cursors.Default;
+                        MessageBox.Show(ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    inStream.Close();
+                }
             }
         }
 
