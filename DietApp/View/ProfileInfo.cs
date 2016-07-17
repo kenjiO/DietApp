@@ -34,6 +34,7 @@ namespace DietApp
                 emailBox.Text = this.theUser.email;
                 weightBox.Text = this.theUser.initialWeight.ToString();
                 usernameBox.Text = this.theUser.userName;
+                goalWeightBox.Text = this.theUser.goalWeight.ToString();
                 footBox.Text = (this.theUser.heightInches / 12).ToString();
                 inchesBox.Text = (this.theUser.heightInches % 12).ToString();
             }
@@ -57,7 +58,7 @@ namespace DietApp
         private void saveButton_Click(object sender, EventArgs e)
         {
             String userName, firstName, lastName, email;
-            int height, value, weight;
+            int height, value, weight, goalWeight;
 
             userName = usernameBox.Text;
             firstName = firstNameBox.Text;
@@ -65,6 +66,8 @@ namespace DietApp
             email = emailBox.Text;
             Int32.TryParse(weightBox.Text, out value);
             weight = value;
+            Int32.TryParse(goalWeightBox.Text, out value);
+            goalWeight = value;
             Int32.TryParse(footBox.Text, out value);
             height = value * 12;
             Int32.TryParse(inchesBox.Text, out value);
@@ -73,7 +76,7 @@ namespace DietApp
             try
             {
                 if (View_Validator.Blank(firstNameBox) || View_Validator.Blank(lastNameBox) || View_Validator.Blank(emailBox) ||
-                    View_Validator.Blank(weightBox) || View_Validator.Blank(footBox) || View_Validator.Blank(inchesBox))
+                    View_Validator.Blank(weightBox) || View_Validator.Blank(footBox) || View_Validator.Blank(inchesBox)|| View_Validator.Blank(goalWeightBox))
                 {
                     //Checks for Blank Boxes
                 }
@@ -90,11 +93,12 @@ namespace DietApp
                         lastName = lastName,
                         email = email,
                         initialWeight = weight,
+                        goalWeight = goalWeight,
                         heightInches = height
                     };
                     if (originalUser.firstName.Equals(newUser.firstName) && originalUser.lastName.Equals(newUser.lastName) &&
-                        originalUser.email.Equals(newUser.email) && originalUser.initialWeight.Equals(newUser.initialWeight) &&
-                        originalUser.heightInches.Equals(newUser.heightInches))
+                        originalUser.email.Equals(newUser.email) && originalUser.initialWeight.Equals(newUser.initialWeight)
+                        && originalUser.goalWeight.Equals(newUser.goalWeight) && originalUser.heightInches.Equals(newUser.heightInches))
                     {
                         Cursor.Current = Cursors.Default;
                         MessageBox.Show("No profile information changed.", "Update User Error", MessageBoxButtons.OK, MessageBoxIcon.Error);

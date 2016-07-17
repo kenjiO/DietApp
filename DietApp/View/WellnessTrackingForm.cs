@@ -126,9 +126,8 @@ namespace DietApp.View
                 date = dateTimePicker.Value,
                 userID = this.theUser.userId
             };
-            if (!View_Validator.ValidateWellness(this.userWellness))
-            {
-                MessageBox.Show("Please enter data for all fields.",
+            if (!View_Validator.ValidateWellness(this.userWellness) || this.userWellness.weight == 0) { 
+                MessageBox.Show("Please enter valid data for all fields.",
                     "Wellness Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
