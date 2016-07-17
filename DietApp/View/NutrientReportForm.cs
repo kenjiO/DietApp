@@ -34,6 +34,7 @@ namespace DietApp.View
             chart1.Series.Add("Carbohydrates");
             chart1.ChartAreas[0].AxisY.Maximum = CHART_Y_AXIS_MAX;
             chart1.ChartAreas[0].AxisY.Minimum = 0;
+            runReport();
         }
 
         public void runReport()
