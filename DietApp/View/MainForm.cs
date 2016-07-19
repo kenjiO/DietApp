@@ -174,6 +174,10 @@ namespace DietApp
             {
                 this.profileInfoForm.ProfileInfo_Load(sender, e);
             }
+            else if (tabControl1.SelectedTab == this.tabPageWellness)
+            {
+                this.wellnessForm.refresh_data();
+            }
             else if (tabControl1.SelectedTab == this.tabPageProgressForm)
             {
                 this.progressForm.ProgressForm_Load(sender, e);

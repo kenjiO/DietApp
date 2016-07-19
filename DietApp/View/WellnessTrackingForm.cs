@@ -26,22 +26,41 @@ namespace DietApp.View
         {
             if (this.theUser != null)
             {
-                var date = dateTimePicker.Value.ToString();
-                this.userWellness = DietAppController.dateWellnessData(this.theUser.userId, date);
-                if (this.userWellness.userID != 0 && this.userWellness != null)
-                {
-                    diastolicUpDown.Value = this.userWellness.diastolicBP;
-                    systolicUpDown.Value = this.userWellness.systolicBP;
-                    weightUpDown.Value = this.userWellness.weight;
-                    heartRateUpDown.Value = this.userWellness.heartRate;
-                    dateTimePicker.Value = this.userWellness.date;
-                }
+                refresh_data();
             }
             else
             {
                 MessageBox.Show("User does not exist.");
                 MessageBox.Show("No user is currently logged in.");
                 return;
+            }
+        }
+
+        /// <summary>
+        /// Refresh the form fields to show the DB version of the data for the selected day
+        /// </summary>
+        public void refresh_data()
+        {
+            var date = dateTimePicker.Value.ToString();
+            Cursor.Current = Cursors.WaitCursor;
+            try
+            {
+                this.userWellness = DietAppController.dateWellnessData(this.theUser.userId, date);
+                Cursor.Current = Cursors.Default;
+            }
+            catch (SqlException ex)
+            {
+                Cursor.Current = Cursors.Default;
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+                return;
+            }
+            if (this.userWellness.userID != 0 && this.userWellness != null)
+            {
+                diastolicUpDown.Value = this.userWellness.diastolicBP;
+                systolicUpDown.Value = this.userWellness.systolicBP;
+                weightUpDown.Value = this.userWellness.weight;
+                heartRateUpDown.Value = this.userWellness.heartRate;
+                dateTimePicker.Value = this.userWellness.date;
             }
         }
 
