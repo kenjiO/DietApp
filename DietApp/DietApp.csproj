@@ -54,6 +54,7 @@
     <Compile Include="DAL\DailyMeasurementsDAL.cs" />
     <Compile Include="DAL\FoodEntryDAL.cs" />
     <Compile Include="DAL\FoodReportDAL.cs" />
+    <Compile Include="DAL\MeasurementTypesDAL.cs" />
     <Compile Include="DAL\UsersDAL.cs" />
     <Compile Include="DAL\WellnessDAL.cs" />
     <Compile Include="DietAppDataSet.cs">
@@ -75,6 +76,7 @@
     <Compile Include="Model\Model_Validator.cs" />
     <Compile Include="Model\Progress.cs" />
     <Compile Include="Model\Users.cs" />
+    <Compile Include="View\ChartView.cs" />
     <Compile Include="View\FoodEditForm.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -25,33 +25,49 @@ namespace DietAppTests.DAL
         /// Test for return of user chart data.
         /// </summary>
         [TestMethod]
-        public void TestGetUserChartData()
+        public void TestGetMeasurementByUserTypeDate()
         {
             using (TransactionScope transaction = new TransactionScope())
             {
-                // Set DailyMeasurements [1]
-                int listNumber = 1;
-                int dailyMeasurementId = 5;
-                DateTime date = Convert.ToDateTime("2016-06-24");
+                // Set Data
                 int userId = 1;
                 int measurementTypeId = 1;
-                int measurement = 204;
-                int length = 3;
+                DateTime dateA = Convert.ToDateTime("2016-06-23");
+                double answerA = 210;
+                DateTime dateB = Convert.ToDateTime("1982-12-22"); ;
+                double answerB = 0;
 
-                // Create DailyMeasurements [1]
-                DailyMeasurements dailyMeasurements = new DailyMeasurements();
-
-                // Get list and [1]
-                List<DailyMeasurements> measurementsList = DailyMeasurementsDAL.GetUserChartData(userId, measurementTypeId);
-                dailyMeasurements = measurementsList[listNumber];
+                // Get Measurement
+                double resultA = DailyMeasurementsDAL.GetMeasurementByUserTypeDate(userId, measurementTypeId, dateA);
+                double resultB = DailyMeasurementsDAL.GetMeasurementByUserTypeDate(userId, measurementTypeId, dateB);
 
                 // Check DailyMeasurements Chart Data
-                Assert.AreEqual(dailyMeasurementId, dailyMeasurements.DailyMeasurementId, 0, "DailyMeasurement's DailyMeasurementId not " + dailyMeasurementId + ".");
-                Assert.AreEqual(date, dailyMeasurements.Date, "DailyMeasurement's Date not " + date + ".");
-                Assert.AreEqual(userId, dailyMeasurements.UserId, "DailyMeasurement's firstName not " + userId + ".");
-                Assert.AreEqual(measurementTypeId, dailyMeasurements.MeasurementTypeId, "DailyMeasurement's MeasurementTypeId not " + measurementTypeId + ".");
-                Assert.AreEqual(measurement, dailyMeasurements.Measurement, "DailyMeasurement's Measurement not " + measurement + ".");
-                Assert.AreEqual(length, measurementsList.Count, "List does not have a length of " + length + ".");
+                Assert.AreEqual(answerA, resultA, 0, "Failed to return " + answerA + ".");
+                Assert.AreEqual(answerB, resultB, 0, "Failed to return " + answerB + ".");
+            }
+        }
+
+        [TestMethod]
+        public void GetUserChartData10Days()
+        {
+            using (TransactionScope transaction = new TransactionScope())
+            {
+                // Set Data
+                int userId = 1;
+                int measurementTypeId = 1;
+                DateTime startDate = Convert.ToDateTime("2016-06-20");
+
+                // Get Measurement
+                List<DailyMeasurements> results = DailyMeasurementsDAL.GetUserChartData10Days(userId, measurementTypeId, startDate);
+
+                // Check DailyMeasurements Chart Data
+                Assert.AreEqual(startDate, results[0].Date, "Date at 0 incorrect.");
+                Assert.AreEqual(0, results[0].Measurement, 0, "Measurement at 0 incorrect.");
+                Assert.AreEqual(startDate.AddDays(4), results[4].Date, "Date at 5 incorrect.");
+                Assert.AreEqual(204, results[4].Measurement, 0, "Measurement at 5 incorrect.");
+                Assert.AreEqual(startDate.AddDays(9), results[9].Date, "Date at 9 incorrect.");
+                Assert.AreEqual(0, results[9].Measurement, "Measurement at 9 incorrect.");
+                Assert.AreEqual(10, results.Count, 0, "List an incrroect size.");
             }
         }
     }

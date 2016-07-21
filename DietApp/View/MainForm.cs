@@ -269,7 +269,7 @@ namespace DietApp
         /// <param name="e">Click on object.</param>
         private void WellnessReportToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            WellnessReportForm wellnessReportForm = new WellnessReportForm(this.theUser);
+            WellnessReportForm wellnessReportForm = new WellnessReportForm(this.theUser.userId);
             wellnessReportForm.StartPosition = FormStartPosition.CenterScreen;
             wellnessReportForm.ShowDialog();
         }

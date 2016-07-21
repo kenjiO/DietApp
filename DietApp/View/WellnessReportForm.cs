@@ -21,17 +21,8 @@ namespace DietApp.View
     /// </summary>
     public partial class WellnessReportForm : Form
     {
-        /// <summary>The current user.</summary>
-        private Users theUser;
-
-        /// <summary>The type of wellness.</summary>
-        private int type;
-
-        /// <summary>The title of the graph.</summary>
-        private string title;
-
-        /// <summary>The name of the data.</summary>
-        private string name;
+        /// <summary>The current user id.</summary>
+        private int theUserId;
 
         /// <summary>The minimum chart value.</summary>
         private int minValue;
@@ -48,19 +39,19 @@ namespace DietApp.View
         /// <summary>
         /// Initializes a new instance of the <see cref="WellnessReportForm"/> class.
         /// </summary>
-        /// <param name="currentUser">The current user.</param>
-        public WellnessReportForm(Users currentUser)
+        /// <param name="currentUserId">The current user id.</param>
+        public WellnessReportForm(int currentUserId)
         {
-            if (currentUser == null)
+            if (currentUserId == 0)
             {
-                MessageBox.Show("Error loading Food Entries Window. No user specified");
+                MessageBox.Show("Error loading Wellness Reports. No user specified");
 
                 // Need to call Close() as an event handler for Load event
                 this.Load += (s, e) => this.Close();
             }
 
             this.reportPage = 1;
-            this.theUser = DietAppController.getUserData(currentUser.userId);
+            this.theUserId = currentUserId;
             this.InitializeComponent();
         }
 
@@ -71,8 +62,6 @@ namespace DietApp.View
         /// <param name="e">Click on object.</param>
         public void WellnessReportForm_Load(object sender, EventArgs e)
         {
-            this.minValue = 0;
-            this.maxValue = 200;
             rbWeight.Checked = true;
             rbHeartRate.Checked = false;
             rbBP.Checked = false;
@@ -86,63 +75,56 @@ namespace DietApp.View
         /// <param name="e">Click on object.</param>
         private void BTNLoad_Click(object sender, EventArgs e)
         {
+            this.chartUserData.Legends.Clear();
+            this.chartUserData.Series.Clear();
+
             if (rbWeight.Checked == true)
             {
-                this.chartUserData.Series.Clear();
-                this.chartUserData.Legends.Clear();
-                this.type = 1;
-                this.title = "Weight";
-                this.name = "Weight";
-                this.ChartTitle(this.title);
-                this.ChartSeries(this.type, this.name, System.Drawing.Color.Green);
-                this.ChartAreas(this.minValue, this.maxValue, this.title);
-                this.ChartLegends(this.name);
-                this.chartUserData.Invalidate();
+                int type = 1;
+                string title = DietAppController.GetType(type).MeasurementTypeName;
+                string name = DietAppController.GetType(type).MeasurementTypeName + " (" + DietAppController.GetType(type).MeasurementDefaultUnit + ")";
+                this.ChartSeries(type, name, System.Drawing.Color.Blue);
+                this.ChartLegends(name);
+                this.ChartAreas(this.minValue, this.maxValue, title);
+                this.ChartTitle(title);
             }
             else if (rbHeartRate.Checked == true)
             {
-                this.chartUserData.Series.Clear();
-                this.chartUserData.Legends.Clear();
-                this.type = 2;
-                this.title = "Heart Rate";
-                this.name = "Heart Rate";
-                this.ChartTitle(this.title);
-                this.ChartSeries(this.type, this.name, System.Drawing.Color.Green);
-                this.ChartAreas(this.minValue, this.maxValue, this.title);
-                this.ChartLegends(this.name);
-                this.chartUserData.Invalidate();
+                int type = 2;
+                string title = DietAppController.GetType(type).MeasurementTypeName;
+                string name = DietAppController.GetType(type).MeasurementTypeName + " (" + DietAppController.GetType(type).MeasurementDefaultUnit + ")";
+                this.ChartSeries(type, name, System.Drawing.Color.Red);
+                this.ChartLegends(name);
+                this.ChartAreas(this.minValue, this.maxValue, title);
+                this.ChartTitle(title);
             }
             else if (rbBP.Checked == true)
             {
-                this.chartUserData.Series.Clear();
-                this.chartUserData.Legends.Clear();
-                this.type = 3;
-                this.title = "Blood Pressure";
-                this.name = "Systolic";
-                this.ChartTitle(this.title);
-                this.ChartSeries(this.type, this.name, System.Drawing.Color.Green);
-                this.ChartLegends(this.name);
-                double systolicMax = this.maxValue;
-                this.type = 4;
-                this.name = "Diastolic";
-                this.ChartSeries(this.type, this.name, System.Drawing.Color.Red);
-                this.ChartAreas(this.minValue, systolicMax, this.title);
-                this.ChartLegends(this.name);
-                this.chartUserData.Invalidate();
+                string title = "Blood Pressure";
+                int type = 3;
+                string name = DietAppController.GetType(type).MeasurementTypeName + " (" + DietAppController.GetType(type).MeasurementDefaultUnit + ")";
+                this.ChartSeries(type, name, System.Drawing.Color.Yellow);
+                this.ChartLegends(name);
+                type = 4;
+                name = DietAppController.GetType(type).MeasurementTypeName + " (" + DietAppController.GetType(type).MeasurementDefaultUnit + ")";
+                this.ChartSeries(type, name, System.Drawing.Color.Green);
+                this.ChartLegends(name);
+                this.ChartAreas(this.minValue, this.maxValue, title);
+                this.ChartTitle(title);                
             }
             else
             {
-                this.chartUserData.Series.Clear();
-                this.chartUserData.Legends.Clear();
-                this.type = 1;
-                this.title = string.Empty;
-                this.name = string.Empty;
-                this.ChartTitle(this.title);
-                this.ChartSeries(this.type, this.name, System.Drawing.Color.Red);
-                this.ChartAreas(this.minValue, this.maxValue, this.title);
-                this.ChartLegends(this.name);
+                int type = 1;
+                string title = string.Empty;
+                string name = string.Empty;
+                this.ChartTitle(title);
+                this.ChartSeries(type, name, System.Drawing.Color.Black);
+                this.ChartAreas(this.minValue, this.maxValue, title);
+                this.ChartLegends(name);
                 this.chartUserData.Invalidate();
             }
+
+            this.chartUserData.Invalidate();
         }
 
         /// <summary>
@@ -186,7 +168,7 @@ namespace DietApp.View
             var titles1 = new System.Windows.Forms.DataVisualization.Charting.Title
             {
                 Name = title,
-                Text = this.theUser.firstName + "'s " + title + " Data",
+                Text = DietAppController.getUserData(this.theUserId).firstName + "'s " + title + " Data",
                 Visible = true,
             };
             this.chartUserData.Titles.Add(titles1);
@@ -223,12 +205,12 @@ namespace DietApp.View
                 BorderWidth = 5,
                 IsVisibleInLegend = true,
                 IsXValueIndexed = true,
-                ChartType = SeriesChartType.Line,
+                ChartType = SeriesChartType.Column,
             };
 
             this.chartUserData.Series.Add(series1);
-            this.date = DateTime.Now.AddDays((this.reportPage * (-10)) + 1);
-            List<DailyMeasurements> chartList = DietAppController.getUserChartData10Days(this.theUser.userId, type, this.date);
+            this.date = Convert.ToDateTime("2016-06-20");
+            List<DailyMeasurements> chartList = DietAppController.GetUserChartData10Days(this.theUserId, type, this.date);
 
             if (chartList.Count > 0)
             {
