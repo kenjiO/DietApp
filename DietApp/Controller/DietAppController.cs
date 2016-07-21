@@ -160,6 +160,17 @@ namespace DietApp.Controller
         }
 
         /// <summary>
+        /// Gets the wellness data from the DB for the user's last entry.
+        /// </summary>
+        /// <param name="userID"></param>
+        /// <param name="date"></param>
+        /// <returns></returns>
+        public static Wellness lastWellnessData(int userId)
+        {
+            return WellnessDAL.lastWellnessData(userId);
+        }
+
+        /// <summary>
         /// Adds the wellness data to the DB.
         /// </summary>
         /// <param name="theWellness"></param>

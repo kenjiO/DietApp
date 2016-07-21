@@ -186,5 +186,24 @@ namespace DietApp.View
             }
             Cursor.Current = Cursors.Default;
         }
+
+        /// <summary>
+        /// Copies data from the last entry and populates the boxes on the form.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void copyButton_Click(object sender, EventArgs e)
+        {
+            var previousWellness = DietAppController.lastWellnessData(this.theUser.userId);
+
+            if (previousWellness.userID != 0 && previousWellness != null)
+            {
+                diastolicUpDown.Value = previousWellness.diastolicBP;
+                systolicUpDown.Value = previousWellness.systolicBP;
+                weightUpDown.Value = previousWellness.weight;
+                heartRateUpDown.Value = previousWellness.heartRate;
+                dateTimePicker.Value =this.userWellness.date;
+            }
+        }
     }
 }
