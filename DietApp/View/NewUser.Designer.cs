@@ -60,7 +60,7 @@
             this.passwordLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.passwordLabel.Name = "passwordLabel";
             this.passwordLabel.Size = new System.Drawing.Size(78, 20);
-            this.passwordLabel.TabIndex = 16;
+            this.passwordLabel.TabIndex = 58;
             this.passwordLabel.Text = "Password";
             // 
             // usernameLabel
@@ -71,7 +71,7 @@
             this.usernameLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.usernameLabel.Name = "usernameLabel";
             this.usernameLabel.Size = new System.Drawing.Size(89, 20);
-            this.usernameLabel.TabIndex = 14;
+            this.usernameLabel.TabIndex = 57;
             this.usernameLabel.Text = "User Name";
             // 
             // passwordBox
@@ -82,7 +82,7 @@
             this.passwordBox.Name = "passwordBox";
             this.passwordBox.PasswordChar = '*';
             this.passwordBox.Size = new System.Drawing.Size(215, 26);
-            this.passwordBox.TabIndex = 17;
+            this.passwordBox.TabIndex = 8;
             this.passwordBox.Tag = "Password";
             // 
             // usernameBox
@@ -92,7 +92,7 @@
             this.usernameBox.Margin = new System.Windows.Forms.Padding(2);
             this.usernameBox.Name = "usernameBox";
             this.usernameBox.Size = new System.Drawing.Size(215, 26);
-            this.usernameBox.TabIndex = 15;
+            this.usernameBox.TabIndex = 7;
             this.usernameBox.Tag = "User Name";
             // 
             // cancelButton
@@ -103,7 +103,7 @@
             this.cancelButton.Margin = new System.Windows.Forms.Padding(2);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(68, 30);
-            this.cancelButton.TabIndex = 21;
+            this.cancelButton.TabIndex = 11;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
@@ -115,7 +115,7 @@
             this.saveButton.Margin = new System.Windows.Forms.Padding(2);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(68, 30);
-            this.saveButton.TabIndex = 20;
+            this.saveButton.TabIndex = 10;
             this.saveButton.Text = "Save";
             this.saveButton.UseVisualStyleBackColor = true;
             this.saveButton.Click += new System.EventHandler(this.saveUser_Click);
@@ -128,7 +128,7 @@
             this.confirmLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.confirmLabel.Name = "confirmLabel";
             this.confirmLabel.Size = new System.Drawing.Size(137, 20);
-            this.confirmLabel.TabIndex = 18;
+            this.confirmLabel.TabIndex = 59;
             this.confirmLabel.Text = "Confirm Password";
             // 
             // confirmBox
@@ -139,7 +139,7 @@
             this.confirmBox.Name = "confirmBox";
             this.confirmBox.PasswordChar = '*';
             this.confirmBox.Size = new System.Drawing.Size(215, 26);
-            this.confirmBox.TabIndex = 19;
+            this.confirmBox.TabIndex = 9;
             this.confirmBox.Tag = "Confirm Password";
             // 
             // firstNameBox
@@ -159,7 +159,7 @@
             this.lastNameBox.Margin = new System.Windows.Forms.Padding(2);
             this.lastNameBox.Name = "lastNameBox";
             this.lastNameBox.Size = new System.Drawing.Size(215, 26);
-            this.lastNameBox.TabIndex = 3;
+            this.lastNameBox.TabIndex = 2;
             this.lastNameBox.Tag = "Last Name";
             // 
             // emailBox
@@ -169,7 +169,7 @@
             this.emailBox.Margin = new System.Windows.Forms.Padding(2);
             this.emailBox.Name = "emailBox";
             this.emailBox.Size = new System.Drawing.Size(215, 26);
-            this.emailBox.TabIndex = 5;
+            this.emailBox.TabIndex = 3;
             this.emailBox.Tag = "eMail";
             // 
             // firstNameLabel
@@ -180,7 +180,7 @@
             this.firstNameLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.firstNameLabel.Name = "firstNameLabel";
             this.firstNameLabel.Size = new System.Drawing.Size(86, 20);
-            this.firstNameLabel.TabIndex = 22;
+            this.firstNameLabel.TabIndex = 51;
             this.firstNameLabel.Text = "First Name";
             // 
             // lsatNameLabel
@@ -191,7 +191,7 @@
             this.lsatNameLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lsatNameLabel.Name = "lsatNameLabel";
             this.lsatNameLabel.Size = new System.Drawing.Size(86, 20);
-            this.lsatNameLabel.TabIndex = 2;
+            this.lsatNameLabel.TabIndex = 52;
             this.lsatNameLabel.Text = "Last Name";
             // 
             // emailLabel
@@ -202,7 +202,7 @@
             this.emailLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.emailLabel.Name = "emailLabel";
             this.emailLabel.Size = new System.Drawing.Size(53, 20);
-            this.emailLabel.TabIndex = 4;
+            this.emailLabel.TabIndex = 53;
             this.emailLabel.Text = "E-Mail";
             // 
             // weightLabel
@@ -213,7 +213,7 @@
             this.weightLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.weightLabel.Name = "weightLabel";
             this.weightLabel.Size = new System.Drawing.Size(59, 20);
-            this.weightLabel.TabIndex = 6;
+            this.weightLabel.TabIndex = 54;
             this.weightLabel.Text = "Weight";
             // 
             // weightBox
@@ -223,7 +223,7 @@
             this.weightBox.Margin = new System.Windows.Forms.Padding(2);
             this.weightBox.Name = "weightBox";
             this.weightBox.Size = new System.Drawing.Size(181, 26);
-            this.weightBox.TabIndex = 7;
+            this.weightBox.TabIndex = 4;
             this.weightBox.Tag = "Weight";
             // 
             // heightLabel
@@ -234,7 +234,7 @@
             this.heightLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.heightLabel.Name = "heightLabel";
             this.heightLabel.Size = new System.Drawing.Size(56, 20);
-            this.heightLabel.TabIndex = 9;
+            this.heightLabel.TabIndex = 55;
             this.heightLabel.Text = "Height";
             // 
             // footBox
@@ -244,7 +244,7 @@
             this.footBox.Margin = new System.Windows.Forms.Padding(2);
             this.footBox.Name = "footBox";
             this.footBox.Size = new System.Drawing.Size(70, 26);
-            this.footBox.TabIndex = 10;
+            this.footBox.TabIndex = 5;
             this.footBox.Tag = "Height (ft.)";
             // 
             // lbLabel
@@ -255,7 +255,7 @@
             this.lbLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbLabel.Name = "lbLabel";
             this.lbLabel.Size = new System.Drawing.Size(25, 20);
-            this.lbLabel.TabIndex = 8;
+            this.lbLabel.TabIndex = 60;
             this.lbLabel.Text = "lb.";
             // 
             // inchesBox
@@ -265,7 +265,7 @@
             this.inchesBox.Margin = new System.Windows.Forms.Padding(2);
             this.inchesBox.Name = "inchesBox";
             this.inchesBox.Size = new System.Drawing.Size(69, 26);
-            this.inchesBox.TabIndex = 12;
+            this.inchesBox.TabIndex = 6;
             this.inchesBox.Tag = "Height (in.)";
             // 
             // feetLabel
@@ -276,7 +276,7 @@
             this.feetLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.feetLabel.Name = "feetLabel";
             this.feetLabel.Size = new System.Drawing.Size(23, 20);
-            this.feetLabel.TabIndex = 11;
+            this.feetLabel.TabIndex = 61;
             this.feetLabel.Text = "ft.";
             // 
             // inchesLabel
@@ -287,7 +287,7 @@
             this.inchesLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.inchesLabel.Name = "inchesLabel";
             this.inchesLabel.Size = new System.Drawing.Size(25, 20);
-            this.inchesLabel.TabIndex = 13;
+            this.inchesLabel.TabIndex = 62;
             this.inchesLabel.Text = "in.";
             // 
             // NewUser
