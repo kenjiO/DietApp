@@ -11,11 +11,11 @@
 namespace DietApp
 {
     using System;
+    using System.Data.SqlClient;
+    using System.IO;
     using System.Windows.Forms;
     using DietApp.Controller;
     using DietApp.Model;
-    using System.Data.SqlClient;
-    using System.IO;
     using DietApp.View;
 
     /// <summary>
@@ -125,7 +125,7 @@ namespace DietApp
         private void LoadTabs()
         {
             this.profileInfoForm = new ProfileInfo();
-            this.profileInfoForm.loadUser(this.theUser);
+            this.profileInfoForm.LoadUser(this.theUser.userId);
             this.profileInfoForm.TopLevel = false;
             this.profileInfoForm.Visible = true;
             this.profileInfoForm.FormBorderStyle = FormBorderStyle.None;
@@ -184,12 +184,11 @@ namespace DietApp
             }
         }
 
-
         /// <summary>
         /// Export menu button click handler.  Prompts user for a file to export to.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Sending object.</param>
+        /// <param name="e">Click on object.</param>
         private void exportEntriesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Select a file to export wellness and food entries to.\n" +
@@ -197,7 +196,10 @@ namespace DietApp
                             "or can be used to import the entries to another user on this system",
                             "Export Data", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
             if (result != DialogResult.OK)
+            {
                 return;
+            }
+
             Stream outStream;
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
 
@@ -220,6 +222,7 @@ namespace DietApp
                         Cursor.Current = Cursors.Default;
                         MessageBox.Show(ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
+
                     outStream.Close();
                 }
             }
@@ -228,8 +231,8 @@ namespace DietApp
         /// <summary>
         /// Import menu item click handler.  Prompts user for file and imports entries.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Sending object.</param>
+        /// <param name="e">Click on object.</param>
         private void importEntriesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Stream inStream;
@@ -257,6 +260,7 @@ namespace DietApp
                         Cursor.Current = Cursors.Default;
                         MessageBox.Show(ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
+
                     inStream.Close();
                 }
             }
