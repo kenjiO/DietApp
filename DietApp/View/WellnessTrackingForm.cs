@@ -167,24 +167,32 @@ namespace DietApp.View
                 userID = this.theUser.userId
             };
 
-            Cursor.Current = Cursors.WaitCursor;
-            try
+            if (!View_Validator.ValidateWellness(userWellnessUpdate) || userWellnessUpdate.weight == 0)
             {
-                DietAppController.updateDailyWellnessData(userWellnessUpdate, this.userWellness);
-                this.userWellness = userWellnessUpdate;
-                this.Refresh();
+                MessageBox.Show("Please enter valid data for all fields.",
+                    "Wellness Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch (SqlException ex)
+            else
             {
+                Cursor.Current = Cursors.WaitCursor;
+                try
+                {
+                    DietAppController.updateDailyWellnessData(userWellnessUpdate, this.userWellness);
+                    this.userWellness = userWellnessUpdate;
+                    this.Refresh();
+                }
+                catch (SqlException ex)
+                {
+                    Cursor.Current = Cursors.Default;
+                    MessageBox.Show(ex.Message, ex.GetType().ToString());
+                }
+                catch (Exception ex)
+                {
+                    Cursor.Current = Cursors.Default;
+                    MessageBox.Show(ex.Message, ex.GetType().ToString());
+                }
                 Cursor.Current = Cursors.Default;
-                MessageBox.Show(ex.Message, ex.GetType().ToString());
             }
-            catch (Exception ex)
-            {
-                Cursor.Current = Cursors.Default;
-                MessageBox.Show(ex.Message, ex.GetType().ToString());
-            }
-            Cursor.Current = Cursors.Default;
         }
 
         /// <summary>
