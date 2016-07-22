@@ -15,6 +15,7 @@ namespace DietApp.View
     using System.Windows.Forms.DataVisualization.Charting;
     using DietApp.Controller;
     using DietApp.Model;
+    using System.Drawing.Printing;
 
     /// <summary>
     /// Form for display of User's Wellness Reports.
@@ -362,8 +363,7 @@ namespace DietApp.View
         /// <param name="e">Click on object.</param>
         private void BTNPrint_Click(object sender, EventArgs e)
         {
-            this.PrintWellnessReport.PrintAction = System.Drawing.Printing.PrintAction.PrintToPreview;
-            this.PrintWellnessReport.Print();
+            this.chartUserData.Printing.PrintPreview();
         }
     }
 }
