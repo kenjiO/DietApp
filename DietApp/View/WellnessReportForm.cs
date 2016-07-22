@@ -154,6 +154,7 @@ namespace DietApp.View
             {
                 min = 0;
             }
+
             if (max == 0)
             {
                 max = 200;
@@ -232,13 +233,12 @@ namespace DietApp.View
                 ChartType = SeriesChartType.Column,
             };
 
-            int toDisplay = (int) this.nudDays.Value;
+            int toDisplay = (int)this.nudDays.Value;
             this.date = DateTime.Now.AddDays(1 - (this.reportPage * toDisplay));
             List<DailyMeasurements> chartList = DietAppController.GetUserChartDataXDays(this.theUserId, type, this.date, toDisplay);
 
             if (chartList.Count > 0)
             {
-                
                 foreach (DailyMeasurements measurements in chartList)
                 {
                     series1.Points.AddXY(measurements.Date.ToShortDateString(), measurements.Measurement);
@@ -251,14 +251,13 @@ namespace DietApp.View
                     {
                         this.minValue = Convert.ToInt32(measurements.Measurement * 0.9);
                     }
-
                 }
             }
             else
             {
                 for (int i = 0; i < 10; i++)
                 {
-                    string day = date.AddDays(i).ToShortDateString() + "*No Data";
+                    string day = this.date.AddDays(i).ToShortDateString() + "*No Data";
                     series1.Points.AddXY(day, 0);
                 }
 
@@ -296,29 +295,27 @@ namespace DietApp.View
 
             if (chartList.Count > 0)
             {
-
                 foreach (DailyMeasurements measurements in chartList)
                 {
-                    double BMI = Math.Round(measurements.Measurement * 703 / Math.Pow(DietAppController.getUserData(this.theUserId).heightInches, 2), 2);
+                    double bmi = Math.Round(measurements.Measurement * 703 / Math.Pow(DietAppController.getUserData(this.theUserId).heightInches, 2), 2);
                     
-                    series1.Points.AddXY(measurements.Date.ToShortDateString(), BMI);
-                    if ((BMI * 1.1) > this.maxValue)
+                    series1.Points.AddXY(measurements.Date.ToShortDateString(), bmi);
+                    if ((bmi * 1.1) > this.maxValue)
                     {
-                        this.maxValue = Convert.ToInt32(BMI * 1.1);
+                        this.maxValue = Convert.ToInt32(bmi * 1.1);
                     }
 
-                    if ((BMI * 0.9) < this.minValue)
+                    if ((bmi * 0.9) < this.minValue)
                     {
-                        this.minValue = Convert.ToInt32(BMI * 0.9);
+                        this.minValue = Convert.ToInt32(bmi * 0.9);
                     }
-
                 }
             }
             else
             {
                 for (int i = 0; i < 10; i++)
                 {
-                    string day = date.AddDays(i).ToShortDateString() + "*No Data";
+                    string day = this.date.AddDays(i).ToShortDateString() + "*No Data";
                     series1.Points.AddXY(day, 0);
                 }
 

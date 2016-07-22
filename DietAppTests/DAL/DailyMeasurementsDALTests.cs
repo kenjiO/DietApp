@@ -8,12 +8,12 @@
 
 namespace DietAppTests.DAL
 {
-    using DietApp.DAL;
-    using DietApp.Model;
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
     using System;
     using System.Collections.Generic;
     using System.Transactions;
+    using DietApp.DAL;
+    using DietApp.Model;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     /// <summary>
     /// Test the DailyMeasurementsDAL Class in DietApp.DAL.
@@ -34,7 +34,7 @@ namespace DietAppTests.DAL
                 int measurementTypeId = 1;
                 DateTime dateA = Convert.ToDateTime("2016-06-23");
                 double answerA = 210;
-                DateTime dateB = Convert.ToDateTime("1982-12-22"); ;
+                DateTime dateB = Convert.ToDateTime("1982-12-22");
                 double answerB = 0;
 
                 // Get Measurement
@@ -47,6 +47,9 @@ namespace DietAppTests.DAL
             }
         }
 
+        /// <summary>
+        /// Test for return of x days of user chart data.
+        /// </summary>
         [TestMethod]
         public void GetUserChartDataXDays()
         {
@@ -72,6 +75,9 @@ namespace DietAppTests.DAL
             }
         }
 
+        /// <summary>
+        /// Test for return of x days of user chart data, no data.
+        /// </summary>
         [TestMethod]
         public void GetUserChartDataXDaysNoData()
         {
