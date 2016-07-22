@@ -117,6 +117,7 @@
             this.systolicUpDown.Name = "systolicUpDown";
             this.systolicUpDown.Size = new System.Drawing.Size(120, 35);
             this.systolicUpDown.TabIndex = 78;
+            this.systolicUpDown.ValueChanged += new System.EventHandler(this.EnableSaveButton);
             // 
             // diastolicUpDown
             // 
@@ -130,6 +131,7 @@
             this.diastolicUpDown.Name = "diastolicUpDown";
             this.diastolicUpDown.Size = new System.Drawing.Size(120, 35);
             this.diastolicUpDown.TabIndex = 79;
+            this.diastolicUpDown.ValueChanged += new System.EventHandler(this.EnableSaveButton);
             // 
             // slantLabel
             // 
@@ -162,6 +164,7 @@
             this.heartRateUpDown.Name = "heartRateUpDown";
             this.heartRateUpDown.Size = new System.Drawing.Size(120, 35);
             this.heartRateUpDown.TabIndex = 82;
+            this.heartRateUpDown.ValueChanged += new System.EventHandler(this.EnableSaveButton);
             // 
             // weightUpDown
             // 
@@ -175,9 +178,11 @@
             this.weightUpDown.Name = "weightUpDown";
             this.weightUpDown.Size = new System.Drawing.Size(120, 35);
             this.weightUpDown.TabIndex = 83;
+            this.weightUpDown.ValueChanged += new System.EventHandler(this.EnableSaveButton);
             // 
             // saveButton
             // 
+            this.saveButton.Enabled = false;
             this.saveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.saveButton.Location = new System.Drawing.Point(412, 237);
             this.saveButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);

@@ -73,6 +73,7 @@ namespace DietApp.View
             }
         }
 
+      
         /// <summary>
         /// Checks to see if wellness data matches data in DB.
         /// </summary>
@@ -93,6 +94,31 @@ namespace DietApp.View
             {
                 //Update Wellness Info
                 this.updateConfirm();
+            }
+        }
+
+        /// <summary>
+        /// Checks to see if info has been entered on the page.  If so, enables save button.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void EnableSaveButton(object sender, System.EventArgs e)
+        {
+            var userWellnessUpdate = new Wellness
+            {
+                diastolicBP = Int32.Parse(diastolicUpDown.Value.ToString()),
+                systolicBP = Int32.Parse(systolicUpDown.Value.ToString()),
+                weight = Int32.Parse(weightUpDown.Value.ToString()),
+                heartRate = Int32.Parse(heartRateUpDown.Value.ToString()),
+                date = dateTimePicker.Value,
+                userID = this.theUser.userId
+            };
+            if (!View_Validator.wellnessMatchDB(userWellnessUpdate))
+            {
+                this.saveButton.Enabled = true;
+            } else
+            {
+                this.saveButton.Enabled = false;
             }
         }
 
