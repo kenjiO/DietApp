@@ -53,6 +53,7 @@
             this.foodBox.Name = "foodBox";
             this.foodBox.Size = new System.Drawing.Size(254, 24);
             this.foodBox.TabIndex = 51;
+            this.foodBox.TextChanged += new System.EventHandler(this.enableDisableUpdateButton);
             // 
             // caloriesBox
             // 
@@ -61,6 +62,7 @@
             this.caloriesBox.Name = "caloriesBox";
             this.caloriesBox.Size = new System.Drawing.Size(254, 24);
             this.caloriesBox.TabIndex = 52;
+            this.caloriesBox.TextChanged += new System.EventHandler(this.enableDisableUpdateButton);
             // 
             // fatBox
             // 
@@ -69,6 +71,7 @@
             this.fatBox.Name = "fatBox";
             this.fatBox.Size = new System.Drawing.Size(254, 24);
             this.fatBox.TabIndex = 53;
+            this.fatBox.TextChanged += new System.EventHandler(this.enableDisableUpdateButton);
             // 
             // usernameLabel
             // 
@@ -132,6 +135,7 @@
             this.proteinBox.Name = "proteinBox";
             this.proteinBox.Size = new System.Drawing.Size(254, 24);
             this.proteinBox.TabIndex = 59;
+            this.proteinBox.TextChanged += new System.EventHandler(this.enableDisableUpdateButton);
             // 
             // carbohydratesBox
             // 
@@ -140,9 +144,11 @@
             this.carbohydratesBox.Name = "carbohydratesBox";
             this.carbohydratesBox.Size = new System.Drawing.Size(254, 24);
             this.carbohydratesBox.TabIndex = 60;
+            this.carbohydratesBox.TextChanged += new System.EventHandler(this.enableDisableUpdateButton);
             // 
             // updateButton
             // 
+            this.updateButton.Enabled = false;
             this.updateButton.Location = new System.Drawing.Point(253, 276);
             this.updateButton.Name = "updateButton";
             this.updateButton.Size = new System.Drawing.Size(75, 23);
@@ -159,6 +165,7 @@
             this.datePicker.Name = "datePicker";
             this.datePicker.Size = new System.Drawing.Size(254, 24);
             this.datePicker.TabIndex = 64;
+            this.datePicker.ValueChanged += new System.EventHandler(this.enableDisableUpdateButton);
             // 
             // timePicker
             // 
@@ -168,6 +175,7 @@
             this.timePicker.Name = "timePicker";
             this.timePicker.Size = new System.Drawing.Size(254, 24);
             this.timePicker.TabIndex = 65;
+            this.timePicker.ValueChanged += new System.EventHandler(this.enableDisableUpdateButton);
             // 
             // label6
             // 
