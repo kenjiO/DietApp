@@ -22,7 +22,7 @@ namespace DietApp
         public void saveUser_Click(object sender, System.EventArgs e)
         {
             String userName, password, confirm, firstName, lastName, email;
-            int height, value, weight;
+            int height, value, weight, goalWeight;
 
             userName = usernameBox.Text;
             password = passwordBox.Text;
@@ -32,6 +32,8 @@ namespace DietApp
             email = emailBox.Text;
             Int32.TryParse(weightBox.Text, out value);
             weight = value;
+            Int32.TryParse(goalWeightBox.Text, out value);
+            goalWeight = value;
             Int32.TryParse(footBox.Text, out value);
             height = value * 12;
             Int32.TryParse(inchesBox.Text, out value);
@@ -76,6 +78,7 @@ namespace DietApp
                         lastName = lastName,
                         email = email,
                         initialWeight = weight,
+                        goalWeight = goalWeight,
                         heightInches = height
                     };
                     //Updates the user.
