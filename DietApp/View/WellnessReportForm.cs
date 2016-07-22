@@ -52,6 +52,9 @@ namespace DietApp.View
 
             this.reportPage = 1;
             this.theUserId = currentUserId;
+            this.date = new DateTime();
+            this.nudDays = new NumericUpDown();
+            this.nudDays.Value = 10;
             this.InitializeComponent();
         }
 
@@ -65,6 +68,7 @@ namespace DietApp.View
             rbWeight.Checked = true;
             rbHeartRate.Checked = false;
             rbBP.Checked = false;
+            rbBMI.Checked = false;
             this.BTNLoad_Click(sender, e);
         }
 
@@ -105,12 +109,23 @@ namespace DietApp.View
                 string name = DietAppController.GetType(type).MeasurementTypeName + " (" + DietAppController.GetType(type).MeasurementDefaultUnit + ")";
                 this.ChartSeries(type, name, System.Drawing.Color.Yellow);
                 this.ChartLegends(name);
+                int localMax = this.maxValue;
                 type = 4;
                 name = DietAppController.GetType(type).MeasurementTypeName + " (" + DietAppController.GetType(type).MeasurementDefaultUnit + ")";
                 this.ChartSeries(type, name, System.Drawing.Color.Green);
                 this.ChartLegends(name);
-                this.ChartAreas(this.minValue, this.maxValue, title);
+                this.ChartAreas(this.minValue, localMax, title);
                 this.ChartTitle(title);                
+            }
+            else if (rbBMI.Checked == true)
+            {
+                int type = 1;
+                string title = "BMI";
+                string name = "BMI (lb. per square in.)";
+                this.ChartSeriesBMI(type, name, System.Drawing.Color.Purple);
+                this.ChartLegends(name);
+                this.ChartAreas(this.minValue, this.maxValue, title);
+                this.ChartTitle(title);
             }
             else
             {
@@ -135,6 +150,15 @@ namespace DietApp.View
         /// <param name="title">Title of the chart.</param>
         private void ChartAreas(double min, double max, string title)
         {
+            if (min == 200)
+            {
+                min = 0;
+            }
+            if (max == 0)
+            {
+                max = 200;
+            }
+                        
             this.chartUserData.ChartAreas.Clear();
 
             var axisX = new System.Windows.Forms.DataVisualization.Charting.Axis
@@ -195,8 +219,8 @@ namespace DietApp.View
         /// /// <param name="color">The color of the line.</param>
         private void ChartSeries(int type, string name, Color color)
         {
-            this.minValue = 200;
             this.maxValue = 0;
+            this.minValue = 200;
 
             var series1 = new System.Windows.Forms.DataVisualization.Charting.Series
             {
@@ -208,12 +232,13 @@ namespace DietApp.View
                 ChartType = SeriesChartType.Column,
             };
 
-            this.chartUserData.Series.Add(series1);
-            this.date = Convert.ToDateTime("2016-06-20");
-            List<DailyMeasurements> chartList = DietAppController.GetUserChartData10Days(this.theUserId, type, this.date);
+            int toDisplay = (int) this.nudDays.Value;
+            this.date = DateTime.Now.AddDays(1 - (this.reportPage * toDisplay));
+            List<DailyMeasurements> chartList = DietAppController.GetUserChartDataXDays(this.theUserId, type, this.date, toDisplay);
 
             if (chartList.Count > 0)
             {
+                
                 foreach (DailyMeasurements measurements in chartList)
                 {
                     series1.Points.AddXY(measurements.Date.ToShortDateString(), measurements.Measurement);
@@ -240,6 +265,68 @@ namespace DietApp.View
                 this.maxValue = 200;
                 this.minValue = 0;
             }
+
+            this.chartUserData.Series.Add(series1);
+        }
+
+        /// <summary>
+        /// Sets up the look and style of the user's chart, Series.
+        /// </summary>
+        /// <param name="type">The type of the measurement.</param>
+        /// /// <param name="name">The name of the data.</param>
+        /// /// <param name="color">The color of the line.</param>
+        private void ChartSeriesBMI(int type, string name, Color color)
+        {
+            this.maxValue = 0;
+            this.minValue = 200;
+
+            var series1 = new System.Windows.Forms.DataVisualization.Charting.Series
+            {
+                Name = name,
+                Color = color,
+                BorderWidth = 5,
+                IsVisibleInLegend = true,
+                IsXValueIndexed = true,
+                ChartType = SeriesChartType.Column,
+            };
+
+            int toDisplay = (int)this.nudDays.Value;
+            this.date = DateTime.Now.AddDays(1 - (this.reportPage * toDisplay));
+            List<DailyMeasurements> chartList = DietAppController.GetUserChartDataXDays(this.theUserId, type, this.date, toDisplay);
+
+            if (chartList.Count > 0)
+            {
+
+                foreach (DailyMeasurements measurements in chartList)
+                {
+                    double BMI = Math.Round(measurements.Measurement * 703 / Math.Pow(DietAppController.getUserData(this.theUserId).heightInches, 2), 2);
+                    
+                    series1.Points.AddXY(measurements.Date.ToShortDateString(), BMI);
+                    if ((BMI * 1.1) > this.maxValue)
+                    {
+                        this.maxValue = Convert.ToInt32(BMI * 1.1);
+                    }
+
+                    if ((BMI * 0.9) < this.minValue)
+                    {
+                        this.minValue = Convert.ToInt32(BMI * 0.9);
+                    }
+
+                }
+            }
+            else
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    string day = date.AddDays(i).ToShortDateString() + "*No Data";
+                    series1.Points.AddXY(day, 0);
+                }
+
+                this.maxValue = 200;
+                this.minValue = 0;
+            }
+
+            this.chartUserData.Series.Add(series1);
         }
 
         /// <summary>

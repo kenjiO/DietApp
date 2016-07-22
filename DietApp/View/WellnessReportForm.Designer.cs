@@ -41,7 +41,11 @@
             this.nextButton = new System.Windows.Forms.Button();
             this.PrintWellnessReport = new Microsoft.VisualBasic.PowerPacks.Printing.PrintForm(this.components);
             this.BTNPrint = new System.Windows.Forms.Button();
+            this.rbBMI = new System.Windows.Forms.RadioButton();
+            this.nudDays = new System.Windows.Forms.NumericUpDown();
+            this.lbDays = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.chartUserData)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudDays)).BeginInit();
             this.SuspendLayout();
             // 
             // chartUserData
@@ -142,11 +146,56 @@
             this.BTNPrint.UseVisualStyleBackColor = true;
             this.BTNPrint.Click += new System.EventHandler(this.BTNPrint_Click);
             // 
+            // rbBMI
+            // 
+            this.rbBMI.AutoSize = true;
+            this.rbBMI.Location = new System.Drawing.Point(205, 344);
+            this.rbBMI.Name = "rbBMI";
+            this.rbBMI.Size = new System.Drawing.Size(44, 17);
+            this.rbBMI.TabIndex = 6;
+            this.rbBMI.TabStop = true;
+            this.rbBMI.Text = "BMI";
+            this.rbBMI.UseVisualStyleBackColor = true;
+            // 
+            // nudDays
+            // 
+            this.nudDays.Location = new System.Drawing.Point(545, 344);
+            this.nudDays.Maximum = new decimal(new int[] {
+            30,
+            0,
+            0,
+            0});
+            this.nudDays.Minimum = new decimal(new int[] {
+            7,
+            0,
+            0,
+            0});
+            this.nudDays.Name = "nudDays";
+            this.nudDays.Size = new System.Drawing.Size(44, 20);
+            this.nudDays.TabIndex = 7;
+            this.nudDays.Value = new decimal(new int[] {
+            7,
+            0,
+            0,
+            0});
+            // 
+            // lbDays
+            // 
+            this.lbDays.AutoSize = true;
+            this.lbDays.Location = new System.Drawing.Point(459, 348);
+            this.lbDays.Name = "lbDays";
+            this.lbDays.Size = new System.Drawing.Size(80, 13);
+            this.lbDays.TabIndex = 8;
+            this.lbDays.Text = "Days to Display";
+            // 
             // WellnessReportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(602, 440);
+            this.Controls.Add(this.lbDays);
+            this.Controls.Add(this.nudDays);
+            this.Controls.Add(this.rbBMI);
             this.Controls.Add(this.BTNPrint);
             this.Controls.Add(this.nextButton);
             this.Controls.Add(this.prevButton);
@@ -159,6 +208,7 @@
             this.Text = "ReportForm";
             this.Load += new System.EventHandler(this.WellnessReportForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.chartUserData)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudDays)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -175,5 +225,8 @@
         private System.Windows.Forms.Button nextButton;
         private Microsoft.VisualBasic.PowerPacks.Printing.PrintForm PrintWellnessReport;
         private System.Windows.Forms.Button BTNPrint;
+        private System.Windows.Forms.Label lbDays;
+        private System.Windows.Forms.NumericUpDown nudDays;
+        private System.Windows.Forms.RadioButton rbBMI;
     }
 }

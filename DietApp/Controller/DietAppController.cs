@@ -22,9 +22,16 @@ namespace DietApp.Controller
             return DailyMeasurementsDAL.GetMeasurementByUserTypeDate(userId, measurementTypeId, date);
         }
 
-        public static List<DailyMeasurements> GetUserChartData10Days(int userId, int measurementTypeId, DateTime startDate)
+        /// <summary>
+        /// Gets the users data to populate the yValues, for 10 days.
+        /// </summary>
+        /// <param name="userId">ID of the active user.</param>
+        /// <param name="measurementTypeId">ID of the type of measurement to be displayed.</param>
+        /// <param name="date">The start date chart.</param>
+        /// <returns>A measurements of given user and measurement type on date.</returns>
+        public static List<DailyMeasurements> GetUserChartDataXDays(int userId, int measurementTypeId, DateTime startDate, int toDisplay)
         {
-            return DailyMeasurementsDAL.GetUserChartData10Days(userId, measurementTypeId, startDate);
+            return DailyMeasurementsDAL.GetUserChartDataXDays(userId, measurementTypeId, startDate, toDisplay);
         }
         
         /// <summary>

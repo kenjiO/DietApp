@@ -48,26 +48,66 @@ namespace DietAppTests.DAL
         }
 
         [TestMethod]
-        public void GetUserChartData10Days()
+        public void GetUserChartDataXDays()
         {
             using (TransactionScope transaction = new TransactionScope())
             {
                 // Set Data
                 int userId = 1;
                 int measurementTypeId = 1;
+                int toDisplay = 8;
                 DateTime startDate = Convert.ToDateTime("2016-06-20");
 
                 // Get Measurement
-                List<DailyMeasurements> results = DailyMeasurementsDAL.GetUserChartData10Days(userId, measurementTypeId, startDate);
+                List<DailyMeasurements> results = DailyMeasurementsDAL.GetUserChartDataXDays(userId, measurementTypeId, startDate, toDisplay);
 
                 // Check DailyMeasurements Chart Data
                 Assert.AreEqual(startDate, results[0].Date, "Date at 0 incorrect.");
                 Assert.AreEqual(0, results[0].Measurement, 0, "Measurement at 0 incorrect.");
-                Assert.AreEqual(startDate.AddDays(4), results[4].Date, "Date at 5 incorrect.");
-                Assert.AreEqual(204, results[4].Measurement, 0, "Measurement at 5 incorrect.");
+                Assert.AreEqual(startDate.AddDays(4), results[4].Date, "Date at 4 incorrect.");
+                Assert.AreEqual(204, results[4].Measurement, 0, "Measurement at 4 incorrect.");
+                Assert.AreEqual(startDate.AddDays(7), results[7].Date, "Date at 7 incorrect.");
+                Assert.AreEqual(0, results[7].Measurement, "Measurement at 7 incorrect.");
+                Assert.AreEqual(toDisplay, results.Count, 0, "List an incrroect size.");
+            }
+        }
+
+        [TestMethod]
+        public void GetUserChartDataXDaysNoData()
+        {
+            using (TransactionScope transaction = new TransactionScope())
+            {
+                // Set Data
+                int userId = 1;
+                int measurementTypeId = 1;
+                int toDisplay = 10;
+                DateTime startDate = Convert.ToDateTime("2016-07-22");
+
+                // Get Measurement
+                List<DailyMeasurements> results = DailyMeasurementsDAL.GetUserChartDataXDays(userId, measurementTypeId, startDate, toDisplay);
+
+                // Check DailyMeasurements Chart Data
+                Assert.AreEqual(startDate, results[0].Date, "Date at 0 incorrect.");
+                Assert.AreEqual(0, results[0].Measurement, 0, "Measurement at 0 incorrect.");
+                Assert.AreEqual(startDate.AddDays(1), results[1].Date, "Date at 1 incorrect.");
+                Assert.AreEqual(0, results[1].Measurement, 0, "Measurement at 1 incorrect.");
+                Assert.AreEqual(startDate.AddDays(2), results[2].Date, "Date at 2 incorrect.");
+                Assert.AreEqual(0, results[2].Measurement, 0, "Measurement at 2 incorrect.");
+                Assert.AreEqual(startDate.AddDays(3), results[3].Date, "Date at 3 incorrect.");
+                Assert.AreEqual(0, results[3].Measurement, 0, "Measurement at 3 incorrect.");
+                Assert.AreEqual(startDate.AddDays(4), results[4].Date, "Date at 4 incorrect.");
+                Assert.AreEqual(0, results[4].Measurement, 0, "Measurement at 4 incorrect.");
+                Assert.AreEqual(startDate.AddDays(5), results[5].Date, "Date at 5 incorrect.");
+                Assert.AreEqual(0, results[5].Measurement, 0, "Measurement at 5 incorrect.");
+                Assert.AreEqual(startDate.AddDays(6), results[6].Date, "Date at 6 incorrect.");
+                Assert.AreEqual(0, results[6].Measurement, 0, "Measurement at 6 incorrect.");
+                Assert.AreEqual(startDate.AddDays(7), results[7].Date, "Date at 7 incorrect.");
+                Assert.AreEqual(0, results[7].Measurement, 0, "Measurement at 7 incorrect.");
+                Assert.AreEqual(startDate.AddDays(8), results[8].Date, "Date at 8 incorrect.");
+                Assert.AreEqual(0, results[8].Measurement, 0, "Measurement at 8 incorrect.");
                 Assert.AreEqual(startDate.AddDays(9), results[9].Date, "Date at 9 incorrect.");
                 Assert.AreEqual(0, results[9].Measurement, "Measurement at 9 incorrect.");
-                Assert.AreEqual(10, results.Count, 0, "List an incrroect size.");
+                Assert.AreEqual(toDisplay, results.Count, 0, "List an incrroect size.");
             }
         }
     }

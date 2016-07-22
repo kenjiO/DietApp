@@ -8670,18 +8670,19 @@ SELECT date, userId, measurementTypeId, measurement, dailyMeasurementId FROM dai
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "SELECT        measurement\r\nFROM            dailyMeasurements\r\nWHERE        (userI" +
-                "d = @userId) AND (measurementTypeId = @measurementTypeId) AND (date = @date)";
+            this._commandCollection[1].CommandText = "SELECT date, userId, measurementTypeId, measurement, dailyMeasurementId\r\nFROM   d" +
+                "ailyMeasurements\r\nWHERE userId = @userId\r\n  AND date = @date";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@userId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "userId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@measurementTypeId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "measurementTypeId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@date", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "date", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = "SELECT date, userId, measurementTypeId, measurement, dailyMeasurementId\r\nFROM   d" +
-                "ailyMeasurements\r\nWHERE userId = @userId\r\n  AND date = @date";
+            this._commandCollection[2].CommandText = "SELECT        dailyMeasurementId, date, userId, measurementTypeId, measurement\r\nF" +
+                "ROM          dailyMeasurements\r\nWHERE        (userId = @userId) AND (measurement" +
+                "TypeId = @measurementTypeId) AND (date = @date)";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@userId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "userId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@measurementTypeId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "measurementTypeId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@date", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "date", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
@@ -8714,13 +8715,32 @@ SELECT date, userId, measurementTypeId, measurement, dailyMeasurementId FROM dai
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual DietAppDataSet.dailyMeasurementsFullDataTable GetDataByUserIdAndDate(int userId, string date) {
-            this.Adapter.SelectCommand = this.CommandCollection[2];
+            this.Adapter.SelectCommand = this.CommandCollection[1];
             this.Adapter.SelectCommand.Parameters[0].Value = ((int)(userId));
             if ((date == null)) {
                 throw new global::System.ArgumentNullException("date");
             }
             else {
                 this.Adapter.SelectCommand.Parameters[1].Value = ((string)(date));
+            }
+            DietAppDataSet.dailyMeasurementsFullDataTable dataTable = new DietAppDataSet.dailyMeasurementsFullDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual DietAppDataSet.dailyMeasurementsFullDataTable GetMeasurementByUserTypeDate(int userId, int measurementTypeId, string date) {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(userId));
+            this.Adapter.SelectCommand.Parameters[1].Value = ((int)(measurementTypeId));
+            if ((date == null)) {
+                throw new global::System.ArgumentNullException("date");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[2].Value = ((string)(date));
             }
             DietAppDataSet.dailyMeasurementsFullDataTable dataTable = new DietAppDataSet.dailyMeasurementsFullDataTable();
             this.Adapter.Fill(dataTable);
@@ -8844,42 +8864,6 @@ SELECT date, userId, measurementTypeId, measurement, dailyMeasurementId FROM dai
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(System.DateTime date, int userId, int measurementTypeId, int measurement, System.DateTime Original_date, int Original_userId, int Original_measurementTypeId, int Original_measurement, int Original_dailyMeasurementId) {
             return this.Update(date, userId, measurementTypeId, measurement, Original_date, Original_userId, Original_measurementTypeId, Original_measurement, Original_dailyMeasurementId, Original_dailyMeasurementId);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual global::System.Nullable<int> GerMeasurementByUserTypeDate(int userId, int measurementTypeId, string date) {
-            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[1];
-            command.Parameters[0].Value = ((int)(userId));
-            command.Parameters[1].Value = ((int)(measurementTypeId));
-            if ((date == null)) {
-                throw new global::System.ArgumentNullException("date");
-            }
-            else {
-                command.Parameters[2].Value = ((string)(date));
-            }
-            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
-            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                command.Connection.Open();
-            }
-            object returnValue;
-            try {
-                returnValue = command.ExecuteScalar();
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    command.Connection.Close();
-                }
-            }
-            if (((returnValue == null) 
-                        || (returnValue.GetType() == typeof(global::System.DBNull)))) {
-                return new global::System.Nullable<int>();
-            }
-            else {
-                return new global::System.Nullable<int>(((int)(returnValue)));
-            }
         }
     }
     
