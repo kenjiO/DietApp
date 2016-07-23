@@ -167,6 +167,14 @@ namespace DietApp.View
             Close();
         }
 
+        /// <summary>
+        /// Enable the update button if any data has changed. Disable if no changes.
+        /// </summary>
+        private void enableDisableUpdateButton(object sender, EventArgs e)
+        {
+            updateButton.Enabled = !noUpdatesMade();
+        }
+
         private void updateButton_Click(object sender, EventArgs e)
         {
             updateEntry();
