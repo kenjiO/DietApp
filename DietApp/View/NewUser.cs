@@ -22,7 +22,7 @@ namespace DietApp
         public void saveUser_Click(object sender, System.EventArgs e)
         {
             String userName, password, confirm, firstName, lastName, email;
-            int height, value, weight;
+            int height, value, weight, goalWeight;
 
             userName = usernameBox.Text;
             password = passwordBox.Text;
@@ -30,19 +30,15 @@ namespace DietApp
             firstName = firstNameBox.Text;
             lastName = lastNameBox.Text;
             email = emailBox.Text;
-            Int32.TryParse(weightBox.Text, out value);
-            weight = value;
-            Int32.TryParse(footBox.Text, out value);
-            height = value * 12;
-            Int32.TryParse(inchesBox.Text, out value);
-            height += value;
+            weight = (int)this.nudWeightBox.Value;
+            goalWeight = (int)this.nudGoalWeightBox.Value;
+            height = (int)this.nudFootBox.Value * 12 + (int)this.nudInchesBox.Value; ;
 
             Cursor.Current = Cursors.WaitCursor;
             try
             {
                 if (View_Validator.Blank(usernameBox) || View_Validator.Blank(passwordBox) || View_Validator.Blank(confirmBox) ||
-                    View_Validator.Blank(firstNameBox) || View_Validator.Blank(lastNameBox) || View_Validator.Blank(emailBox) ||
-                    View_Validator.Blank(weightBox) || View_Validator.Blank(footBox) || View_Validator.Blank(inchesBox))
+                    View_Validator.Blank(firstNameBox) || View_Validator.Blank(lastNameBox) || View_Validator.Blank(emailBox))
                 {
                     //Checks for Blank Boxes
                 }
@@ -76,6 +72,7 @@ namespace DietApp
                         lastName = lastName,
                         email = email,
                         initialWeight = weight,
+                        goalWeight = goalWeight,
                         heightInches = height
                     };
                     //Updates the user.

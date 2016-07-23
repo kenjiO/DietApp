@@ -43,13 +43,20 @@
             this.lsatNameLabel = new System.Windows.Forms.Label();
             this.emailLabel = new System.Windows.Forms.Label();
             this.weightLabel = new System.Windows.Forms.Label();
-            this.weightBox = new System.Windows.Forms.TextBox();
             this.heightLabel = new System.Windows.Forms.Label();
-            this.footBox = new System.Windows.Forms.TextBox();
             this.lbLabel = new System.Windows.Forms.Label();
-            this.inchesBox = new System.Windows.Forms.TextBox();
             this.feetLabel = new System.Windows.Forms.Label();
             this.inchesLabel = new System.Windows.Forms.Label();
+            this.lbLabel2 = new System.Windows.Forms.Label();
+            this.goalWeightLabel = new System.Windows.Forms.Label();
+            this.nudInchesBox = new System.Windows.Forms.NumericUpDown();
+            this.nudFootBox = new System.Windows.Forms.NumericUpDown();
+            this.nudGoalWeightBox = new System.Windows.Forms.NumericUpDown();
+            this.nudWeightBox = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.nudInchesBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudFootBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudGoalWeightBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudWeightBox)).BeginInit();
             this.SuspendLayout();
             // 
             // passwordLabel
@@ -216,63 +223,33 @@
             this.weightLabel.TabIndex = 6;
             this.weightLabel.Text = "Weight";
             // 
-            // weightBox
-            // 
-            this.weightBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.weightBox.Location = new System.Drawing.Point(159, 146);
-            this.weightBox.Margin = new System.Windows.Forms.Padding(2);
-            this.weightBox.Name = "weightBox";
-            this.weightBox.Size = new System.Drawing.Size(181, 26);
-            this.weightBox.TabIndex = 7;
-            this.weightBox.Tag = "Weight";
-            // 
             // heightLabel
             // 
             this.heightLabel.AutoSize = true;
             this.heightLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.heightLabel.Location = new System.Drawing.Point(15, 194);
+            this.heightLabel.Location = new System.Drawing.Point(15, 222);
             this.heightLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.heightLabel.Name = "heightLabel";
             this.heightLabel.Size = new System.Drawing.Size(56, 20);
             this.heightLabel.TabIndex = 9;
             this.heightLabel.Text = "Height";
             // 
-            // footBox
-            // 
-            this.footBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.footBox.Location = new System.Drawing.Point(159, 194);
-            this.footBox.Margin = new System.Windows.Forms.Padding(2);
-            this.footBox.Name = "footBox";
-            this.footBox.Size = new System.Drawing.Size(70, 26);
-            this.footBox.TabIndex = 10;
-            this.footBox.Tag = "Height (ft.)";
-            // 
             // lbLabel
             // 
             this.lbLabel.AutoSize = true;
             this.lbLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbLabel.Location = new System.Drawing.Point(349, 150);
+            this.lbLabel.Location = new System.Drawing.Point(346, 150);
             this.lbLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbLabel.Name = "lbLabel";
             this.lbLabel.Size = new System.Drawing.Size(25, 20);
             this.lbLabel.TabIndex = 8;
             this.lbLabel.Text = "lb.";
             // 
-            // inchesBox
-            // 
-            this.inchesBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.inchesBox.Location = new System.Drawing.Point(270, 194);
-            this.inchesBox.Margin = new System.Windows.Forms.Padding(2);
-            this.inchesBox.Name = "inchesBox";
-            this.inchesBox.Size = new System.Drawing.Size(69, 26);
-            this.inchesBox.TabIndex = 12;
-            this.inchesBox.Tag = "Height (in.)";
-            // 
             // feetLabel
             // 
             this.feetLabel.AutoSize = true;
             this.feetLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.feetLabel.Location = new System.Drawing.Point(231, 198);
+            this.feetLabel.Location = new System.Drawing.Point(231, 226);
             this.feetLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.feetLabel.Name = "feetLabel";
             this.feetLabel.Size = new System.Drawing.Size(23, 20);
@@ -283,12 +260,94 @@
             // 
             this.inchesLabel.AutoSize = true;
             this.inchesLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.inchesLabel.Location = new System.Drawing.Point(342, 198);
+            this.inchesLabel.Location = new System.Drawing.Point(342, 226);
             this.inchesLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.inchesLabel.Name = "inchesLabel";
             this.inchesLabel.Size = new System.Drawing.Size(25, 20);
             this.inchesLabel.TabIndex = 13;
             this.inchesLabel.Text = "in.";
+            // 
+            // lbLabel2
+            // 
+            this.lbLabel2.AutoSize = true;
+            this.lbLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbLabel2.Location = new System.Drawing.Point(346, 188);
+            this.lbLabel2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbLabel2.Name = "lbLabel2";
+            this.lbLabel2.Size = new System.Drawing.Size(25, 20);
+            this.lbLabel2.TabIndex = 25;
+            this.lbLabel2.Text = "lb.";
+            // 
+            // goalWeightLabel
+            // 
+            this.goalWeightLabel.AutoSize = true;
+            this.goalWeightLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.goalWeightLabel.Location = new System.Drawing.Point(15, 184);
+            this.goalWeightLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.goalWeightLabel.Name = "goalWeightLabel";
+            this.goalWeightLabel.Size = new System.Drawing.Size(97, 20);
+            this.goalWeightLabel.TabIndex = 23;
+            this.goalWeightLabel.Text = "Goal Weight";
+            // 
+            // nudInchesBox
+            // 
+            this.nudInchesBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nudInchesBox.Location = new System.Drawing.Point(270, 222);
+            this.nudInchesBox.Margin = new System.Windows.Forms.Padding(2);
+            this.nudInchesBox.Maximum = new decimal(new int[] {
+            11,
+            0,
+            0,
+            0});
+            this.nudInchesBox.Name = "nudInchesBox";
+            this.nudInchesBox.Size = new System.Drawing.Size(69, 26);
+            this.nudInchesBox.TabIndex = 12;
+            this.nudInchesBox.Tag = "Height (in.)";
+            // 
+            // nudFootBox
+            // 
+            this.nudFootBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nudFootBox.Location = new System.Drawing.Point(159, 222);
+            this.nudFootBox.Margin = new System.Windows.Forms.Padding(2);
+            this.nudFootBox.Maximum = new decimal(new int[] {
+            8,
+            0,
+            0,
+            0});
+            this.nudFootBox.Name = "nudFootBox";
+            this.nudFootBox.Size = new System.Drawing.Size(70, 26);
+            this.nudFootBox.TabIndex = 10;
+            this.nudFootBox.Tag = "Height (ft.)";
+            // 
+            // nudGoalWeightBox
+            // 
+            this.nudGoalWeightBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nudGoalWeightBox.Location = new System.Drawing.Point(159, 184);
+            this.nudGoalWeightBox.Margin = new System.Windows.Forms.Padding(2);
+            this.nudGoalWeightBox.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.nudGoalWeightBox.Name = "nudGoalWeightBox";
+            this.nudGoalWeightBox.Size = new System.Drawing.Size(181, 26);
+            this.nudGoalWeightBox.TabIndex = 24;
+            this.nudGoalWeightBox.Tag = "Weight";
+            // 
+            // nudWeightBox
+            // 
+            this.nudWeightBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nudWeightBox.Location = new System.Drawing.Point(159, 146);
+            this.nudWeightBox.Margin = new System.Windows.Forms.Padding(2);
+            this.nudWeightBox.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.nudWeightBox.Name = "nudWeightBox";
+            this.nudWeightBox.Size = new System.Drawing.Size(181, 26);
+            this.nudWeightBox.TabIndex = 7;
+            this.nudWeightBox.Tag = "Weight";
             // 
             // NewUser
             // 
@@ -296,15 +355,18 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancelButton;
-            this.ClientSize = new System.Drawing.Size(765, 237);
+            this.ClientSize = new System.Drawing.Size(765, 281);
+            this.Controls.Add(this.nudWeightBox);
+            this.Controls.Add(this.nudGoalWeightBox);
+            this.Controls.Add(this.nudFootBox);
+            this.Controls.Add(this.nudInchesBox);
+            this.Controls.Add(this.lbLabel2);
+            this.Controls.Add(this.goalWeightLabel);
             this.Controls.Add(this.inchesLabel);
             this.Controls.Add(this.feetLabel);
-            this.Controls.Add(this.inchesBox);
             this.Controls.Add(this.lbLabel);
             this.Controls.Add(this.heightLabel);
-            this.Controls.Add(this.footBox);
             this.Controls.Add(this.weightLabel);
-            this.Controls.Add(this.weightBox);
             this.Controls.Add(this.emailLabel);
             this.Controls.Add(this.lsatNameLabel);
             this.Controls.Add(this.firstNameLabel);
@@ -322,6 +384,10 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "NewUser";
             this.Text = "Health Trends : New User";
+            ((System.ComponentModel.ISupportInitialize)(this.nudInchesBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudFootBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudGoalWeightBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudWeightBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -344,12 +410,15 @@
         private System.Windows.Forms.Label lsatNameLabel;
         private System.Windows.Forms.Label emailLabel;
         private System.Windows.Forms.Label weightLabel;
-        private System.Windows.Forms.TextBox weightBox;
         private System.Windows.Forms.Label heightLabel;
-        private System.Windows.Forms.TextBox footBox;
         private System.Windows.Forms.Label lbLabel;
-        private System.Windows.Forms.TextBox inchesBox;
         private System.Windows.Forms.Label feetLabel;
         private System.Windows.Forms.Label inchesLabel;
+        private System.Windows.Forms.Label lbLabel2;
+        private System.Windows.Forms.Label goalWeightLabel;
+        private System.Windows.Forms.NumericUpDown nudInchesBox;
+        private System.Windows.Forms.NumericUpDown nudFootBox;
+        private System.Windows.Forms.NumericUpDown nudGoalWeightBox;
+        private System.Windows.Forms.NumericUpDown nudWeightBox;
     }
 }
