@@ -84,7 +84,7 @@ namespace DietApp.View
                     string day = reportStartDate.AddDays(i).ToString("MM/dd");
                     if ((dataPoints.Count > 0) && dataPoints[i].Date.ToString("MM/dd").Equals(day))
                     {
-                        day = day + "\n\n" + dataPoints[0].Calories + "\ncalories";
+                        day = day + "\n\n" + dataPoints[i].Calories + "\ncalories";
                         this.chart1.Series["Fat"].Points.AddXY(day, dataPoints[i].Fat);
                         this.chart1.Series["Protein"].Points.AddXY(day, dataPoints[i].Protein);
                         this.chart1.Series["Carbohydrates"].Points.AddXY(day, dataPoints[i].Carbohydrates);
