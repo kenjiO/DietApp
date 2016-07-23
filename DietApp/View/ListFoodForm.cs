@@ -72,6 +72,7 @@ namespace DietApp.View
                 MessageBox.Show(ex.Message, ex.GetType().ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             bindingSource1.DataSource = this.currentDayEntries;
+            updateCalorieGoalMessage();
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -140,6 +141,37 @@ namespace DietApp.View
             {
                 refreshData();
             }
+        }
+
+        private void updateCalorieGoalMessage()
+        {
+            int goal = this.currentUser.dailyCalorieGoal;
+            int total = getCurrentDayTotalCalories();
+            int difference = goal - total;
+
+            calorieGoalLabel.Text = "Daily Goal: " + goal + " calories";
+            totalCaloriesLabel.Text = "Calories This Day: " + total;
+            if (difference >= 0)
+            {
+                caloriesUntilGoalLabel.Text = difference + " Under Goal";
+                caloriesUntilGoalLabel.ForeColor = System.Drawing.Color.Green;
+            }
+            else
+            {
+                caloriesUntilGoalLabel.Text = (-1 * difference) + " Over Goal";
+                caloriesUntilGoalLabel.ForeColor = System.Drawing.Color.Red;
+            }
+        }
+
+        private int getCurrentDayTotalCalories()
+        {
+            int total = 0;
+            foreach (FoodEntry entry in this.currentDayEntries)
+            {
+                if (entry.Calories.HasValue)
+                    total += entry.Calories.Value;
+            }
+            return total;
         }
     }
 }

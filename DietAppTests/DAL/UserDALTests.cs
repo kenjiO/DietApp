@@ -180,5 +180,76 @@ namespace DietAppTests.DAL
                 Assert.AreEqual(originalUsers.getFullName(), testUsers.getFullName(), "OriginalUser's fullName not " + originalUsers.getFullName() + ".");
             }
         }
+
+        /// <summary>
+        /// Test that the daily calorie goal is 0 if user is not updated
+        /// </summary>
+        [TestMethod]
+        public void TestDailyCalorieGoalIs0ForNewUser()
+        {
+            using (TransactionScope transaction = new TransactionScope())
+            {
+                string userName = "TestNewUserCalorieGoal test user";
+                string password = "password";
+
+                // Create New User
+                int userId = UsersDAL.addNewUser(userName, password);
+                Users user = UsersDAL.getUserData(userId);
+                Assert.AreEqual(0, user.dailyCalorieGoal);
+            }
+        }
+
+        /// <summary>
+        /// Test that the daily calorie goal can be set when a user is first created
+        /// </summary>
+        [TestMethod]
+        public void TestUpdatingTheDailyCalorieGoalOnAUserWhoHasNotSetItYet()
+        {
+            using (TransactionScope transaction = new TransactionScope())
+            {
+                string userName = "TestUpdateDailyCalorieGoal test user";
+                string password = "password";
+
+                // Create New User
+                int userId = UsersDAL.addNewUser(userName, password);
+
+                Users oldUser = UsersDAL.getUserData(userId);
+                Users newUser = UsersDAL.getUserData(userId);
+                newUser.dailyCalorieGoal = 2500;
+                UsersDAL.updateUsers(oldUser, newUser);
+
+                Users updatedUser = UsersDAL.getUserData(userId);
+                Assert.AreEqual(2500, updatedUser.dailyCalorieGoal);
+            }
+        }
+
+        /// <summary>
+        /// Test that the daily calorie goal can be updated after being set the first time
+        /// </summary>
+        [TestMethod]
+        public void TestUpdatingTheDailyCalorieGoalOnAUserWhoHasAlreadySetIt()
+        {
+            using (TransactionScope transaction = new TransactionScope())
+            {
+                string userName = "TestUpdateDailyCalorieGoal test user";
+                string password = "password";
+
+                // Create New User
+                int userId = UsersDAL.addNewUser(userName, password);
+
+                Users oldUser1 = UsersDAL.getUserData(userId);
+                Users newUser1 = UsersDAL.getUserData(userId);
+                newUser1.dailyCalorieGoal = 2500;
+                UsersDAL.updateUsers(oldUser1, newUser1);
+
+                Users oldUser2 = UsersDAL.getUserData(userId);
+                Users newUser2 = UsersDAL.getUserData(userId);
+                newUser2.dailyCalorieGoal = 3000;
+                UsersDAL.updateUsers(oldUser2, newUser2);
+                
+                Users updatedUser = UsersDAL.getUserData(userId);
+                Assert.AreEqual(3000, updatedUser.dailyCalorieGoal);
+            }
+        }
     }
 }
