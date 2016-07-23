@@ -11,11 +11,11 @@ namespace DietApp.View
     using System;
     using System.Collections.Generic;
     using System.Drawing;
+    using System.Drawing.Printing;
     using System.Windows.Forms;
     using System.Windows.Forms.DataVisualization.Charting;
     using DietApp.Controller;
     using DietApp.Model;
-    using System.Drawing.Printing;
 
     /// <summary>
     /// Form for display of User's Wellness Reports.
@@ -363,7 +363,42 @@ namespace DietApp.View
         /// <param name="e">Click on object.</param>
         private void BTNPrint_Click(object sender, EventArgs e)
         {
-            this.chartUserData.Printing.PrintPreview();
+            var pd = new System.Drawing.Printing.PrintDocument();
+            pd.PrintPage += new PrintPageEventHandler(this.PrintChart);
+
+            PrintDialog pdi = new PrintDialog();
+            pdi.Document = pd;
+            if (pdi.ShowDialog() == DialogResult.OK)
+            {
+                pdi.Document.Print();
+            }
+        }
+
+        /// <summary>
+        /// Sets up the chart to print.
+        /// </summary>
+        /// <param name="sender">Sending object.</param>
+        /// <param name="ev">Click on object.</param>
+        private void PrintChart(object sender, PrintPageEventArgs ev)
+        {
+            using (var f = new System.Drawing.Font("Arial", 10))
+            {
+                var size = ev.Graphics.MeasureString(Text, f);
+                ev.Graphics.DrawString("Whatever text you want", f, Brushes.Black, ev.PageBounds.X + ((ev.PageBounds.Width - size.Width) / 2), ev.PageBounds.Y);
+            }
+
+            // Note, the chart printing code wants to print in pixels.
+            Rectangle marginBounds = ev.MarginBounds;
+            if (ev.Graphics.PageUnit != GraphicsUnit.Pixel)
+            {
+                ev.Graphics.PageUnit = GraphicsUnit.Pixel;
+                marginBounds.X = (int)(marginBounds.X * (ev.Graphics.DpiX / 100f));
+                marginBounds.Y = (int)(marginBounds.Y * (ev.Graphics.DpiY / 100f));
+                marginBounds.Width = (int)(marginBounds.Width * (ev.Graphics.DpiX / 100f));
+                marginBounds.Height = (int)(marginBounds.Height * (ev.Graphics.DpiY / 100f));
+            }
+
+            this.chartUserData.Printing.PrintPaint(ev.Graphics, marginBounds);
         }
     }
 }
