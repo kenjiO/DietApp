@@ -41,6 +41,7 @@
             this.heartRateUpDown = new System.Windows.Forms.NumericUpDown();
             this.weightUpDown = new System.Windows.Forms.NumericUpDown();
             this.saveButton = new System.Windows.Forms.Button();
+            this.copyButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.systolicUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.diastolicUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.heartRateUpDown)).BeginInit();
@@ -116,6 +117,7 @@
             this.systolicUpDown.Name = "systolicUpDown";
             this.systolicUpDown.Size = new System.Drawing.Size(120, 35);
             this.systolicUpDown.TabIndex = 78;
+            this.systolicUpDown.ValueChanged += new System.EventHandler(this.EnableSaveButton);
             // 
             // diastolicUpDown
             // 
@@ -129,6 +131,7 @@
             this.diastolicUpDown.Name = "diastolicUpDown";
             this.diastolicUpDown.Size = new System.Drawing.Size(120, 35);
             this.diastolicUpDown.TabIndex = 79;
+            this.diastolicUpDown.ValueChanged += new System.EventHandler(this.EnableSaveButton);
             // 
             // slantLabel
             // 
@@ -161,6 +164,7 @@
             this.heartRateUpDown.Name = "heartRateUpDown";
             this.heartRateUpDown.Size = new System.Drawing.Size(120, 35);
             this.heartRateUpDown.TabIndex = 82;
+            this.heartRateUpDown.ValueChanged += new System.EventHandler(this.EnableSaveButton);
             // 
             // weightUpDown
             // 
@@ -174,9 +178,11 @@
             this.weightUpDown.Name = "weightUpDown";
             this.weightUpDown.Size = new System.Drawing.Size(120, 35);
             this.weightUpDown.TabIndex = 83;
+            this.weightUpDown.ValueChanged += new System.EventHandler(this.EnableSaveButton);
             // 
             // saveButton
             // 
+            this.saveButton.Enabled = false;
             this.saveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.saveButton.Location = new System.Drawing.Point(412, 237);
             this.saveButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -187,12 +193,25 @@
             this.saveButton.UseVisualStyleBackColor = true;
             this.saveButton.Click += new System.EventHandler(this.WellnessInfo_Click);
             // 
+            // copyButton
+            // 
+            this.copyButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.copyButton.Location = new System.Drawing.Point(283, 237);
+            this.copyButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.copyButton.Name = "copyButton";
+            this.copyButton.Size = new System.Drawing.Size(120, 48);
+            this.copyButton.TabIndex = 85;
+            this.copyButton.Text = "Copy Previous Entry";
+            this.copyButton.UseVisualStyleBackColor = true;
+            this.copyButton.Click += new System.EventHandler(this.copyButton_Click);
+            // 
             // WellnessTrackingForm
             // 
             this.AcceptButton = this.saveButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(634, 402);
+            this.Controls.Add(this.copyButton);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.weightUpDown);
             this.Controls.Add(this.heartRateUpDown);
@@ -233,5 +252,6 @@
         private System.Windows.Forms.NumericUpDown heartRateUpDown;
         private System.Windows.Forms.NumericUpDown weightUpDown;
         private System.Windows.Forms.Button saveButton;
+        private System.Windows.Forms.Button copyButton;
     }
 }

@@ -171,8 +171,81 @@ namespace DietApp.DAL
             return bmiProgress;
         }
 
+        /// <summary>
+        /// Retrieves the user's wellness data from their last entry.
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        public static Wellness lastWellnessData(int userId)
+        {
+            int number;
+            var idNumber = "";
+            var valueName = "";
+            var wellnessInfo = new Wellness
+            {
+                userID = userId,
+            };
+            //Get data table.
+            using (var wellnessDataTable = new DietAppDataSet())
+            {
+                //Get dataset for name and number.
+                using (var wellnessIDDataSet = new DietAppDataSetTableAdapters.measurementTypesTableAdapter()) 
+                {
+                    //For each row in the name/number dataset, give me the name and id for each value type.
+                    foreach (DataRow row in wellnessIDDataSet.GetData().Rows)
+                    {
+                        idNumber = row["measurementTypeId"].ToString();
+                        valueName = row["measurementTypeName"].ToString();
+                        //Verifies the id is a number.
+                        var result = Int32.TryParse(idNumber, out number);
+                        if (result)
+                        {
+                            result = setlastWellnessValues(number, userId, result, valueName, wellnessInfo);
+                        }
+                    }
+                    return wellnessInfo;
+                }
+            }
+        }
+
+
         //Helper Methods//
 
+
+        /// <summary>
+        /// Gets the last measurement value for each data element inside the values dataset for the given user.
+        /// Referenced YouTube and http://stackoverflow.com/questions/7718792/can-i-set-a-property-value-with-reflection
+        /// </summary>
+        /// <param name="number"></param>
+        /// <param name="date"></param>
+        /// <param name="userId"></param>
+        /// <param name="result"></param>
+        /// <param name="valueName"></param>
+        /// <param name="wellnessInfo"></param>
+        /// <returns></returns>
+        private static Boolean setlastWellnessValues(int number, int userId, Boolean result, string valueName, Wellness wellnessInfo)
+        {
+            using (var wellnessDataTable = new DietAppDataSet())
+            {
+                //Get dataset for values.
+                using (var wellnessDataSet = new DietAppDataSetTableAdapters.dailyMeasurementsLastTableAdapter())
+                {
+                    foreach (DataRow row0 in wellnessDataSet.GetData(number, userId).Rows)
+                    {
+                        //Verifies the measurement is a number.
+                        result = Int32.TryParse(row0["measurement"].ToString(), out number);
+
+                        if (result)
+                        {
+                            //Sets the type name of a specific wellness object equal to the measurement value.
+                            var property = typeof(Wellness).GetProperty(valueName);
+                            property.SetValue(wellnessInfo, number, null);
+                        }
+                    }
+                }
+            }
+            return result;
+        }
         /// <summary>
         /// Gets the measurement value for each data element inside the values dataset.
         /// Referenced YouTube and http://stackoverflow.com/questions/7718792/can-i-set-a-property-value-with-reflection

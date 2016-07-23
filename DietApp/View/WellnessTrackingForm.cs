@@ -92,6 +92,7 @@ namespace DietApp.View
             }
         }
 
+      
         /// <summary>
         /// Checks to see if wellness data matches data in DB.
         /// </summary>
@@ -112,6 +113,31 @@ namespace DietApp.View
             {
                 //Update Wellness Info
                 this.updateConfirm();
+            }
+        }
+
+        /// <summary>
+        /// Checks to see if info has been entered on the page.  If so, enables save button.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void EnableSaveButton(object sender, System.EventArgs e)
+        {
+            var userWellnessUpdate = new Wellness
+            {
+                diastolicBP = Int32.Parse(diastolicUpDown.Value.ToString()),
+                systolicBP = Int32.Parse(systolicUpDown.Value.ToString()),
+                weight = Int32.Parse(weightUpDown.Value.ToString()),
+                heartRate = Int32.Parse(heartRateUpDown.Value.ToString()),
+                date = dateTimePicker.Value,
+                userID = this.theUser.userId
+            };
+            if (!View_Validator.wellnessMatchDB(userWellnessUpdate))
+            {
+                this.saveButton.Enabled = true;
+            } else
+            {
+                this.saveButton.Enabled = false;
             }
         }
 
@@ -186,24 +212,51 @@ namespace DietApp.View
                 userID = this.theUser.userId
             };
 
-            Cursor.Current = Cursors.WaitCursor;
-            try
+            if (!View_Validator.ValidateWellness(userWellnessUpdate) || userWellnessUpdate.weight == 0)
             {
-                DietAppController.updateDailyWellnessData(userWellnessUpdate, this.userWellness);
-                this.userWellness = userWellnessUpdate;
-                this.Refresh();
+                MessageBox.Show("Please enter valid data for all fields.",
+                    "Wellness Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch (SqlException ex)
+            else
             {
+                Cursor.Current = Cursors.WaitCursor;
+                try
+                {
+                    DietAppController.updateDailyWellnessData(userWellnessUpdate, this.userWellness);
+                    this.userWellness = userWellnessUpdate;
+                    this.Refresh();
+                }
+                catch (SqlException ex)
+                {
+                    Cursor.Current = Cursors.Default;
+                    MessageBox.Show(ex.Message, ex.GetType().ToString());
+                }
+                catch (Exception ex)
+                {
+                    Cursor.Current = Cursors.Default;
+                    MessageBox.Show(ex.Message, ex.GetType().ToString());
+                }
                 Cursor.Current = Cursors.Default;
-                MessageBox.Show(ex.Message, ex.GetType().ToString());
             }
-            catch (Exception ex)
+        }
+
+        /// <summary>
+        /// Copies data from the last entry and populates the boxes on the form.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void copyButton_Click(object sender, EventArgs e)
+        {
+            var previousWellness = DietAppController.lastWellnessData(this.theUser.userId);
+
+            if (previousWellness.userID != 0 && previousWellness != null)
             {
-                Cursor.Current = Cursors.Default;
-                MessageBox.Show(ex.Message, ex.GetType().ToString());
+                diastolicUpDown.Value = previousWellness.diastolicBP;
+                systolicUpDown.Value = previousWellness.systolicBP;
+                weightUpDown.Value = previousWellness.weight;
+                heartRateUpDown.Value = previousWellness.heartRate;
+                dateTimePicker.Value =this.userWellness.date;
             }
-            Cursor.Current = Cursors.Default;
         }
     }
 }
