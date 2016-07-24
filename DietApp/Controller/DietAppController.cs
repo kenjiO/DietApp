@@ -322,6 +322,11 @@ namespace DietApp.Controller
                 }
             }
         }
+
+        public static List<DailyNutrition> GetXDayNutrientTotals(int userId, DateTime startDate, int days)
+        {
+            return FoodReportDAL.GetXDayNutritionReport(userId, startDate, days);
+        }
     }
 
     /// <summary>

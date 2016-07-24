@@ -285,7 +285,7 @@ namespace DietApp
         /// <param name="e">Click on object.</param>
         private void NutrientReportToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            NutrientReportForm nutrientReportForm = new NutrientReportForm(this.theUser);
+            NutrientReportForm nutrientReportForm = new NutrientReportForm(this.theUser.userId);
             nutrientReportForm.StartPosition = FormStartPosition.CenterScreen;
             nutrientReportForm.ShowDialog();
         }

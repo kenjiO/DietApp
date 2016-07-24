@@ -31,7 +31,6 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.chartUserData = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.btnLoad = new System.Windows.Forms.Button();
             this.rbWeight = new System.Windows.Forms.RadioButton();
             this.rbHeartRate = new System.Windows.Forms.RadioButton();
             this.rbBP = new System.Windows.Forms.RadioButton();
@@ -61,19 +60,10 @@
             this.chartUserData.TabIndex = 0;
             this.chartUserData.Text = "chart1";
             // 
-            // btnLoad
-            // 
-            this.btnLoad.Location = new System.Drawing.Point(258, 367);
-            this.btnLoad.Name = "btnLoad";
-            this.btnLoad.Size = new System.Drawing.Size(117, 23);
-            this.btnLoad.TabIndex = 1;
-            this.btnLoad.Text = "Load Data";
-            this.btnLoad.UseVisualStyleBackColor = true;
-            this.btnLoad.Click += new System.EventHandler(this.BTNLoad_Click);
-            // 
             // rbWeight
             // 
             this.rbWeight.AutoSize = true;
+            this.rbWeight.Checked = true;
             this.rbWeight.Location = new System.Drawing.Point(12, 344);
             this.rbWeight.Name = "rbWeight";
             this.rbWeight.Size = new System.Drawing.Size(59, 17);
@@ -81,6 +71,7 @@
             this.rbWeight.TabStop = true;
             this.rbWeight.Text = "Weight";
             this.rbWeight.UseVisualStyleBackColor = true;
+            this.rbWeight.Click += new System.EventHandler(this.WellnessReportForm_Load);
             // 
             // rbHeartRate
             // 
@@ -92,6 +83,7 @@
             this.rbHeartRate.TabStop = true;
             this.rbHeartRate.Text = "Heart Rate";
             this.rbHeartRate.UseVisualStyleBackColor = true;
+            this.rbHeartRate.Click += new System.EventHandler(this.WellnessReportForm_Load);
             // 
             // rbBP
             // 
@@ -103,6 +95,7 @@
             this.rbBP.TabStop = true;
             this.rbBP.Text = "BP";
             this.rbBP.UseVisualStyleBackColor = true;
+            this.rbBP.Click += new System.EventHandler(this.WellnessReportForm_Load);
             // 
             // prevButton
             // 
@@ -127,7 +120,7 @@
             // 
             // BTNPrint
             // 
-            this.BTNPrint.Location = new System.Drawing.Point(381, 367);
+            this.BTNPrint.Location = new System.Drawing.Point(472, 364);
             this.BTNPrint.Name = "BTNPrint";
             this.BTNPrint.Size = new System.Drawing.Size(117, 23);
             this.BTNPrint.TabIndex = 5;
@@ -145,6 +138,7 @@
             this.rbBMI.TabStop = true;
             this.rbBMI.Text = "BMI";
             this.rbBMI.UseVisualStyleBackColor = true;
+            this.rbBMI.Click += new System.EventHandler(this.WellnessReportForm_Load);
             // 
             // nudDays
             // 
@@ -163,10 +157,11 @@
             this.nudDays.Size = new System.Drawing.Size(44, 20);
             this.nudDays.TabIndex = 7;
             this.nudDays.Value = new decimal(new int[] {
-            7,
+            10,
             0,
             0,
             0});
+            this.nudDays.ValueChanged += new System.EventHandler(this.WellnessReportForm_Load);
             // 
             // lbDays
             // 
@@ -191,7 +186,6 @@
             this.Controls.Add(this.rbBP);
             this.Controls.Add(this.rbHeartRate);
             this.Controls.Add(this.rbWeight);
-            this.Controls.Add(this.btnLoad);
             this.Controls.Add(this.chartUserData);
             this.Name = "WellnessReportForm";
             this.Text = "ReportForm";
@@ -206,7 +200,6 @@
         #endregion
 
         private System.Windows.Forms.DataVisualization.Charting.Chart chartUserData;
-        private System.Windows.Forms.Button btnLoad;
         private System.Windows.Forms.RadioButton rbWeight;
         private System.Windows.Forms.RadioButton rbHeartRate;
         private System.Windows.Forms.RadioButton rbBP;

@@ -51,11 +51,23 @@ namespace DietApp.View
                 this.Load += (s, e) => this.Close();
             }
 
+            this.rbWeight = new RadioButton();
+            this.rbWeight.Checked = true;
+            this.rbHeartRate = new RadioButton();
+            this.rbHeartRate.Checked = false;
+            this.rbBP = new RadioButton();
+            this.rbBP.Checked = false;
+            this.rbBMI = new RadioButton();
+            this.rbBMI.Checked = false;
             this.reportPage = 1;
             this.theUserId = currentUserId;
             this.date = new DateTime();
             this.nudDays = new NumericUpDown();
             this.nudDays.Value = 10;
+            this.prevButton = new Button();
+            this.prevButton.Text = "Prev " + this.nudDays.Value + " Days";
+            this.nextButton = new Button();
+            this.nextButton.Text = "Next " + this.nudDays.Value + " Days";
             this.InitializeComponent();
         }
 
@@ -66,24 +78,18 @@ namespace DietApp.View
         /// <param name="e">Click on object.</param>
         public void WellnessReportForm_Load(object sender, EventArgs e)
         {
-            rbWeight.Checked = true;
-            rbHeartRate.Checked = false;
-            rbBP.Checked = false;
-            rbBMI.Checked = false;
-            this.BTNLoad_Click(sender, e);
+            this.RunReport();
         }
 
         /// <summary>
-        /// Button that loads chart data.
+        /// Runs the report chart data.
         /// </summary>
-        /// <param name="sender">Sending object.</param>
-        /// <param name="e">Click on object.</param>
-        private void BTNLoad_Click(object sender, EventArgs e)
+        private void RunReport()
         {
             this.chartUserData.Legends.Clear();
             this.chartUserData.Series.Clear();
 
-            if (rbWeight.Checked == true)
+            if (this.rbWeight.Checked == true)
             {
                 int type = 1;
                 string title = DietAppController.GetType(type).MeasurementTypeName;
@@ -93,7 +99,7 @@ namespace DietApp.View
                 this.ChartAreas(this.minValue, this.maxValue, title);
                 this.ChartTitle(title);
             }
-            else if (rbHeartRate.Checked == true)
+            else if (this.rbHeartRate.Checked == true)
             {
                 int type = 2;
                 string title = DietAppController.GetType(type).MeasurementTypeName;
@@ -103,7 +109,7 @@ namespace DietApp.View
                 this.ChartAreas(this.minValue, this.maxValue, title);
                 this.ChartTitle(title);
             }
-            else if (rbBP.Checked == true)
+            else if (this.rbBP.Checked == true)
             {
                 string title = "Blood Pressure";
                 int type = 3;
@@ -118,7 +124,7 @@ namespace DietApp.View
                 this.ChartAreas(this.minValue, localMax, title);
                 this.ChartTitle(title);                
             }
-            else if (rbBMI.Checked == true)
+            else if (this.rbBMI.Checked == true)
             {
                 int type = 1;
                 string title = "BMI";
@@ -131,16 +137,18 @@ namespace DietApp.View
             else
             {
                 int type = 1;
-                string title = string.Empty;
-                string name = string.Empty;
-                this.ChartTitle(title);
-                this.ChartSeries(type, name, System.Drawing.Color.Black);
-                this.ChartAreas(this.minValue, this.maxValue, title);
+                string title = DietAppController.GetType(type).MeasurementTypeName;
+                string name = DietAppController.GetType(type).MeasurementTypeName + " (" + DietAppController.GetType(type).MeasurementDefaultUnit + ")";
+                this.ChartSeries(type, name, System.Drawing.Color.Blue);
                 this.ChartLegends(name);
-                this.chartUserData.Invalidate();
+                this.ChartAreas(this.minValue, this.maxValue, title);
+                this.ChartTitle(title);
             }
 
             this.chartUserData.Invalidate();
+
+            this.prevButton.Text = "Prev " + this.nudDays.Value + " Days";
+            this.nextButton.Text = "Next " + this.nudDays.Value + " Days";
         }
 
         /// <summary>
@@ -217,8 +225,8 @@ namespace DietApp.View
         /// Sets up the look and style of the user's chart, Series.
         /// </summary>
         /// <param name="type">The type of the measurement.</param>
-        /// /// <param name="name">The name of the data.</param>
-        /// /// <param name="color">The color of the line.</param>
+        /// <param name="name">The name of the data.</param>
+        /// <param name="color">The color of the line.</param>
         private void ChartSeries(int type, string name, Color color)
         {
             this.maxValue = 0;
@@ -231,7 +239,10 @@ namespace DietApp.View
                 BorderWidth = 5,
                 IsVisibleInLegend = true,
                 IsXValueIndexed = true,
-                ChartType = SeriesChartType.Column,
+                
+                // Changed chart type from Column to line
+                // ChartType = SeriesChartType.Column,
+                ChartType = SeriesChartType.Line,
             };
 
             int toDisplay = (int)this.nudDays.Value;
@@ -287,7 +298,10 @@ namespace DietApp.View
                 BorderWidth = 5,
                 IsVisibleInLegend = true,
                 IsXValueIndexed = true,
-                ChartType = SeriesChartType.Column,
+
+                // Changed chart type from Column to line
+                // ChartType = SeriesChartType.Column,
+                ChartType = SeriesChartType.Line,
             };
 
             int toDisplay = (int)this.nudDays.Value;
@@ -337,7 +351,7 @@ namespace DietApp.View
             this.reportPage++;
             nextButton.Enabled = true;
 
-            this.BTNLoad_Click(sender, e);
+            this.RunReport();
         }
 
         /// <summary>
@@ -353,7 +367,7 @@ namespace DietApp.View
                 nextButton.Enabled = false;
             }
 
-            this.BTNLoad_Click(sender, e);
+            this.RunReport();
         }
 
         /// <summary>
