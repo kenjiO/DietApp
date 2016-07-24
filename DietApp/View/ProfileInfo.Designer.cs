@@ -253,10 +253,20 @@
             0,
             0,
             0});
+            this.nudInitialWeight.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.nudInitialWeight.Name = "nudInitialWeight";
             this.nudInitialWeight.Size = new System.Drawing.Size(131, 26);
             this.nudInitialWeight.TabIndex = 8;
             this.nudInitialWeight.Tag = "Weight";
+            this.nudInitialWeight.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.nudInitialWeight.ValueChanged += new System.EventHandler(this.EnableUpdateButton);
             // 
             // nudGoalWeight
@@ -269,10 +279,20 @@
             0,
             0,
             0});
+            this.nudGoalWeight.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.nudGoalWeight.Name = "nudGoalWeight";
             this.nudGoalWeight.Size = new System.Drawing.Size(131, 26);
             this.nudGoalWeight.TabIndex = 13;
             this.nudGoalWeight.Tag = "GoalWeight";
+            this.nudGoalWeight.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.nudGoalWeight.TextChanged += new System.EventHandler(this.EnableUpdateButton);
             // 
             // nudFootBox
@@ -285,10 +305,20 @@
             0,
             0,
             0});
+            this.nudFootBox.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.nudFootBox.Name = "nudFootBox";
             this.nudFootBox.Size = new System.Drawing.Size(70, 26);
             this.nudFootBox.TabIndex = 16;
             this.nudFootBox.Tag = "Height (ft.)";
+            this.nudFootBox.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.nudFootBox.TextChanged += new System.EventHandler(this.EnableUpdateButton);
             // 
             // nudInchesBox
