@@ -113,7 +113,7 @@
             this.cancelButton.TabIndex = 21;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
-            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
+            this.cancelButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
             // saveButton
             // 
@@ -125,7 +125,7 @@
             this.saveButton.TabIndex = 20;
             this.saveButton.Text = "Save";
             this.saveButton.UseVisualStyleBackColor = true;
-            this.saveButton.Click += new System.EventHandler(this.saveUser_Click);
+            this.saveButton.Click += new System.EventHandler(this.SaveUser_Click);
             // 
             // confirmLabel
             // 
@@ -314,10 +314,20 @@
             0,
             0,
             0});
+            this.nudFootBox.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.nudFootBox.Name = "nudFootBox";
             this.nudFootBox.Size = new System.Drawing.Size(70, 26);
             this.nudFootBox.TabIndex = 10;
             this.nudFootBox.Tag = "Height (ft.)";
+            this.nudFootBox.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // nudGoalWeightBox
             // 
@@ -329,10 +339,20 @@
             0,
             0,
             0});
+            this.nudGoalWeightBox.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.nudGoalWeightBox.Name = "nudGoalWeightBox";
             this.nudGoalWeightBox.Size = new System.Drawing.Size(181, 26);
             this.nudGoalWeightBox.TabIndex = 24;
             this.nudGoalWeightBox.Tag = "Weight";
+            this.nudGoalWeightBox.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // nudWeightBox
             // 
@@ -344,10 +364,20 @@
             0,
             0,
             0});
+            this.nudWeightBox.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.nudWeightBox.Name = "nudWeightBox";
             this.nudWeightBox.Size = new System.Drawing.Size(181, 26);
             this.nudWeightBox.TabIndex = 7;
             this.nudWeightBox.Tag = "Weight";
+            this.nudWeightBox.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // NewUser
             // 

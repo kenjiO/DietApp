@@ -39,7 +39,6 @@
             this.rbBP = new System.Windows.Forms.RadioButton();
             this.prevButton = new System.Windows.Forms.Button();
             this.nextButton = new System.Windows.Forms.Button();
-            this.PrintWellnessReport = new Microsoft.VisualBasic.PowerPacks.Printing.PrintForm(this.components);
             this.BTNPrint = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.chartUserData)).BeginInit();
             this.SuspendLayout();
@@ -124,14 +123,6 @@
             this.nextButton.UseVisualStyleBackColor = true;
             this.nextButton.Click += new System.EventHandler(this.NextButton_Click);
             // 
-            // PrintWellnessReport
-            // 
-            this.PrintWellnessReport.DocumentName = "document";
-            this.PrintWellnessReport.Form = this;
-            this.PrintWellnessReport.PrintAction = System.Drawing.Printing.PrintAction.PrintToPrinter;
-            this.PrintWellnessReport.PrinterSettings = ((System.Drawing.Printing.PrinterSettings)(resources.GetObject("PrintWellnessReport.PrinterSettings")));
-            this.PrintWellnessReport.PrintFileName = null;
-            // 
             // BTNPrint
             // 
             this.BTNPrint.Location = new System.Drawing.Point(381, 367);
@@ -173,7 +164,6 @@
         private System.Windows.Forms.RadioButton rbBP;
         private System.Windows.Forms.Button prevButton;
         private System.Windows.Forms.Button nextButton;
-        private Microsoft.VisualBasic.PowerPacks.Printing.PrintForm PrintWellnessReport;
         private System.Windows.Forms.Button BTNPrint;
     }
 }

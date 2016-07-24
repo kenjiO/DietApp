@@ -244,14 +244,13 @@ namespace DietApp.View
                     {
                         this.minValue = Convert.ToInt32(measurements.Measurement * 0.9);
                     }
-
                 }
             }
             else
             {
                 for (int i = 0; i < 10; i++)
                 {
-                    string day = date.AddDays(i).ToShortDateString() + "*No Data";
+                    string day = this.date.AddDays(i).ToShortDateString() + "*No Data";
                     series1.Points.AddXY(day, 0);
                 }
 
@@ -296,8 +295,6 @@ namespace DietApp.View
         /// <param name="e">Click on object.</param>
         private void BTNPrint_Click(object sender, EventArgs e)
         {
-            this.PrintWellnessReport.PrintAction = System.Drawing.Printing.PrintAction.PrintToPreview;
-            this.PrintWellnessReport.Print();
         }
     }
 }
