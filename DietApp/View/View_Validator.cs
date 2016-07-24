@@ -11,6 +11,7 @@
 namespace DietApp.View
 {
     using System;
+    using System.ComponentModel.DataAnnotations;
     using System.Windows.Forms;
     using DietApp.Controller;
     using DietApp.Model;
@@ -19,7 +20,7 @@ namespace DietApp.View
     /// Validator of standard view information
     /// </summary>
     internal class View_Validator
-    {
+    {        
         /// <summary>
         /// Check if the textbox is blank
         /// </summary>
@@ -27,15 +28,14 @@ namespace DietApp.View
         /// <returns>True if blank [Message], else false.</returns>
         internal static bool Blank(TextBox textBox)
         {
-            if (string.IsNullOrWhiteSpace(textBox.Text))
+            bool result = false;
+            result = string.IsNullOrWhiteSpace(textBox.Text);
+            if (result)
             {
                 MessageBox.Show(textBox.Tag + " blank, please provide information.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return true;
             }
-            else
-            {
-                return false;
-            }
+
+            return !result;
         }
 
         /// <summary>
@@ -154,6 +154,54 @@ namespace DietApp.View
             }
 
             return result;
+        }
+
+        /// <summary>
+        /// Checks for a valid email address.
+        /// </summary>
+        /// <param name="email">Email address to validate.</param>
+        /// <returns>True if valid, else false.</returns>
+        internal static bool Email(string email)
+        {
+            bool result = false;
+            result = new EmailAddressAttribute().IsValid(email);
+            if (!result)
+            {
+                MessageBox.Show(email + " is not valid. Valid address follows XXX@XXX.XX form.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// Checks for valid name.
+        /// </summary>
+        /// <param name="nameBox">Name box to validate.</param>
+        /// <returns>True if valid, else false.</returns>
+        internal static bool Name(TextBox nameBox)
+        {
+            if (string.IsNullOrWhiteSpace(nameBox.Text))
+            {
+                MessageBox.Show(nameBox.Tag + " conatins a blank name.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;            
+            }
+
+            if (nameBox.Text.Length < 2)
+            {
+                MessageBox.Show(nameBox.Tag + " conatins a name less than 2 characters.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            foreach (char c in nameBox.Text)
+            {
+                if (!char.IsLetter(c))
+                {
+                    MessageBox.Show(nameBox.Tag + " conatins a numeric character.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
+            }
+
+            return true;
         }
     }
 }

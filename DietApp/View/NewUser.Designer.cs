@@ -106,7 +106,7 @@
             this.cancelButton.TabIndex = 21;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
-            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
+            this.cancelButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
             // saveButton
             // 
@@ -118,7 +118,7 @@
             this.saveButton.TabIndex = 20;
             this.saveButton.Text = "Save";
             this.saveButton.UseVisualStyleBackColor = true;
-            this.saveButton.Click += new System.EventHandler(this.saveUser_Click);
+            this.saveButton.Click += new System.EventHandler(this.SaveUser_Click);
             // 
             // confirmLabel
             // 

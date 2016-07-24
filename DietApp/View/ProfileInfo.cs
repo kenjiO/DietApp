@@ -76,9 +76,20 @@ namespace DietApp.View
             Cursor.Current = Cursors.WaitCursor;
             try
             {
-                if (View_Validator.Blank(this.firstNameBox) || View_Validator.Blank(this.lastNameBox) || View_Validator.Blank(this.emailBox))
+                if (!View_Validator.Name(this.firstNameBox))
                 {
-                    // Checks for Blank Boxes
+                    // Checks for valid first.
+                    this.firstNameBox.Text = DietAppController.getUserData(this.theUserId).firstName;
+                }
+                else if (!View_Validator.Name(this.lastNameBox))
+                {
+                    // Checks for valid last email.
+                    this.lastNameBox.Text = DietAppController.getUserData(this.theUserId).lastName;
+                }
+                else if (!View_Validator.Email(this.emailBox.Text))
+                {
+                    // Checks for valid email.
+                    this.emailBox.Text = DietAppController.getUserData(this.theUserId).email;
                 }
                 else
                 {
