@@ -125,7 +125,7 @@ namespace DietApp
         private void LoadTabs()
         {
             this.profileInfoForm = new ProfileInfo();
-            this.profileInfoForm.loadUser(this.theUser);
+            this.profileInfoForm.LoadUser(this.theUser.userId);
             this.profileInfoForm.TopLevel = false;
             this.profileInfoForm.Visible = true;
             this.profileInfoForm.FormBorderStyle = FormBorderStyle.None;
