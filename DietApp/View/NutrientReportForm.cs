@@ -314,7 +314,7 @@ namespace DietApp.View
             var pd = new System.Drawing.Printing.PrintDocument();
             pd.PrintPage += new PrintPageEventHandler(this.PrintChart);
 
-            PrintDialog pdi = new PrintDialog();
+            PrintPreviewDialog pdi = new PrintPreviewDialog();
             pdi.Document = pd;
             if (pdi.ShowDialog() == DialogResult.OK)
             {
