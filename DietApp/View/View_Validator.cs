@@ -1,10 +1,20 @@
-﻿using DietApp.Controller;
-using DietApp.Model;
-using System;
-using System.Windows.Forms;
+﻿//-----------------------------------------------------------------------
+// <copyright file="View_Validator.cs" company="KKR Summer 2016">
+//     Copyright (c) KKR Summer 2016. All rights reserved.
+// </copyright>
+// <summary>This the validation of view information.</summary>
+// <author>Kaleigh Kendrick</author>
+// <author>Robert Carswell</author>
+// <author>Kenji Okamoto</author>
+//-----------------------------------------------------------------------
 
 namespace DietApp.View
 {
+    using System;
+    using System.Windows.Forms;
+    using DietApp.Controller;
+    using DietApp.Model;
+
     /// <summary>
     /// Validator of standard view information
     /// </summary>
@@ -29,14 +39,14 @@ namespace DietApp.View
         }
 
         /// <summary>
-        /// Checks to not match conditions
+        /// Checks to not match conditions.
         /// </summary>
-        /// <param name="textBoxA">1 text box to compare</param>
-        /// <param name="textBoxB">The other text box to compare</param>
-        /// <returns>True if notmatch [Message], else false</returns>
+        /// <param name="textBoxA">1 text box to compare.</param>
+        /// <param name="textBoxB">The other text box to compare.</param>
+        /// <returns>True if not a match [Message], else false.</returns>
         internal static bool NotMatch(TextBox textBoxA, TextBox textBoxB)
         {
-            if (!(textBoxA.Text.Equals(textBoxB.Text)))
+            if (!textBoxA.Text.Equals(textBoxB.Text))
             {
                 MessageBox.Show(textBoxA.Tag + " does not match " + textBoxB.Tag + " , please provide matching information.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return true;
@@ -50,8 +60,8 @@ namespace DietApp.View
         /// <summary>
         /// Verifies whether or not a user is null.
         /// </summary>
-        /// <param name="users"></param>
-        /// <returns></returns>
+        /// <param name="users">The user to check.</param>
+        /// <returns>True if null [Message], else false.</returns>
         internal static bool Users(Users users)
         {
             if (users == null)
@@ -69,12 +79,12 @@ namespace DietApp.View
         /// <summary>
         /// Verifies whether or not the data fields on the Wellness Forms are filled out.
         /// </summary>
-        /// <param name="theWellness"></param>
-        /// <returns></returns>
-        public static bool ValidateWellness(Wellness theWellness)
+        /// <param name="theWellness">The wellness data to check.</param>
+        /// <returns>True if not a match [Message], else false.</returns>
+        internal static bool ValidateWellness(Wellness theWellness)
         {
             var result = false;
-            var missingData = "";
+            var missingData = string.Empty;
 
             if (theWellness == null)
             {
@@ -116,9 +126,9 @@ namespace DietApp.View
         /// <summary>
         /// Verifies if data in DB matches wellness entry.
         /// </summary>
-        /// <param name="theWellness"></param>
-        /// <returns></returns>
-        public static bool wellnessMatchDB(Wellness theWellness)
+        /// <param name="theWellness">The wellness data to check.</param>
+        /// <returns>True if a match [Message], else false.</returns>
+        internal static bool wellnessMatchDB(Wellness theWellness)
         {
             bool result = false;
             var wellnessFromDB = DietAppController.dateWellnessData(theWellness.userID, theWellness.date.ToString());
@@ -126,6 +136,23 @@ namespace DietApp.View
             {
                 result = true;
             }
+            return result;
+        }
+
+        /// <summary>
+        /// Compares the user for changes.
+        /// </summary>
+        /// <param name="userProfileUpdate">User profile to check.</param>
+        /// <returns>True if a match [Message], else false.</returns>
+        internal static bool UserMatch(Users userProfileUpdate)
+        {
+            bool result = false;
+            var userDB = DietAppController.getUserData(userProfileUpdate.userId);
+            if (string.Compare(userProfileUpdate.ToString(), userDB.ToString()) == 0)
+            {
+                result = true;
+            }
+
             return result;
         }
     }

@@ -104,8 +104,6 @@ namespace DietApp.View
         /// <param name="e">Click on object.</param>
         private void BTNPrint_Click(object sender, EventArgs e)
         {
-            this.PrintNutrientReport.PrintAction = System.Drawing.Printing.PrintAction.PrintToPreview;
-            this.PrintNutrientReport.Print();
         }
     }
 }

@@ -73,16 +73,6 @@ namespace DietApp.View
         /// <param name="e">Click on object.</param>
         private void UpdateButton_Click(object sender, EventArgs e)
         {
-            string userName, firstName, lastName, email;
-            int height, weight, goalWeight;
-
-            userName = this.usernameBox.Text;
-            firstName = this.firstNameBox.Text;
-            lastName = this.lastNameBox.Text;
-            email = this.emailBox.Text;
-            weight = (int)this.nudInitialWeight.Value;
-            goalWeight = (int)this.nudGoalWeight.Value;
-            height = ((int)this.nudFootBox.Value * 12) + (int)this.nudInchesBox.Value;
             Cursor.Current = Cursors.WaitCursor;
             try
             {
@@ -96,20 +86,21 @@ namespace DietApp.View
                     var originalUser = DietAppController.getUserData(this.theUserId);
 
                     // Builds a blank user profile.
-                    var newUser = new Users
+                    var userProfileUpdate = new Users
                     {
                         // Adds the current userName to the blank user profile.
-                        userId = originalUser.userId,
-                        firstName = firstName,
-                        lastName = lastName,
-                        email = email,
-                        initialWeight = weight,
-                        goalWeight = goalWeight,
-                        heightInches = height
+                        userId = this.theUserId,
+                        userName = DietAppController.getUserData(this.theUserId).userName,
+                        firstName = this.firstNameBox.Text,
+                        lastName = this.lastNameBox.Text,
+                        email = this.emailBox.Text,
+                        password = DietAppController.getUserData(this.theUserId).password,
+                        initialWeight = (int)this.nudInitialWeight.Value,
+                        heightInches = ((int)this.nudFootBox.Value * 12) + (int)this.nudInchesBox.Value,
+                        dailyCalorieGoal = DietAppController.getUserData(this.theUserId).dailyCalorieGoal,
+                        goalWeight = (int)this.nudGoalWeight.Value,
                     };
-                    if (originalUser.firstName.Equals(newUser.firstName) && originalUser.lastName.Equals(newUser.lastName) &&
-                        originalUser.email.Equals(newUser.email) && originalUser.initialWeight.Equals(newUser.initialWeight)
-                        && originalUser.goalWeight.Equals(newUser.goalWeight) && originalUser.heightInches.Equals(newUser.heightInches))
+                    if (View_Validator.UserMatch(userProfileUpdate))
                     {
                         Cursor.Current = Cursors.Default;
                         MessageBox.Show("No profile information changed.", "Update User Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -117,8 +108,8 @@ namespace DietApp.View
                     else
                     {
                         // Updates the user.
-                        DietAppController.updateUsers(originalUser, newUser);
-                        this.theUserId = newUser.userId;
+                        DietAppController.updateUsers(originalUser, userProfileUpdate);
+                        this.theUserId = userProfileUpdate.userId;
                         Cursor.Current = Cursors.Default;
                     }
 
@@ -149,47 +140,27 @@ namespace DietApp.View
         /// <param name="e">Click on object.</param>
         private void EnableUpdateButton(object sender, System.EventArgs e)
         {
-            int height;
-            bool change = false;
-
-            // First Name
-            if (!DietAppController.getUserData(this.theUserId).firstName.Equals(this.firstNameBox.Text))
+            var userProfileUpdate = new Users()
             {
-                change = true;
-            }
-
-            // Last Name
-            if (!DietAppController.getUserData(this.theUserId).lastName.Equals(this.lastNameBox.Text))
+                userId = this.theUserId,
+                userName = DietAppController.getUserData(this.theUserId).userName,
+                firstName = this.firstNameBox.Text,
+                lastName = this.lastNameBox.Text,
+                email = this.emailBox.Text,
+                password = DietAppController.getUserData(this.theUserId).password,
+                initialWeight = (int)this.nudInitialWeight.Value,
+                heightInches = ((int)this.nudFootBox.Value * 12) + (int)this.nudInchesBox.Value,
+                dailyCalorieGoal = DietAppController.getUserData(this.theUserId).dailyCalorieGoal,
+                goalWeight = (int)this.nudGoalWeight.Value,
+            };
+            if (!View_Validator.UserMatch(userProfileUpdate))
             {
-                change = true;
+                this.updateButton.Enabled = true;
             }
-
-            // eMail
-            if (!DietAppController.getUserData(this.theUserId).email.Equals(this.emailBox.Text))
+            else
             {
-                change = true;
+                this.updateButton.Enabled = false;
             }
-
-            // Initial Weight
-            if (!DietAppController.getUserData(this.theUserId).initialWeight.Equals((int)this.nudInitialWeight.Value))
-            {
-                change = true;
-            }
-
-            // Goal Weight
-            if (!DietAppController.getUserData(this.theUserId).goalWeight.Equals((int)this.nudGoalWeight.Value))
-            {
-                change = true;
-            }
-
-            // Height
-            height = ((int)this.nudFootBox.Value * 12) + (int)this.nudInchesBox.Value;
-            if (!DietAppController.getUserData(this.theUserId).heightInches.Equals(height))
-            {
-                change = true;
-            }
-
-            this.updateButton.Enabled = change;
         }
     }
 }

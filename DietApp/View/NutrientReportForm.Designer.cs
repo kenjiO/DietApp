@@ -36,7 +36,6 @@
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.prevButton = new System.Windows.Forms.Button();
             this.nextButton = new System.Windows.Forms.Button();
-            this.PrintNutrientReport = new Microsoft.VisualBasic.PowerPacks.Printing.PrintForm(this.components);
             this.BTNPrint = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
@@ -78,14 +77,6 @@
             this.nextButton.UseVisualStyleBackColor = true;
             this.nextButton.Click += new System.EventHandler(this.nextButton_Click);
             // 
-            // PrintNutrientReport
-            // 
-            this.PrintNutrientReport.DocumentName = "document";
-            this.PrintNutrientReport.Form = this;
-            this.PrintNutrientReport.PrintAction = System.Drawing.Printing.PrintAction.PrintToPrinter;
-            this.PrintNutrientReport.PrinterSettings = ((System.Drawing.Printing.PrinterSettings)(resources.GetObject("PrintNutrientReport.PrinterSettings")));
-            this.PrintNutrientReport.PrintFileName = null;
-            // 
             // BTNPrint
             // 
             this.BTNPrint.Enabled = false;
@@ -119,7 +110,6 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private System.Windows.Forms.Button prevButton;
         private System.Windows.Forms.Button nextButton;
-        private Microsoft.VisualBasic.PowerPacks.Printing.PrintForm PrintNutrientReport;
         private System.Windows.Forms.Button BTNPrint;
     }
 }
