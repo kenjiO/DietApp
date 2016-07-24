@@ -178,7 +178,7 @@ namespace DietApp.View
             var series2 = new System.Windows.Forms.DataVisualization.Charting.Series
             {
                 Name = "Protein",
-                Color = System.Drawing.Color.Green,
+                Color = System.Drawing.Color.Yellow,
                 BorderWidth = 5,
                 IsVisibleInLegend = true,
                 IsXValueIndexed = true,
