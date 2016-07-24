@@ -277,7 +277,7 @@ namespace DietApp
         /// <param name="e">Click on object.</param>
         private void WellnessReportToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            WellnessReportForm wellnessReportForm = new WellnessReportForm(this.theUser);
+            WellnessReportForm wellnessReportForm = new WellnessReportForm(this.theUser.userId);
             wellnessReportForm.StartPosition = FormStartPosition.CenterScreen;
             wellnessReportForm.ShowDialog();
         }
@@ -289,7 +289,7 @@ namespace DietApp
         /// <param name="e">Click on object.</param>
         private void NutrientReportToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            NutrientReportForm nutrientReportForm = new NutrientReportForm(this.theUser);
+            NutrientReportForm nutrientReportForm = new NutrientReportForm(this.theUser.userId);
             nutrientReportForm.StartPosition = FormStartPosition.CenterScreen;
             nutrientReportForm.ShowDialog();
         }

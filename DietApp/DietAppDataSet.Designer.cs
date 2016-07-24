@@ -8922,11 +8922,18 @@ SELECT measurementTypeId, measurementTypeName FROM measurementTypes WHERE (measu
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT measurementTypeId, measurementTypeName\r\nFROM   measurementTypes";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = "SELECT        measurementTypeId, measurementTypeName, measurementDefaultUnit\r\nFRO" +
+                "M            measurementTypes\r\nWHERE        (measurementTypeId = @measurementTyp" +
+                "eId)";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@measurementTypeId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "measurementTypeId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8948,6 +8955,18 @@ SELECT measurementTypeId, measurementTypeName FROM measurementTypes WHERE (measu
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual DietAppDataSet.measurementTypesDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            DietAppDataSet.measurementTypesDataTable dataTable = new DietAppDataSet.measurementTypesDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual DietAppDataSet.measurementTypesDataTable GetType(int measurementTypeId) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(measurementTypeId));
             DietAppDataSet.measurementTypesDataTable dataTable = new DietAppDataSet.measurementTypesDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -9226,7 +9245,7 @@ SELECT date, userId, measurementTypeId, measurement, dailyMeasurementId FROM dai
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[4];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[3];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT date, userId, measurementTypeId, measurement, dailyMeasurementId\r\nFROM   d" +
@@ -9241,26 +9260,13 @@ SELECT date, userId, measurementTypeId, measurement, dailyMeasurementId FROM dai
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@date", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "date", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = "SELECT        date, measurement, userId, measurementTypeId, dailyMeasurementId\r\nF" +
-                "ROM            dailyMeasurements\r\nWHERE        (userId = @userId) AND (measureme" +
-                "ntTypeId = @measurementTypeId)\r\nORDER BY date";
+            this._commandCollection[2].CommandText = "SELECT        dailyMeasurementId, date, userId, measurementTypeId, measurement\r\nF" +
+                "ROM          dailyMeasurements\r\nWHERE        (userId = @userId) AND (measurement" +
+                "TypeId = @measurementTypeId) AND (date = @date)";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@userId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "userId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@measurementTypeId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "measurementTypeId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
-            this._commandCollection[3].Connection = this.Connection;
-            this._commandCollection[3].CommandText = @"SELECT        date, measurement, userId, measurementTypeId, dailyMeasurementId
-FROM            dailyMeasurements
-WHERE        (userId = @userId) 
-       AND (measurementTypeId = @measurementTypeId)
-       AND (CONVERT (date, date) >= @startDate) 
-       AND (CONVERT (date, date) <= @endDate)
-ORDER BY date";
-            this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@userId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "userId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@measurementTypeId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "measurementTypeId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@startDate", global::System.Data.SqlDbType.VarChar, 1024, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@endDate", global::System.Data.SqlDbType.VarChar, 1024, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@date", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "date", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -9309,34 +9315,15 @@ ORDER BY date";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
-        public virtual DietAppDataSet.dailyMeasurementsFullDataTable GetUserDataChart(int userId, int measurementTypeId) {
+        public virtual DietAppDataSet.dailyMeasurementsFullDataTable GetMeasurementByUserTypeDate(int userId, int measurementTypeId, string date) {
             this.Adapter.SelectCommand = this.CommandCollection[2];
             this.Adapter.SelectCommand.Parameters[0].Value = ((int)(userId));
             this.Adapter.SelectCommand.Parameters[1].Value = ((int)(measurementTypeId));
-            DietAppDataSet.dailyMeasurementsFullDataTable dataTable = new DietAppDataSet.dailyMeasurementsFullDataTable();
-            this.Adapter.Fill(dataTable);
-            return dataTable;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
-        public virtual DietAppDataSet.dailyMeasurementsFullDataTable GetUserDataChart10Days(int userId, int measurementTypeId, string startDate, string endDate) {
-            this.Adapter.SelectCommand = this.CommandCollection[3];
-            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(userId));
-            this.Adapter.SelectCommand.Parameters[1].Value = ((int)(measurementTypeId));
-            if ((startDate == null)) {
-                throw new global::System.ArgumentNullException("startDate");
+            if ((date == null)) {
+                throw new global::System.ArgumentNullException("date");
             }
             else {
-                this.Adapter.SelectCommand.Parameters[2].Value = ((string)(startDate));
-            }
-            if ((endDate == null)) {
-                throw new global::System.ArgumentNullException("endDate");
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[3].Value = ((string)(endDate));
+                this.Adapter.SelectCommand.Parameters[2].Value = ((string)(date));
             }
             DietAppDataSet.dailyMeasurementsFullDataTable dataTable = new DietAppDataSet.dailyMeasurementsFullDataTable();
             this.Adapter.Fill(dataTable);

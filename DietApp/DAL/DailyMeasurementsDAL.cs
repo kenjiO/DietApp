@@ -19,69 +19,57 @@ namespace DietApp.DAL
     public class DailyMeasurementsDAL
     {
         /// <summary>
-        /// Gets the users data to populate the user data chart.
-        /// </summary>
-        /// <param name="userId">ID of the active user.</param>
-        /// <param name="measurementTypeId">ID of the type of measurement to be displayed.</param>
-        /// <returns>A list containing measurements of given user and measurement type.</returns>
-        public static List<DailyMeasurements> GetUserChartData(int userId, int measurementTypeId)
-        {
-            List<DailyMeasurements> results = new List<DailyMeasurements>();
-            using (var measurementsDataSet = new DietAppDataSetTableAdapters.dailyMeasurementsFullTableAdapter())
-            {
-                DataTable queryResultsTable = measurementsDataSet.GetUserDataChart(userId, measurementTypeId);
-                foreach (DataRow row in queryResultsTable.Rows)
-                {
-                    int dailyMeasurementId = Convert.ToInt32(row["dailyMeasurementId"].ToString());
-                    DateTime date = Convert.ToDateTime(row["date"]);
-                    int measurement = Convert.ToInt32(row["measurement"].ToString());
-
-                    DailyMeasurements measurements = new DailyMeasurements();
-                    measurements.DailyMeasurementId = dailyMeasurementId;
-                    measurements.Date = date;
-                    measurements.UserId = userId;
-                    measurements.MeasurementTypeId = measurementTypeId;
-                    measurements.Measurement = measurement;
-                    results.Add(measurements);
-                }
-            }
-
-            return results;
-        }
-
-        /// <summary>
-        /// Gets the users data to populate the user data chart, 10 days.
+        /// Gets the users data to populate the yValues, for 1 day.
         /// </summary>
         /// <param name="userId">ID of the active user.</param>
         /// <param name="measurementTypeId">ID of the type of measurement to be displayed.</param>
         /// <param name="startDate">The date to start chart.</param>
-        /// <returns>A list containing measurements of given user and measurement type.</returns>
-        public static List<DailyMeasurements> GetUserChartData10Days(int userId, int measurementTypeId, DateTime startDate)
+        /// <returns>A measurements of given user, measurement type on date.</returns>
+        public static double GetMeasurementByUserTypeDate(int userId, int measurementTypeId, DateTime date)
         {
-            List<DailyMeasurements> results = new List<DailyMeasurements>();
-            string startDateString = startDate.ToString("yyyy-MM-dd");
-            string endDateString = startDate.AddDays(9).ToString("yyyy-MM-dd");
-
-            using (var measurementsDataSet = new DietAppDataSetTableAdapters.dailyMeasurementsFullTableAdapter())
+            DailyMeasurements dailyMeasurements = new DailyMeasurements();
+            string day = date.ToString("yyyy-MM-dd");
+            using (var measurementsTableAdapter = new DietAppDataSetTableAdapters.dailyMeasurementsFullTableAdapter())
             {
-                DataTable queryResultsTable = measurementsDataSet.GetUserDataChart10Days(userId, measurementTypeId, startDateString, endDateString);
+                DataTable queryResultsTable = measurementsTableAdapter.GetMeasurementByUserTypeDate(userId, measurementTypeId, day);
+
                 foreach (DataRow row in queryResultsTable.Rows)
                 {
-                    int dailyMeasurementId = Convert.ToInt32(row["dailyMeasurementId"].ToString());
-                    DateTime date = Convert.ToDateTime(row["date"]);
-                    int measurement = Convert.ToInt32(row["measurement"].ToString());
+                    int? measurement = 0;
+                    if (row["measurement"] != DBNull.Value)
+                    {
+                        measurement = Convert.ToInt32(row["measurement"]);
+                    }
 
-                    DailyMeasurements measurements = new DailyMeasurements();
-                    measurements.DailyMeasurementId = dailyMeasurementId;
-                    measurements.Date = date;
-                    measurements.UserId = userId;
-                    measurements.MeasurementTypeId = measurementTypeId;
-                    measurements.Measurement = measurement;
-                    results.Add(measurements);
+                    dailyMeasurements.Measurement = (int) measurement;
                 }
             }
 
-            return results;
+            return dailyMeasurements.Measurement;
+        }
+
+        /// <summary>
+        /// Gets the users data to populate the yValues, for 10 days.
+        /// </summary>
+        /// <param name="userId">user id.</param>
+        /// <param name="measurementTypeId">measurement type id.</param>
+        /// <param name="startDate">the start date of list.</param>
+        /// <returns></returns>
+        public static List<DailyMeasurements> GetUserChartDataXDays(int userId, int measurementTypeId, DateTime startDate, int toDisplay)
+        {
+            List<DailyMeasurements> dailyMeasurementsList = new List<DailyMeasurements>();
+
+            for (int i = 0; i < toDisplay; i++)
+            {
+                DailyMeasurements dailyMeasurement = new DailyMeasurements();
+                DateTime day = startDate.AddDays(i);
+                double measurement = DailyMeasurementsDAL.GetMeasurementByUserTypeDate(userId, measurementTypeId, day);
+                dailyMeasurement.Date = day;
+                dailyMeasurement.Measurement = (int) measurement;
+                dailyMeasurementsList.Add(dailyMeasurement);
+            }
+
+            return dailyMeasurementsList;
         }
     }
 }

@@ -9,14 +9,14 @@
 
 namespace DietAppTests.Controller
 {
-    using DietApp.Controller;
-    using DietApp.DAL;
-    using DietApp.Model;
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
     using System;
     using System.Collections.Generic;
     using System.IO;
     using System.Transactions;
+    using DietApp.Controller;
+    using DietApp.DAL;
+    using DietApp.Model;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     /// <summary>
     /// Test the DietAppController Class in DietApp.Controller.
@@ -250,7 +250,7 @@ namespace DietAppTests.Controller
         }
 
         /// <summary>
-        ///  Test exporting and then importing into a user with no entries
+        ///  Test exporting and then importing into a user with no entries.
         /// </summary>
         [TestMethod]
         public void TestExportingAndImportingToNewUserWillProduceSameEntries()
@@ -285,18 +285,13 @@ namespace DietAppTests.Controller
                 FoodEntryDAL.addEntry(food1);
                 FoodEntryDAL.addEntry(food2);
 
-                FileStream outFile = new FileStream("TestExportFile.health",
-                         FileMode.Create,
-                         FileAccess.Write, FileShare.None);
+                FileStream outFile = new FileStream("TestExportFile.health", FileMode.Create, FileAccess.Write, FileShare.None);
                 DietAppController.exportData(user1Id, outFile);
                 outFile.Close();
 
-                //Create new user and import data
+                // Create new user and import data
                 int user2Id = UsersDAL.addNewUser("importExportTestUser2", "ABC123xyz!");
-                Stream inFile = new FileStream("TestExportFile.health",
-                                          FileMode.Open,
-                                          FileAccess.Read,
-                                          FileShare.Read);
+                Stream inFile = new FileStream("TestExportFile.health", FileMode.Open, FileAccess.Read, FileShare.Read);
                 DietAppController.importData(user2Id, inFile);
 
                 List<Wellness> user2Wellnes = WellnessDAL.getUserWellnessEntries(user2Id);
@@ -325,7 +320,7 @@ namespace DietAppTests.Controller
         }
 
         /// <summary>
-        ///  Test importing will not overwrite existing entries
+        ///  Test importing will not overwrite existing entries.
         /// </summary>
         [TestMethod]
         public void TestImportingDataWillNotOverwriteExistingEntries()
@@ -360,9 +355,7 @@ namespace DietAppTests.Controller
                 FoodEntryDAL.addEntry(food1);
                 FoodEntryDAL.addEntry(food2);
 
-                FileStream outFile = new FileStream("TestExportFile2.health",
-                         FileMode.Create,
-                         FileAccess.Write, FileShare.None);
+                FileStream outFile = new FileStream("TestExportFile2.health", FileMode.Create, FileAccess.Write, FileShare.None);
                 DietAppController.exportData(user1Id, outFile);
                 outFile.Close();
 
@@ -380,10 +373,7 @@ namespace DietAppTests.Controller
                 FoodEntry existingFood = new FoodEntry(user2Id, "apple", 120, 20, 21, 40, new DateTime(2016, 01, 05));
                 FoodEntryDAL.addEntry(existingFood);
 
-                Stream inFile = new FileStream("TestExportFile2.health",
-                                          FileMode.Open,
-                                          FileAccess.Read,
-                                          FileShare.Read);
+                Stream inFile = new FileStream("TestExportFile2.health", FileMode.Open, FileAccess.Read, FileShare.Read);
                 DietAppController.importData(user2Id, inFile);
 
                 List<Wellness> user2Wellnes = WellnessDAL.getUserWellnessEntries(user2Id);
@@ -412,7 +402,7 @@ namespace DietAppTests.Controller
         }
 
         /// <summary>
-        ///  Test exporting with no entries creates an import file with no entries
+        ///  Test exporting with no entries creates an import file with no entries.
         /// </summary>
         [TestMethod]
         public void TestExportingWithNoEntriesCreatesAnImportFileWithNoEntries()
@@ -420,24 +410,93 @@ namespace DietAppTests.Controller
             using (TransactionScope transaction = new TransactionScope())
             {
                 int user1Id = UsersDAL.addNewUser("importExportTestUser1", "ABC123xyz!");
-                FileStream outFile = new FileStream("TestExportFile3.health",
-                         FileMode.Create,
-                         FileAccess.Write, FileShare.None);
+                FileStream outFile = new FileStream("TestExportFile3.health", FileMode.Create, FileAccess.Write, FileShare.None);
                 DietAppController.exportData(user1Id, outFile);
                 outFile.Close();
 
-                //Create new user and import data
+                // Create new user and import data
                 int user2Id = UsersDAL.addNewUser("importExportTestUser2", "ABC123xyz!");
-                Stream inFile = new FileStream("TestExportFile3.health",
-                                          FileMode.Open,
-                                          FileAccess.Read,
-                                          FileShare.Read);
+                Stream inFile = new FileStream("TestExportFile3.health", FileMode.Open, FileAccess.Read, FileShare.Read);
                 DietAppController.importData(user2Id, inFile);
 
                 List<Wellness> user2Wellnes = WellnessDAL.getUserWellnessEntries(user2Id);
                 Assert.AreEqual(0, user2Wellnes.Count);
                 List<FoodEntry> user2Foods = FoodEntryDAL.getUserEntries(user2Id);
                 Assert.AreEqual(0, user2Foods.Count);
+            }
+        }
+
+        /// <summary>
+        /// Test for return of user chart data.
+        /// </summary>
+        [TestMethod]
+        public void TestGetMeasurementByUserTypeDate()
+        {
+            using (TransactionScope transaction = new TransactionScope())
+            {
+                // Set Data
+                int userId = 1;
+                int measurementTypeId = 1;
+                DateTime dateA = Convert.ToDateTime("2016-06-23");
+                double answerA = 210;
+                DateTime dateB = Convert.ToDateTime("1982-12-22");
+                double answerB = 0;
+
+                // Get Measurement
+                double resultA = DietAppController.GetMeasurementByUserTypeDate(userId, measurementTypeId, dateA);
+                double resultB = DietAppController.GetMeasurementByUserTypeDate(userId, measurementTypeId, dateB);
+
+                // Check DailyMeasurements Chart Data
+                Assert.AreEqual(answerA, resultA, 0, "Failed to return " + answerA + ".");
+                Assert.AreEqual(answerB, resultB, 0, "Failed to return " + answerB + ".");
+            }
+        }
+
+        /// <summary>
+        /// Test for return of x days user chart data.
+        /// </summary>
+        [TestMethod]
+        public void GetUserChartDataXDays()
+        {
+            using (TransactionScope transaction = new TransactionScope())
+            {
+                // Set Data
+                int userId = 1;
+                int measurementTypeId = 1;
+                int toDisplay = 10;
+                DateTime startDate = Convert.ToDateTime("2016-06-20");
+
+                // Get Measurement
+                List<DailyMeasurements> results = DietAppController.GetUserChartDataXDays(userId, measurementTypeId, startDate, toDisplay);
+
+                // Check DailyMeasurements Chart Data
+                Assert.AreEqual(startDate.AddDays(4), results[4].Date, "Date at 5 incorrect.");
+                Assert.AreEqual(204, results[4].Measurement, 0, "Measurement at 5 incorrect.");
+                Assert.AreEqual(10, results.Count, 0, "List an incorrect size.");
+            }
+        }
+
+        /// <summary>
+        /// Test for return of x days user chart data, no data.
+        /// </summary>
+        [TestMethod]
+        public void GetUserChartDataXDaysNoData()
+        {
+            using (TransactionScope transaction = new TransactionScope())
+            {
+                // Set Data
+                int userId = 1;
+                int measurementTypeId = 1;
+                int toDisplay = 8;
+                DateTime startDate = Convert.ToDateTime("2016-07-22");
+
+                // Get Measurement
+                List<DailyMeasurements> results = DietAppController.GetUserChartDataXDays(userId, measurementTypeId, startDate, toDisplay);
+
+                // Check DailyMeasurements Chart Data
+                Assert.AreEqual(startDate.AddDays(4), results[4].Date, "Date at 5 incorrect.");
+                Assert.AreEqual(0, results[4].Measurement, 0, "Measurement at 5 incorrect.");
+                Assert.AreEqual(toDisplay, results.Count, 0, "List an incorrect size.");
             }
         }
     }

@@ -9,12 +9,12 @@
 
 namespace DietAppTests.DAL
 {
-    using DietApp.DAL;
-    using DietApp.Model;
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
     using System;
     using System.Collections.Generic;
     using System.Transactions;
+    using DietApp.DAL;
+    using DietApp.Model;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     /// <summary>
     /// Test the FoodEntryDAL Class in DietApp.DAL.

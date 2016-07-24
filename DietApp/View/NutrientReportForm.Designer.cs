@@ -13,9 +13,9 @@
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
-            if (disposing && (components != null))
+            if (disposing && (this.components != null))
             {
-                components.Dispose();
+                this.components.Dispose();
             }
             base.Dispose(disposing);
         }
@@ -28,16 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NutrientReportForm));
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.prevButton = new System.Windows.Forms.Button();
             this.nextButton = new System.Windows.Forms.Button();
             this.BTNPrint = new System.Windows.Forms.Button();
+            this.lbDays = new System.Windows.Forms.Label();
+            this.nudDays = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudDays)).BeginInit();
             this.SuspendLayout();
             // 
             // chart1
@@ -64,7 +65,7 @@
             this.prevButton.TabIndex = 1;
             this.prevButton.Text = "Prev 10 Days";
             this.prevButton.UseVisualStyleBackColor = true;
-            this.prevButton.Click += new System.EventHandler(this.prevButton_Click);
+            this.prevButton.Click += new System.EventHandler(this.PrevButton_Click);
             // 
             // nextButton
             // 
@@ -75,7 +76,7 @@
             this.nextButton.TabIndex = 2;
             this.nextButton.Text = "Next 10 Days";
             this.nextButton.UseVisualStyleBackColor = true;
-            this.nextButton.Click += new System.EventHandler(this.nextButton_Click);
+            this.nextButton.Click += new System.EventHandler(this.NextButton_Click);
             // 
             // BTNPrint
             // 
@@ -88,11 +89,45 @@
             this.BTNPrint.UseVisualStyleBackColor = true;
             this.BTNPrint.Click += new System.EventHandler(this.BTNPrint_Click);
             // 
+            // lbDays
+            // 
+            this.lbDays.AutoSize = true;
+            this.lbDays.Location = new System.Drawing.Point(451, 332);
+            this.lbDays.Name = "lbDays";
+            this.lbDays.Size = new System.Drawing.Size(80, 13);
+            this.lbDays.TabIndex = 10;
+            this.lbDays.Text = "Days to Display";
+            // 
+            // nudDays
+            // 
+            this.nudDays.Location = new System.Drawing.Point(537, 328);
+            this.nudDays.Maximum = new decimal(new int[] {
+            30,
+            0,
+            0,
+            0});
+            this.nudDays.Minimum = new decimal(new int[] {
+            7,
+            0,
+            0,
+            0});
+            this.nudDays.Name = "nudDays";
+            this.nudDays.Size = new System.Drawing.Size(44, 20);
+            this.nudDays.TabIndex = 9;
+            this.nudDays.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.nudDays.ValueChanged += new System.EventHandler(this.NutrientReportForm_Load);
+            // 
             // NutrientReportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(677, 378);
+            this.Controls.Add(this.lbDays);
+            this.Controls.Add(this.nudDays);
             this.Controls.Add(this.BTNPrint);
             this.Controls.Add(this.nextButton);
             this.Controls.Add(this.prevButton);
@@ -101,7 +136,9 @@
             this.Text = "NutrientReportForm";
             this.Load += new System.EventHandler(this.NutrientReportForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudDays)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -111,5 +148,7 @@
         private System.Windows.Forms.Button prevButton;
         private System.Windows.Forms.Button nextButton;
         private System.Windows.Forms.Button BTNPrint;
+        private System.Windows.Forms.Label lbDays;
+        private System.Windows.Forms.NumericUpDown nudDays;
     }
 }

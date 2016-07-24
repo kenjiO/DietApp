@@ -60,6 +60,7 @@
     <Compile Include="DAL\FoodEntryDALTests.cs" />
     <Compile Include="DAL\DailyMeasurementsDALTests.cs" />
     <Compile Include="DAL\FoodReportDALTests.cs" />
+    <Compile Include="DAL\MeasurementTypesDALTests.cs" />
     <Compile Include="DAL\UserDALTests.cs" />
     <Compile Include="DAL\WellnessDALTests.cs" />
     <Compile Include="Model\EncryptionTests.cs" />

@@ -11,6 +11,30 @@ namespace DietApp.Controller
     public class DietAppController
     {
         /// <summary>
+        /// Gets the users data to populate the yValues, for 10 days.
+        /// </summary>
+        /// <param name="userId">ID of the active user.</param>
+        /// <param name="measurementTypeId">ID of the type of measurement to be displayed.</param>
+        /// <param name="date">The date chart.</param>
+        /// <returns>A measurements of given user and measurement type on date.</returns>
+        public static double GetMeasurementByUserTypeDate(int userId, int measurementTypeId, DateTime date)
+        {
+            return DailyMeasurementsDAL.GetMeasurementByUserTypeDate(userId, measurementTypeId, date);
+        }
+
+        /// <summary>
+        /// Gets the users data to populate the yValues, for 10 days.
+        /// </summary>
+        /// <param name="userId">ID of the active user.</param>
+        /// <param name="measurementTypeId">ID of the type of measurement to be displayed.</param>
+        /// <param name="date">The start date chart.</param>
+        /// <returns>A measurements of given user and measurement type on date.</returns>
+        public static List<DailyMeasurements> GetUserChartDataXDays(int userId, int measurementTypeId, DateTime startDate, int toDisplay)
+        {
+            return DailyMeasurementsDAL.GetUserChartDataXDays(userId, measurementTypeId, startDate, toDisplay);
+        }
+        
+        /// <summary>
         /// Compares the password against the stored value of the password for the specified userName in the database.
         /// </summary>
         /// <param name="userName">The user name.</param>
@@ -190,25 +214,13 @@ namespace DietApp.Controller
         }
 
         /// <summary>
-        /// Gets the data for the wellness chart.
+        /// Gets the type data.
         /// </summary>
-        /// <param name="userId">The current user.</param>
-        /// <param name="measurementTypeId">The measurement type ID.</param>
-        /// <returns></returns>
-        public static List<DailyMeasurements> getUserChartData(int userId, int measurementTypeId)
+        /// <param name="TypeId">The measurement type ID.</param>
+        /// <returns>Type data.</returns>
+        public static MeasurementTypes GetType(int typeId)
         {
-            return DailyMeasurementsDAL.GetUserChartData(userId, measurementTypeId);
-        }
-
-        /// <summary>
-        /// Gets the data for the wellness chart, for 10 days.
-        /// </summary>
-        /// <param name="userId">The current user.</param>
-        /// <param name="measurementTypeId">The measurement type ID.</param>
-        /// <returns></returns>
-        public static List<DailyMeasurements> getUserChartData10Days(int userId, int measurementTypeId, DateTime startDate)
-        {
-            return DailyMeasurementsDAL.GetUserChartData10Days(userId, measurementTypeId, startDate);
+            return MeasurementTypesDAL.GetType(typeId);
         }
 
         /// <summary>
@@ -320,6 +332,11 @@ namespace DietApp.Controller
                     }
                 }
             }
+        }
+
+        public static List<DailyNutrition> GetXDayNutrientTotals(int userId, DateTime startDate, int days)
+        {
+            return FoodReportDAL.GetXDayNutritionReport(userId, startDate, days);
         }
     }
 

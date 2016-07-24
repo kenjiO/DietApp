@@ -10,9 +10,9 @@
 
 namespace DietAppTests.Model
 {
+    using System;
     using DietApp.Model;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
-    using System;
 
     /// <summary>
     /// Test the FoodEntry Class in DietApp.Model.
