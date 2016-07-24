@@ -38,7 +38,7 @@ namespace DietApp
         public void SaveUser_Click(object sender, System.EventArgs e)
         {
             string userName, password, confirm, firstName, lastName, email;
-            int height, weight;
+            int height, weight, goalWeight;
 
             userName = usernameBox.Text;
             password = passwordBox.Text;
@@ -47,6 +47,7 @@ namespace DietApp
             lastName = lastNameBox.Text;
             email = emailBox.Text;
             weight = (int)this.nudWeightBox.Value;
+            goalWeight = (int)this.nudGoalWeightBox.Value;
             height = ((int)this.nudFootBox.Value * 12) + (int)this.nudInchesBox.Value;
 
             Cursor.Current = Cursors.WaitCursor;
@@ -56,6 +57,9 @@ namespace DietApp
                     !View_Validator.Name(this.firstNameBox) || !View_Validator.Name(this.lastNameBox) || !View_Validator.Email(this.emailBox.Text))
                 {
                     // Checks for valid Boxes
+                    /*MessageBox.Show(View_Validator.Name(this.usernameBox).ToString() + View_Validator.Blank(this.passwordBox).ToString() +
+                        View_Validator.Blank(this.confirmBox).ToString() + View_Validator.Name(this.firstNameBox).ToString() +
+                        View_Validator.Name(this.lastNameBox).ToString() + View_Validator.Email(this.emailBox.Text).ToString(),"Error");*/
                 }
                 else if (View_Validator.NotMatch(this.passwordBox, this.confirmBox))
                 {
@@ -88,6 +92,7 @@ namespace DietApp
                         lastName = lastName,
                         email = email,
                         initialWeight = weight,
+                        goalWeight = goalWeight,
                         heightInches = height
                     };
                     

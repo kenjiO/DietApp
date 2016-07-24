@@ -35,7 +35,7 @@ namespace DietApp.View
                 MessageBox.Show(textBox.Tag + " blank, please provide information.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
-            return !result;
+            return result;
         }
 
         /// <summary>
