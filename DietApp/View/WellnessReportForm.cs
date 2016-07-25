@@ -89,62 +89,73 @@ namespace DietApp.View
             this.chartUserData.Legends.Clear();
             this.chartUserData.Series.Clear();
 
-            if (this.rbWeight.Checked == true)
+            System.Windows.Forms.Cursor.Current = Cursors.WaitCursor;
+            try
             {
-                int type = 1;
-                string title = DietAppController.GetType(type).MeasurementTypeName;
-                string name = DietAppController.GetType(type).MeasurementTypeName + " (" + DietAppController.GetType(type).MeasurementDefaultUnit + ")";
-                this.ChartSeries(type, name, System.Drawing.Color.Blue);
-                this.ChartLegends(name);
-                this.ChartAreas(this.minValue, this.maxValue, title);
-                this.ChartTitle(title);
-            }
-            else if (this.rbHeartRate.Checked == true)
-            {
-                int type = 2;
-                string title = DietAppController.GetType(type).MeasurementTypeName;
-                string name = DietAppController.GetType(type).MeasurementTypeName + " (" + DietAppController.GetType(type).MeasurementDefaultUnit + ")";
-                this.ChartSeries(type, name, System.Drawing.Color.Red);
-                this.ChartLegends(name);
-                this.ChartAreas(this.minValue, this.maxValue, title);
-                this.ChartTitle(title);
-            }
-            else if (this.rbBP.Checked == true)
-            {
-                string title = "Blood Pressure";
-                int type = 3;
-                string name = DietAppController.GetType(type).MeasurementTypeName + " (" + DietAppController.GetType(type).MeasurementDefaultUnit + ")";
-                this.ChartSeries(type, name, System.Drawing.Color.Yellow);
-                this.ChartLegends(name);
-                int localMax = this.maxValue;
-                type = 4;
-                name = DietAppController.GetType(type).MeasurementTypeName + " (" + DietAppController.GetType(type).MeasurementDefaultUnit + ")";
-                this.ChartSeries(type, name, System.Drawing.Color.Green);
-                this.ChartLegends(name);
-                this.ChartAreas(this.minValue, localMax, title);
-                this.ChartTitle(title);                
-            }
-            else if (this.rbBMI.Checked == true)
-            {
-                int type = 1;
-                string title = "BMI";
-                string name = "BMI (lb. per square in.)";
-                this.ChartSeriesBMI(type, name, System.Drawing.Color.Purple);
-                this.ChartLegends(name);
-                this.ChartAreas(this.minValue, this.maxValue, title);
-                this.ChartTitle(title);
-            }
-            else
-            {
-                int type = 1;
-                string title = DietAppController.GetType(type).MeasurementTypeName;
-                string name = DietAppController.GetType(type).MeasurementTypeName + " (" + DietAppController.GetType(type).MeasurementDefaultUnit + ")";
-                this.ChartSeries(type, name, System.Drawing.Color.Blue);
-                this.ChartLegends(name);
-                this.ChartAreas(this.minValue, this.maxValue, title);
-                this.ChartTitle(title);
+                if (this.rbWeight.Checked == true)
+                {
+                    int type = 1;
+                    string title = DietAppController.GetType(type).MeasurementTypeName;
+                    string name = DietAppController.GetType(type).MeasurementTypeName + " (" + DietAppController.GetType(type).MeasurementDefaultUnit + ")";
+                    this.ChartSeries(type, name, System.Drawing.Color.Blue);
+                    this.ChartLegends(name);
+                    this.ChartAreas(this.minValue, this.maxValue, title);
+                    this.ChartTitle(title);
+                }
+                else if (this.rbHeartRate.Checked == true)
+                {
+                    int type = 2;
+                    string title = DietAppController.GetType(type).MeasurementTypeName;
+                    string name = DietAppController.GetType(type).MeasurementTypeName + " (" + DietAppController.GetType(type).MeasurementDefaultUnit + ")";
+                    this.ChartSeries(type, name, System.Drawing.Color.Red);
+                    this.ChartLegends(name);
+                    this.ChartAreas(this.minValue, this.maxValue, title);
+                    this.ChartTitle(title);
+                }
+                else if (this.rbBP.Checked == true)
+                {
+                    string title = "Blood Pressure";
+                    int type = 3;
+                    string name = DietAppController.GetType(type).MeasurementTypeName + " (" + DietAppController.GetType(type).MeasurementDefaultUnit + ")";
+                    this.ChartSeries(type, name, System.Drawing.Color.Yellow);
+                    this.ChartLegends(name);
+                    int localMax = this.maxValue;
+                    type = 4;
+                    name = DietAppController.GetType(type).MeasurementTypeName + " (" + DietAppController.GetType(type).MeasurementDefaultUnit + ")";
+                    this.ChartSeries(type, name, System.Drawing.Color.Green);
+                    this.ChartLegends(name);
+                    this.ChartAreas(this.minValue, localMax, title);
+                    this.ChartTitle(title);
+                }
+                else if (this.rbBMI.Checked == true)
+                {
+                    int type = 1;
+                    string title = "BMI";
+                    string name = "BMI (lb. per square in.)";
+                    this.ChartSeriesBMI(type, name, System.Drawing.Color.Purple);
+                    this.ChartLegends(name);
+                    this.ChartAreas(this.minValue, this.maxValue, title);
+                    this.ChartTitle(title);
+                }
+                else
+                {
+                    int type = 1;
+                    string title = DietAppController.GetType(type).MeasurementTypeName;
+                    string name = DietAppController.GetType(type).MeasurementTypeName + " (" + DietAppController.GetType(type).MeasurementDefaultUnit + ")";
+                    this.ChartSeries(type, name, System.Drawing.Color.Blue);
+                    this.ChartLegends(name);
+                    this.ChartAreas(this.minValue, this.maxValue, title);
+                    this.ChartTitle(title);
+                }
+                System.Windows.Forms.Cursor.Current = Cursors.Default;
             }
 
+            catch (System.Data.SqlClient.SqlException ex)
+            {
+                System.Windows.Forms.Cursor.Current = Cursors.Default;
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+                return;
+            }
             this.chartUserData.Invalidate();
 
             this.prevButton.Text = "Prev " + this.nudDays.Value + " Days";
