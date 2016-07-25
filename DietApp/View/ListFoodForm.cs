@@ -62,6 +62,7 @@ namespace DietApp.View
             Cursor.Current = Cursors.WaitCursor;
             try
             {
+                this.currentUser = DietAppController.getUserData(this.currentUser.userId);
                 this.currentDayEntries = DietAppController.getFoodEntriesForUserByDate(this.currentUser.userId, dateTimePicker1.Value);
                 Cursor.Current = Cursors.Default;
             }
