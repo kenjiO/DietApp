@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.chartUserData = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.rbWeight = new System.Windows.Forms.RadioButton();
             this.rbHeartRate = new System.Windows.Forms.RadioButton();
@@ -46,16 +46,16 @@
             // 
             // chartUserData
             // 
-            chartArea3.AxisX.IntervalAutoMode = System.Windows.Forms.DataVisualization.Charting.IntervalAutoMode.VariableCount;
-            chartArea3.AxisY.IntervalAutoMode = System.Windows.Forms.DataVisualization.Charting.IntervalAutoMode.VariableCount;
-            chartArea3.Name = "ChartArea1";
-            this.chartUserData.ChartAreas.Add(chartArea3);
+            chartArea1.AxisX.IntervalAutoMode = System.Windows.Forms.DataVisualization.Charting.IntervalAutoMode.VariableCount;
+            chartArea1.AxisY.IntervalAutoMode = System.Windows.Forms.DataVisualization.Charting.IntervalAutoMode.VariableCount;
+            chartArea1.Name = "ChartArea1";
+            this.chartUserData.ChartAreas.Add(chartArea1);
             this.chartUserData.Location = new System.Drawing.Point(12, 12);
             this.chartUserData.Name = "chartUserData";
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series3.Name = "UserData";
-            this.chartUserData.Series.Add(series3);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series1.Name = "UserData";
+            this.chartUserData.Series.Add(series1);
             this.chartUserData.Size = new System.Drawing.Size(578, 320);
             this.chartUserData.TabIndex = 0;
             this.chartUserData.Text = "chart1";
@@ -188,7 +188,7 @@
             this.Controls.Add(this.rbWeight);
             this.Controls.Add(this.chartUserData);
             this.Name = "WellnessReportForm";
-            this.Text = "ReportForm";
+            this.Text = "Wellness Report";
             this.Load += new System.EventHandler(this.WellnessReportForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.chartUserData)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudDays)).EndInit();

@@ -92,7 +92,7 @@ namespace DietApp.View
             if (this.rbWeight.Checked == true)
             {
                 int type = 1;
-                string title = DietAppController.GetType(type).MeasurementTypeName;
+                string title = "Weight";
                 string name = DietAppController.GetType(type).MeasurementTypeName + " (" + DietAppController.GetType(type).MeasurementDefaultUnit + ")";
                 this.ChartSeries(type, name, System.Drawing.Color.Blue);
                 this.ChartLegends(name);
@@ -102,7 +102,7 @@ namespace DietApp.View
             else if (this.rbHeartRate.Checked == true)
             {
                 int type = 2;
-                string title = DietAppController.GetType(type).MeasurementTypeName;
+                string title = "Heart Rate";
                 string name = DietAppController.GetType(type).MeasurementTypeName + " (" + DietAppController.GetType(type).MeasurementDefaultUnit + ")";
                 this.ChartSeries(type, name, System.Drawing.Color.Red);
                 this.ChartLegends(name);
@@ -379,6 +379,7 @@ namespace DietApp.View
         {
             var pd = new System.Drawing.Printing.PrintDocument();
             pd.PrintPage += new PrintPageEventHandler(this.PrintChart);
+            pd.DefaultPageSettings.Landscape = true;
 
             PrintPreviewDialog pdi = new PrintPreviewDialog();
             pdi.Document = pd;
@@ -398,7 +399,7 @@ namespace DietApp.View
             using (var f = new System.Drawing.Font("Arial", 10))
             {
                 var size = ev.Graphics.MeasureString(Text, f);
-                ev.Graphics.DrawString("Whatever text you want", f, Brushes.Black, ev.PageBounds.X + ((ev.PageBounds.Width - size.Width) / 2), ev.PageBounds.Y);
+                ev.Graphics.DrawString(string.Empty, f, Brushes.Black, ev.PageBounds.X + ((ev.PageBounds.Width - size.Width) / 2), ev.PageBounds.Y);
             }
 
             // Note, the chart printing code wants to print in pixels.
