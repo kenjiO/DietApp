@@ -116,13 +116,19 @@ namespace DietApp.View
             {
                 Minimum = 0,
                 Maximum = max,
-                Title = title,
+                Title = "grams",
+            };
+
+            var axisY2 = new System.Windows.Forms.DataVisualization.Charting.Axis
+            {
+                Title = "calories",
             };
 
             var chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea
             {
                 AxisX = axisX,
                 AxisY = axisY,
+                AxisY2 = axisY2
             };
 
             this.chart1.ChartAreas.Add(chartArea1);
@@ -219,10 +225,7 @@ namespace DietApp.View
                             this.maxValue = Convert.ToInt32(dataPoints[0].Carbohydrates * 1.1);
                         }
                         series4.Points.AddXY(day, dataPoints[0].Calories);
-                        if ((dataPoints[0].Calories * 1.1) > this.maxValue)
-                        {
-                            this.maxValue = Convert.ToInt32(dataPoints[0].Calories * 1.1);
-                        }
+
                         dataPoints.RemoveAt(0);
                     }
                     else
@@ -244,6 +247,8 @@ namespace DietApp.View
                 return;
             }
 
+            this.chart1.ChartAreas["ChartArea1"].AxisY2.Enabled = AxisEnabled.True;
+            series4.YAxisType = AxisType.Secondary;
             this.chart1.Series.Add(series1);
             this.chart1.Series.Add(series2);
             this.chart1.Series.Add(series3);
