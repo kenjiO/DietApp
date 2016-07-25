@@ -28,82 +28,46 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea14 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series14 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.chartUserData = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.rbWeight = new System.Windows.Forms.RadioButton();
-            this.rbHeartRate = new System.Windows.Forms.RadioButton();
-            this.rbBP = new System.Windows.Forms.RadioButton();
             this.prevButton = new System.Windows.Forms.Button();
             this.nextButton = new System.Windows.Forms.Button();
             this.BTNPrint = new System.Windows.Forms.Button();
-            this.rbBMI = new System.Windows.Forms.RadioButton();
             this.nudDays = new System.Windows.Forms.NumericUpDown();
             this.lbDays = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.cbChartType = new System.Windows.Forms.ComboBox();
+            this.checkWeight = new System.Windows.Forms.CheckBox();
+            this.checkHeartRate = new System.Windows.Forms.CheckBox();
+            this.checkBP = new System.Windows.Forms.CheckBox();
+            this.checkBMI = new System.Windows.Forms.CheckBox();
+            this.radioBubble = new System.Windows.Forms.RadioButton();
+            this.radioColumn = new System.Windows.Forms.RadioButton();
+            this.radioLine = new System.Windows.Forms.RadioButton();
+            this.radioPoint = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.chartUserData)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudDays)).BeginInit();
             this.SuspendLayout();
             // 
             // chartUserData
             // 
-            chartArea14.AxisX.IntervalAutoMode = System.Windows.Forms.DataVisualization.Charting.IntervalAutoMode.VariableCount;
-            chartArea14.AxisY.IntervalAutoMode = System.Windows.Forms.DataVisualization.Charting.IntervalAutoMode.VariableCount;
-            chartArea14.Name = "ChartArea1";
-            this.chartUserData.ChartAreas.Add(chartArea14);
+            chartArea1.AxisX.IntervalAutoMode = System.Windows.Forms.DataVisualization.Charting.IntervalAutoMode.VariableCount;
+            chartArea1.AxisY.IntervalAutoMode = System.Windows.Forms.DataVisualization.Charting.IntervalAutoMode.VariableCount;
+            chartArea1.Name = "ChartArea1";
+            this.chartUserData.ChartAreas.Add(chartArea1);
             this.chartUserData.Location = new System.Drawing.Point(12, 12);
             this.chartUserData.Name = "chartUserData";
-            series14.ChartArea = "ChartArea1";
-            series14.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series14.Name = "UserData";
-            this.chartUserData.Series.Add(series14);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series1.Name = "UserData";
+            this.chartUserData.Series.Add(series1);
             this.chartUserData.Size = new System.Drawing.Size(578, 320);
             this.chartUserData.TabIndex = 0;
-            this.chartUserData.Text = "chart1";
-            // 
-            // rbWeight
-            // 
-            this.rbWeight.AutoSize = true;
-            this.rbWeight.Checked = true;
-            this.rbWeight.Location = new System.Drawing.Point(12, 344);
-            this.rbWeight.Name = "rbWeight";
-            this.rbWeight.Size = new System.Drawing.Size(59, 17);
-            this.rbWeight.TabIndex = 2;
-            this.rbWeight.TabStop = true;
-            this.rbWeight.Text = "Weight";
-            this.rbWeight.UseVisualStyleBackColor = true;
-            this.rbWeight.Click += new System.EventHandler(this.WellnessReportForm_Load);
-            // 
-            // rbHeartRate
-            // 
-            this.rbHeartRate.AutoSize = true;
-            this.rbHeartRate.Location = new System.Drawing.Point(77, 344);
-            this.rbHeartRate.Name = "rbHeartRate";
-            this.rbHeartRate.Size = new System.Drawing.Size(77, 17);
-            this.rbHeartRate.TabIndex = 3;
-            this.rbHeartRate.TabStop = true;
-            this.rbHeartRate.Text = "Heart Rate";
-            this.rbHeartRate.UseVisualStyleBackColor = true;
-            this.rbHeartRate.Click += new System.EventHandler(this.WellnessReportForm_Load);
-            // 
-            // rbBP
-            // 
-            this.rbBP.AutoSize = true;
-            this.rbBP.Location = new System.Drawing.Point(160, 344);
-            this.rbBP.Name = "rbBP";
-            this.rbBP.Size = new System.Drawing.Size(39, 17);
-            this.rbBP.TabIndex = 4;
-            this.rbBP.TabStop = true;
-            this.rbBP.Text = "BP";
-            this.rbBP.UseVisualStyleBackColor = true;
-            this.rbBP.Click += new System.EventHandler(this.WellnessReportForm_Load);
             // 
             // prevButton
             // 
-            this.prevButton.Location = new System.Drawing.Point(12, 367);
+            this.prevButton.Location = new System.Drawing.Point(12, 386);
             this.prevButton.Name = "prevButton";
-            this.prevButton.Size = new System.Drawing.Size(117, 23);
+            this.prevButton.Size = new System.Drawing.Size(145, 23);
             this.prevButton.TabIndex = 1;
             this.prevButton.Text = "Prev 10 Days";
             this.prevButton.UseVisualStyleBackColor = true;
@@ -112,9 +76,9 @@
             // nextButton
             // 
             this.nextButton.Enabled = false;
-            this.nextButton.Location = new System.Drawing.Point(135, 367);
+            this.nextButton.Location = new System.Drawing.Point(163, 386);
             this.nextButton.Name = "nextButton";
-            this.nextButton.Size = new System.Drawing.Size(117, 23);
+            this.nextButton.Size = new System.Drawing.Size(149, 23);
             this.nextButton.TabIndex = 2;
             this.nextButton.Text = "Next 10 Days";
             this.nextButton.UseVisualStyleBackColor = true;
@@ -122,29 +86,17 @@
             // 
             // BTNPrint
             // 
-            this.BTNPrint.Location = new System.Drawing.Point(472, 364);
+            this.BTNPrint.Location = new System.Drawing.Point(463, 386);
             this.BTNPrint.Name = "BTNPrint";
-            this.BTNPrint.Size = new System.Drawing.Size(117, 23);
+            this.BTNPrint.Size = new System.Drawing.Size(127, 23);
             this.BTNPrint.TabIndex = 5;
             this.BTNPrint.Text = "Print";
             this.BTNPrint.UseVisualStyleBackColor = true;
             this.BTNPrint.Click += new System.EventHandler(this.BTNPrint_Click);
             // 
-            // rbBMI
-            // 
-            this.rbBMI.AutoSize = true;
-            this.rbBMI.Location = new System.Drawing.Point(205, 344);
-            this.rbBMI.Name = "rbBMI";
-            this.rbBMI.Size = new System.Drawing.Size(44, 17);
-            this.rbBMI.TabIndex = 6;
-            this.rbBMI.TabStop = true;
-            this.rbBMI.Text = "BMI";
-            this.rbBMI.UseVisualStyleBackColor = true;
-            this.rbBMI.Click += new System.EventHandler(this.WellnessReportForm_Load);
-            // 
             // nudDays
             // 
-            this.nudDays.Location = new System.Drawing.Point(545, 344);
+            this.nudDays.Location = new System.Drawing.Point(546, 339);
             this.nudDays.Maximum = new decimal(new int[] {
             30,
             0,
@@ -168,53 +120,124 @@
             // lbDays
             // 
             this.lbDays.AutoSize = true;
-            this.lbDays.Location = new System.Drawing.Point(459, 348);
+            this.lbDays.Location = new System.Drawing.Point(460, 343);
             this.lbDays.Name = "lbDays";
             this.lbDays.Size = new System.Drawing.Size(80, 13);
             this.lbDays.TabIndex = 8;
             this.lbDays.Text = "Days to Display";
             // 
-            // label1
+            // checkWeight
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(289, 348);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(59, 13);
-            this.label1.TabIndex = 10;
-            this.label1.Text = "Chart Type";
+            this.checkWeight.AutoSize = true;
+            this.checkWeight.Checked = true;
+            this.checkWeight.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkWeight.Location = new System.Drawing.Point(13, 339);
+            this.checkWeight.Name = "checkWeight";
+            this.checkWeight.Size = new System.Drawing.Size(60, 17);
+            this.checkWeight.TabIndex = 1;
+            this.checkWeight.Text = "Weight";
+            this.checkWeight.UseVisualStyleBackColor = true;
             // 
-            // cbChartType
+            // checkHeartRate
             // 
-            this.cbChartType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbChartType.FormattingEnabled = true;
-            this.cbChartType.Items.AddRange(new object[] {
-            "Bubble",
-            "Column",
-            "Line",
-            "Point"});
-            this.cbChartType.Location = new System.Drawing.Point(354, 344);
-            this.cbChartType.Name = "cbChartType";
-            this.cbChartType.Size = new System.Drawing.Size(99, 21);
-            this.cbChartType.TabIndex = 11;
-            this.cbChartType.SelectedIndexChanged += new System.EventHandler(this.WellnessReportForm_Load);
-            this.cbChartType.ValueMemberChanged += new System.EventHandler(this.WellnessReportForm_Load);
+            this.checkHeartRate.AutoSize = true;
+            this.checkHeartRate.Location = new System.Drawing.Point(79, 338);
+            this.checkHeartRate.Name = "checkHeartRate";
+            this.checkHeartRate.Size = new System.Drawing.Size(78, 17);
+            this.checkHeartRate.TabIndex = 2;
+            this.checkHeartRate.Text = "Heart Rate";
+            this.checkHeartRate.UseVisualStyleBackColor = true;
+            this.checkHeartRate.CheckedChanged += new System.EventHandler(this.WellnessReportForm_Load);
+            // 
+            // checkBP
+            // 
+            this.checkBP.AutoSize = true;
+            this.checkBP.Location = new System.Drawing.Point(163, 339);
+            this.checkBP.Name = "checkBP";
+            this.checkBP.Size = new System.Drawing.Size(97, 17);
+            this.checkBP.TabIndex = 3;
+            this.checkBP.Text = "Blood Pressure";
+            this.checkBP.UseVisualStyleBackColor = true;
+            this.checkBP.CheckedChanged += new System.EventHandler(this.WellnessReportForm_Load);
+            // 
+            // checkBMI
+            // 
+            this.checkBMI.AutoSize = true;
+            this.checkBMI.Location = new System.Drawing.Point(267, 339);
+            this.checkBMI.Name = "checkBMI";
+            this.checkBMI.Size = new System.Drawing.Size(45, 17);
+            this.checkBMI.TabIndex = 4;
+            this.checkBMI.Text = "BMI";
+            this.checkBMI.UseVisualStyleBackColor = true;
+            this.checkBMI.CheckedChanged += new System.EventHandler(this.WellnessReportForm_Load);
+            // 
+            // radioBubble
+            // 
+            this.radioBubble.AutoSize = true;
+            this.radioBubble.Checked = true;
+            this.radioBubble.Location = new System.Drawing.Point(12, 363);
+            this.radioBubble.Name = "radioBubble";
+            this.radioBubble.Size = new System.Drawing.Size(58, 17);
+            this.radioBubble.TabIndex = 5;
+            this.radioBubble.TabStop = true;
+            this.radioBubble.Text = "Bubble";
+            this.radioBubble.UseVisualStyleBackColor = true;
+            this.radioBubble.Click += new System.EventHandler(this.WellnessReportForm_Load);
+            // 
+            // radioColumn
+            // 
+            this.radioColumn.AutoSize = true;
+            this.radioColumn.Location = new System.Drawing.Point(79, 363);
+            this.radioColumn.Name = "radioColumn";
+            this.radioColumn.Size = new System.Drawing.Size(60, 17);
+            this.radioColumn.TabIndex = 6;
+            this.radioColumn.TabStop = true;
+            this.radioColumn.Text = "Column";
+            this.radioColumn.UseVisualStyleBackColor = true;
+            this.radioColumn.Click += new System.EventHandler(this.WellnessReportForm_Load);
+            // 
+            // radioLine
+            // 
+            this.radioLine.AutoSize = true;
+            this.radioLine.Location = new System.Drawing.Point(163, 363);
+            this.radioLine.Name = "radioLine";
+            this.radioLine.Size = new System.Drawing.Size(45, 17);
+            this.radioLine.TabIndex = 7;
+            this.radioLine.TabStop = true;
+            this.radioLine.Text = "Line";
+            this.radioLine.UseVisualStyleBackColor = true;
+            this.radioLine.Click += new System.EventHandler(this.WellnessReportForm_Load);
+            // 
+            // radioPoint
+            // 
+            this.radioPoint.AutoSize = true;
+            this.radioPoint.Location = new System.Drawing.Point(267, 363);
+            this.radioPoint.Name = "radioPoint";
+            this.radioPoint.Size = new System.Drawing.Size(49, 17);
+            this.radioPoint.TabIndex = 8;
+            this.radioPoint.TabStop = true;
+            this.radioPoint.Text = "Point";
+            this.radioPoint.UseVisualStyleBackColor = true;
+            this.radioPoint.Click += new System.EventHandler(this.WellnessReportForm_Load);
             // 
             // WellnessReportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(602, 440);
-            this.Controls.Add(this.cbChartType);
-            this.Controls.Add(this.label1);
+            this.ClientSize = new System.Drawing.Size(602, 422);
+            this.Controls.Add(this.radioPoint);
+            this.Controls.Add(this.radioLine);
+            this.Controls.Add(this.radioColumn);
+            this.Controls.Add(this.radioBubble);
+            this.Controls.Add(this.checkBMI);
+            this.Controls.Add(this.checkBP);
+            this.Controls.Add(this.checkHeartRate);
+            this.Controls.Add(this.checkWeight);
             this.Controls.Add(this.lbDays);
             this.Controls.Add(this.nudDays);
-            this.Controls.Add(this.rbBMI);
             this.Controls.Add(this.BTNPrint);
             this.Controls.Add(this.nextButton);
             this.Controls.Add(this.prevButton);
-            this.Controls.Add(this.rbBP);
-            this.Controls.Add(this.rbHeartRate);
-            this.Controls.Add(this.rbWeight);
             this.Controls.Add(this.chartUserData);
             this.Name = "WellnessReportForm";
             this.Text = "Wellness Report";
@@ -229,16 +252,18 @@
         #endregion
 
         private System.Windows.Forms.DataVisualization.Charting.Chart chartUserData;
-        private System.Windows.Forms.RadioButton rbWeight;
-        private System.Windows.Forms.RadioButton rbHeartRate;
-        private System.Windows.Forms.RadioButton rbBP;
         private System.Windows.Forms.Button prevButton;
         private System.Windows.Forms.Button nextButton;
         private System.Windows.Forms.Button BTNPrint;
         private System.Windows.Forms.Label lbDays;
         private System.Windows.Forms.NumericUpDown nudDays;
-        private System.Windows.Forms.RadioButton rbBMI;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox cbChartType;
+        private System.Windows.Forms.CheckBox checkWeight;
+        private System.Windows.Forms.CheckBox checkHeartRate;
+        private System.Windows.Forms.CheckBox checkBP;
+        private System.Windows.Forms.CheckBox checkBMI;
+        private System.Windows.Forms.RadioButton radioBubble;
+        private System.Windows.Forms.RadioButton radioColumn;
+        private System.Windows.Forms.RadioButton radioLine;
+        private System.Windows.Forms.RadioButton radioPoint;
     }
 }
