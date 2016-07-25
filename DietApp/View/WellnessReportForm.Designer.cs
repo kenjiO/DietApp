@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea14 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series14 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.chartUserData = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.rbWeight = new System.Windows.Forms.RadioButton();
             this.rbHeartRate = new System.Windows.Forms.RadioButton();
@@ -40,22 +40,24 @@
             this.rbBMI = new System.Windows.Forms.RadioButton();
             this.nudDays = new System.Windows.Forms.NumericUpDown();
             this.lbDays = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cbChartType = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.chartUserData)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudDays)).BeginInit();
             this.SuspendLayout();
             // 
             // chartUserData
             // 
-            chartArea1.AxisX.IntervalAutoMode = System.Windows.Forms.DataVisualization.Charting.IntervalAutoMode.VariableCount;
-            chartArea1.AxisY.IntervalAutoMode = System.Windows.Forms.DataVisualization.Charting.IntervalAutoMode.VariableCount;
-            chartArea1.Name = "ChartArea1";
-            this.chartUserData.ChartAreas.Add(chartArea1);
+            chartArea14.AxisX.IntervalAutoMode = System.Windows.Forms.DataVisualization.Charting.IntervalAutoMode.VariableCount;
+            chartArea14.AxisY.IntervalAutoMode = System.Windows.Forms.DataVisualization.Charting.IntervalAutoMode.VariableCount;
+            chartArea14.Name = "ChartArea1";
+            this.chartUserData.ChartAreas.Add(chartArea14);
             this.chartUserData.Location = new System.Drawing.Point(12, 12);
             this.chartUserData.Name = "chartUserData";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series1.Name = "UserData";
-            this.chartUserData.Series.Add(series1);
+            series14.ChartArea = "ChartArea1";
+            series14.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series14.Name = "UserData";
+            this.chartUserData.Series.Add(series14);
             this.chartUserData.Size = new System.Drawing.Size(578, 320);
             this.chartUserData.TabIndex = 0;
             this.chartUserData.Text = "chart1";
@@ -172,11 +174,38 @@
             this.lbDays.TabIndex = 8;
             this.lbDays.Text = "Days to Display";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(289, 348);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(59, 13);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "Chart Type";
+            // 
+            // cbChartType
+            // 
+            this.cbChartType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbChartType.FormattingEnabled = true;
+            this.cbChartType.Items.AddRange(new object[] {
+            "Bubble",
+            "Column",
+            "Line",
+            "Point"});
+            this.cbChartType.Location = new System.Drawing.Point(354, 344);
+            this.cbChartType.Name = "cbChartType";
+            this.cbChartType.Size = new System.Drawing.Size(99, 21);
+            this.cbChartType.TabIndex = 11;
+            this.cbChartType.SelectedIndexChanged += new System.EventHandler(this.WellnessReportForm_Load);
+            this.cbChartType.ValueMemberChanged += new System.EventHandler(this.WellnessReportForm_Load);
+            // 
             // WellnessReportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(602, 440);
+            this.Controls.Add(this.cbChartType);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.lbDays);
             this.Controls.Add(this.nudDays);
             this.Controls.Add(this.rbBMI);
@@ -209,5 +238,7 @@
         private System.Windows.Forms.Label lbDays;
         private System.Windows.Forms.NumericUpDown nudDays;
         private System.Windows.Forms.RadioButton rbBMI;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox cbChartType;
     }
 }
