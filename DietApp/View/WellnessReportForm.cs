@@ -68,6 +68,9 @@ namespace DietApp.View
         /// </summary>
         private void RunReport()
         {
+            System.Windows.Forms.Cursor.Current = Cursors.WaitCursor;
+            System.Threading.Thread.Sleep(500);
+
             this.chartUserData.Legends.Clear();
             this.chartUserData.Series.Clear();
             SeriesChartType chartType = this.ChartType();
@@ -132,6 +135,8 @@ namespace DietApp.View
 
             this.prevButton.Text = "Prev " + this.nudDays.Value + " Days";
             this.nextButton.Text = "Next " + this.nudDays.Value + " Days";
+
+            System.Windows.Forms.Cursor.Current = Cursors.Default;
         }
 
         /// <summary>
