@@ -25,18 +25,20 @@ namespace DietApp.View
             if (this.theUser != null)
             {
                 theProgress = DietAppController.getBMIData(theUser.userId);
+                this.theUser = DietAppController.getUserData(this.theUser.userId);
                 oldBMIBox.Text = theProgress.oldBMI.ToString();
                 oldWeightBox.Text = theProgress.oldWeight.ToString();
-                if(theProgress.newBMI > 0)
+                if (theProgress.newBMI > 0)
                 {
                     newBMIBox.Text = theProgress.newBMI.ToString();
                     newWeightBox.Text = theProgress.newWeight.ToString();
-                } else
+                }
+                else
                 {
                     newBMIBox.Text = "n/a";
                     newWeightBox.Text = "n/a";
                 }
-                
+
                 msgLabel.Text = this.currentBMIStatus();
             }
         }
@@ -61,11 +63,11 @@ namespace DietApp.View
             var BMI = this.theProgress.newBMI;
             var msg = "";
 
-            if(BMI == 0)
+            if (BMI == 0)
             {
                 msg = "Please enter wellness data to calculate your current BMI.";
             }
-            else if (BMI >0 && BMI <= 15)
+            else if (BMI > 0 && BMI <= 15)
             {
                 msg = "Very severely underweight\n" + this.weightDifference() + "\n" + this.goalWeight();
             }
@@ -95,7 +97,7 @@ namespace DietApp.View
             }
             else if (BMI > 40)
             {
-                msg = "Obese Class III (Very severely obese)\n" + this.weightDifference() + "\n" +this.goalWeight();
+                msg = "Obese Class III (Very severely obese)\n" + this.weightDifference() + "\n" + this.goalWeight();
             }
             else
             {
@@ -143,7 +145,7 @@ namespace DietApp.View
             var msg = "";
             if (this.theUser.goalWeight < this.theProgress.newWeight)
             {
-                msg = "\n Goal Weight: \n You need to lose "+ (this.theProgress.newWeight - this.theUser.goalWeight) +" lb(s) to meet your goal weight.";
+                msg = "\n Goal Weight: \n You need to lose " + (this.theProgress.newWeight - this.theUser.goalWeight) + " lb(s) to meet your goal weight.";
             }
             else if (this.theUser.goalWeight > this.theProgress.newWeight)
             {
