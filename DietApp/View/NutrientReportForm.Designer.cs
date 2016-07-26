@@ -80,7 +80,6 @@
             // 
             // BTNPrint
             // 
-            this.BTNPrint.Enabled = false;
             this.BTNPrint.Location = new System.Drawing.Point(328, 327);
             this.BTNPrint.Name = "BTNPrint";
             this.BTNPrint.Size = new System.Drawing.Size(117, 23);
@@ -133,7 +132,7 @@
             this.Controls.Add(this.prevButton);
             this.Controls.Add(this.chart1);
             this.Name = "NutrientReportForm";
-            this.Text = "NutrientReportForm";
+            this.Text = "Nutrient Report";
             this.Load += new System.EventHandler(this.NutrientReportForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudDays)).EndInit();

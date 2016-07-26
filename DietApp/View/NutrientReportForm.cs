@@ -83,7 +83,7 @@ namespace DietApp.View
             System.Windows.Forms.Cursor.Current = Cursors.WaitCursor;
 
             this.ChartSeries();
-            string title = "Nutrient Values";
+            string title = "Nutrition Values";
             this.ChartAreas(this.maxValue, title);
             this.ChartTitle(title);
 
@@ -293,6 +293,7 @@ namespace DietApp.View
         {
             var pd = new System.Drawing.Printing.PrintDocument();
             pd.PrintPage += new PrintPageEventHandler(this.PrintChart);
+            pd.DefaultPageSettings.Landscape = true;
 
             PrintPreviewDialog pdi = new PrintPreviewDialog();
             pdi.Document = pd;
@@ -312,7 +313,7 @@ namespace DietApp.View
             using (var f = new System.Drawing.Font("Arial", 10))
             {
                 var size = ev.Graphics.MeasureString(Text, f);
-                ev.Graphics.DrawString("Whatever text you want", f, Brushes.Black, ev.PageBounds.X + ((ev.PageBounds.Width - size.Width) / 2), ev.PageBounds.Y);
+                ev.Graphics.DrawString(string.Empty, f, Brushes.Black, ev.PageBounds.X + ((ev.PageBounds.Width - size.Width) / 2), ev.PageBounds.Y);
             }
 
             // Note, the chart printing code wants to print in pixels.
