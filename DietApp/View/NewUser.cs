@@ -38,7 +38,7 @@ namespace DietApp
         public void SaveUser_Click(object sender, System.EventArgs e)
         {
             string userName, password, confirm, firstName, lastName, email;
-            int height, weight, goalWeight;
+            int height, weight, goalWeight, dailyCalorieGoal;
 
             userName = usernameBox.Text;
             password = passwordBox.Text;
@@ -48,6 +48,7 @@ namespace DietApp
             email = emailBox.Text;
             weight = (int)this.nudWeightBox.Value;
             goalWeight = (int)this.nudGoalWeightBox.Value;
+            dailyCalorieGoal = (int)this.nudDailyCalorieGoal.Value;
             height = ((int)this.nudFootBox.Value * 12) + (int)this.nudInchesBox.Value;
 
             Cursor.Current = Cursors.WaitCursor;
@@ -79,10 +80,10 @@ namespace DietApp
                 {
                     // Adds the userName and password to the User Table.
                     var userID = DietAppController.addNewUser(userName, password);
-                    
+
                     // Gets the user information for the user just added to the DB based on the newly created userID.
                     var justAdded = DietAppController.getUserData(userID);
-                    
+
                     // Builds a blank user profile.
                     var newUser = new Users
                     {
@@ -93,21 +94,22 @@ namespace DietApp
                         email = email,
                         initialWeight = weight,
                         goalWeight = goalWeight,
+                        dailyCalorieGoal = dailyCalorieGoal,
                         heightInches = height
                     };
-                    
+
                     // Updates the user.
                     DietAppController.updateUsers(justAdded, newUser);
-                    
+
                     // Opens the main form.
                     var mainForm = new MainForm();
-                    
+
                     // Loads the user.
                     mainForm.LoadUser(DietAppController.getUserData(justAdded.userId));
-                    
+
                     // Shows the main form.
                     mainForm.Show();
-                    
+
                     // Hides the current form.
                     this.Hide();
                 }
