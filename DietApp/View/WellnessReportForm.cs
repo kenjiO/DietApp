@@ -64,7 +64,6 @@ namespace DietApp.View
         public void WellnessReportForm_Load(object sender, EventArgs e)
         {
             System.Windows.Forms.Cursor.Current = Cursors.WaitCursor;
-            System.Threading.Thread.Sleep(500);
             this.RunReport();
             System.Windows.Forms.Cursor.Current = Cursors.Default;
         }
@@ -87,7 +86,7 @@ namespace DietApp.View
             {
                 this.checkWeight.Checked = true;
             }
-            System.Windows.Forms.Cursor.Current = Cursors.WaitCursor;
+
             if (this.checkWeight.Checked == true)
             {
                 int type = 1;
@@ -131,8 +130,6 @@ namespace DietApp.View
 
             this.prevButton.Text = "Prev " + this.nudDays.Value + " Days";
             this.nextButton.Text = "Next " + this.nudDays.Value + " Days";
-
-            System.Windows.Forms.Cursor.Current = Cursors.Default;
         }
 
         /// <summary>
