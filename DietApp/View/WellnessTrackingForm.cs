@@ -162,16 +162,7 @@ namespace DietApp.View
                 MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
-                // If weight is 0 that means there is no entry for this yet and you must do saveInfo
-                // otherwise there is already an entry for this so you must do updateInfo
-                if (this.userWellness.weight == 0)
-                {
-                    this.saveInfo_Click();
-                }
-                else
-                {
-                    this.updateInfo_Click();
-                }
+                this.updateInfo_Click();
             }
         }
 

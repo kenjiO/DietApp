@@ -45,7 +45,7 @@ namespace DietApp.View
             if (currentUserId == 0)
             {
                 MessageBox.Show("Error loading Food Entries Window. No user specified");
-
+                
                 // Need to call Close() as an event handler for Load event
                 this.Load += (s, e) => this.Close();
             }
@@ -267,7 +267,7 @@ namespace DietApp.View
 
             this.RunReport();
         }
-
+        
         /// <summary>
         /// Click the next button.
         /// </summary>
