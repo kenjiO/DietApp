@@ -144,6 +144,7 @@
             this.checkWeight.TabIndex = 1;
             this.checkWeight.Text = "Weight";
             this.checkWeight.UseVisualStyleBackColor = true;
+			this.checkWeight.CheckedChanged += new System.EventHandler(this.WellnessReportForm_Load);
             // 
             // checkHeartRate
             // 
