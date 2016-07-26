@@ -62,6 +62,14 @@ namespace DietApp.View
                 heartRateUpDown.Value = this.userWellness.heartRate;
                 dateTimePicker.Value = this.userWellness.date;
             }
+            if (this.userWellness.weight != 0)
+            {
+                this.saveButton.Text = "Update";
+            }
+            else
+            {
+                this.saveButton.Text = "Save";
+            }
         }
 
         /// <summary>
@@ -92,7 +100,7 @@ namespace DietApp.View
             }
         }
 
-      
+
         /// <summary>
         /// Checks to see if wellness data matches data in DB.
         /// </summary>
@@ -135,7 +143,8 @@ namespace DietApp.View
             if (!View_Validator.wellnessMatchDB(userWellnessUpdate))
             {
                 this.saveButton.Enabled = true;
-            } else
+            }
+            else
             {
                 this.saveButton.Enabled = false;
             }
@@ -171,7 +180,8 @@ namespace DietApp.View
                 date = dateTimePicker.Value,
                 userID = this.theUser.userId
             };
-            if (!View_Validator.ValidateWellness(this.userWellness) || this.userWellness.weight == 0) { 
+            if (!View_Validator.ValidateWellness(this.userWellness) || this.userWellness.weight == 0)
+            {
                 MessageBox.Show("Please enter valid data for all fields.",
                     "Wellness Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -195,6 +205,8 @@ namespace DietApp.View
                     MessageBox.Show(ex.Message, ex.GetType().ToString());
                 }
             }
+            this.refresh_data();
+            this.saveButton.Enabled = false;
         }
 
         /// <summary>
@@ -238,6 +250,8 @@ namespace DietApp.View
                 }
                 Cursor.Current = Cursors.Default;
             }
+            this.refresh_data();
+            this.saveButton.Enabled = false;
         }
 
         /// <summary>
@@ -255,7 +269,7 @@ namespace DietApp.View
                 systolicUpDown.Value = previousWellness.systolicBP;
                 weightUpDown.Value = previousWellness.weight;
                 heartRateUpDown.Value = previousWellness.heartRate;
-                dateTimePicker.Value =this.userWellness.date;
+                dateTimePicker.Value = this.userWellness.date;
             }
         }
     }
