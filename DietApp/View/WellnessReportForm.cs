@@ -63,9 +63,7 @@ namespace DietApp.View
         /// <param name="e">Click on object.</param>
         public void WellnessReportForm_Load(object sender, EventArgs e)
         {
-            System.Windows.Forms.Cursor.Current = Cursors.WaitCursor;
-            this.RunReport();
-            System.Windows.Forms.Cursor.Current = Cursors.Default;
+            this.RunReport(); 
         }
 
         /// <summary>
@@ -73,6 +71,7 @@ namespace DietApp.View
         /// </summary>
         private void RunReport()
         {
+            System.Windows.Forms.Cursor.Current = Cursors.WaitCursor;
             this.chartUserData.Legends.Clear();
             this.chartUserData.Series.Clear();
             SeriesChartType chartType = this.ChartType();
@@ -130,6 +129,7 @@ namespace DietApp.View
 
             this.prevButton.Text = "Prev " + this.nudDays.Value + " Days";
             this.nextButton.Text = "Next " + this.nudDays.Value + " Days";
+            System.Windows.Forms.Cursor.Current = Cursors.Default;
         }
 
         /// <summary>
