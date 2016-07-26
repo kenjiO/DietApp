@@ -57,7 +57,7 @@ namespace DietApp.View
                 this.usernameBox.Text = this.user.userName;
                 this.nudGoalWeight.Value = this.user.goalWeight;
                 this.nudFootBox.Value = this.user.heightInches / 12;
-                this.nudInchesBox.Value = this.user.dailyCalorieGoal % 12;
+                this.nudInchesBox.Value = this.user.heightInches % 12;
                 this.nudDailyCalorieGoal.Value = this.user.dailyCalorieGoal;
             }
         }
@@ -163,6 +163,11 @@ namespace DietApp.View
                         dailyCalorieGoal = (int)this.nudDailyCalorieGoal.Value,
                         goalWeight = (int)this.nudGoalWeight.Value,
                     };
+                    // Set max height to 999 feet
+                    if (userProfileUpdate.heightInches > 11988)
+                    {
+                        userProfileUpdate.heightInches = 11988;
+                    }
                     if (View_Validator.UserMatch(userProfileUpdate))
                     {
                         Cursor.Current = Cursors.Default;
