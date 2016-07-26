@@ -33,6 +33,9 @@ namespace DietApp.View
         /// <summary>The report page.</summary>
         private int reportPage = 1;
 
+        /// <summary>The report start date page.</summary>
+        private DateTime date;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="NutrientReportForm"/> class.
         /// </summary>
@@ -42,15 +45,20 @@ namespace DietApp.View
             if (currentUserId == 0)
             {
                 MessageBox.Show("Error loading Food Entries Window. No user specified");
-                
+
                 // Need to call Close() as an event handler for Load event
                 this.Load += (s, e) => this.Close();
             }
 
-            this.theUserId = currentUserId;
-            this.maxValue = 250;
             this.reportPage = 1;
-            this.InitialLook();
+            this.theUserId = currentUserId;
+            this.date = new DateTime();
+            this.nudDays = new NumericUpDown();
+            this.nudDays.Value = 10;
+            this.prevButton = new Button();
+            this.prevButton.Text = "Prev " + this.nudDays.Value + " Days";
+            this.nextButton = new Button();
+            this.nextButton.Text = "Next " + this.nudDays.Value + " Days";
             this.InitializeComponent();
         }
 
@@ -61,9 +69,7 @@ namespace DietApp.View
         /// <param name="e">Click on object.</param>
         public void NutrientReportForm_Load(object sender, EventArgs e)
         {
-            System.Windows.Forms.Cursor.Current = Cursors.WaitCursor;
             this.RunReport();
-            System.Windows.Forms.Cursor.Current = Cursors.Default;
         }
 
         /// <summary>
@@ -71,47 +77,14 @@ namespace DietApp.View
         /// </summary>
         public void RunReport()
         {
-            if (this.checkCalories.Checked == false && this.checkFat.Checked == false && this.checkProtein.Checked == false && this.checkCarbohydrates.Checked == false)
-            {
-                this.checkCalories.Checked = true;
-            }
-
-            this.chart1.Legends.Clear();
             this.chart1.Series.Clear();
-            this.chart1.ChartAreas.Clear();
-            this.chart1.Titles.Clear();
-            this.maxValue = 0;
+            this.maxValue = 250;
+
+            System.Windows.Forms.Cursor.Current = Cursors.WaitCursor;
+
+            this.ChartSeries();
             string title = "Nutrition Values";
-
-            if (this.checkCalories.Checked == true)
-            {
-                string name = "Calories";
-                this.ChartSeries(name, System.Drawing.Color.Blue);
-                this.ChartLegends(name);
-            }
-
-            if (this.checkFat.Checked == true)
-            {
-                string name = "Fat";
-                this.ChartSeries(name, System.Drawing.Color.Green);
-                this.ChartLegends(name);
-            }
-
-            if (this.checkProtein.Checked == true)
-            {
-                string name = "Protein";
-                this.ChartSeries(name, System.Drawing.Color.Purple);
-                this.ChartLegends(name);
-            }
-
-            if (this.checkCarbohydrates.Checked == true)
-            {
-                string name = "Carbohydrates";
-                this.ChartSeries(name, System.Drawing.Color.Red);
-                this.ChartLegends(name);
-            }
-
-            this.ChartAreas(this.maxValue);
+            this.ChartAreas(this.maxValue, title);
             this.ChartTitle(title);
 
             this.chart1.Invalidate();
@@ -124,12 +97,15 @@ namespace DietApp.View
         /// Sets up the look and style of the user's chart, Areas.
         /// </summary>
         /// <param name="max">Maximum chart value.</param>
-        private void ChartAreas(double max)
+        /// <param name="title">Title of the chart.</param>
+        private void ChartAreas(double max, string title)
         {
             if (max == 0)
             {
                 max = 250;
             }
+
+            this.chart1.ChartAreas.Clear();
 
             var axisX = new System.Windows.Forms.DataVisualization.Charting.Axis
             {
@@ -143,10 +119,16 @@ namespace DietApp.View
                 Title = "grams",
             };
 
+            var axisY2 = new System.Windows.Forms.DataVisualization.Charting.Axis
+            {
+                Title = "calories",
+            };
+
             var chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea
             {
                 AxisX = axisX,
                 AxisY = axisY,
+                AxisY2 = axisY2
             };
 
             this.chart1.ChartAreas.Add(chartArea1);
@@ -169,29 +151,44 @@ namespace DietApp.View
         }
 
         /// <summary>
-        /// Sets up the look and style of the user's chart, Legends.
-        /// </summary>
-        /// <param name="name">Name of the chart data.</param>
-        private void ChartLegends(string name)
-        {
-            var legends1 = new System.Windows.Forms.DataVisualization.Charting.Legend
-            {
-                Name = name,
-            };
-            this.chart1.Legends.Add(legends1);
-        }
-
-        /// <summary>
         /// Sets up the look and style of the user's chart, Series.
         /// </summary>
-        /// <param name="name">The name of the data.</param>
-        /// <param name="color">The color of the line.</param>
-        private void ChartSeries(string name, Color color)
+        private void ChartSeries()
         {
             var series1 = new System.Windows.Forms.DataVisualization.Charting.Series
             {
-                Name = name,
-                Color = color,
+                Name = "Fat",
+                Color = System.Drawing.Color.Green,
+                BorderWidth = 5,
+                IsVisibleInLegend = true,
+                IsXValueIndexed = true,
+                ChartType = SeriesChartType.Column,
+            };
+
+            var series2 = new System.Windows.Forms.DataVisualization.Charting.Series
+            {
+                Name = "Protein",
+                Color = System.Drawing.Color.Yellow,
+                BorderWidth = 5,
+                IsVisibleInLegend = true,
+                IsXValueIndexed = true,
+                ChartType = SeriesChartType.Column,
+            };
+
+            var series3 = new System.Windows.Forms.DataVisualization.Charting.Series
+            {
+                Name = "Carbohydrates",
+                Color = System.Drawing.Color.Red,
+                BorderWidth = 5,
+                IsVisibleInLegend = true,
+                IsXValueIndexed = true,
+                ChartType = SeriesChartType.Column,
+            };
+
+            var series4 = new System.Windows.Forms.DataVisualization.Charting.Series
+            {
+                Name = "Calories",
+                Color = System.Drawing.Color.Blue,
                 BorderWidth = 5,
                 IsVisibleInLegend = true,
                 IsXValueIndexed = true,
@@ -199,41 +196,35 @@ namespace DietApp.View
             };
 
             int toDisplay = (int)this.nudDays.Value;
-            DateTime date = new DateTime();
-            date = DateTime.Now.AddDays(1 - (this.reportPage * toDisplay));
+            this.date = DateTime.Now.AddDays(1 - (this.reportPage * toDisplay));
 
             try
             {
-                List<DailyNutrition> dataPoints = DietAppController.GetXDayNutrientTotals(this.theUserId, date, toDisplay);
+                List<DailyNutrition> dataPoints = DietAppController.GetXDayNutrientTotals(this.theUserId, this.date, toDisplay);
+                System.Windows.Forms.Cursor.Current = Cursors.Default;
 
                 for (int i = 0; i < toDisplay; i++)
                 {
                     string day = date.AddDays(i).ToString("MM/dd");
                     if ((dataPoints.Count > 0) && dataPoints[0].Date.ToString("MM/dd").Equals(day))
                     {
-                        int value = 0;
-                        if (name.Equals("Calories"))
+                        //day = day + "\n\n" + dataPoints[0].Calories + "\ncalories";
+                        series1.Points.AddXY(day, dataPoints[0].Fat);
+                        if ((dataPoints[0].Fat * 1.1) > this.maxValue)
                         {
-                            value = (int)dataPoints[0].Calories;
+                            this.maxValue = Convert.ToInt32(dataPoints[0].Fat * 1.1);
                         }
-                        else if (name.Equals("Fat"))
+                        series2.Points.AddXY(day, dataPoints[0].Protein);
+                        if ((dataPoints[0].Protein * 1.1) > this.maxValue)
                         {
-                            value = (int)dataPoints[0].Fat;
+                            this.maxValue = Convert.ToInt32(dataPoints[0].Protein * 1.1);
                         }
-                        else if (name.Equals("Protein"))
+                        series3.Points.AddXY(day, dataPoints[0].Carbohydrates);
+                        if ((dataPoints[0].Carbohydrates * 1.1) > this.maxValue)
                         {
-                            value = (int)dataPoints[0].Protein;
+                            this.maxValue = Convert.ToInt32(dataPoints[0].Carbohydrates * 1.1);
                         }
-                        else if (name.Equals("Carbohydrates"))
-                        {
-                            value = (int)dataPoints[0].Carbohydrates;
-                        }
-                        
-                        series1.Points.AddXY(day, value);
-                        if ((value * 1.1) > this.maxValue)
-                        {
-                            this.maxValue = Convert.ToInt32(value * 1.1);
-                        }
+                        series4.Points.AddXY(day, dataPoints[0].Calories);
 
                         dataPoints.RemoveAt(0);
                     }
@@ -242,7 +233,11 @@ namespace DietApp.View
                         // No data for this day, but still need to add something so the date
                         // shows up on the X axis 
                         series1.Points.AddXY(day, 0);
+                        series2.Points.AddXY(day, 0);
+                        series3.Points.AddXY(day, 0);
+                        series4.Points.AddXY(day, 0);
                     }
+
                 }
             }
             catch (SqlException ex)
@@ -252,7 +247,12 @@ namespace DietApp.View
                 return;
             }
 
+            this.chart1.ChartAreas["ChartArea1"].AxisY2.Enabled = AxisEnabled.True;
+            series4.YAxisType = AxisType.Secondary;
             this.chart1.Series.Add(series1);
+            this.chart1.Series.Add(series2);
+            this.chart1.Series.Add(series3);
+            this.chart1.Series.Add(series4);
         }
 
         /// <summary>
@@ -267,7 +267,7 @@ namespace DietApp.View
 
             this.RunReport();
         }
-        
+
         /// <summary>
         /// Click the next button.
         /// </summary>
@@ -328,22 +328,6 @@ namespace DietApp.View
             }
 
             this.chart1.Printing.PrintPaint(ev.Graphics, marginBounds);
-        }
-
-        /// <summary>
-        /// Creates the initial look.
-        /// </summary>
-        private void InitialLook()
-        {
-            // NumericUpDown
-            this.nudDays = new NumericUpDown();
-            this.nudDays.Value = 10;
-
-            // Report Prev/Next Buttons
-            this.prevButton = new Button();
-            this.prevButton.Text = "Prev " + this.nudDays.Value + " Days";
-            this.nextButton = new Button();
-            this.nextButton.Text = "Next " + this.nudDays.Value + " Days";
         }
     }
 }

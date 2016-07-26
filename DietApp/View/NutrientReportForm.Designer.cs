@@ -37,10 +37,6 @@
             this.BTNPrint = new System.Windows.Forms.Button();
             this.lbDays = new System.Windows.Forms.Label();
             this.nudDays = new System.Windows.Forms.NumericUpDown();
-            this.checkCalories = new System.Windows.Forms.CheckBox();
-            this.checkFat = new System.Windows.Forms.CheckBox();
-            this.checkProtein = new System.Windows.Forms.CheckBox();
-            this.checkCarbohydrates = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudDays)).BeginInit();
             this.SuspendLayout();
@@ -124,62 +120,11 @@
             0});
             this.nudDays.ValueChanged += new System.EventHandler(this.NutrientReportForm_Load);
             // 
-            // checkCalories
-            // 
-            this.checkCalories.AutoSize = true;
-            this.checkCalories.Checked = true;
-            this.checkCalories.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkCalories.Location = new System.Drawing.Point(13, 303);
-            this.checkCalories.Name = "checkCalories";
-            this.checkCalories.Size = new System.Drawing.Size(63, 17);
-            this.checkCalories.TabIndex = 11;
-            this.checkCalories.Text = "Calories";
-            this.checkCalories.UseVisualStyleBackColor = true;
-            this.checkCalories.CheckedChanged += new System.EventHandler(this.NutrientReportForm_Load);
-            this.checkCalories.CheckStateChanged += new System.EventHandler(this.NutrientReportForm_Load);
-            // 
-            // checkFat
-            // 
-            this.checkFat.AutoSize = true;
-            this.checkFat.Location = new System.Drawing.Point(83, 303);
-            this.checkFat.Name = "checkFat";
-            this.checkFat.Size = new System.Drawing.Size(41, 17);
-            this.checkFat.TabIndex = 12;
-            this.checkFat.Text = "Fat";
-            this.checkFat.UseVisualStyleBackColor = true;
-            this.checkFat.CheckedChanged += new System.EventHandler(this.NutrientReportForm_Load);
-            // 
-            // checkProtein
-            // 
-            this.checkProtein.AutoSize = true;
-            this.checkProtein.Location = new System.Drawing.Point(141, 303);
-            this.checkProtein.Name = "checkProtein";
-            this.checkProtein.Size = new System.Drawing.Size(59, 17);
-            this.checkProtein.TabIndex = 13;
-            this.checkProtein.Text = "Protein";
-            this.checkProtein.UseVisualStyleBackColor = true;
-            this.checkProtein.CheckedChanged += new System.EventHandler(this.NutrientReportForm_Load);
-            // 
-            // checkCarbohydrates
-            // 
-            this.checkCarbohydrates.AutoSize = true;
-            this.checkCarbohydrates.Location = new System.Drawing.Point(207, 303);
-            this.checkCarbohydrates.Name = "checkCarbohydrates";
-            this.checkCarbohydrates.Size = new System.Drawing.Size(94, 17);
-            this.checkCarbohydrates.TabIndex = 14;
-            this.checkCarbohydrates.Text = "Carbohydrates";
-            this.checkCarbohydrates.UseVisualStyleBackColor = true;
-            this.checkCarbohydrates.CheckedChanged += new System.EventHandler(this.NutrientReportForm_Load);
-            // 
             // NutrientReportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 381);
-            this.Controls.Add(this.checkCarbohydrates);
-            this.Controls.Add(this.checkProtein);
-            this.Controls.Add(this.checkFat);
-            this.Controls.Add(this.checkCalories);
             this.Controls.Add(this.lbDays);
             this.Controls.Add(this.nudDays);
             this.Controls.Add(this.BTNPrint);
@@ -204,9 +149,5 @@
         private System.Windows.Forms.Button BTNPrint;
         private System.Windows.Forms.Label lbDays;
         private System.Windows.Forms.NumericUpDown nudDays;
-        private System.Windows.Forms.CheckBox checkCalories;
-        private System.Windows.Forms.CheckBox checkFat;
-        private System.Windows.Forms.CheckBox checkProtein;
-        private System.Windows.Forms.CheckBox checkCarbohydrates;
     }
 }
