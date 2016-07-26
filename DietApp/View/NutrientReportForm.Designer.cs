@@ -53,7 +53,7 @@
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(589, 284);
+            this.chart1.Size = new System.Drawing.Size(760, 284);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "chart1";
             // 
@@ -125,7 +125,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(677, 378);
+            this.ClientSize = new System.Drawing.Size(784, 381);
             this.Controls.Add(this.lbDays);
             this.Controls.Add(this.nudDays);
             this.Controls.Add(this.BTNPrint);
