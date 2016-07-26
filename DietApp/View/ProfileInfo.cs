@@ -24,6 +24,8 @@ namespace DietApp.View
         /// <summary>The current user.</summary>
         private int theUserId;
 
+        private Users user;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="ProfileInfo"/> class.
         /// </summary>
@@ -45,14 +47,18 @@ namespace DietApp.View
             }
             else
             {
-                this.firstNameBox.Text = DietAppController.getUserData(this.theUserId).firstName;
-                this.lastNameBox.Text = DietAppController.getUserData(this.theUserId).lastName;
-                this.emailBox.Text = DietAppController.getUserData(this.theUserId).email;
-                this.nudInitialWeight.Value = DietAppController.getUserData(this.theUserId).initialWeight;
-                this.usernameBox.Text = DietAppController.getUserData(this.theUserId).userName;
-                this.nudGoalWeight.Value = DietAppController.getUserData(this.theUserId).goalWeight;
-                this.nudFootBox.Value = DietAppController.getUserData(this.theUserId).heightInches / 12;
-                this.nudInchesBox.Value = DietAppController.getUserData(this.theUserId).heightInches % 12;
+                //Reduced number of calls on the DB by getting the user information in a single object.
+                this.user = DietAppController.getUserData(this.theUserId);
+                this.firstNameBox.Text = this.user.firstName;
+                this.lastNameBox.Text = this.user.lastName;
+                this.emailBox.Text = this.user.email;
+                this.nudInitialWeight.Value = this.user.initialWeight;
+                this.usernameBox.Text = this.user.userName;
+                this.nudGoalWeight.Value = this.user.goalWeight;
+                this.nudFootBox.Value = this.user.heightInches / 12;
+                this.nudInchesBox.Value = this.user.dailyCalorieGoal % 12;
+                this.nudDailyCalorieGoal.Value = this.user.dailyCalorieGoal;
+
             }
         }
 
@@ -64,6 +70,52 @@ namespace DietApp.View
         {
             // Updates Any Changes
             this.theUserId = newUserId;
+        }
+
+        /// <summary>
+        /// Checks to see if profile data matches data in the DB.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void CheckDBForProfile(object sender, System.EventArgs e)
+        {
+            //Builds a blank user profile.
+            var userProfileUpdate = new Users
+            {
+                //Adds the current data to the user profile.
+                userId = this.theUserId,
+                userName = this.user.userName,
+                firstName = this.firstNameBox.Text,
+                lastName = this.lastNameBox.Text,
+                email = this.emailBox.Text,
+                initialWeight = (int)this.nudInitialWeight.Value,
+                heightInches = ((int)this.nudFootBox.Value * 12) + (int)this.nudInchesBox.Value,
+                dailyCalorieGoal = (int)this.nudDailyCalorieGoal.Value,
+                goalWeight = (int)this.nudGoalWeight.Value
+            };
+            if (!View_Validator.UserMatch(userProfileUpdate))
+            {
+                //Updates Profile Info
+                this.updateConfirm(sender, e);
+            }
+        }
+
+        // Helper Methods //
+
+        /// <summary>
+        /// Prompts the user if they try to navigate to a different tab with unsaved changes.  
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void updateConfirm(object sender, EventArgs e)
+        {
+            var dialogResult = MessageBox.Show("You have not saved changes for this user. " +
+                "Do you wish to update your data?", "Update Entry",
+                MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                this.UpdateButton_Click(sender, e);
+            }
         }
 
         /// <summary>
@@ -105,10 +157,9 @@ namespace DietApp.View
                         firstName = this.firstNameBox.Text,
                         lastName = this.lastNameBox.Text,
                         email = this.emailBox.Text,
-                        password = DietAppController.getUserData(this.theUserId).password,
                         initialWeight = (int)this.nudInitialWeight.Value,
                         heightInches = ((int)this.nudFootBox.Value * 12) + (int)this.nudInchesBox.Value,
-                        dailyCalorieGoal = DietAppController.getUserData(this.theUserId).dailyCalorieGoal,
+                        dailyCalorieGoal = (int)this.nudDailyCalorieGoal.Value,
                         goalWeight = (int)this.nudGoalWeight.Value,
                     };
                     if (View_Validator.UserMatch(userProfileUpdate))
@@ -158,10 +209,9 @@ namespace DietApp.View
                 firstName = this.firstNameBox.Text,
                 lastName = this.lastNameBox.Text,
                 email = this.emailBox.Text,
-                password = DietAppController.getUserData(this.theUserId).password,
                 initialWeight = (int)this.nudInitialWeight.Value,
                 heightInches = ((int)this.nudFootBox.Value * 12) + (int)this.nudInchesBox.Value,
-                dailyCalorieGoal = DietAppController.getUserData(this.theUserId).dailyCalorieGoal,
+                dailyCalorieGoal = (int)this.nudDailyCalorieGoal.Value,
                 goalWeight = (int)this.nudGoalWeight.Value,
             };
             if (!View_Validator.UserMatch(userProfileUpdate))

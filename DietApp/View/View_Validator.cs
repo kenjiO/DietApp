@@ -20,7 +20,7 @@ namespace DietApp.View
     /// Validator of standard view information
     /// </summary>
     internal class View_Validator
-    {        
+    {
         /// <summary>
         /// Check if the textbox is blank
         /// </summary>
@@ -182,13 +182,13 @@ namespace DietApp.View
         {
             if (string.IsNullOrWhiteSpace(nameBox.Text))
             {
-                MessageBox.Show(nameBox.Tag + " conatins a blank name.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;            
+                MessageBox.Show(nameBox.Tag + " contains a blank name.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
             }
 
             if (nameBox.Text.Length < 2)
             {
-                MessageBox.Show(nameBox.Tag + " conatins a name less than 2 characters.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(nameBox.Tag + " contains a name less than 2 characters.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
 
@@ -196,7 +196,7 @@ namespace DietApp.View
             {
                 if (!char.IsLetter(c))
                 {
-                    MessageBox.Show(nameBox.Tag + " conatins a numeric character.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show(nameBox.Tag + " contains a numeric character.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return false;
                 }
             }

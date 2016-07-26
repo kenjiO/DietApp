@@ -22,9 +22,9 @@ namespace DietApp.View
         /// <param name="e"></param>
         private void SplashForm_Load(object sender, EventArgs e)
         {
-            this.timeLeft = 100;
+            this.timeLeft = 50;
             timer1.Start();
-            progressBar1.Step = 1;
+            progressBar1.Step = 2;
         }
 
         /// <summary>

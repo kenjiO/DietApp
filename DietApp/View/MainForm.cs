@@ -67,7 +67,7 @@ namespace DietApp
         {
             Application.Exit();
         }
-        
+
         /// <summary>
         /// Loads current user information and updates.
         /// </summary>
@@ -80,6 +80,7 @@ namespace DietApp
             this.UpdateTitle();
             this.LoadTabs();
             this.tabPageWellness.Leave += new System.EventHandler(this.wellnessForm.CheckDBForWellness);
+            this.tabPageProfile.Leave += new System.EventHandler(this.profileInfoForm.CheckDBForProfile);
         }
 
         /// <summary>
