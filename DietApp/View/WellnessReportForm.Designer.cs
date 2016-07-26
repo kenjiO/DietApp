@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.chartUserData = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.rbWeight = new System.Windows.Forms.RadioButton();
             this.rbHeartRate = new System.Windows.Forms.RadioButton();
@@ -38,24 +38,23 @@
             this.nextButton = new System.Windows.Forms.Button();
             this.BTNPrint = new System.Windows.Forms.Button();
             this.rbBMI = new System.Windows.Forms.RadioButton();
-            this.nudDays = new System.Windows.Forms.NumericUpDown();
             this.lbDays = new System.Windows.Forms.Label();
+            this.nudDaysComboBox = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.chartUserData)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudDays)).BeginInit();
             this.SuspendLayout();
             // 
             // chartUserData
             // 
-            chartArea3.AxisX.IntervalAutoMode = System.Windows.Forms.DataVisualization.Charting.IntervalAutoMode.VariableCount;
-            chartArea3.AxisY.IntervalAutoMode = System.Windows.Forms.DataVisualization.Charting.IntervalAutoMode.VariableCount;
-            chartArea3.Name = "ChartArea1";
-            this.chartUserData.ChartAreas.Add(chartArea3);
+            chartArea2.AxisX.IntervalAutoMode = System.Windows.Forms.DataVisualization.Charting.IntervalAutoMode.VariableCount;
+            chartArea2.AxisY.IntervalAutoMode = System.Windows.Forms.DataVisualization.Charting.IntervalAutoMode.VariableCount;
+            chartArea2.Name = "ChartArea1";
+            this.chartUserData.ChartAreas.Add(chartArea2);
             this.chartUserData.Location = new System.Drawing.Point(12, 12);
             this.chartUserData.Name = "chartUserData";
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series3.Name = "UserData";
-            this.chartUserData.Series.Add(series3);
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series2.Name = "UserData";
+            this.chartUserData.Series.Add(series2);
             this.chartUserData.Size = new System.Drawing.Size(578, 320);
             this.chartUserData.TabIndex = 0;
             this.chartUserData.Text = "chart1";
@@ -71,7 +70,7 @@
             this.rbWeight.TabStop = true;
             this.rbWeight.Text = "Weight";
             this.rbWeight.UseVisualStyleBackColor = true;
-            this.rbWeight.Click += new System.EventHandler(this.WellnessReportForm_Load);
+            this.rbWeight.Click += new System.EventHandler(this.radioButtons_SelectedValueChanged);
             // 
             // rbHeartRate
             // 
@@ -83,7 +82,7 @@
             this.rbHeartRate.TabStop = true;
             this.rbHeartRate.Text = "Heart Rate";
             this.rbHeartRate.UseVisualStyleBackColor = true;
-            this.rbHeartRate.Click += new System.EventHandler(this.WellnessReportForm_Load);
+            this.rbHeartRate.Click += new System.EventHandler(this.radioButtons_SelectedValueChanged);
             // 
             // rbBP
             // 
@@ -95,7 +94,7 @@
             this.rbBP.TabStop = true;
             this.rbBP.Text = "BP";
             this.rbBP.UseVisualStyleBackColor = true;
-            this.rbBP.Click += new System.EventHandler(this.WellnessReportForm_Load);
+            this.rbBP.Click += new System.EventHandler(this.radioButtons_SelectedValueChanged);
             // 
             // prevButton
             // 
@@ -120,7 +119,7 @@
             // 
             // BTNPrint
             // 
-            this.BTNPrint.Location = new System.Drawing.Point(472, 364);
+            this.BTNPrint.Location = new System.Drawing.Point(473, 375);
             this.BTNPrint.Name = "BTNPrint";
             this.BTNPrint.Size = new System.Drawing.Size(117, 23);
             this.BTNPrint.TabIndex = 5;
@@ -138,30 +137,7 @@
             this.rbBMI.TabStop = true;
             this.rbBMI.Text = "BMI";
             this.rbBMI.UseVisualStyleBackColor = true;
-            this.rbBMI.Click += new System.EventHandler(this.WellnessReportForm_Load);
-            // 
-            // nudDays
-            // 
-            this.nudDays.Location = new System.Drawing.Point(545, 344);
-            this.nudDays.Maximum = new decimal(new int[] {
-            30,
-            0,
-            0,
-            0});
-            this.nudDays.Minimum = new decimal(new int[] {
-            7,
-            0,
-            0,
-            0});
-            this.nudDays.Name = "nudDays";
-            this.nudDays.Size = new System.Drawing.Size(44, 20);
-            this.nudDays.TabIndex = 7;
-            this.nudDays.Value = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.nudDays.ValueChanged += new System.EventHandler(this.WellnessReportForm_Load);
+            this.rbBMI.Click += new System.EventHandler(this.radioButtons_SelectedValueChanged);
             // 
             // lbDays
             // 
@@ -172,13 +148,23 @@
             this.lbDays.TabIndex = 8;
             this.lbDays.Text = "Days to Display";
             // 
+            // nudDaysComboBox
+            // 
+            this.nudDaysComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.nudDaysComboBox.FormattingEnabled = true;
+            this.nudDaysComboBox.Location = new System.Drawing.Point(545, 344);
+            this.nudDaysComboBox.Name = "nudDaysComboBox";
+            this.nudDaysComboBox.Size = new System.Drawing.Size(44, 21);
+            this.nudDaysComboBox.TabIndex = 9;
+            this.nudDaysComboBox.SelectedValueChanged += new System.EventHandler(this.nudDaysComboBox_SelectedValueChanged);
+            // 
             // WellnessReportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(602, 440);
+            this.Controls.Add(this.nudDaysComboBox);
             this.Controls.Add(this.lbDays);
-            this.Controls.Add(this.nudDays);
             this.Controls.Add(this.rbBMI);
             this.Controls.Add(this.BTNPrint);
             this.Controls.Add(this.nextButton);
@@ -191,7 +177,6 @@
             this.Text = "ReportForm";
             this.Load += new System.EventHandler(this.WellnessReportForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.chartUserData)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudDays)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -207,7 +192,7 @@
         private System.Windows.Forms.Button nextButton;
         private System.Windows.Forms.Button BTNPrint;
         private System.Windows.Forms.Label lbDays;
-        private System.Windows.Forms.NumericUpDown nudDays;
         private System.Windows.Forms.RadioButton rbBMI;
+        private System.Windows.Forms.ComboBox nudDaysComboBox;
     }
 }
