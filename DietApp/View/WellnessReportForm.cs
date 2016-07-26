@@ -87,7 +87,7 @@ namespace DietApp.View
             {
                 this.checkWeight.Checked = true;
             }
-
+            System.Windows.Forms.Cursor.Current = Cursors.WaitCursor;
             if (this.checkWeight.Checked == true)
             {
                 int type = 1;
