@@ -290,7 +290,7 @@
             this.nudFootBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nudFootBox.Location = new System.Drawing.Point(454, 385);
             this.nudFootBox.Maximum = new decimal(new int[] {
-            10,
+            999,
             0,
             0,
             0});
@@ -316,7 +316,7 @@
             this.nudInchesBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nudInchesBox.Location = new System.Drawing.Point(602, 385);
             this.nudInchesBox.Maximum = new decimal(new int[] {
-            11,
+            999,
             0,
             0,
             0});

@@ -50,6 +50,11 @@ namespace DietApp
             goalWeight = (int)this.nudGoalWeightBox.Value;
             dailyCalorieGoal = (int)this.nudDailyCalorieGoal.Value;
             height = ((int)this.nudFootBox.Value * 12) + (int)this.nudInchesBox.Value;
+            // set max to 999 feet
+            if (height > 11988)
+            {
+                height = 11988;
+            }
 
             Cursor.Current = Cursors.WaitCursor;
             try
