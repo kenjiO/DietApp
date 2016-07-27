@@ -69,7 +69,7 @@
             this.passwordLabel.Location = new System.Drawing.Point(574, 89);
             this.passwordLabel.Name = "passwordLabel";
             this.passwordLabel.Size = new System.Drawing.Size(120, 29);
-            this.passwordLabel.TabIndex = 16;
+            this.passwordLabel.TabIndex = 20;
             this.passwordLabel.Text = "Password";
             // 
             // usernameLabel
@@ -79,7 +79,7 @@
             this.usernameLabel.Location = new System.Drawing.Point(574, 38);
             this.usernameLabel.Name = "usernameLabel";
             this.usernameLabel.Size = new System.Drawing.Size(135, 29);
-            this.usernameLabel.TabIndex = 14;
+            this.usernameLabel.TabIndex = 18;
             this.usernameLabel.Text = "User Name";
             // 
             // passwordBox
@@ -89,7 +89,7 @@
             this.passwordBox.Name = "passwordBox";
             this.passwordBox.PasswordChar = '*';
             this.passwordBox.Size = new System.Drawing.Size(320, 35);
-            this.passwordBox.TabIndex = 17;
+            this.passwordBox.TabIndex = 21;
             this.passwordBox.Tag = "Password";
             // 
             // usernameBox
@@ -98,7 +98,7 @@
             this.usernameBox.Location = new System.Drawing.Point(796, 38);
             this.usernameBox.Name = "usernameBox";
             this.usernameBox.Size = new System.Drawing.Size(320, 35);
-            this.usernameBox.TabIndex = 15;
+            this.usernameBox.TabIndex = 19;
             this.usernameBox.Tag = "User Name";
             // 
             // cancelButton
@@ -108,7 +108,7 @@
             this.cancelButton.Location = new System.Drawing.Point(904, 289);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(102, 46);
-            this.cancelButton.TabIndex = 21;
+            this.cancelButton.TabIndex = 27;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.CancelButton_Click);
@@ -119,7 +119,7 @@
             this.saveButton.Location = new System.Drawing.Point(754, 289);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(102, 46);
-            this.saveButton.TabIndex = 20;
+            this.saveButton.TabIndex = 26;
             this.saveButton.Text = "Save";
             this.saveButton.UseVisualStyleBackColor = true;
             this.saveButton.Click += new System.EventHandler(this.SaveUser_Click);
@@ -131,7 +131,7 @@
             this.confirmLabel.Location = new System.Drawing.Point(574, 146);
             this.confirmLabel.Name = "confirmLabel";
             this.confirmLabel.Size = new System.Drawing.Size(210, 29);
-            this.confirmLabel.TabIndex = 18;
+            this.confirmLabel.TabIndex = 22;
             this.confirmLabel.Text = "Confirm Password";
             // 
             // confirmBox
@@ -141,7 +141,7 @@
             this.confirmBox.Name = "confirmBox";
             this.confirmBox.PasswordChar = '*';
             this.confirmBox.Size = new System.Drawing.Size(320, 35);
-            this.confirmBox.TabIndex = 19;
+            this.confirmBox.TabIndex = 23;
             this.confirmBox.Tag = "Confirm Password";
             // 
             // firstNameBox
@@ -150,7 +150,7 @@
             this.firstNameBox.Location = new System.Drawing.Point(238, 38);
             this.firstNameBox.Name = "firstNameBox";
             this.firstNameBox.Size = new System.Drawing.Size(320, 35);
-            this.firstNameBox.TabIndex = 1;
+            this.firstNameBox.TabIndex = 2;
             this.firstNameBox.Tag = "First Name";
             // 
             // lastNameBox
@@ -159,7 +159,7 @@
             this.lastNameBox.Location = new System.Drawing.Point(238, 98);
             this.lastNameBox.Name = "lastNameBox";
             this.lastNameBox.Size = new System.Drawing.Size(320, 35);
-            this.lastNameBox.TabIndex = 3;
+            this.lastNameBox.TabIndex = 4;
             this.lastNameBox.Tag = "Last Name";
             // 
             // emailBox
@@ -168,7 +168,7 @@
             this.emailBox.Location = new System.Drawing.Point(238, 155);
             this.emailBox.Name = "emailBox";
             this.emailBox.Size = new System.Drawing.Size(320, 35);
-            this.emailBox.TabIndex = 5;
+            this.emailBox.TabIndex = 6;
             this.emailBox.Tag = "eMail";
             // 
             // firstNameLabel
@@ -178,7 +178,7 @@
             this.firstNameLabel.Location = new System.Drawing.Point(22, 38);
             this.firstNameLabel.Name = "firstNameLabel";
             this.firstNameLabel.Size = new System.Drawing.Size(131, 29);
-            this.firstNameLabel.TabIndex = 22;
+            this.firstNameLabel.TabIndex = 1;
             this.firstNameLabel.Text = "First Name";
             // 
             // lsatNameLabel
@@ -188,7 +188,7 @@
             this.lsatNameLabel.Location = new System.Drawing.Point(16, 98);
             this.lsatNameLabel.Name = "lsatNameLabel";
             this.lsatNameLabel.Size = new System.Drawing.Size(128, 29);
-            this.lsatNameLabel.TabIndex = 2;
+            this.lsatNameLabel.TabIndex = 3;
             this.lsatNameLabel.Text = "Last Name";
             // 
             // emailLabel
@@ -198,7 +198,7 @@
             this.emailLabel.Location = new System.Drawing.Point(22, 155);
             this.emailLabel.Name = "emailLabel";
             this.emailLabel.Size = new System.Drawing.Size(82, 29);
-            this.emailLabel.TabIndex = 4;
+            this.emailLabel.TabIndex = 5;
             this.emailLabel.Text = "E-Mail";
             // 
             // weightLabel
@@ -208,7 +208,7 @@
             this.weightLabel.Location = new System.Drawing.Point(22, 225);
             this.weightLabel.Name = "weightLabel";
             this.weightLabel.Size = new System.Drawing.Size(88, 29);
-            this.weightLabel.TabIndex = 6;
+            this.weightLabel.TabIndex = 7;
             this.weightLabel.Text = "Weight";
             // 
             // heightLabel
@@ -218,7 +218,7 @@
             this.heightLabel.Location = new System.Drawing.Point(22, 342);
             this.heightLabel.Name = "heightLabel";
             this.heightLabel.Size = new System.Drawing.Size(83, 29);
-            this.heightLabel.TabIndex = 9;
+            this.heightLabel.TabIndex = 13;
             this.heightLabel.Text = "Height";
             // 
             // lbLabel
@@ -228,7 +228,7 @@
             this.lbLabel.Location = new System.Drawing.Point(519, 231);
             this.lbLabel.Name = "lbLabel";
             this.lbLabel.Size = new System.Drawing.Size(39, 29);
-            this.lbLabel.TabIndex = 8;
+            this.lbLabel.TabIndex = 9;
             this.lbLabel.Text = "lb.";
             // 
             // feetLabel
@@ -238,7 +238,7 @@
             this.feetLabel.Location = new System.Drawing.Point(346, 348);
             this.feetLabel.Name = "feetLabel";
             this.feetLabel.Size = new System.Drawing.Size(31, 29);
-            this.feetLabel.TabIndex = 11;
+            this.feetLabel.TabIndex = 15;
             this.feetLabel.Text = "ft.";
             // 
             // inchesLabel
@@ -248,7 +248,7 @@
             this.inchesLabel.Location = new System.Drawing.Point(513, 348);
             this.inchesLabel.Name = "inchesLabel";
             this.inchesLabel.Size = new System.Drawing.Size(38, 29);
-            this.inchesLabel.TabIndex = 13;
+            this.inchesLabel.TabIndex = 17;
             this.inchesLabel.Text = "in.";
             // 
             // lbLabel2
@@ -258,7 +258,7 @@
             this.lbLabel2.Location = new System.Drawing.Point(519, 289);
             this.lbLabel2.Name = "lbLabel2";
             this.lbLabel2.Size = new System.Drawing.Size(39, 29);
-            this.lbLabel2.TabIndex = 25;
+            this.lbLabel2.TabIndex = 12;
             this.lbLabel2.Text = "lb.";
             // 
             // goalWeightLabel
@@ -268,7 +268,7 @@
             this.goalWeightLabel.Location = new System.Drawing.Point(22, 283);
             this.goalWeightLabel.Name = "goalWeightLabel";
             this.goalWeightLabel.Size = new System.Drawing.Size(145, 29);
-            this.goalWeightLabel.TabIndex = 23;
+            this.goalWeightLabel.TabIndex = 10;
             this.goalWeightLabel.Text = "Goal Weight";
             // 
             // nudInchesBox
@@ -280,14 +280,9 @@
             0,
             0,
             0});
-			this.nudInchesBox.Minimum = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
             this.nudInchesBox.Name = "nudInchesBox";
             this.nudInchesBox.Size = new System.Drawing.Size(104, 35);
-            this.nudInchesBox.TabIndex = 12;
+            this.nudInchesBox.TabIndex = 16;
             this.nudInchesBox.Tag = "Height (in.)";
             // 
             // nudFootBox
@@ -306,7 +301,7 @@
             0});
             this.nudFootBox.Name = "nudFootBox";
             this.nudFootBox.Size = new System.Drawing.Size(105, 35);
-            this.nudFootBox.TabIndex = 10;
+            this.nudFootBox.TabIndex = 14;
             this.nudFootBox.Tag = "Height (ft.)";
             this.nudFootBox.Value = new decimal(new int[] {
             1,
@@ -330,7 +325,7 @@
             0});
             this.nudGoalWeightBox.Name = "nudGoalWeightBox";
             this.nudGoalWeightBox.Size = new System.Drawing.Size(272, 35);
-            this.nudGoalWeightBox.TabIndex = 24;
+            this.nudGoalWeightBox.TabIndex = 11;
             this.nudGoalWeightBox.Tag = "Weight";
             this.nudGoalWeightBox.Value = new decimal(new int[] {
             1,
@@ -354,7 +349,7 @@
             0});
             this.nudWeightBox.Name = "nudWeightBox";
             this.nudWeightBox.Size = new System.Drawing.Size(272, 35);
-            this.nudWeightBox.TabIndex = 7;
+            this.nudWeightBox.TabIndex = 8;
             this.nudWeightBox.Tag = "Weight";
             this.nudWeightBox.Value = new decimal(new int[] {
             1,
@@ -378,7 +373,7 @@
             0});
             this.nudDailyCalorieGoal.Name = "nudDailyCalorieGoal";
             this.nudDailyCalorieGoal.Size = new System.Drawing.Size(272, 35);
-            this.nudDailyCalorieGoal.TabIndex = 27;
+            this.nudDailyCalorieGoal.TabIndex = 25;
             this.nudDailyCalorieGoal.Tag = "DailyCalorieGoal";
             this.nudDailyCalorieGoal.Value = new decimal(new int[] {
             1,
@@ -393,7 +388,7 @@
             this.dailyCalorieGoalLabel.Location = new System.Drawing.Point(580, 219);
             this.dailyCalorieGoalLabel.Name = "dailyCalorieGoalLabel";
             this.dailyCalorieGoalLabel.Size = new System.Drawing.Size(207, 29);
-            this.dailyCalorieGoalLabel.TabIndex = 26;
+            this.dailyCalorieGoalLabel.TabIndex = 24;
             this.dailyCalorieGoalLabel.Text = "Daily Calorie Goal";
             // 
             // NewUser

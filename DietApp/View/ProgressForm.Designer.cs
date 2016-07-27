@@ -46,7 +46,7 @@
             this.oldBMILabel.Location = new System.Drawing.Point(47, 26);
             this.oldBMILabel.Name = "oldBMILabel";
             this.oldBMILabel.Size = new System.Drawing.Size(152, 29);
-            this.oldBMILabel.TabIndex = 0;
+            this.oldBMILabel.TabIndex = 1;
             this.oldBMILabel.Text = "Original BMI:";
             // 
             // oldBMIBox
@@ -65,7 +65,7 @@
             this.newBMIBox.Location = new System.Drawing.Point(210, 131);
             this.newBMIBox.Name = "newBMIBox";
             this.newBMIBox.Size = new System.Drawing.Size(100, 35);
-            this.newBMIBox.TabIndex = 4;
+            this.newBMIBox.TabIndex = 6;
             // 
             // newBMILabel
             // 
@@ -74,7 +74,7 @@
             this.newBMILabel.Location = new System.Drawing.Point(47, 134);
             this.newBMILabel.Name = "newBMILabel";
             this.newBMILabel.Size = new System.Drawing.Size(146, 29);
-            this.newBMILabel.TabIndex = 3;
+            this.newBMILabel.TabIndex = 5;
             this.newBMILabel.Text = "Current BMI:";
             // 
             // oldWeightLabel
@@ -84,7 +84,7 @@
             this.oldWeightLabel.Location = new System.Drawing.Point(14, 77);
             this.oldWeightLabel.Name = "oldWeightLabel";
             this.oldWeightLabel.Size = new System.Drawing.Size(185, 29);
-            this.oldWeightLabel.TabIndex = 5;
+            this.oldWeightLabel.TabIndex = 3;
             this.oldWeightLabel.Text = "Original Weight:";
             // 
             // newWeightLabel
@@ -94,7 +94,7 @@
             this.newWeightLabel.Location = new System.Drawing.Point(14, 185);
             this.newWeightLabel.Name = "newWeightLabel";
             this.newWeightLabel.Size = new System.Drawing.Size(179, 29);
-            this.newWeightLabel.TabIndex = 6;
+            this.newWeightLabel.TabIndex = 7;
             this.newWeightLabel.Text = "Current Weight:";
             // 
             // newWeightBox
@@ -104,7 +104,7 @@
             this.newWeightBox.Location = new System.Drawing.Point(210, 182);
             this.newWeightBox.Name = "newWeightBox";
             this.newWeightBox.Size = new System.Drawing.Size(100, 35);
-            this.newWeightBox.TabIndex = 7;
+            this.newWeightBox.TabIndex = 8;
             // 
             // oldWeightBox
             // 
@@ -113,7 +113,7 @@
             this.oldWeightBox.Location = new System.Drawing.Point(210, 74);
             this.oldWeightBox.Name = "oldWeightBox";
             this.oldWeightBox.Size = new System.Drawing.Size(100, 35);
-            this.oldWeightBox.TabIndex = 8;
+            this.oldWeightBox.TabIndex = 4;
             // 
             // msgLabel
             // 

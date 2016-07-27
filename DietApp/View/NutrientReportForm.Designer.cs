@@ -51,22 +51,24 @@
             this.chart1.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(12, 12);
+            this.chart1.Location = new System.Drawing.Point(18, 18);
+            this.chart1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.chart1.Name = "chart1";
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(760, 284);
+            this.chart1.Size = new System.Drawing.Size(1140, 437);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "chart1";
             // 
             // prevButton
             // 
-            this.prevButton.Location = new System.Drawing.Point(82, 327);
+            this.prevButton.Location = new System.Drawing.Point(123, 503);
+            this.prevButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.prevButton.Name = "prevButton";
-            this.prevButton.Size = new System.Drawing.Size(117, 23);
-            this.prevButton.TabIndex = 1;
+            this.prevButton.Size = new System.Drawing.Size(176, 35);
+            this.prevButton.TabIndex = 5;
             this.prevButton.Text = "Prev 10 Days";
             this.prevButton.UseVisualStyleBackColor = true;
             this.prevButton.Click += new System.EventHandler(this.PrevButton_Click);
@@ -74,20 +76,22 @@
             // nextButton
             // 
             this.nextButton.Enabled = false;
-            this.nextButton.Location = new System.Drawing.Point(205, 327);
+            this.nextButton.Location = new System.Drawing.Point(308, 503);
+            this.nextButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.nextButton.Name = "nextButton";
-            this.nextButton.Size = new System.Drawing.Size(117, 23);
-            this.nextButton.TabIndex = 2;
+            this.nextButton.Size = new System.Drawing.Size(176, 35);
+            this.nextButton.TabIndex = 6;
             this.nextButton.Text = "Next 10 Days";
             this.nextButton.UseVisualStyleBackColor = true;
             this.nextButton.Click += new System.EventHandler(this.NextButton_Click);
             // 
             // BTNPrint
             // 
-            this.BTNPrint.Location = new System.Drawing.Point(328, 327);
+            this.BTNPrint.Location = new System.Drawing.Point(492, 503);
+            this.BTNPrint.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.BTNPrint.Name = "BTNPrint";
-            this.BTNPrint.Size = new System.Drawing.Size(117, 23);
-            this.BTNPrint.TabIndex = 3;
+            this.BTNPrint.Size = new System.Drawing.Size(176, 35);
+            this.BTNPrint.TabIndex = 7;
             this.BTNPrint.Text = "Print";
             this.BTNPrint.UseVisualStyleBackColor = true;
             this.BTNPrint.Click += new System.EventHandler(this.BTNPrint_Click);
@@ -95,15 +99,17 @@
             // lbDays
             // 
             this.lbDays.AutoSize = true;
-            this.lbDays.Location = new System.Drawing.Point(451, 332);
+            this.lbDays.Location = new System.Drawing.Point(676, 511);
+            this.lbDays.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbDays.Name = "lbDays";
-            this.lbDays.Size = new System.Drawing.Size(80, 13);
-            this.lbDays.TabIndex = 10;
+            this.lbDays.Size = new System.Drawing.Size(118, 20);
+            this.lbDays.TabIndex = 8;
             this.lbDays.Text = "Days to Display";
             // 
             // nudDays
             // 
-            this.nudDays.Location = new System.Drawing.Point(537, 328);
+            this.nudDays.Location = new System.Drawing.Point(806, 505);
+            this.nudDays.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.nudDays.Maximum = new decimal(new int[] {
             30,
             0,
@@ -115,7 +121,7 @@
             0,
             0});
             this.nudDays.Name = "nudDays";
-            this.nudDays.Size = new System.Drawing.Size(44, 20);
+            this.nudDays.Size = new System.Drawing.Size(66, 26);
             this.nudDays.TabIndex = 9;
             this.nudDays.Value = new decimal(new int[] {
             10,
@@ -129,10 +135,11 @@
             this.checkCalories.AutoSize = true;
             this.checkCalories.Checked = true;
             this.checkCalories.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkCalories.Location = new System.Drawing.Point(13, 303);
+            this.checkCalories.Location = new System.Drawing.Point(20, 466);
+            this.checkCalories.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.checkCalories.Name = "checkCalories";
-            this.checkCalories.Size = new System.Drawing.Size(63, 17);
-            this.checkCalories.TabIndex = 11;
+            this.checkCalories.Size = new System.Drawing.Size(92, 24);
+            this.checkCalories.TabIndex = 1;
             this.checkCalories.Text = "Calories";
             this.checkCalories.UseVisualStyleBackColor = true;
             this.checkCalories.CheckedChanged += new System.EventHandler(this.NutrientReportForm_Load);
@@ -141,10 +148,11 @@
             // checkFat
             // 
             this.checkFat.AutoSize = true;
-            this.checkFat.Location = new System.Drawing.Point(83, 303);
+            this.checkFat.Location = new System.Drawing.Point(124, 466);
+            this.checkFat.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.checkFat.Name = "checkFat";
-            this.checkFat.Size = new System.Drawing.Size(41, 17);
-            this.checkFat.TabIndex = 12;
+            this.checkFat.Size = new System.Drawing.Size(59, 24);
+            this.checkFat.TabIndex = 2;
             this.checkFat.Text = "Fat";
             this.checkFat.UseVisualStyleBackColor = true;
             this.checkFat.CheckedChanged += new System.EventHandler(this.NutrientReportForm_Load);
@@ -152,10 +160,11 @@
             // checkProtein
             // 
             this.checkProtein.AutoSize = true;
-            this.checkProtein.Location = new System.Drawing.Point(141, 303);
+            this.checkProtein.Location = new System.Drawing.Point(212, 466);
+            this.checkProtein.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.checkProtein.Name = "checkProtein";
-            this.checkProtein.Size = new System.Drawing.Size(59, 17);
-            this.checkProtein.TabIndex = 13;
+            this.checkProtein.Size = new System.Drawing.Size(85, 24);
+            this.checkProtein.TabIndex = 3;
             this.checkProtein.Text = "Protein";
             this.checkProtein.UseVisualStyleBackColor = true;
             this.checkProtein.CheckedChanged += new System.EventHandler(this.NutrientReportForm_Load);
@@ -163,19 +172,20 @@
             // checkCarbohydrates
             // 
             this.checkCarbohydrates.AutoSize = true;
-            this.checkCarbohydrates.Location = new System.Drawing.Point(207, 303);
+            this.checkCarbohydrates.Location = new System.Drawing.Point(310, 466);
+            this.checkCarbohydrates.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.checkCarbohydrates.Name = "checkCarbohydrates";
-            this.checkCarbohydrates.Size = new System.Drawing.Size(94, 17);
-            this.checkCarbohydrates.TabIndex = 14;
+            this.checkCarbohydrates.Size = new System.Drawing.Size(139, 24);
+            this.checkCarbohydrates.TabIndex = 4;
             this.checkCarbohydrates.Text = "Carbohydrates";
             this.checkCarbohydrates.UseVisualStyleBackColor = true;
             this.checkCarbohydrates.CheckedChanged += new System.EventHandler(this.NutrientReportForm_Load);
             // 
             // NutrientReportForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 381);
+            this.ClientSize = new System.Drawing.Size(1176, 586);
             this.Controls.Add(this.checkCarbohydrates);
             this.Controls.Add(this.checkProtein);
             this.Controls.Add(this.checkFat);
@@ -186,6 +196,7 @@
             this.Controls.Add(this.nextButton);
             this.Controls.Add(this.prevButton);
             this.Controls.Add(this.chart1);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "NutrientReportForm";
             this.Text = "Nutrient Report";
             this.Load += new System.EventHandler(this.NutrientReportForm_Load);

@@ -54,7 +54,7 @@
             this.poundsLabel.Location = new System.Drawing.Point(124, 125);
             this.poundsLabel.Name = "poundsLabel";
             this.poundsLabel.Size = new System.Drawing.Size(59, 20);
-            this.poundsLabel.TabIndex = 71;
+            this.poundsLabel.TabIndex = 3;
             this.poundsLabel.Text = "(in lbs.)";
             // 
             // weightLabel
@@ -64,7 +64,7 @@
             this.weightLabel.Location = new System.Drawing.Point(66, 125);
             this.weightLabel.Name = "weightLabel";
             this.weightLabel.Size = new System.Drawing.Size(88, 29);
-            this.weightLabel.TabIndex = 70;
+            this.weightLabel.TabIndex = 2;
             this.weightLabel.Text = "Weight";
             // 
             // heartRateLabel
@@ -74,7 +74,7 @@
             this.heartRateLabel.Location = new System.Drawing.Point(66, 218);
             this.heartRateLabel.Name = "heartRateLabel";
             this.heartRateLabel.Size = new System.Drawing.Size(127, 29);
-            this.heartRateLabel.TabIndex = 73;
+            this.heartRateLabel.TabIndex = 10;
             this.heartRateLabel.Text = "Heart Rate";
             // 
             // bloodPressureLabel
@@ -84,7 +84,7 @@
             this.bloodPressureLabel.Location = new System.Drawing.Point(246, 126);
             this.bloodPressureLabel.Name = "bloodPressureLabel";
             this.bloodPressureLabel.Size = new System.Drawing.Size(180, 29);
-            this.bloodPressureLabel.TabIndex = 75;
+            this.bloodPressureLabel.TabIndex = 5;
             this.bloodPressureLabel.Text = "Blood Pressure";
             // 
             // label1
@@ -93,7 +93,7 @@
             this.label1.Location = new System.Drawing.Point(154, 218);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(67, 20);
-            this.label1.TabIndex = 76;
+            this.label1.TabIndex = 11;
             this.label1.Text = "(resting)";
             // 
             // bpLabel
@@ -102,7 +102,7 @@
             this.bpLabel.Location = new System.Drawing.Point(368, 126);
             this.bpLabel.Name = "bpLabel";
             this.bpLabel.Size = new System.Drawing.Size(137, 20);
-            this.bpLabel.TabIndex = 77;
+            this.bpLabel.TabIndex = 6;
             this.bpLabel.Text = "(Systolic/Diastolic)";
             // 
             // systolicUpDown
@@ -116,7 +116,7 @@
             0});
             this.systolicUpDown.Name = "systolicUpDown";
             this.systolicUpDown.Size = new System.Drawing.Size(120, 35);
-            this.systolicUpDown.TabIndex = 78;
+            this.systolicUpDown.TabIndex = 7;
             this.systolicUpDown.ValueChanged += new System.EventHandler(this.EnableSaveButton);
             // 
             // diastolicUpDown
@@ -130,7 +130,7 @@
             0});
             this.diastolicUpDown.Name = "diastolicUpDown";
             this.diastolicUpDown.Size = new System.Drawing.Size(120, 35);
-            this.diastolicUpDown.TabIndex = 79;
+            this.diastolicUpDown.TabIndex = 9;
             this.diastolicUpDown.ValueChanged += new System.EventHandler(this.EnableSaveButton);
             // 
             // slantLabel
@@ -140,7 +140,7 @@
             this.slantLabel.Location = new System.Drawing.Point(376, 157);
             this.slantLabel.Name = "slantLabel";
             this.slantLabel.Size = new System.Drawing.Size(27, 40);
-            this.slantLabel.TabIndex = 80;
+            this.slantLabel.TabIndex = 8;
             this.slantLabel.Text = "/";
             // 
             // dateTimePicker
@@ -149,7 +149,7 @@
             this.dateTimePicker.Location = new System.Drawing.Point(66, 65);
             this.dateTimePicker.Name = "dateTimePicker";
             this.dateTimePicker.Size = new System.Drawing.Size(464, 35);
-            this.dateTimePicker.TabIndex = 81;
+            this.dateTimePicker.TabIndex = 1;
             this.dateTimePicker.ValueChanged += new System.EventHandler(this.WellnessTrackingForm_Load);
             // 
             // heartRateUpDown
@@ -163,7 +163,7 @@
             0});
             this.heartRateUpDown.Name = "heartRateUpDown";
             this.heartRateUpDown.Size = new System.Drawing.Size(120, 35);
-            this.heartRateUpDown.TabIndex = 82;
+            this.heartRateUpDown.TabIndex = 12;
             this.heartRateUpDown.ValueChanged += new System.EventHandler(this.EnableSaveButton);
             // 
             // weightUpDown
@@ -177,7 +177,7 @@
             0});
             this.weightUpDown.Name = "weightUpDown";
             this.weightUpDown.Size = new System.Drawing.Size(120, 35);
-            this.weightUpDown.TabIndex = 83;
+            this.weightUpDown.TabIndex = 4;
             this.weightUpDown.ValueChanged += new System.EventHandler(this.EnableSaveButton);
             // 
             // saveButton
@@ -188,7 +188,7 @@
             this.saveButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(120, 48);
-            this.saveButton.TabIndex = 84;
+            this.saveButton.TabIndex = 14;
             this.saveButton.Text = "Save";
             this.saveButton.UseVisualStyleBackColor = true;
             this.saveButton.Click += new System.EventHandler(this.WellnessInfo_Click);
@@ -200,7 +200,7 @@
             this.copyButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.copyButton.Name = "copyButton";
             this.copyButton.Size = new System.Drawing.Size(120, 48);
-            this.copyButton.TabIndex = 85;
+            this.copyButton.TabIndex = 13;
             this.copyButton.Text = "Copy Previous Entry";
             this.copyButton.UseVisualStyleBackColor = true;
             this.copyButton.Click += new System.EventHandler(this.copyButton_Click);

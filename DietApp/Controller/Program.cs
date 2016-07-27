@@ -14,10 +14,7 @@ namespace DietApp
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            using (var splashForm = new SplashForm())
-            {
-                Application.Run(splashForm);
-            }
+            Application.Run(new SplashForm());
         }
     }
 }
