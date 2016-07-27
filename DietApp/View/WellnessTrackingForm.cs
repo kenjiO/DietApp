@@ -140,14 +140,25 @@ namespace DietApp.View
                 date = dateTimePicker.Value,
                 userID = this.theUser.userId
             };
-            if (!View_Validator.wellnessMatchDB(userWellnessUpdate))
+
+            try
             {
-                this.saveButton.Enabled = true;
+                Cursor.Current = Cursors.WaitCursor;
+                bool wellnessMatchesDB = View_Validator.wellnessMatchDB(userWellnessUpdate);
+                if (!wellnessMatchesDB)
+                {
+                    this.saveButton.Enabled = true;
+                }
+                else
+                {
+                    this.saveButton.Enabled = false;
+                }
             }
-            else
+            catch (SqlException ex)
             {
-                this.saveButton.Enabled = false;
+                MessageBox.Show(ex.Message, ex.GetType().ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            Cursor.Current = Cursors.Default;
         }
 
         // Helper Methods //
