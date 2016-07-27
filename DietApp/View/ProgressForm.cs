@@ -125,7 +125,7 @@ namespace DietApp.View
             else if (BMI > 25)
             {
                 ideal = Convert.ToInt32(Math.Round((25.0 / 703) * Math.Pow(this.theUser.heightInches, 2)));
-                msg = "You need to lose " + (ideal - this.theUser.goalWeight) + " lb(s). to reach a healthy BMI.\n" +
+                msg = "You need to lose " + (this.theProgress.newWeight - ideal) + " lb(s). to reach a healthy BMI.\n" +
                     "This means you should aim for a weight of approximately " + ideal + " lbs.";
             }
             else
