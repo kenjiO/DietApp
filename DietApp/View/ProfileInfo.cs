@@ -27,6 +27,9 @@ namespace DietApp.View
         /// <summary>The current user.</summary>
         private Users user;
 
+        private string username;
+        private string password;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="ProfileInfo"/> class.
         /// </summary>
@@ -70,6 +73,19 @@ namespace DietApp.View
         {
             // Updates Any Changes
             this.theUserId = newUserId;
+            try
+            {
+                Cursor.Current = Cursors.WaitCursor;
+                Users user = DietAppController.getUserData(this.theUserId);
+                this.username = user.userName;
+                this.password = user.password;
+                Cursor.Current = Cursors.Default;
+            }
+            catch (SqlException ex)
+            {
+                Cursor.Current = Cursors.Default;
+                MessageBox.Show(ex.Message, ex.GetType().ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         /// <summary>
@@ -88,7 +104,7 @@ namespace DietApp.View
                 firstName = this.firstNameBox.Text,
                 lastName = this.lastNameBox.Text,
                 email = this.emailBox.Text,
-                password = DietAppController.getUserData(this.theUserId).password, 
+                password = this.password, 
                 initialWeight = (int)this.nudInitialWeight.Value,
                 heightInches = ((int)this.nudFootBox.Value * 12) + (int)this.nudInchesBox.Value,
                 dailyCalorieGoal = (int)this.nudDailyCalorieGoal.Value,
@@ -154,7 +170,7 @@ namespace DietApp.View
                     {
                         // Adds the current userName to the blank user profile.
                         userId = this.theUserId,
-                        userName = DietAppController.getUserData(this.theUserId).userName,
+                        userName = this.username,
                         firstName = this.firstNameBox.Text,
                         lastName = this.lastNameBox.Text,
                         email = this.emailBox.Text,
@@ -211,11 +227,11 @@ namespace DietApp.View
             var userProfileUpdate = new Users()
             {
                 userId = this.theUserId,
-                userName = DietAppController.getUserData(this.theUserId).userName,
+                userName = this.username,
                 firstName = this.firstNameBox.Text,
                 lastName = this.lastNameBox.Text,
                 email = this.emailBox.Text,
-                password = DietAppController.getUserData(this.theUserId).password, 
+                password = this.password, 
                 initialWeight = (int)this.nudInitialWeight.Value,
                 heightInches = ((int)this.nudFootBox.Value * 12) + (int)this.nudInchesBox.Value,
                 dailyCalorieGoal = (int)this.nudDailyCalorieGoal.Value,
